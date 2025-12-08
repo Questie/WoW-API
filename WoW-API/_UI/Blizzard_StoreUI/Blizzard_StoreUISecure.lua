@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StoreUI\Vanilla\Blizzard_StoreUISecure.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local envTable = GetCurrentEnvironment();

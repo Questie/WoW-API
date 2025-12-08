@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AchievementUI\Classic\Blizzard_AchievementUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local ACHIEVEMENTUI_FONTHEIGHT;						-- set in AchievementButton_OnLoad

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup_Game\GameDialogDefs.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function SetupLockOnDeclineButtonAndEscape(dialog, declineTimeLeft)

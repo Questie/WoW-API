@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DeprecatedItemScript\Deprecated_ItemScript.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- These are functions that were deprecated and will be removed in the future.

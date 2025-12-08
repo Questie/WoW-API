@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Button\UIButtonTemplate.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

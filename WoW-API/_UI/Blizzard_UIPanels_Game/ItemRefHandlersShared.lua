@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Shared\ItemRefHandlersShared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function HandleBNPlayerLink(link, text, linkData, contextData)

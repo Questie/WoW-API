@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Vanilla\StanceBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Shared\Graphics.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local RaidSettingsEnabledCVar = "RAIDsettingsEnabled";

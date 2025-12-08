@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function AdjustFriendsFrameDropdown_132()

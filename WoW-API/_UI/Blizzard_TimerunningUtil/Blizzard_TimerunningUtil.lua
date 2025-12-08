@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TimerunningUtil\Blizzard_TimerunningUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class TimerunningUtil

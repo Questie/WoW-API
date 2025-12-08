@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\LootFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 LOOTFRAME_NUMBUTTONS = 4;

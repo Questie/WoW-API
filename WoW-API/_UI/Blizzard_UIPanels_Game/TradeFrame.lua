@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\TradeFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_TRADE_ITEMS = 7;

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateHorizontalCurrencies.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function GetHorizontalCurrenciesVisInfoData(widgetID)

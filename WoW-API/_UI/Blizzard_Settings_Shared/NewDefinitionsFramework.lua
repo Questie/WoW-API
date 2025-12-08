@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\NewDefinitionsFramework.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class NewSettings

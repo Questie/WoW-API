@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\ContainerFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- See ContainerFrame_Vanilla, ContainerFrame_Wrath, etc for expansion-specific functions

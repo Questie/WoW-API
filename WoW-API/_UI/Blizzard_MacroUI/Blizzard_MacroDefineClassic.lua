@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MacroUI\Blizzard_MacroDefineClassic.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MACRO_SCROLL_BAR_OFFSET_X = 0;

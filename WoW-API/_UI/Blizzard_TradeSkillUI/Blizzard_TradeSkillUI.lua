@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TradeSkillUI\Vanilla\Blizzard_TradeSkillUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 TRADE_SKILLS_DISPLAYED = 8;

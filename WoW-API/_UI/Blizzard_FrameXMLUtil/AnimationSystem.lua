@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\AnimationSystem.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --[[	animTable = {	--Note that only consistent data should be in here. These tables are meant to be shared across "sessions" of animations. Put changing data in the frame.

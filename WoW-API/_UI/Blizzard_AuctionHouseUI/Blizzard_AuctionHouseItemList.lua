@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Shared\Blizzard_AuctionHouseItemList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

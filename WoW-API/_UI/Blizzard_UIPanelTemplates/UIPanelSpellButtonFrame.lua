@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanelTemplates\Shared\UIPanelSpellButtonFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class UIPanelSpellButtonFrameMixin : Frame

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\ActionBars.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local ActionBarSettingsTogglesCache = nil;

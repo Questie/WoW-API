@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\PlayerFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 REQUIRED_REST_HOURS = 5;

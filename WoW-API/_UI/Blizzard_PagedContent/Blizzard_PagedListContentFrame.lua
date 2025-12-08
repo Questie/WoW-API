@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PagedContent\Blizzard_PagedListContentFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --[[

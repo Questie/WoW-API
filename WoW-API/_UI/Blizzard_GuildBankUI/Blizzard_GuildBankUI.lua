@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GuildBankUI\TBC\Blizzard_GuildBankUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local MAX_GUILDBANK_SLOTS_PER_TAB = 98;

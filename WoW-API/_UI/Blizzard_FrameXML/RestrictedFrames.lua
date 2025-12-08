@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\RestrictedFrames.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- RestrictedFrames.lua (Part of the new Secure Headers implementation)

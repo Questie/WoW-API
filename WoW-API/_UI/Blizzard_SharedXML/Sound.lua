@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\Sound.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 SOUND_MASTERVOLUME_STEP = 0.1;

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_Keybindings.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 KeybindListener = CreateFrame("Button");

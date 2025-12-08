@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TokenUI\Blizzard_TokenUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 UIPanelWindows["TokenFrame"] = { area = "left", pushable = 1, whileDead = 1 };

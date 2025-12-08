@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DeprecatedWorldElapsedTimerTypes\Deprecated_WorldElapsedTimerTypes.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- These are values that were deprecated and will be removed in the future.

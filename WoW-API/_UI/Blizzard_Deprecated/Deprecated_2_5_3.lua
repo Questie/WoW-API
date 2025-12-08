@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Deprecated\Deprecated_2_5_3.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

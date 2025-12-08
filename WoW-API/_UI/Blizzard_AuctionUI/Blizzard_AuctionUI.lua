@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionUI\Classic\Blizzard_AuctionUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- keep last item sent to auction & it's price

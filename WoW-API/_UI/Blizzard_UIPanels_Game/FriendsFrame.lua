@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\FriendsFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 FRIENDS_TO_DISPLAY = 10;

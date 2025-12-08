@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopup\Vanilla\UnitPopupButtons.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function UnitPopupLootThresholdButtonMixin:GetColor()

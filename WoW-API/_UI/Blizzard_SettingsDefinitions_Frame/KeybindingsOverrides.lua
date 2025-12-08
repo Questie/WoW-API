@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Classic\KeybindingsOverrides.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class KeybindingsOverrides

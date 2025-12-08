@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CatalogShop\Blizzard_CatalogShop_Elements.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -----------------------------------------------------------------------------------

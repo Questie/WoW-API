@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\RestrictedExecution.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- RestrictedExecution.lua (Part of the new Secure Headers implementation)

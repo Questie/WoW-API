@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AddOnList\Classic\AddonList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ADDON_BUTTON_HEIGHT = 16;

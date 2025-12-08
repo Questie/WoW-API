@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ArenaUI\Blizzard_ArenaUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_ARENA_ENEMIES = 5;

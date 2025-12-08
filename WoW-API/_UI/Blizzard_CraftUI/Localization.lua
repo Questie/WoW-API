@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CraftUI\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function Localize_zh()

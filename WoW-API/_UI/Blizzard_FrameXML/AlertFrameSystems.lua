@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\AlertFrameSystems.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function AlertFrameSystems_Register()

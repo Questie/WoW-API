@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AutoComplete\Classic\AutoComplete.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 AUTOCOMPLETE_MAX_BUTTONS = 5;

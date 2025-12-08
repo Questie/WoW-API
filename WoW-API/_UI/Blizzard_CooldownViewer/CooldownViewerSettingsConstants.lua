@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerSettingsConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- These values aren't actually part of the enum

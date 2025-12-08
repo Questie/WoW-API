@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Minimap\Classic\GameTime_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 GAMETIME_DAWN = ( 5 * 60) + 30;		-- 5:30 AM

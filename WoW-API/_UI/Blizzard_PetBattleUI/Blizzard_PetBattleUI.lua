@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PetBattleUI\Shared\Blizzard_PetBattleUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_BATTLE_PETS_IN_BATTLE = 3;

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Shared\CharacterServicesTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- NOTE: Not sure what to do about the realm selection stuff, lifing it from Store code for now.

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\NavigationBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

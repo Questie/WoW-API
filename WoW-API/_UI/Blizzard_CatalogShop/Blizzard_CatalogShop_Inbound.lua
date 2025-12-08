@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CatalogShop\Blizzard_CatalogShop_Inbound.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Inbound files need to load under the global environment

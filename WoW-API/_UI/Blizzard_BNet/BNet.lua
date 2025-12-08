@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BNet\Classic\BNet.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local BN_TOAST_TYPE_ONLINE = 1;

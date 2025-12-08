@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionUI\Classic\Blizzard_AuctionData.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_BROWSE_TO_DISPLAY = 8;

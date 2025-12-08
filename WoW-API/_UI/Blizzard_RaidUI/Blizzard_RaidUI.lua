@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_RaidUI\Blizzard_RaidUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_RAID_GROUPS = 8;

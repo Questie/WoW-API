@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\BankFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class BANK_PANELS

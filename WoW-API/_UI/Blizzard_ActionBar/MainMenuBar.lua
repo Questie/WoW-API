@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic\MainMenuBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local MAINMENU_SLIDETIME = 0.30;

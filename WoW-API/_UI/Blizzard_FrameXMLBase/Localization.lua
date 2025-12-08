@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\Vanilla\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local l10n_Spanish = {

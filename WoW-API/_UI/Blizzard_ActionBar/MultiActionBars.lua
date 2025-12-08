@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic/MultiActionBars.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_MULTIBAR_BUTTONS = 12;

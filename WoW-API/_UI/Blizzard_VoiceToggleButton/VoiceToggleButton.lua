@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_VoiceToggleButton\VoiceToggleButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class VoiceToggleButtonMixin : Button

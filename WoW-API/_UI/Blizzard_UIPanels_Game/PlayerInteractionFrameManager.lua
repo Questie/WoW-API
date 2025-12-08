@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Shared\PlayerInteractionFrameManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --[[

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\GuildUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NEWS_MOTD = -1;				-- pseudo category

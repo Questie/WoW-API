@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Classic\Blizzard_AuctionHouseCategoriesList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function AuctionHouseFilterButton_SetUp(button, info)

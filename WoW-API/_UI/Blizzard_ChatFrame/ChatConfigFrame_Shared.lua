@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\ChatConfigFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 COMBATLOG_FILTERS_TO_DISPLAY = 4;

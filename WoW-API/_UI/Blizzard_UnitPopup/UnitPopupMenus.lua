@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopup\Vanilla\UnitPopupMenus.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---------------------------- Main Menus ----------------------------------------------

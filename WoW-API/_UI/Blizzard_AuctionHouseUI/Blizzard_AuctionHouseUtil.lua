@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Classic\Blizzard_AuctionHouseUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function GetQualityFilterString(itemQuality)

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GuildRename\Blizzard_GuildRename.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class SimpleTooltipRegionMixin

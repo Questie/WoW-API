@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Channels\ChannelFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 UIPanelWindows["ChannelFrame"] = { area = "left", pushable = 1, whileDead = 1 };

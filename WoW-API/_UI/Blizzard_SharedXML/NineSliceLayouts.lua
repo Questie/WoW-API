@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\NineSliceLayouts.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

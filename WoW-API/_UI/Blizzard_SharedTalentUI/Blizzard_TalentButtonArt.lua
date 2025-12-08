@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedTalentUI\Blizzard_TalentButtonArt.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

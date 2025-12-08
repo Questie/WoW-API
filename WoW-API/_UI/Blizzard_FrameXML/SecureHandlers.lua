@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\SecureHandlers.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- SecureHandlers.lua (Part of the Secure Handlers implementation)

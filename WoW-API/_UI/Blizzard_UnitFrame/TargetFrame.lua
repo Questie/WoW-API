@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Vanilla/TargetFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_COMBO_POINTS = 5;

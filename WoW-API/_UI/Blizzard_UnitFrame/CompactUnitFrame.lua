@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\CompactUnitFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --Widget Handlers

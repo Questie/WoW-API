@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\ServerAlert.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 

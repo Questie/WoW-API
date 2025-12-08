@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CompactRaidFrames\Vanilla\Blizzard_CompactRaidFrameManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class usedGroups

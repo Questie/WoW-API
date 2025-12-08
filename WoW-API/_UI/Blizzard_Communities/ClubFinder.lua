@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\ClubFinder.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local GUILD_CARDS_PER_PAGE = 3;

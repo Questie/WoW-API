@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\TypeUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --These functions are terrible, but they support legacy slash commands.

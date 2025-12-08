@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\FlowContainer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function FlowContainer_Initialize(container)

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DurabilityFrame\Classic\DurabilityFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 INVENTORY_ALERT_STATUS_SLOTS = {};

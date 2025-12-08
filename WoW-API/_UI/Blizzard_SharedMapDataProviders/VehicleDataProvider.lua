@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\VehicleDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class VehicleDataProviderMixin : MapCanvasDataProviderMixin

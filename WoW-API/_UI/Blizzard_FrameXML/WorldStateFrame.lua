@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Vanilla\WorldStateFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local MAX_SCORE_BUTTONS = 22;

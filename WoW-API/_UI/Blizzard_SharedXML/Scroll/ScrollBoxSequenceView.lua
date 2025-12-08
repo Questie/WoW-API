@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Scroll\ScrollBoxSequenceView.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Identical element optimization is not implemented because this view is expected to be used

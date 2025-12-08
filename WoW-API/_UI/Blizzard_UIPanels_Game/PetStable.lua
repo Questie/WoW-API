@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\PetStable.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_PET_STABLE_SLOTS = 2;

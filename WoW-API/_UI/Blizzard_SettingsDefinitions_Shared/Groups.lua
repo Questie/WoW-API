@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Shared\Groups.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 if C_Glue.IsOnGlueScreen() then

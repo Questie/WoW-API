@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\Pools.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local SpecializeFrameWithMixins = FrameUtil.SpecializeFrameWithMixins;

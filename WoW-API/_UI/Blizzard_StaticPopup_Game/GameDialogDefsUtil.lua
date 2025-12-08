@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup_Game\GameDialogDefsUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class GameDialogDefsUtil

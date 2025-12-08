@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CombatText\Blizzard_CombatText.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_COMBAT_TEXT_LINES = 20;

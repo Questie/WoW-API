@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Minimap\Vanilla\Minimap.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MINIMAPPING_TIMER = 5.5;

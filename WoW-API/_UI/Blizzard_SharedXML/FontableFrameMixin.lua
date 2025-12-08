@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\FontableFrameMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Intended to simplify the management of a single font object sourced frame

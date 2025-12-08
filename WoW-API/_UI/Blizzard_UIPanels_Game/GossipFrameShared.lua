@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Shared\GossipFrameShared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 GOSSIP_BUTTON_TYPE_TITLE = 1;

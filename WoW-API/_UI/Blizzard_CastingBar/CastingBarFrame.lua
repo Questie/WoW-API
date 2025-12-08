@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CastingBar\Vanilla\CastingBarFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 CASTING_BAR_ALPHA_STEP = 0.05;

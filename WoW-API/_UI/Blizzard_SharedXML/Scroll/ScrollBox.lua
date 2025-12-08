@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Scroll\ScrollBox.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Common event definitions as a work-around for derivation problems with CallbackRegistryMixin.

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\BattlefieldFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 BATTLEFIELD_ZONES_DISPLAYED = 12;

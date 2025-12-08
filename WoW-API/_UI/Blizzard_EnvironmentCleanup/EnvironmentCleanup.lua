@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_EnvironmentCleanup\Classic\EnvironmentCleanup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- This file cleans up the global environment by removing everything needed only by the secure environment.

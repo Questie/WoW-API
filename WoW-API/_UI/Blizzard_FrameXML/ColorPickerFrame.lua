@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\ColorPickerFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class ColorPickerFrameMixin : Frame

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\LocalizationMachinery.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function CallLocalizationFunction(l10nTable, key)

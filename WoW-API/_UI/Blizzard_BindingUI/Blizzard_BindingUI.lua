@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BindingUI\Blizzard_BindingUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 KEY_BINDINGS_DISPLAYED = 21;

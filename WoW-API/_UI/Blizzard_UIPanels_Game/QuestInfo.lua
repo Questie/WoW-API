@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\QuestInfo.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local REWARDS_SECTION_OFFSET = 5;		-- vertical distance between sections

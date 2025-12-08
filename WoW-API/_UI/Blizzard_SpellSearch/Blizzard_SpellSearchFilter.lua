@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchFilter.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Base mixin for different kinds of spell-specific search filters

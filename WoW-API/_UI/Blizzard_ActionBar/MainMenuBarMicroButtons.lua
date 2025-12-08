@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Vanilla\MainMenuBarMicroButtons.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class MICRO_BUTTONS

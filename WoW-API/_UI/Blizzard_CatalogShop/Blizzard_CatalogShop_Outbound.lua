@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CatalogShop\Blizzard_CatalogShop_Outbound.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Outbound loads under the global environment but needs to put the outbound table into the secure environment

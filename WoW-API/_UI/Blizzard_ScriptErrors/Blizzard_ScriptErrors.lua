@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ScriptErrors\Blizzard_ScriptErrors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 if not IsInGlobalEnvironment() then

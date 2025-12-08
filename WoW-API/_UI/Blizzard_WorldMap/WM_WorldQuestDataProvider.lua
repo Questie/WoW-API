@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_WorldMap\WM_WorldQuestDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class WorldMap_WorldQuestDataProviderMixin : WorldQuestDataProviderMixin

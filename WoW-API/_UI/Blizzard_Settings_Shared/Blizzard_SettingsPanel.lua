@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_SettingsPanel.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function CallDefaultOnFrame(frame)

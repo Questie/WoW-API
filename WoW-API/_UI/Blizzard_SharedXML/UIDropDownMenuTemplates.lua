@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\UIDropDownMenuTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Custom dropdown buttons are instantiated by some external system.

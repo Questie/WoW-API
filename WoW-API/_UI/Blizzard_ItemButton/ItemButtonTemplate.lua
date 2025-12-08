@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ItemButton\Classic\ItemButtonTemplate.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function SetItemButtonCount(button, count, abbreviate)

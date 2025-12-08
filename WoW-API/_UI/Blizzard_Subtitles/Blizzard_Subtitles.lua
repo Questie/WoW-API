@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Subtitles\Blizzard_Subtitles.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local SUBTITLES_ENABLED_CVAR = "movieSubtitle";

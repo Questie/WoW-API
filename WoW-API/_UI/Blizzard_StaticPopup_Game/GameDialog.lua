@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup_Game\GameDialog.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 GameDialogAlertTextureName = "Interface\\DialogFrame\\UI-Dialog-Icon-AlertNew";

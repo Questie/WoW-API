@@ -200,10 +200,10 @@ def create_mixin(file, dest_root, branch, original_path):
         # Determine comment style based on file extension
         is_xml = file.lower().endswith(".xml")
         if is_xml:
-            # f.write(f"<!-- Original Path: {original_path} -->\n")
+            f.write(f"<!-- Original Path: {original_path} -->\n")
             f.write("<!-- Auto-moved, do not edit manually -->\n")
         else:
-            # f.write(f"-- Original Path: {original_path}\n")
+            f.write(f"-- Original Path: {original_path}\n")
             f.write("-- Auto-generated LuaLS Annotations, do not edit manually\n")
             f.write("---@meta _\n")
 
