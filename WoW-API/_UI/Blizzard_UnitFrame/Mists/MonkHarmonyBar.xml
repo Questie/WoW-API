@@ -1,5 +1,4 @@
--- Auto-generated LuaLS Annotations, do not edit manually
----@meta _
+<!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\..\Blizzard_SharedXML\UI.xsd">
 	<Texture name="MonkUI-background-shadow" file="Interface\PlayerFrame\MonkUI" virtual="true" >
@@ -136,5 +135,3 @@
 		</Scripts>
 	</Frame>
 </Ui>
-
-
