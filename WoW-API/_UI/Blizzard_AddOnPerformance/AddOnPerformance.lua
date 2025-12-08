@@ -5,7 +5,7 @@ StaticPopupDialogs["ADDON_PERFORMANCE_SPECIFIC_ERROR"] = {
 	text = ADDON_PERFORMANCE_SPECIFIC_ERROR_TEXT,
 	button1 = DISABLE,
 	button2 = IGNORE_DIALOG,
-	OnAccept = function(self, data)
+	OnAccept = function(dialog, data)
 		ShowUIPanel(AddonList);
 	end,
 	timeout = 0,
@@ -18,7 +18,7 @@ StaticPopupDialogs["ADDON_PERFORMANCE_OVERALL_ERROR"] = {
 	text = ADDON_PERFORMANCE_OVERALL_ERROR_TEXT,
 	button1 = DISABLE,
 	button2 = IGNORE_DIALOG,
-	OnAccept = function(self, data)
+	OnAccept = function(dialog, data)
 		ShowUIPanel(AddonList);
 	end,
 	timeout = 0,

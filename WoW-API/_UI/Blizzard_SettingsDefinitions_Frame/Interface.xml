@@ -4,7 +4,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	<Script file="Interface.lua"/>
 
 	<Frame name="RaidFramePreviewTemplate" mixin="RaidFramePreviewMixin" virtual="true">
-		<Size y="0"/>
+		<Size y="1"/>
 		<Frames>
 			<Button name="RaidFrameSettingsPreviewFrame" parentKey="RaidFrame" inherits="CompactUnitFrameTemplate">
 				<KeyValues>

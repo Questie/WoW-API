@@ -1,12 +1,7 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
-
-	<Frame name="TargetFrameBarSegmentTemplate" virtual="true">
-		<KeyValues>
-			<KeyValue key="fillTexture" value="Interface\TargetingFrame\UI-StatusBar" type="string"/>
-		</KeyValues>
-	</Frame>
+	<Script file="TargetFrame.lua"/>
 	<Frame name="TargetofTargetDebuffFrameTemplate" virtual="true" enableMouse="true" hidden="true">
 		<Size x="12" y="12"/>
 		<Layers>
@@ -145,13 +140,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</HitRectInsets>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentFlash" file="Interface\TargetingFrame\UI-TargetingFrame-Flash" hidden="true">
-					<Size x="242" y="93"/>
-					<Anchors>
-						<Anchor point="TOPLEFT" x="-24" y="0"/>
-					</Anchors>
-					<TexCoords left="0" right="0.9453125" top="0" bottom="0.181640625"/>
-				</Texture>
 				<Texture name="$parentBackground" parentKey="Background">
 					<Size x="119" y="41"/>
 					<Anchors>
@@ -182,7 +170,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						<Texture name="$parentTexture" parentKey="texture" file="Interface\TargetingFrame\UI-TargetingFrame">
 							<TexCoords left="0.09375" right="1.0" top="0" bottom="0.78125"/>
 						</Texture>
-						<FontString name="$parentName" parentKey="Name" inherits="GameFontNormalSmall">
+						<FontString name="$parentName" inherits="GameFontNormalSmall">
 							<Size x="100" y="10"/>
 							<Anchors>
 								<Anchor point="CENTER" x="-50" y="19"/>
@@ -192,36 +180,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<!--WARNING:: This is re-anchored in code.-->
 							<Anchors>
 								<Anchor point="CENTER" x="63" y="-16"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="HealthBarText" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="CENTER" x="-50" y="3"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="HealthBarTextLeft" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="LEFT" x="6" y="3"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="HealthBarTextRight" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="RIGHT" x="-110" y="3"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="ManaBarText" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="CENTER" x="-50" y="-8"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="ManaBarTextLeft" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="LEFT" x="6" y="-8"/>
-							</Anchors>
-						</FontString>
-						<FontString parentKey="ManaBarTextRight" inherits="TextStatusBarText">
-							<Anchors>
-								<Anchor point="RIGHT" x="-110" y="-8"/>
 							</Anchors>
 						</FontString>
 						<FontString name="$parentDeadText" inherits="GameFontNormalSmall" text="DEAD">
@@ -280,10 +238,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Texture>
 					</Layer>
 					<Layer level="ARTWORK" textureSubLevel="1">
-						<Texture parentKey="overAbsorbGlow" inherits="OverAbsorbGlowTemplate" hidden="1"/>
-						<Texture parentKey="overHealAbsorbGlow" inherits="OverHealAbsorbGlowTemplate" hidden="1"/>
-					</Layer>
-					<Layer level="ARTWORK" textureSubLevel="1">
 						<Texture name="$parentPrestigeBadge" hidden="true">
 							<Size x="30" y="30"/>
 							<Anchors>
@@ -293,17 +247,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Layer>
 				</Layers>
 			</Frame>
-			<StatusBar name="$parentHealthBar" inherits="TextStatusBar" parentKey="HealthBar" useParentLevel="true">
+			<StatusBar name="$parentHealthBar" inherits="TextStatusBar" useParentLevel="true">
 				<Size x="119" y="12"/>
 				<Anchors>
 					<Anchor point="TOPRIGHT" x="-106" y="-41"/>
 				</Anchors>
-				<Frames>
-					<Frame parentKey="MyHealPredictionBar" inherits="TargetFrameBarSegmentTemplate, MyHealPredictionBarTemplate"/>
-					<Frame parentKey="OtherHealPredictionBar" inherits="TargetFrameBarSegmentTemplate, OtherHealPredictionBarTemplate"/>
-					<Frame parentKey="HealAbsorbBar" inherits="PlayerFrameBarSegmentTemplate, HealAbsorbBarTemplate"/>
-					<Frame parentKey="TotalAbsorbBar" inherits="PlayerFrameBarSegmentTemplate, TotalAbsorbBarTemplate"/>
-				</Frames>
 				<Scripts>
 					<OnLoad>
 						TextStatusBar_Initialize(self);
@@ -316,13 +264,10 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						UnitFrameHealthBar_OnValueChanged(self, value);
 						TargetHealthCheck(self, value);
 					</OnValueChanged>
-					<OnSizeChanged>
-						UnitFrameHealPredictionBars_UpdateSize(self:GetParent());
-					</OnSizeChanged>
 				</Scripts>
 				<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
 			</StatusBar>
-			<StatusBar name="$parentManaBar" inherits="TextStatusBar" parentKey="PowerBar" useParentLevel="true">
+			<StatusBar name="$parentManaBar" inherits="TextStatusBar" useParentLevel="true">
 				<Size x="119" y="12"/>
 				<Anchors>
 					<Anchor point="TOPRIGHT" x="-106" y="-52"/>
@@ -344,32 +289,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<Frame name="$parentDebuffs" parentKey="debuffs" hidden="true">
 				<Size x="10" y="10"/>
 			</Frame>
-			<Frame name="$parentNumericalThreat" hidden="true">
-				<Size x="49" y="18"/>
-				<Anchors>
-					<Anchor point="BOTTOM" relativePoint="TOP" x="-50" y="-22"/>
-				</Anchors>
-				<Layers>
-					<Layer level="BACKGROUND">
-						<FontString name="$parentValue" inherits="GameFontHighlight" text="100%" parentKey="text">
-							<Anchors>
-								<Anchor point="TOP" x="0" y="-4"/>
-							</Anchors>
-						</FontString>
-						<Texture name="$parentBG" file="Interface\TargetingFrame\UI-StatusBar" parentKey="bg">
-							<Size x="37" y="14"/>
-							<Anchors>
-								<Anchor point="TOP" x="0" y="-3"/>
-							</Anchors>
-						</Texture>
-					</Layer>
-					<Layer level="ARTWORK">
-						<Texture file="Interface\TargetingFrame\NumericThreatBorder">
-							<TexCoords left="0" right="0.765625" top="0" bottom="0.5625"/>
-						</Texture>
-					</Layer>
-				</Layers>
-			</Frame>
 		</Frames>
 		<Scripts>
 			<OnEvent function="TargetFrame_OnEvent"/>
@@ -383,18 +302,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Scripts>
 	</Button>
 	<Button name="BossTargetFrameTemplate" inherits="TargetFrameTemplate" virtual="true">
-		<Frames>
-			<Frame name="$parentPowerBarAlt" parentKey="powerBarAlt" inherits="UnitPowerBarAltTemplate">
-				<Anchors>
-					<Anchor point="TOPRIGHT" relativeTo="$parent" relativePoint="TOPLEFT" x="54" y="-20"/>
-				</Anchors>
-				<Scripts>
-					<OnLoad>
-						UnitPowerBarAlt_Initialize(self, "boss"..self:GetParent():GetID(), 0.5, "INSTANCE_ENCOUNTER_ENGAGE_UNIT");
-					</OnLoad>
-				</Scripts>
-			</Frame>
-		</Frames>
 		<Scripts>
 			<OnLoad>
 				local id = self:GetID();
@@ -508,7 +415,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnShow>
 			<OnHide function="TargetofTarget_OnHide"/>
 			<OnEvent function="UnitFrame_OnEvent"/>
-
 		</Scripts>
 	</Button>
 	<StatusBar name="TargetSpellBarTemplate" inherits="SmallCastingBarFrameTemplate" hidden="true" virtual="true">
@@ -527,25 +433,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 
 	<Button name="TargetFrame" inherits="TargetFrameTemplate" movable="true">
 		<!-- This frame gets positioned in UIParent_UpdateTopFramePositions() -->
-		<Frames>
-			<Frame name="$parentPowerBarAlt" parentKey="powerBarAlt" inherits="UnitPowerBarAltTemplate">
-				<Anchors>
-					<Anchor point="LEFT" relativeTo="$parent" relativePoint="RIGHT" x="-25" y="5"/>
-				</Anchors>
-				<Scripts>
-					<OnLoad>
-						UnitPowerBarAlt_Initialize(self, "target", 0.5, "PLAYER_TARGET_CHANGED");
-					</OnLoad>
-				</Scripts>
-			</Frame>
-		</Frames>
 		<Scripts>
 			<OnLoad>
 				self.noTextPrefix = true;
 				self.showLevel = true;
 				self.showPVP = true;
 				self.showLeader = true;
-				self.showThreat = true;
 				self.showPortrait = true;
 				self.showClassification = true;
 				self.showAuraCount = true;
@@ -554,37 +447,22 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				TargetFrame_CreateSpellbar(self, "PLAYER_TARGET_CHANGED");
 				TargetFrame_CreateTargetofTarget(self, "targettarget");
 				self:RegisterEvent("PLAYER_TARGET_CHANGED");
-				self.threatNumericIndicator:SetScript("OnShow", function() TargetFrame_UpdateAuras(self) end);
-				self.threatNumericIndicator:SetScript("OnHide", function() TargetFrame_UpdateAuras(self) end);
 				UIParent_UpdateTopFramePositions();
 			</OnLoad>
 			<OnDragStart function="TargetFrame_OnDragStart"/>
 			<OnDragStop function="TargetFrame_OnDragStop"/>
 		</Scripts>
 	</Button>
-	<Button name="FocusFrame" movable="true" inherits="TargetFrameTemplate" mixin="FocusFrameMixin" clampedToScreen="true">
+	<!--<Button name="FocusFrame" movable="true" inherits="TargetFrameTemplate" clampedToScreen="true">
 		<Anchors>
 			<Anchor point="TOPLEFT" x="250" y="-240"/>
 		</Anchors>
-		<Frames>
-			<Frame name="$parentPowerBarAlt" parentKey="powerBarAlt" inherits="UnitPowerBarAltTemplate">
-				<Anchors>
-					<Anchor point="LEFT" relativeTo="$parent" relativePoint="RIGHT" x="-25" y="5"/>
-				</Anchors>
-				<Scripts>
-					<OnLoad>
-						UnitPowerBarAlt_Initialize(self, "focus", 0.5, "PLAYER_FOCUS_CHANGED");
-					</OnLoad>
-				</Scripts>
-			</Frame>
-		</Frames>
 		<Scripts>
 			<OnLoad>
 				self.noTextPrefix = true;
 				self.showLevel = true;
 				self.showPVP = true;
 				self.showLeader = true;
-				self.showThreat = true;
 				self.showPortrait = true;
 				self.showClassification = true;
 				self.showAuraCount = true;
@@ -597,7 +475,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnDragStart function="FocusFrame_OnDragStart"/>
 			<OnDragStop function="FocusFrame_OnDragStop"/>
 		</Scripts>
-	</Button>
+	</Button>-->
 	<Button name="Boss1TargetFrame" inherits="BossTargetFrameTemplate" id="1">
 		<Anchors>
 			<Anchor point="TOPRIGHT" x="55" y="-236"/>

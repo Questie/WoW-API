@@ -3,13 +3,10 @@
 ---------------------------- Main Menus ----------------------------------------------
 function UnitPopupMenuSelf:GetEntries()
 	return {
-		UnitPopupSelectRoleButtonMixin,
-		UnitPopupRaidTargetButtonMixin,
+		UnitPopupRaidTargetButtonMixin, 
 		UnitPopupSetFocusButtonMixin,
-		UnitPopupSelfHighlightSelectButtonMixin,
 		UnitPopupPvpFlagButtonMixin,
 		UnitPopupLootSubsectionTitle,
-		UnitPopupSelectLootSpecializationButtonMixin,
 		UnitPopupLootMethodButtonMixin,
 		UnitPopupLootThresholdButtonMixin,
 		UnitPopupOptOutLootTitleMixin,
@@ -19,10 +16,10 @@ function UnitPopupMenuSelf:GetEntries()
 		UnitPopupConvertToPartyButtonMixin,
 		UnitPopupDungeonDifficultyButtonMixin,
 		UnitPopupRaidDifficultyButtonMixin, 
-		UnitPopupResetChallengeModeButtonMixin,
 		UnitPopupResetInstancesButtonMixin,
 		UnitPopupOtherSubsectionTitle,
 		UnitPopupVoiceChatButtonMixin, 
+		UnitPopupSelectRoleButtonMixin,
 		UnitPopupMovePlayerFrameButtonMixin,
 		UnitPopupMoveTargetFrameButtonMixin,
 		UnitPopupPartyInstanceLeaveButtonMixin,
@@ -31,9 +28,23 @@ function UnitPopupMenuSelf:GetEntries()
 	}
 end
 
+---@class UnitPopupMenuFriendlyPlayerInteract : UnitPopupTopLevelMenuMixin
+UnitPopupMenuFriendlyPlayerInteract = CreateFromMixins(UnitPopupTopLevelMenuMixin);
+function UnitPopupMenuFriendlyPlayerInteract:GetEntries()
+	return {
+		UnitPopupWhisperButtonMixin,
+		UnitPopupInspectButtonMixin, 
+		UnitPopupAchievementButtonMixin,
+		UnitPopupTradeButtonMixin, 
+		UnitPopupFollowButtonMixin,
+		UnitPopupDuelButtonMixin,
+		UnitPopupDuelToTheDeathButtonMixin,
+		UnitPopupPetBattleDuelButtonMixin,
+	}
+end 
+
 function UnitPopupMenuParty:GetEntries()
 	return {
-		UnitPopupSelectRoleButtonMixin,
 		UnitPopupMenuFriendlyPlayer, --This is a submenu
 		UnitPopupRafSummonButtonMixin,
 		UnitPopupRafGrantLevelButtonMixin,
@@ -42,7 +53,8 @@ function UnitPopupMenuParty:GetEntries()
 		UnitPopupLootPromoteButtonMixin,
 		UnitPopupMenuFriendlyPlayerInteract, --This is a submenu
 		UnitPopupOtherSubsectionTitle,
-		UnitPopupVoiceChatButtonMixin,
+		UnitPopupVoiceChatButtonMixin, 
+		UnitPopupSelectRoleButtonMixin,
 		UnitPopupMovePlayerFrameButtonMixin,
 		UnitPopupMoveTargetFrameButtonMixin,
 		UnitPopupReportGroupMemberButtonMixin,
@@ -57,8 +69,6 @@ end
 
 function UnitPopupMenuEnemyPlayer:GetEntries()
 	return {
-		UnitPopupSetFocusButtonMixin,
-		UnitPopupInspectButtonMixin, 
 		UnitPopupMovePlayerFrameButtonMixin,
 		UnitPopupMoveTargetFrameButtonMixin,
 		UnitPopupReportInWorldButtonMixin,
@@ -69,7 +79,6 @@ end
 
 function UnitPopupMenuRaidPlayer:GetEntries()
 	return {
-		UnitPopupSelectRoleButtonMixin,
 		UnitPopupMenuFriendlyPlayer, --This is a subMenu
 		UnitPopupRafSummonButtonMixin,
 		UnitPopupRafGrantLevelButtonMixin,
@@ -79,7 +88,8 @@ function UnitPopupMenuRaidPlayer:GetEntries()
 		UnitPopupLootPromoteButtonMixin,
 		UnitPopupMenuFriendlyPlayerInteract, --This is a subMenu
 		UnitPopupOtherSubsectionTitle,
-		UnitPopupVoiceChatButtonMixin,
+		UnitPopupVoiceChatButtonMixin, 
+		UnitPopupSelectRoleButtonMixin,
 		UnitPopupMovePlayerFrameButtonMixin,
 		UnitPopupMoveTargetFrameButtonMixin,
 		UnitPopupReportGroupMemberButtonMixin,
@@ -158,22 +168,6 @@ function UnitPopupMenuCommunitiesGuildMember:GetEntries()
 		UnitPopupGuildLeaveButtonMixin,
 		UnitPopupReportClubMemberButtonMixin,
 		UnitPopupCopyCharacterNameButtonMixin,
-		UnitPopupCancelButtonMixin, 
-	}
-end
-
----@class UnitPopupMenuTeam : UnitPopupTopLevelMenuMixin
-UnitPopupMenuTeam = CreateFromMixins(UnitPopupTopLevelMenuMixin);
-UnitPopupManager:RegisterMenu("TEAM", UnitPopupMenuTeam);
-function UnitPopupMenuTeam:GetEntries()
-	return {
-		UnitPopupWhisperButtonMixin,
-		UnitPopupInviteButtonMixin,
-		UnitPopupTargetButtonMixin,
-		UnitPopupTeamPromoteButtonMixin,
-		UnitPopupTeamKickButtonMixin,
-		UnitPopupTeamLeaveButtonMixin,
-		UnitPopupTeamDisbandButtonMixin,
 		UnitPopupCancelButtonMixin, 
 	}
 end

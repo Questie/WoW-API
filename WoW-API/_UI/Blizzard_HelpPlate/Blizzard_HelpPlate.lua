@@ -3,9 +3,13 @@
 ---@class HelpPlate
 HelpPlate = {};
 
+local function ResetHelpPlateTile(_pool, tile)
+	tile:Reset();
+end
+
 local currentHelpInfo = nil;
 local forTutorial = false;
-local tilePool = CreateFramePool("Frame", nil, "HelpPlateTile");
+local tilePool = CreateFramePool("Frame", nil, "HelpPlateTile", ResetHelpPlateTile);
 
 local function FinalizeHide()
 	currentHelpInfo = nil;
@@ -120,6 +124,11 @@ function HelpPlateButtonMixin:AnimateOut(onFinishedCallback)
 	self.slideAnimGroup:Play();
 end
 
+function HelpPlateButtonMixin:Reset()
+	self.slideAnimGroup:SetScript("OnFinished", nil);
+	self.slideAnimGroup:Stop();
+end
+
 ---@class HelpPlateBoxMixin
 HelpPlateBoxMixin = {};
 
@@ -142,6 +151,12 @@ end
 function HelpPlateTileMixin:OnLeave()
 	self.Box.BG:Show();
 	self.BoxHighlight:Hide();
+end
+
+function HelpPlateTileMixin:Reset()
+	self.Button:Reset();
+	self:ClearAllPoints();
+	self:Hide();
 end
 
 ---@class HelpPlateTooltipMixin
@@ -306,6 +321,11 @@ function HelpPlate.Hide(fromUserInput)
 end
 
 function HelpPlate.GetEffectiveScale()
+	-- Re-parent the canvas prior to querying scale to support cases where this
+	-- function is being used to dynamically calculate help plate extents prior
+	-- to showing, such as in the SpellBook. This resolves issues where help
+	-- plates may appear at incorrect sizes on the very first use in a session.
+	HelpPlateCanvas:SetParent(GetAppropriateTopLevelParent());
 	return HelpPlateCanvas:GetEffectiveScale();
 end
 

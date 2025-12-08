@@ -245,8 +245,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</Anchors>
 									<TexCoords left="0" right="0.2734375" top="0" bottom="0.5625"/>
 								</Texture>
-								<Texture parentKey="overAbsorbGlow" inherits="OverAbsorbGlowTemplate"/>
-								<Texture parentKey="overHealAbsorbGlow" inherits="OverHealAbsorbGlowTemplate"/>
+								<Texture parentKey="overAbsorbGlow" inherits="OverAbsorbGlowTemplate" hidden ="true"/>
+								<Texture parentKey="overHealAbsorbGlow" inherits="OverHealAbsorbGlowTemplate" hidden ="true"/>
 							</Layer>
 							<Layer level="OVERLAY">
 								<Texture name="$parentLeaderIcon" file="Interface\GroupFrame\UI-Group-LeaderIcon" hidden="true">

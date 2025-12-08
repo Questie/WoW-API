@@ -607,7 +607,7 @@ function AchievementFrameStats_SetStat(button, category, index, colorIndex, isSu
 	
 	if ( not colorIndex ) then
 		if ( not index ) then
-			message("Error, need a color index or index");
+			SetBasicMessageDialogText("Error, need a color index or index");
 		end
 		colorIndex = index;
 	end
@@ -1006,7 +1006,7 @@ function AchievementFrameComparisonStats_SetStat (button, category, index, color
 	
 	if ( not colorIndex ) then
 		if ( not index ) then
-			message("Error, need a color index or index");
+			SetBasicMessageDialogText("Error, need a color index or index");
 		end
 		colorIndex = index;
 	end

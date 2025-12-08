@@ -85,11 +85,6 @@ function CastingBarFrame_SetUnit(self, unit, showTradeSkills, showShield)
 			self:RegisterUnitEvent("UNIT_SPELLCAST_STOP", unit);
 			self:RegisterUnitEvent("UNIT_SPELLCAST_FAILED", unit);
 
-			if GetClassicExpansionLevel() >= LE_EXPANSION_WRATH_OF_THE_LICH_KING then
-				self:RegisterUnitEvent("UNIT_SPELLCAST_INTERRUPTIBLE", unit);
-				self:RegisterUnitEvent("UNIT_SPELLCAST_NOT_INTERRUPTIBLE", unit);
-			end
-
 			CastingBarFrame_OnEvent(self, "PLAYER_ENTERING_WORLD")
 		else
 			self:UnregisterEvent("UNIT_SPELLCAST_INTERRUPTED");
@@ -102,11 +97,6 @@ function CastingBarFrame_SetUnit(self, unit, showTradeSkills, showShield)
 			self:UnregisterEvent("UNIT_SPELLCAST_STOP");
 			self:UnregisterEvent("UNIT_SPELLCAST_FAILED");
 
-			if GetClassicExpansionLevel() >= LE_EXPANSION_WRATH_OF_THE_LICH_KING then
-				self:UnregisterEvent("UNIT_SPELLCAST_INTERRUPTIBLE");
-				self:UnregisterEvent("UNIT_SPELLCAST_NOT_INTERRUPTIBLE");
-			end
-
 			self:Hide();
 		end
 	end
@@ -115,12 +105,12 @@ end
 function CastingBarFrame_OnShow(self)
 	if ( self.unit ) then
 		if ( self.casting ) then
-			local _, _, _, startTime = UnitCastingInfo(self.unit);
+			local _, _, _, startTime = CastingInfo();
 			if ( startTime ) then
 				self.value = (GetTime() - (startTime / 1000));
 			end
 		else
-			local _, _, _, _, endTime = UnitChannelInfo(self.unit);
+			local _, _, _, _, endTime = ChannelInfo();
 			if ( endTime ) then
 				self.value = ((endTime / 1000) - GetTime());
 			end
@@ -128,7 +118,10 @@ function CastingBarFrame_OnShow(self)
 	end
 end
 
-function CastingBarFrame_GetEffectiveStartColor(self, isChannel)
+function CastingBarFrame_GetEffectiveStartColor(self, isChannel, notInterruptible)
+	--[[if self.nonInterruptibleColor and notInterruptible then
+		return self.nonInterruptibleColor;
+	end]]
 	return isChannel and self.startChannelColor or self.startCastColor;
 end
 
@@ -369,7 +362,7 @@ end
 
 function CastingBarFrame_UpdateInterruptibleState(self, notInterruptible)
 	if ( self.casting or self.channeling ) then
-		local startColor = CastingBarFrame_GetEffectiveStartColor(self, self.channeling);
+		local startColor = CastingBarFrame_GetEffectiveStartColor(self, self.channeling, notInterruptible);
 		self:SetStatusBarColor(startColor:GetRGB());
 
 		if self.flashColorSameAsStart then

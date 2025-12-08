@@ -15,9 +15,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Scripts>
 	</EditBox>
 	<Button name="AutoCompleteButtonTemplate" virtual="true">
-		<Size>
-			<AbsDimension x="120" y="14"/>
-		</Size>
+		<Size x="120" y="14"/>
 		<Scripts>
 			<OnClick function="AutoCompleteButton_OnClick"/>
 			<OnLoad>
@@ -30,10 +28,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<DisabledFont style="GameFontDisable"/>
 		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
 	</Button>
-	<Frame name="AutoCompleteBox" inherits="TooltipBackdropTemplate" parent="UIParent" hidden="true">
-		<Size>
-			<AbsDimension x="5" y="5"/>
-		</Size>
+	<Frame name="AutoCompleteBox" enableMouse="true" hidden="true" inherits="TooltipBackdropTemplate">
+		<Size x="5" y="5"/>
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
@@ -82,6 +78,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Frames>
 		<Scripts>
 			<OnLoad inherit="prepend" function="AutoComplete_OnLoad"/>
+			<OnShow inherit="prepend" function="AutoComplete_OnShow"/>
 		</Scripts>
 	</Frame>
 </Ui>

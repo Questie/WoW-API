@@ -23,6 +23,18 @@ function ScriptBenchmarkMixin:RunIteration(...)
 	-- Derive and implement the actual details of your benchmark here.
 end
 
+---@class ScriptBenchmarkGarbageCollectorControlMixin
+ScriptBenchmarkGarbageCollectorControlMixin = {};
+
+function ScriptBenchmarkGarbageCollectorControlMixin:OnIterationStart(_iteration, _iterationCount)
+	collectgarbage("collect");
+	collectgarbage("stop");
+end
+
+function ScriptBenchmarkGarbageCollectorControlMixin:OnIterationFinish(_iteration, _iterationCount, _iterationResults)
+	collectgarbage("restart");
+end
+
 ---@class BenchmarkUtil
 BenchmarkUtil = {};
 

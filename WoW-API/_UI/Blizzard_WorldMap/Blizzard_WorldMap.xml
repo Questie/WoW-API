@@ -1,7 +1,8 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
-	<Frame name="WorldMapFrameTemplate" inherits="MapCanvasFrameTemplate" mixin="QuestLogOwnerMixin, WorldMapMixin" virtual="true">
+..\..\..\..\..\WoW\Data\Interface\AddOns\Blizzard_SharedXML\UI.xsd">
+
+	<Frame name="WorldMapFrameTemplate" inherits="MapCanvasFrameTemplate" mixin="WorldMapMixin" virtual="true">
 		<Frames>
 			<ScrollFrame parentKey="ScrollContainer" inherits="MapCanvasFrameScrollContainerTemplate">
 				<Anchors>
@@ -255,7 +256,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 						</Texture>
-						<FontString name="WorldMapTitle" inherits="GameFontNormal" text="WORLD_MAP">
+						<FontString inherits="GameFontNormal" text="WORLD_MAP">
 							<Anchors>
 								<Anchor point="CENTER">
 									<Offset>
@@ -271,7 +272,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Anchors>
 					<Anchor point="TOP" relativePoint="TOP">
 						<Offset>
-							<AbsDimension x="-80" y="-35"/>
+							<AbsDimension x="-80" y="-36"/>
 						</Offset>
 					</Anchor>
 				</Anchors>
@@ -279,11 +280,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Layer level="OVERLAY">
 						<FontString inherits="GameFontNormalSmall" text="CONTINENT">
 							<Anchors>
-								<Anchor point="TOPLEFT">
-									<Offset>
-										<AbsDimension x="20" y="13"/>
-									</Offset>
-								</Anchor>
+								<Anchor point="TOPLEFT" x="0" y="12"/>
 							</Anchors>
 						</FontString>
 					</Layer>
@@ -305,11 +302,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Layer level="OVERLAY">
 						<FontString inherits="GameFontNormalSmall" text="ZONE">
 							<Anchors>
-								<Anchor point="TOPLEFT">
-									<Offset>
-										<AbsDimension x="20" y="13"/>
-									</Offset>
-								</Anchor>
+								<Anchor point="TOPLEFT" x="0" y="12"/>
 							</Anchors>
 						</FontString>
 					</Layer>
@@ -331,11 +324,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Layer level="OVERLAY">
 						<FontString inherits="GameFontNormalSmall" text="BATTLEFIELD_MINIMAP">
 							<Anchors>
-								<Anchor point="TOPLEFT">
-									<Offset>
-										<AbsDimension x="20" y="13"/>
-									</Offset>
-								</Anchor>
+								<Anchor point="TOPLEFT" x="0" y="12"/>
 							</Anchors>
 						</FontString>
 					</Layer>
@@ -363,42 +352,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						self:GetParent():NavigateToParentMap();
 					</OnClick>
 				</Scripts>
-			</Button>
-			<Button name="WorldMapLevelUpButton">
-				<Size>
-					<AbsDimension x="16" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
-						<Offset>
-							<AbsDimension x="5" y="8"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick function="WorldMapLevelUp_OnClick"/>
-				</Scripts>
-				<NormalTexture file="Interface\Buttons\Arrow-Up-Up"/>
-				<PushedTexture file="Interface\Buttons\Arrow-Up-Down"/>
-				<DisabledTexture file="Interface\Buttons\Arrow-Up-Disabled"/>
-			</Button>
-			<Button name="WorldMapLevelDownButton">
-				<Size>
-					<AbsDimension x="16" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
-						<Offset>
-							<AbsDimension x="5" y="-8"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick function="WorldMapLevelDown_OnClick"/>
-				</Scripts>
-				<NormalTexture file="Interface\Buttons\Arrow-Down-Up"/>
-				<PushedTexture file="Interface\Buttons\Arrow-Down-Down"/>
-				<DisabledTexture file="Interface\Buttons\Arrow-Down-Disabled"/>
 			</Button>
 			<Button name="WorldMapMagnifyingGlassButton">
 				<Size>
@@ -452,31 +405,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchor>
 				</Anchors>
 			</Button>
-			<CheckButton name="WorldMapTrackQuest" inherits="OptionsBaseCheckButtonTemplate" hidden="true">
-				<Size x="24" y="24"/>
-				<Scripts>
-					<OnLoad>
-						local text = _G[self:GetName().."Text"];
-						text:SetText(TRACK_QUEST);
-						self:SetPoint("BOTTOMLEFT", WorldMapFrame, "BOTTOMLEFT", 10, 4);
-					</OnLoad>
-					<OnClick>
-						WorldMapTrackQuest_Toggle();
-					</OnClick>
-					<OnEnter>
-						WorldMapTooltip:SetOwner(self, "ANCHOR_RIGHT");
-						WorldMapTooltip:SetText(OPTION_TOOLTIP_MAP_TRACK_QUEST, nil, nil, nil, nil, 1);
-					</OnEnter>
-					<OnLeave>
-						WorldMapTooltip:Hide();
-					</OnLeave>
-				</Scripts>
-			</CheckButton>
-			<DropdownButton parentKey="WorldMapOptionsDropDown" inherits="WowStyle1DropdownTemplate">
-				<Anchors>
-					<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" x="-10" y="5" />
-				</Anchors>
-			</DropdownButton>
 			<Frame parentKey="MaximizeMinimizeFrame" inherits="MaximizeMinimizeButtonFrameTemplate">
 				<Anchors>
 					<Anchor point="RIGHT" relativeTo="WorldMapFrameCloseButton" relativePoint="LEFT">

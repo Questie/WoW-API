@@ -10,7 +10,7 @@ local l10nTable = {
 	itIT = {},
 	koKR = {
 		localizeFrames = function()
-			GameMenuFrame:SetRatingsButtonShown(true);
+			GameMenuButtonRatings:Show();
 		end,
 	},
 	ptBR = {},

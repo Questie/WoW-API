@@ -1,6 +1,6 @@
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
-﻿local APPLICANT_COLUMN_INFO = {
+local APPLICANT_COLUMN_INFO = {
 	[1] = {
 		title = COMMUNITIES_ROSTER_COLUMN_TITLE_LEVEL,
 		width = 40,

@@ -3,11 +3,53 @@
 ---@class WorldMapMixin
 WorldMapMixin = {};
 
+-- Moved from QuestLogOwnerMixin.
+function WorldMapMixin:HandleUserActionToggleSelf()
+	if self:IsShown() then
+		if not self:IsMaximized() then
+			HideUIPanel(self);
+		else
+			if GetCVarBool("miniWorldMap") then	
+				ShowUIPanel(self);
+				self:Minimize();
+			else
+				HideUIPanel(self);
+			end
+		end
+	else
+	ShowUIPanel(self);
+		if not GetCVarBool("miniWorldMap") then
+			self:Maximize();
+		else
+			self:Minimize();
+		end
+	end
+
+	if(OpacityFrame:IsShown()) then
+		OpacityFrame:Hide();
+	end
+end
+
+function WorldMapMixin:HandleUserActionMinimizeSelf()
+	SetCVar("miniWorldMap", 1);
+	if self:IsMaximized() then
+		HideUIPanel(self);	
+		ShowUIPanel(self);
+		self:Minimize();
+	end
+end
+
+function WorldMapMixin:HandleUserActionMaximizeSelf()
+	SetCVar("miniWorldMap", 0);
+	if not self:IsMaximized() then
+		ShowUIPanel(self);	
+		self:Maximize();
+	end
+end
+
 function WorldMapMixin:SynchronizeDisplayState()
 	if self:IsMaximized() then
 		self.MiniBorderFrame:Hide();
-
-		self.WorldMapLevelDropDown:ClearAllPoints();
 
 		WorldMapFrame_SetOpacity(0);
 
@@ -21,19 +63,10 @@ function WorldMapMixin:SynchronizeDisplayState()
 		WorldMapZoomOutButton:Show();
 		WorldMapZoneMinimapDropdown:Show();
 		WorldMapMagnifyingGlassButton:Show();
-		if(self.WorldMapLevelDropDown:IsShown()) then
-			WorldMapLevelUpButton:Show();
-			WorldMapLevelDownButton:Show();
-		end
-		self.WorldMapLevelDropDown.header:Show();
 		
 		WorldMapFrameCloseButton:SetPoint("TOPRIGHT", self.BorderFrame, "TOPRIGHT", 5, 4);
 		self.MaximizeMinimizeFrame:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 12, 0);
 		self.ScrollContainer:SetPoint("TOPLEFT", WorldMapFrame, "TOPLEFT", 11, -70);
-		WorldMapTrackQuest:SetPoint("BOTTOMLEFT", WorldMapFrame, "BOTTOMLEFT", 10, 4);
-		self.WorldMapLevelDropDown:SetPoint("TOPRIGHT", self, "TOPRIGHT", -65, -35);
-		WorldMapLevelUpButton:SetPoint("TOPLEFT", self.WorldMapLevelDropDown, "TOPRIGHT", 5, 8);
-		WorldMapLevelDownButton:SetPoint("BOTTOMLEFT", self.WorldMapLevelDropDown, "BOTTOMRIGHT", 5, -8);
 
 		MaximizeUIPanel(self);
 	else
@@ -41,7 +74,6 @@ function WorldMapMixin:SynchronizeDisplayState()
 		self:SetMovable("true");
 
 		WorldMapFrame:ClearAllPoints();
-		self.WorldMapLevelDropDown:ClearAllPoints();
 		WorldMapFrame:SetPoint("TOPLEFT", WorldMapScreenAnchor, 0, 0);
 		WorldMapFrame:SetUserPlaced(true);
 
@@ -57,21 +89,14 @@ function WorldMapMixin:SynchronizeDisplayState()
 		WorldMapZoomOutButton:Hide();
 		WorldMapZoneMinimapDropdown:Hide();
 		WorldMapMagnifyingGlassButton:Hide();
-		WorldMapLevelUpButton:Hide();
-		WorldMapLevelDownButton:Hide();
-		self.WorldMapLevelDropDown.header:Hide();
 
 		WorldMapFrameCloseButton:SetPoint("TOPRIGHT", MiniBorderRight, "TOPRIGHT", -44, 5);
 		self.MaximizeMinimizeFrame:SetPoint("RIGHT", WorldMapFrameCloseButton, "LEFT", 10, 0);
 		self.ScrollContainer:SetPoint("TOPLEFT", WorldMapFrame, "TOPLEFT", 20, -22);
 		self.ScrollContainer:SetPoint("BOTTOMRIGHT", WorldMapFrame, "BOTTOMRIGHT", -10, 28);
-		WorldMapTrackQuest:SetPoint("BOTTOMLEFT", WorldMapFrame, "BOTTOMLeft", 20, 4);
-		self.WorldMapLevelDropDown:SetFrameLevel(self:GetParent():GetFrameLevel() + 4);
-		self.WorldMapLevelDropDown:SetPoint("TOPLEFT", self:GetCanvasContainer(), "TOPLEFT", 0, 0);
 		
 		RestoreUIPanelArea(self);
 	end
-	self:OnFrameSizeChanged();
 end
 
 function WorldMapMixin:Minimize()
@@ -129,15 +154,12 @@ function WorldMapMixin:OnLoad()
 	self:SetShouldZoomInstantly(true);
 
 	self:AddStandardDataProviders();
-	self:AddOverlayFrames();
 
 	self:SetMapID(C_Map.GetFallbackWorldMapID());
 
 	self:RegisterEvent("VARIABLES_LOADED");
 	self:RegisterEvent("DISPLAY_SIZE_CHANGED");
 	self:RegisterEvent("UI_SCALE_CHANGED");
-
-	self:AttachQuestLog();
 end
 
 function WorldMapMixin:OnEvent(event, ...)
@@ -145,58 +167,10 @@ function WorldMapMixin:OnEvent(event, ...)
 
 	if event == "VARIABLES_LOADED" then
 		WorldMapZoneMinimapDropdown:GenerateMenu();
-		Setup_Dropdown(self);
 	elseif event == "DISPLAY_SIZE_CHANGED" or event == "UI_SCALE_CHANGED" then
 		UpdateUIPanelPositions(self);
 		self:SynchronizeDisplayState();
 	end
-end
-
-function Setup_Dropdown(self)
-	self.WorldMapOptionsDropDown:SetWidth(120);
-
-	self.WorldMapOptionsDropDown:SetSelectionText(function(selections)
-		return MAP_OPTIONS_TEXT;
-	end);
-
-	self.WorldMapOptionsDropDown:SetupMenu(function(dropdown, rootDescription)
-
-		local function IsCvarChecked(cvar) 
-			return GetCVarBool(cvar);
-		end
-
-		local function SetCvarChecked(cvar) 
-			SetCVar(cvar, not IsCvarChecked(cvar));
-		end
-
-		if(GetCVarBool("questHelper")) then
-			WatchFrame.showObjectives = GetCVarBool("questPOI");
-
-			local questObjectives = rootDescription:CreateCheckbox(SHOW_QUEST_OBJECTIVES_ON_MAP_TEXT, IsCvarChecked, function(cvar)
-				WatchFrame.showObjectives = IsCvarChecked(cvar) or nil;
-				QuestLog_UpdateMapButton();
-				SetCvarChecked(cvar);
-			end, "questPOI");
-
-			questObjectives:SetTooltip(function(tooltip, elementDescription)
-				GameTooltip_SetTitle(tooltip,  OPTION_TOOLTIP_SHOW_QUEST_OBJECTIVES_ON_MAP);
-			end);
-
-		end
-
-		local digSites = rootDescription:CreateCheckbox(ARCHAEOLOGY_SHOW_DIG_SITES, IsCvarChecked, SetCvarChecked, "digSites");
-		digSites:SetTooltip(function(tooltip, elementDescription)
-			GameTooltip_SetTitle(tooltip,  OPTION_TOOLTIP_SHOW_DIG_SITES_ON_MAP);
-		end);
-
-		local mapEncounters = C_EncounterJournal.GetEncountersOnMap(MapUtil.GetDisplayableMapForPlayer());
-		if (#mapEncounters > 0) then
-			local showBosses = rootDescription:CreateCheckbox(SHOW_BOSSES_ON_MAP_TEXT, IsCvarChecked, SetCvarChecked, "showBosses");
-			showBosses:SetTooltip(function(tooltip, elementDescription)
-				GameTooltip_SetTitle(tooltip,  OPTION_TOOLTIP_SHOW_BOSSES_ON_MAP);
-			end);
-		end
-	end);
 end
 
 function WorldMapMixin:AddStandardDataProviders()
@@ -205,26 +179,20 @@ function WorldMapMixin:AddStandardDataProviders()
 	--self:AddDataProvider(CreateFromMixins(WorldMap_InvasionDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(StorylineQuestDataProviderMixin));
 	self:AddDataProvider(CreateFromMixins(BattlefieldFlagDataProviderMixin));
-	self:AddDataProvider(CreateFromMixins(BonusObjectiveDataProviderMixin));
-	if ClassicExpansionAtLeast(LE_EXPANSION_WRATH_OF_THE_LICH_KING) then
-		self:AddDataProvider(CreateFromMixins(VehicleDataProviderMixin));
-	end
-	self:AddDataProvider(CreateFromMixins(EncounterJournalDataProviderMixin));
+	--self:AddDataProvider(CreateFromMixins(BonusObjectiveDataProviderMixin));
+	--self:AddDataProvider(CreateFromMixins(VehicleDataProviderMixin));
+	--self:AddDataProvider(CreateFromMixins(EncounterJournalDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(FogOfWarDataProviderMixin));
 	self:AddDataProvider(CreateFromMixins(DeathMapDataProviderMixin));
-	if ClassicExpansionAtLeast(LE_EXPANSION_WRATH_OF_THE_LICH_KING) then
-		self:AddDataProvider(CreateFromMixins(QuestBlobDataProviderMixin));
-	end
+	--self:AddDataProvider(CreateFromMixins(QuestBlobDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(ScenarioDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(VignetteDataProviderMixin));
-	if ClassicExpansionAtLeast(LE_EXPANSION_WRATH_OF_THE_LICH_KING) then
-		self:AddDataProvider(CreateFromMixins(QuestDataProviderMixin));
-	end
+	--self:AddDataProvider(CreateFromMixins(QuestDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(InvasionDataProviderMixin));
 	self:AddDataProvider(CreateFromMixins(GossipDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(FlightPointDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(PetTamerDataProviderMixin));
-	self:AddDataProvider(CreateFromMixins(DigSiteDataProviderMixin));
+	--self:AddDataProvider(CreateFromMixins(DigSiteDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(GarrisonPlotDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(DungeonEntranceDataProviderMixin));
 	--self:AddDataProvider(CreateFromMixins(BannerDataProvider));
@@ -253,31 +221,31 @@ function WorldMapMixin:AddStandardDataProviders()
 
 	local pinFrameLevelsManager = self:GetPinFrameLevelsManager();
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_MAP_EXPLORATION");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_GARRISON_PLOT");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_FOG_OF_WAR");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_GARRISON_PLOT");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_FOG_OF_WAR");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_QUEST_BLOB");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SCENARIO_BLOB");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SCENARIO_BLOB");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_MAP_HIGHLIGHT");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_DEBUG", 4);
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_DIG_SITE");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_DUNGEON_ENTRANCE");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_FLIGHT_POINT");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_INVASION");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_PET_TAMER");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SELECTABLE_GRAVEYARD");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_DUNGEON_ENTRANCE");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_FLIGHT_POINT");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_INVASION");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_PET_TAMER");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SELECTABLE_GRAVEYARD");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_GOSSIP");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_AREA_POI");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_DEBUG");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_MAP_LINK");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_ENCOUNTER");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_CONTRIBUTION_COLLECTOR");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_VIGNETTE", 200);
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_STORY_LINE");
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SCENARIO");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_MAP_LINK");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_ENCOUNTER");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_CONTRIBUTION_COLLECTOR");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_VIGNETTE", 200);
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_STORY_LINE");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SCENARIO");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_WORLD_QUEST_PING");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_WORLD_QUEST", 500);
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_ACTIVE_QUEST", C_QuestLog.GetMaxNumQuests());
-	--pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SUPER_TRACKED_QUEST");
+	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_SUPER_TRACKED_QUEST");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_VEHICLE_BELOW_GROUP_MEMBER");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_BONUS_OBJECTIVE");
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_BATTLEFIELD_FLAG");
@@ -287,16 +255,8 @@ function WorldMapMixin:AddStandardDataProviders()
 	pinFrameLevelsManager:AddFrameLevel("PIN_FRAME_LEVEL_AREA_POI_BANNER");
 end
 
-function WorldMapMixin:AddOverlayFrames()
-	self:AddOverlayFrame("WorldMapZoneTimerTemplate", "FRAME", "BOTTOM", self:GetCanvasContainer(), "BOTTOM", 0, 20);
-	self.WorldMapLevelDropDown = self:AddOverlayFrame("WorldMapFloorNavigationFrameTemplate", "DROPDOWNBUTTON", "TOPRIGHT", self, "TOPRIGHT", -65, -35);
-	self.WorldMapLevelDropDown:SetWidth(130);
-end
-
 function WorldMapMixin:OnMapChanged()
 	MapCanvasMixin.OnMapChanged(self);
-	self:RefreshOverlayFrames();
-	self:RefreshQuestLog();
 
 	if C_MapInternal then
 		C_MapInternal.SetDebugMap(self:GetMapID());
@@ -314,15 +274,6 @@ function WorldMapMixin:OnMapChanged()
 	WorldMapContinentDropdown:GenerateMenu();
 	WorldMapZoneDropdown:GenerateMenu();
 	WorldMapFrame_SetMapName();
-
-	--Update Area Dropdown arrows
-	if(self.WorldMapLevelDropDown:IsShown() and self:IsMaximized()) then
-		WorldMapLevelUpButton:Show();
-		WorldMapLevelDownButton:Show();
-	else
-		WorldMapLevelUpButton:Hide();
-		WorldMapLevelDownButton:Hide();
-	end
 end
 
 function WorldMapMixin:OnShow()
@@ -346,31 +297,8 @@ end
 
 function WorldMapMixin:OnHide()
 	MapCanvasMixin.OnHide(self);
-	self:RefreshQuestLog();
 
 	PlaySound(SOUNDKIT.IG_QUEST_LOG_CLOSE);
-end
-
-function WorldMapMixin:RefreshOverlayFrames()
-	if self.overlayFrames then
-		for i, frame in ipairs(self.overlayFrames) do
-			frame:Refresh();
-		end
-	end
-end
-
-function WorldMapMixin:AddOverlayFrame(templateName, templateType, anchorPoint, relativeFrame, relativePoint, offsetX, offsetY)
-	local frame = CreateFrame(templateType, nil, self, templateName);
-	if anchorPoint then
-		frame:SetPoint(anchorPoint, relativeFrame, relativePoint, offsetX, offsetY);
-	end
-	frame.relativeFrame = relativeFrame or self;
-	if not self.overlayFrames then
-		self.overlayFrames = { };
-	end
-	tinsert(self.overlayFrames, frame);
-
-	return frame;
 end
 
 function WorldMapMixin:GetCurrentMapContinent()
@@ -392,40 +320,6 @@ function WorldMapMixin:GetCurrentMapContinent()
 	end
 
 	return nil;
-end
-
--- ============================================ QUEST LOG ===============================================================================
-
-function WorldMapMixin:AttachQuestLog()
-	QuestMapFrame:SetParent(self);
-	QuestMapFrame:SetFrameStrata("HIGH");
-	QuestMapFrame:ClearAllPoints();
-	QuestMapFrame:SetPoint("TOPRIGHT", -34, -64);
-	QuestMapFrame:SetPoint("BOTTOMRIGHT", -34, 26);
-	QuestMapFrame:Hide();
-	self.QuestLog = QuestMapFrame;
-end
-
-function WorldMapMixin:SetHighlightedQuestID(questID)
-	self:TriggerEvent("SetHighlightedQuestID", questID);
-end
-
-function WorldMapMixin:ClearHighlightedQuestID()
-	self:TriggerEvent("ClearHighlightedQuestID");
-end
-
-function WorldMapMixin:SetFocusedQuestID(questID)
-	self:TriggerEvent("SetFocusedQuestID", questID);
-end
-
-function WorldMapMixin:ClearFocusedQuestID()
-	self:TriggerEvent("ClearFocusedQuestID");
-end
-
-function WorldMapMixin:PingQuestID(questID)
-	if self:IsVisible() then
-		self:TriggerEvent("PingQuestID", questID);
-	end
 end
 
 -- ============================================ GLOBAL API ===============================================================================
@@ -455,7 +349,7 @@ do
 		local info = WorldMapFrame.continentInfo;
 		return info and (info.mapID == continentInfo.mapID);
 	end
-
+	
 	local function SetSelected(continentInfo)
 		WorldMapFrame:SetMapID(continentInfo.mapID);
 	end
@@ -465,35 +359,23 @@ do
 		if not mapID then
 			return;
 		end
-
-		local azerothMapInfo = MapUtil.GetMapParentInfo(mapID, Enum.UIMapType.Cosmic, TOPMOST);
+	
+		local azerothMapInfo = MapUtil.GetMapParentInfo(mapID, Enum.UIMapType.World, TOPMOST);
 		if not azerothMapInfo.mapID then
 			return;
 		end
 
-			-- If we don't have a cached button list, we'll need to create it here.
+		-- If we don't have a cached button list, we'll need to create it here.
 		if not continentMapChildInfos then
 			continentMapChildInfos = {};
-	
+
 			-- Get the continents.
-			local topLevelChildren = C_Map.GetMapChildrenInfo(azerothMapInfo.mapID);
-			-- The top level (Cosmic) can have both Continent and World children.
-			-- We want to add the Continent children to our list of Continents,
-			-- and we want to query the Worlds for any Continents they might have.
-			if (topLevelChildren) then
-				for i, mapInfo in ipairs(topLevelChildren) do
+			local continents = C_Map.GetMapChildrenInfo(azerothMapInfo.mapID);
+			if (continents) then
+				for i, mapInfo in ipairs(continents) do
+					-- Filter out anything else that might have the World as a parent (e.g. Battlegrounds).
 					if (mapInfo.mapType == Enum.UIMapType.Continent) then
 						tinsert(continentMapChildInfos, mapInfo);
-					end
-					if (mapInfo.mapType == Enum.UIMapType.World) then
-						local worldChildren = C_Map.GetMapChildrenInfo(mapInfo.mapID);
-						if (worldChildren) then
-							for k, worldChild in ipairs(worldChildren) do
-								if (worldChild.mapType == Enum.UIMapType.Continent) then
-									tinsert(continentMapChildInfos, worldChild);
-								end
-							end
-						end
 					end
 				end
 			end
@@ -521,7 +403,7 @@ do
 	local function IsSelected(zoneInfo)
 		return WorldMapFrame:GetMapID() == zoneInfo.mapID;
 	end
-	
+
 	local function SetSelected(zoneInfo)
 		WorldMapFrame:SetMapID(zoneInfo.mapID);
 	end
@@ -542,13 +424,14 @@ do
 					end);
 					zoneInfoCache[continentInfo.mapID] = zoneInfos;
 				end
-			end
+			end	
 
 			rootDescription:SetTag("MENU_WORLD_MAP_ZONE");
 
 			for i, zoneInfo in ipairs(zoneInfoCache[continentInfo.mapID]) do
 				rootDescription:CreateRadio(zoneInfo.name, IsSelected, SetSelected, zoneInfo);
 			end
+
 		end);
 	end
 end
@@ -562,7 +445,7 @@ end
 function WorldMapZoneMinimapDropdown_OnShow(self)
 	local function IsSelected(cvarIndex)
 		return GetCVar("showBattlefieldMinimap") == cvarIndex;
-	end
+end
 
 	local function SetSelected(cvarIndex)
 		SetCVar("showBattlefieldMinimap", cvarIndex);
@@ -607,7 +490,7 @@ function WorldMapZoneMinimapDropdown_OnLeave(self)
 	WowStyle1DropdownMixin.OnLeave(self);
 
 	GameTooltip:Hide();
-end
+		end
 
 function WorldMapZoneMinimapDropdown_GetText(value)
 	if ( value == 0 ) then
@@ -618,50 +501,6 @@ function WorldMapZoneMinimapDropdown_GetText(value)
 		return BATTLEFIELD_MINIMAP_SHOW_ALWAYS;
 	end
 	return nil;
-end
-
-function WorldMapLevelDown_OnClick(self)
-	local mapID = self:GetParent():GetMapID();
-
-	local mapGroupID = C_Map.GetMapGroupID(mapID);
-	if not mapGroupID then
-		return;
-	end
-
-	local mapGroupMembersInfo = C_Map.GetMapGroupMembersInfo(mapGroupID);
-	if not mapGroupMembersInfo then
-		return;
-	end
-
-	for i, mapGroupMemberInfo in ipairs(mapGroupMembersInfo) do
-		if(mapGroupMemberInfo.mapID == mapID and i ~= #mapGroupMembersInfo) then
-			self:GetParent():SetMapID(mapGroupMembersInfo[i+1].mapID);
-		end
-	end
-
-	PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);
-end
-
-function WorldMapLevelUp_OnClick(self)
-	local mapID = self:GetParent():GetMapID();
-
-	local mapGroupID = C_Map.GetMapGroupID(mapID);
-	if not mapGroupID then
-		return;
-	end
-
-	local mapGroupMembersInfo = C_Map.GetMapGroupMembersInfo(mapGroupID);
-	if not mapGroupMembersInfo then
-		return;
-	end
-
-	for i, mapGroupMemberInfo in ipairs(mapGroupMembersInfo) do
-		if(mapGroupMemberInfo.mapID == mapID and i ~= 1) then
-			self:GetParent():SetMapID(mapGroupMembersInfo[i-1].mapID);
-		end
-	end
-
-	PlaySound(SOUNDKIT.U_CHAT_SCROLL_BUTTON);
 end
 
 function DoesInstanceTypeMatchBattlefieldMapSettings()
@@ -796,23 +635,4 @@ function WorldMapFrame_SetOpacity(opacity)
 	-- set map alpha
 	alpha = 0.35 + (1.0 - opacity) * 0.65;
 	WorldMapFrame.ScrollContainer:SetAlpha(alpha);
-	-- set blob alpha
-	alpha = 0.45 + (1.0 - opacity) * 0.55;
-	QuestMapFrame:SetAlpha(alpha);
-end
-
--- ============================================ QUEST HELPER ===============================================================================
-function WorldMapTrackQuest_Toggle()
-	local isChecked =  WorldMapTrackQuest:GetChecked();
-	if ( isChecked ) then
-		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
-	else
-		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_OFF);
-	end				
-
-	local questID = QuestMapFrame.DetailsFrame.questID;
-	local questIndex = GetQuestLogIndexByID(questID);
-	_QuestLog_ToggleQuestWatch(questIndex);
-
-	QuestMapFrame_ShowQuestDetails(questID);
 end

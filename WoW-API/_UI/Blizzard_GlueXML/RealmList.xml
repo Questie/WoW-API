@@ -18,7 +18,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
         					</Offset>
         				</Anchor>
         			</Anchors>
-					<TexCoords left="0" right="0.15625" top="0" bottom="0.546875"/>
+					<TexCoords left="0" right="0.15625" top="0" bottom="1.0"/>
         		</Texture>
 				<Texture name="$parentMiddleDisabled" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
         			<Size>
@@ -27,7 +27,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
         			<Anchors>
         				<Anchor point="LEFT" relativeTo="$parentLeftDisabled" relativePoint="RIGHT"/>
         			</Anchors>
-					<TexCoords left="0.15625" right="0.84375" top="0" bottom="0.546875"/>
+					<TexCoords left="0.15625" right="0.84375" top="0" bottom="1.0"/>
         		</Texture>
 				<Texture name="$parentRightDisabled" file="Interface\PaperDollInfoFrame\UI-Character-ActiveTab">
         			<Size>
@@ -36,7 +36,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
         			<Anchors>
         				<Anchor point="LEFT" relativeTo="$parentMiddleDisabled" relativePoint="RIGHT"/>
         			</Anchors>
-					<TexCoords left="0.84375" right="1.0" top="0" bottom="0.546875"/>
+					<TexCoords left="0.84375" right="1.0" top="0" bottom="1.0"/>
         		</Texture>
 				<Texture name="$parentLeft" file="Interface\PaperDollInfoFrame\UI-Character-InActiveTab">
         			<Size>
@@ -177,13 +177,34 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 
 	<Button name="RealmListRealmButtonTemplate" virtual="true">
 		<Size>
-			<AbsDimension x="512" y="20"/>
+			<AbsDimension x="642" y="20"/>
 		</Size>
+		<Frames>
+			<!--These frames exist so we can put tooltips on individual columns in the realm list.-->
+			<Button name ="RealmTypeTooltipHitbox">
+				<Size>
+					<AbsDimension x="190" y="12"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" x="235" y="0"/>
+				</Anchors>
+				<Scripts>
+					<OnEnter function ="RealmTypeTooltipHitbox_OnEnter"/>
+					<OnLeave function ="RealmButton_RemoveTooltip"/>
+					<OnClick>
+						RealmSelectButton_OnClick(self:GetParent());
+					</OnClick>
+					<OnDoubleClick>
+						RealmSelectButton_OnDoubleClick(self:GetParent());
+					</OnDoubleClick> 
+				</Scripts>
+			</Button>
+		</Frames>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<FontString parentKey="RealmType" name="$parentPVP" inherits="GlueFontRedSmall">
 					<Size>
-						<AbsDimension x="60" y="12"/>
+						<AbsDimension x="190" y="12"/>
 					</Size>
 					<Anchors>
 						<Anchor point="LEFT" x="235" y="0"/>
@@ -223,11 +244,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					GlueTooltip:SetText(realmInfo.version.major.."."..realmInfo.version.minor.."."..realmInfo.version.revision.."  "..realmInfo.version.build.." CfgID: "..realmInfo.version.cfgConfigsID);
 				end
 			</OnEnter>
-			<OnLeave>
-				if (GlueTooltip_GetOwner(GlueTooltip) == self) then
-					GlueTooltip:Hide();
-				end
-			</OnLeave>
+			<OnLeave function="RealmButton_RemoveTooltip"/>
 			<OnClick function="RealmSelectButton_OnClick"/>
 			<OnDoubleClick function="RealmSelectButton_OnDoubleClick"/>
 		</Scripts>
@@ -260,7 +277,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Frames>
 					<Frame name="RealmListBackground">
 						<Size>
-							<AbsDimension x="640" y="512"/>
+							<AbsDimension x="770" y="512"/>
 						</Size>
 						<Anchors>
 							<Anchor point="CENTER">
@@ -282,9 +299,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 										<Anchor point="TOPLEFT"/>
 									</Anchors>
 								</Texture>
-								<Texture file="Interface\HelpFrame\HelpFrame-Top">
+								<Texture name="RealmListTopTexture" file="Interface\HelpFrame\HelpFrame-Top">
 									<Size>
-										<AbsDimension x="256" y="256"/>
+										<AbsDimension x="386" y="256"/>
 									</Size>
 									<Anchors>
 										<Anchor point="TOPLEFT">
@@ -310,9 +327,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 										<Anchor point="BOTTOMLEFT"/>
 									</Anchors>
 								</Texture>
-								<Texture file="Interface\HelpFrame\HelpFrame-Bottom">
+								<Texture name="RealmListBottomTexture" file="Interface\HelpFrame\HelpFrame-Bottom">
 									<Size>
-										<AbsDimension x="256" y="256"/>
+										<AbsDimension x="386" y="256"/>
 									</Size>
 									<Anchors>
 										<Anchor point="BOTTOMLEFT">
@@ -382,7 +399,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Button>
 							<Button name="RealmTypeSort" inherits="RealmSortButtonTemplate" text="REALM_TYPE">
 								<Size>
-									<AbsDimension x="80" y="19"/>
+									<AbsDimension x="210" y="19"/>
 								</Size>
 								<Anchors>
 									<Anchor point="LEFT" relativeTo="RealmNameSort" relativePoint="RIGHT">
@@ -479,7 +496,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Button>
 							<Frame name="RealmListHighlight" hidden="true">
 								<Size>
-									<AbsDimension x="557" y="16"/>
+									<AbsDimension x="687" y="16"/>
 								</Size>
 								<Anchors>
 									<Anchor point="TOPLEFT"/>
@@ -493,7 +510,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<ScrollFrame parentKey="ScrollFrame" name="RealmListScrollFrame" inherits="HybridScrollFrameTemplate">
 								<Anchors>
 									<Anchor point="TOPLEFT" x="22" y="-56"/>
-									<Anchor point="BOTTOMRIGHT" relativePoint="TOPLEFT" x="564" y="-464"/>
+									<Anchor point="BOTTOMRIGHT" relativePoint="TOPLEFT" x="694" y="-464"/>
 								</Anchors>
 								<Frames>
 									<Slider name="$parentScrollBar" inherits="HybridScrollBarTrimTemplate" parentKey="scrollBar">
@@ -510,7 +527,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</Slider>
 								</Frames>
 							</ScrollFrame>
-							<Button name="RealmListCancelButton" inherits="GlueDialogButtonTemplate" text="CANCEL">
+							<Button name="RealmListCancelButton" inherits="GlueButtonTemplate" text="CANCEL">
 								<Size>
 									<AbsDimension x="125" y="35"/>
 								</Size>
@@ -528,7 +545,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</OnClick>
 								</Scripts>
 							</Button>
-							<Button name="RealmListOkButton" inherits="GlueDialogButtonTemplate" text="OKAY">
+							<Button name="RealmListOkButton" inherits="GlueButtonTemplate" text="OKAY">
 								<Size>
 									<AbsDimension x="125" y="35"/>
 								</Size>
@@ -551,6 +568,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Frames>
 				<Scripts>
 					<OnLoad function="RealmList_OnLoad"/>
+					<OnEvent function="RealmList_OnEvent"/>
 					<OnKeyDown>
 						RealmList_OnKeyDown(key);
 					</OnKeyDown>

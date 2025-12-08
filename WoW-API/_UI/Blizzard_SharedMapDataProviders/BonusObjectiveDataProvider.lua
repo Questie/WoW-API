@@ -1,13 +1,21 @@
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+---@class BonusObjectiveDataProviderMixin : MapCanvasDataProviderMixin
+BonusObjectiveDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
+
+function BonusObjectiveDataProviderMixin:RemoveAllData()
+	self:GetMap():RemoveAllPinsByTemplate("BonusObjectivePinTemplate");
+end
+
 function BonusObjectiveDataProviderMixin:RefreshAllData(fromOnShow)
 	self:RemoveAllData();
 
-	local mapID = self:GetMap():GetMapID();
-	if not mapID or self.hidePins then
+	-- TODO:: This should be converted over once we have the quest log integrated with the new world map. 
+	if QuestMapFrame.DetailsFrame.questID then
 		return;
 	end
 
+	local mapID = self:GetMap():GetMapID();
 	local taskInfo = C_TaskQuest.GetQuestsOnMap(mapID);
 
 	if taskInfo and #taskInfo > 0 then
@@ -17,4 +25,27 @@ function BonusObjectiveDataProviderMixin:RefreshAllData(fromOnShow)
 			end
 		end
 	end
+end
+
+--[[ Bonus Objective Pin ]]--
+---@class BonusObjectivePinMixin : MapCanvasPinMixin
+BonusObjectivePinMixin = CreateFromMixins(MapCanvasPinMixin);
+
+function BonusObjectivePinMixin:OnLoad()
+	self:SetScalingLimits(1, 0.825, 0.85);
+	self:UseFrameLevelType("PIN_FRAME_LEVEL_BONUS_OBJECTIVE");
+end
+
+function BonusObjectivePinMixin:OnAcquired(taskInfo)
+	self:SetPosition(taskInfo.x, taskInfo.y);
+	self.questID = taskInfo.questID;
+	self.numObjectives = taskInfo.numObjectives;
+end
+
+function BonusObjectivePinMixin:OnMouseEnter()
+	TaskPOI_OnEnter(self);
+end
+
+function BonusObjectivePinMixin:OnMouseLeave()
+	TaskPOI_OnLeave(self);
 end

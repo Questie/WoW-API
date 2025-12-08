@@ -1,75 +1,37 @@
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
--- luacheck: ignore 111 (setting non-standard global variable)
-
-local function LocalizeTradeFrame_zh()
-	TradeFramePlayerEnchantText:SetPoint("TOPLEFT", TradeFrame, 15, -357);
+local function AdjustFriendsFrameDropdown_132()
+	FriendsFriendsFrameDropdown:SetWidth(132);
 end
 
-local function LocalizeFriendsFrame_zh()
-	ADDFRIENDFRAME_WOWHEIGHT = 232;
-	ADDFRIENDFRAME_BNETHEIGHT = 310;
-	AddFriendNameEditBox:SetPoint("TOP", 0, -144);
-	AddFriendNoteFrame:SetPoint("TOP", -2, -178);
-end
-
-local function LocalizeWhoFrame_zh()
-	for i = 1, WHOS_TO_DISPLAY do
-		--Who tab
-		_G["WhoFrameButton" .. i .. "Name"]:SetPoint("TOPLEFT", 10, -2);
-	end
-
-	WhoFrameDropdown:SetPoint("TOPLEFT", WhoFrameColumnHeader2, "TOPLEFT", -15, 1);
-end
-
-local function LocalizeGuildFrame_zh()
-	-- Guild Member Detail Window Custom Sizing
-	GUILD_DETAIL_NORM_HEIGHT = 222;
-	GUILD_DETAIL_OFFICER_HEIGHT = 285;
+local function LocalizeButtonText_ptBR()
+	-- truncate "share quest" string for ptBR. when enabled, the button will display a tooltip with the full text and description
+	QuestFramePushQuestButton.Text:SetSize(QuestFramePushQuestButton:GetWidth()-3, QuestFramePushQuestButton:GetHeight())
 end
 
 local l10nTable = {
-	koKR = {
-		localizeFrames = function()
-			QuestInfoDescriptionHeader:SetHeight(30);
-			QuestInfoRewardsFrame.Header:SetHeight(25);
-		end,
+	deDE = {},
+	enGB = {},
+	enUS = {},
+	esES = {
+		localizeFrames = AdjustFriendsFrameDropdown_132,
 	},
-	zhCN = {
-		localize = function()
-			LootFrame_AdjustTextLocation = function(nextFrame, prevFrame)
-				if (nextFrame:IsShown()) then
-					nextFrame:SetPoint("BOTTOMRIGHT", LootFrame, "BOTTOMLEFT", 133, 18);
-				end
-
-				if (prevFrame:IsShown()) then
-					prevFrame:SetPoint("BOTTOMLEFT", LootFrame, "BOTTOMLEFT", 36, 18);
-				end
-			end
-		end,
-
-		localizeFrames = function()
-			FRIENDS_BUTTON_NORMAL_HEIGHT = 38;
-			FRIENDS_BUTTON_LARGE_HEIGHT = 52;
-
-			LocalizeTradeFrame_zh();
-			LocalizeFriendsFrame_zh();
-			LocalizeWhoFrame_zh();
-			LocalizeGuildFrame_zh();
-		end,
+	esMX = {
+		localizeFrames = AdjustFriendsFrameDropdown_132,
 	},
-
-	zhTW = {
-		localize = function()
-		end,
-
-		localizeFrames = function()
-			LocalizeTradeFrame_zh();
-			LocalizeFriendsFrame_zh();
-			LocalizeWhoFrame_zh();
-			LocalizeGuildFrame_zh();
-		end,
+	frFR = {},
+	itIT = {},
+	koKR = {},
+	ptBR = {
+		localizeFrames = AdjustFriendsFrameDropdown_132,
+		localize = LocalizeButtonText_ptBR,
 	},
+	ptPT = {
+		localizeFrames = AdjustFriendsFrameDropdown_132,
+	},
+	ruRU = {},
+	zhCN = {},
+	zhTW = {},
 };
 
 SetupLocalization(l10nTable);

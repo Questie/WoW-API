@@ -3,7 +3,7 @@
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 	<Button name="MainMenuBarMicroButton" motionScriptsWhileDisabled="true" virtual="true">
 		<Size>
-			<AbsDimension x="28" y="58"/>
+			<AbsDimension x="29" y="58"/>
 		</Size>
 		<HitRectInsets>
 			<AbsInset left="0" right="0" top="18" bottom="0"/>
@@ -106,28 +106,28 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnLoad function="CharacterMicroButton_OnLoad"/>
 			<OnMouseDown>
 				if ( self.down ) then
-				self.down = nil;
-				ToggleCharacter("PaperDollFrame");
-				return;
+					self.down = nil;
+					ToggleCharacter("PaperDollFrame");
+					return;
 				end
 				CharacterMicroButton_SetPushed();
 				self.down = 1;
 			</OnMouseDown>
 			<OnMouseUp>
 				if ( self.down ) then
-				self.down = nil;
-				if ( self:IsMouseOver() ) then
-				ToggleCharacter("PaperDollFrame");
-				end
-				UpdateMicroButtons();
-				return;
+					self.down = nil;
+					if ( self:IsMouseOver() ) then
+						ToggleCharacter("PaperDollFrame");
+					end
+					UpdateMicroButtons();
+					return;
 				end
 				if ( self:GetButtonState() == "NORMAL" ) then
-				CharacterMicroButton_SetPushed();
-				self.down = 1;
+					CharacterMicroButton_SetPushed();
+					self.down = 1;
 				else
-				CharacterMicroButton_SetNormal();
-				self.down = 1;
+					CharacterMicroButton_SetNormal();
+					self.down = 1;
 				end
 			</OnMouseUp>
 			<OnEvent function="CharacterMicroButton_OnEvent"/>
@@ -178,32 +178,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnEvent function="TalentMicroButton_OnEvent"/>
 		</Scripts>
 	</Button>
-	<Button name="AchievementMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent">
-		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="TalentMicroButton" relativePoint="BOTTOMRIGHT">
-				<Offset>
-					<AbsDimension x="-3" y="0"/>
-				</Offset>
-			</Anchor>
-		</Anchors>
-		<Scripts>
-			<OnLoad>
-				LoadMicroButtonTextures(self, "Achievement");
-				self.tooltipText = MicroButtonTooltipText(ACHIEVEMENT_BUTTON, "TOGGLEACHIEVEMENT");
-				self.newbieText = NEWBIE_TOOLTIP_ACHIEVEMENT;
-			</OnLoad>
-			<OnEvent>
-				self.tooltipText = MicroButtonTooltipText(ACHIEVEMENT_BUTTON, "TOGGLEACHIEVEMENT");
-			</OnEvent>
-			<OnClick>
-				ToggleAchievementFrame();
-			</OnClick>
-		</Scripts>
-	</Button>
-
 	<Button name="QuestLogMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent">
 		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="AchievementMicroButton" relativePoint="BOTTOMRIGHT">
+			<Anchor point="BOTTOMLEFT" relativeTo="TalentMicroButton" relativePoint="BOTTOMRIGHT">
 				<Offset>
 					<AbsDimension x="-3" y="0"/>
 				</Offset>
@@ -253,186 +230,46 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnClick method="OnClick" inherit="append"/>
 		</Scripts>
 	</Button>
-	<Button name="PVPMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent">
+	<Button name="WorldMapMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent">
 		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="SocialsMicroButton" relativePoint="BOTTOMRIGHT">
+			<Anchor point="BOTTOMLEFT" relativeTo="GuildMicroButton" relativePoint="BOTTOMRIGHT">
 				<Offset>
 					<AbsDimension x="-3" y="0"/>
 				</Offset>
 			</Anchor>
 		</Anchors>
-		<Layers>
-			<Layer level="OVERLAY">
-				<Texture name="$parentTexture" parentKey="texture">
-					<Size>
-						<AbsDimension x="36" y="36"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOP">
-							<Offset>
-								<AbsDimension x="6" y="-30"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</Texture>
-			</Layer>
-		</Layers>
 		<Scripts>
 			<OnLoad>
-				self:RegisterEvent("UPDATE_BINDINGS");
-
-				self:SetNormalTexture("Interface\\Buttons\\UI-MicroButtonCharacter-Up");
-				self:SetPushedTexture("Interface\\Buttons\\UI-MicroButtonCharacter-Down");
-				self:SetHighlightTexture("Interface\\Buttons\\UI-MicroButton-Hilight");
-				local factionGroup = UnitFactionGroup("player");
-				if ( factionGroup ) then
-					_G[self:GetName().."Texture"]:SetTexture("Interface\\TargetingFrame\\UI-PVP-"..factionGroup);
-				end
-				self.tooltipText = MicroButtonTooltipText(PLAYER_V_PLAYER, "TOGGLECHARACTER4");
-				self.newbieText = NEWBIE_TOOLTIP_PVP;
-				self.minLevel = SHOW_PVP_LEVEL;
+				LoadMicroButtonTextures(self, "World");
+				self.tooltipText = MicroButtonTooltipText(WORLDMAP_BUTTON, "TOGGLEWORLDMAP");
+				self.newbieText = NEWBIE_TOOLTIP_WORLDMAP;
 			</OnLoad>
 			<OnEvent>
-				self.tooltipText = MicroButtonTooltipText(PLAYER_V_PLAYER, "TOGGLECHARACTER4");
-				self.newbieText = NEWBIE_TOOLTIP_PVP;
+				self.tooltipText = MicroButtonTooltipText(WORLDMAP_BUTTON, "TOGGLEWORLDMAP");
 			</OnEvent>
-			<OnMouseDown>
-				if ( self:IsEnabled() ~= 0 ) then
-					if ( self.down ) then
-						self.down = nil;
-						TogglePVPFrame();
-						return;
-					end
-					self.down = 1;
-				end
-			</OnMouseDown>
-			<OnMouseUp>
-				if ( self:IsEnabled() ~= 0 ) then
-					if ( self.down ) then
-						self.down = nil;
-						if ( self:IsMouseOver() ) then
-							TogglePVPFrame();
-						end
-						UpdateMicroButtons();
-						return;
-					end
-					if ( self:GetButtonState() == "NORMAL" ) then
-						self.down = 1;
-					else
-						self.down = 1;
-					end
-				end
-			</OnMouseUp>
-			<OnEnable>
-				self:SetAlpha(1);
-				SetDesaturation(self.texture, false);
-			</OnEnable>
-			<OnDisable>
-				self:SetAlpha(0.5);
-				SetDesaturation(self.texture, true);
-			</OnDisable>
-		</Scripts>
-	</Button>
-	<Button name="LFGMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent" hidden="true">
-		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="PVPMicroButton" relativePoint="BOTTOMRIGHT">
-				<Offset>
-					<AbsDimension x="-3" y="0"/>
-				</Offset>
-			</Anchor>
-		</Anchors>
-		<Scripts>
-			<OnLoad function="LFGMicroButton_OnLoad"/>
-			<OnEvent>
-				self.tooltipText = MicroButtonTooltipText(LFG_BUTTON, "TOGGLEGROUPFINDER");
-				self.newbieText = NEWBIE_TOOLTIP_LFGPARENT;
-			</OnEvent>
-			<OnMouseDown>
-				if ( self:IsEnabled() ) then
-					if ( self.down ) then
-						self.down = nil;
-						PVEFrame_ToggleFrame();
-						return;
-					end
-					self.down = 1;
-				end
-			</OnMouseDown>
-			<OnMouseUp>
-				if ( self:IsEnabled() ) then
-					if ( self.down ) then
-						self.down = nil;
-						if ( self:IsMouseOver() ) then
-							PVEFrame_ToggleFrame();
-						end
-						UpdateMicroButtons();
-						return;
-					end
-					if ( self:GetButtonState() == "NORMAL" ) then
-						self.down = 1;
-					else
-						self.down = 1;
-					end
-				end
-			</OnMouseUp>
-			<OnEnable>
-				self:SetAlpha(1);
-				self:GetDisabledTexture():SetDesaturated(false);
-			</OnEnable>
-			<OnDisable>
-				self:SetAlpha(0.5);
-				self:GetDisabledTexture():SetDesaturated(true);
-			</OnDisable>
-		</Scripts>
-	</Button>
-	<Button name="CollectionsMicroButton" inherits="MainMenuBarMicroButton" mixin="CollectionMicroButtonMixin">
-		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="LFGMicroButton" relativePoint="BOTTOMRIGHT">
-				<Offset>
-					<AbsDimension x="-3" y="0"/>
-				</Offset>
-			</Anchor>
-		</Anchors>
-		<KeyValues>
-			<KeyValue key="lastNumMountsNeedingFanfare" value="0" type="number"/>
-			<KeyValue key="lastNumPetsNeedingFanfare" value="0" type="number"/>
-			<KeyValue key="commandName" value="TOGGLECOLLECTIONS" type="string"/>
-			<KeyValue key="layoutIndex" value="8" type="number"/>
-		</KeyValues>
-		<Scripts>
-			<OnLoad method="OnLoad"/>
-			<OnShow function="MicroButton_KioskModeDisable" inherit="append"/>
-			<OnClick method="OnClick" inherit="append"/>
-			<OnEvent method="OnEvent"/>
-		</Scripts>
-	</Button>
-	<Button name="EJMicroButton" inherits="MainMenuBarMicroButton" mixin="EJMicroButtonMixin">
-		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="CollectionsMicroButton" relativePoint="BOTTOMRIGHT">
-				<Offset>
-					<AbsDimension x="-3" y="0"/>
-				</Offset>
-			</Anchor>
-		</Anchors>
-		<KeyValues>
-			<KeyValue key="commandName" value="TOGGLEENCOUNTERJOURNAL" type="string"/>
-		</KeyValues>
-		<Scripts>
-			<OnLoad method="OnLoad"/>
-			<OnShow method="OnShow" inherit="append"/>
-			<OnEvent method="OnEvent"/>
-			<OnClick method="OnClick" inherit="append"/>
+			<OnClick>
+				ToggleWorldMap();
+			</OnClick>
 		</Scripts>
 	</Button>
 	<Button name="MainMenuMicroButton" inherits="MainMenuBarMicroButton" parent="UIParent">
 		<Anchors>
-			<Anchor point="BOTTOMLEFT" relativeTo="EJMicroButton" relativePoint="BOTTOMRIGHT" x="-3" y="0"/>
+			<Anchor point="BOTTOMLEFT" relativeTo="WorldMapMicroButton" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="-3" y="0"/>
+				</Offset>
+			</Anchor>
 		</Anchors>
 		<Layers>
 			<Layer level="OVERLAY">
-				<Texture name="MainMenuBarPerformanceBar" file="Interface\MainMenuBar\UI-MainMenuBar-PerformanceBar">
-					<Size x="14" y="7"/>
+				<Texture name="MainMenuBarDownload" file="Interface\BUTTONS\UI-MicroStream-Yellow" hidden="true">
+					<Size>
+						<AbsDimension x="28" y="28"/>
+					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="MainMenuMicroButton" relativePoint="TOPLEFT" x="10" y="-34"/>
+						<Anchor point="BOTTOM" relativeTo="MainMenuMicroButton" relativePoint="BOTTOM">
+							<Offset x="0" y="7"/>
+						</Anchor>
 					</Anchors>
 				</Texture>
 			</Layer>
@@ -443,29 +280,40 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				self.tooltipText = MicroButtonTooltipText(MAINMENU_BUTTON, "TOGGLEGAMEMENU");
 				self.newbieText = NEWBIE_TOOLTIP_MAINMENU;
 
-				PERFORMANCEBAR_LOW_LATENCY = 300;
-				PERFORMANCEBAR_MEDIUM_LATENCY = 600;
 				self.hover = nil;
 				self.updateInterval = 0;
 			</OnLoad>
 			<OnUpdate>
 				if (self.updateInterval > 0) then
-					self.updateInterval = self.updateInterval - elapsed;
+				self.updateInterval = self.updateInterval - elapsed;
 				else
-					self.updateInterval = PERFORMANCEBAR_UPDATE_INTERVAL;
-					local bandwidthIn, bandwidthOut, latencyHome, latencyWorld = GetNetStats();
-					local latency = latencyHome > latencyWorld and latencyHome or latencyWorld;
+				self.updateInterval = PERFORMANCEBAR_UPDATE_INTERVAL;
+				local status = GetFileStreamingStatus();
+				if(status==0) then
+				status = (GetBackgroundLoadingStatus()~=0) and 1 or 0;
+				end
+				if(status == 0) then
+				MainMenuBarDownload:Hide();
+				self:SetNormalTexture("Interface\\Buttons\\UI-MicroButton-MainMenu-Up");
+				self:SetPushedTexture("Interface\\Buttons\\UI-MicroButton-MainMenu-Down");
+				self:SetDisabledTexture("Interface\\Buttons\\UI-MicroButton-MainMenu-Disabled");
+				else
+				self:SetNormalTexture("Interface\\Buttons\\UI-MicroButtonStreamDL-Up");
+				self:SetPushedTexture("Interface\\Buttons\\UI-MicroButtonStreamDL-Down");
+				self:SetDisabledTexture("Interface\\Buttons\\UI-MicroButtonStreamDL-Up");
+				if (status == 1) then
+				MainMenuBarDownload:SetTexture("Interface\\BUTTONS\\UI-MicroStream-Green");
+				elseif (status == 2) then
+				MainMenuBarDownload:SetTexture("Interface\\BUTTONS\\UI-MicroStream-Yellow");
+				elseif (status == 3) then
+				MainMenuBarDownload:SetTexture("Interface\\BUTTONS\\UI-MicroStream-Red");
+				end
 
-					if (latency > PERFORMANCEBAR_MEDIUM_LATENCY) then
-						MainMenuBarPerformanceBar:SetVertexColor(1, 0, 0);
-					elseif (latency > PERFORMANCEBAR_LOW_LATENCY) then
-						MainMenuBarPerformanceBar:SetVertexColor(1, 1, 0);
-					else
-						MainMenuBarPerformanceBar:SetVertexColor(0, 1, 0);
-					end
-					if (self.hover) then
-						MainMenuBarPerformanceBarFrame_OnEnter(self);
-					end
+				MainMenuBarDownload:Show();
+				end
+				if (self.hover) then
+				MicroButton_OnEnter(self);
+				end
 				end
 			</OnUpdate>
 			<OnEvent>
@@ -473,46 +321,46 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnEvent>
 			<OnMouseDown>
 				if ( self.down ) then
-					self.down = nil; -- I'm pretty sure none of this should ever get run.
-					if ( not GameMenuFrame:IsShown() ) then
-						CloseMenus();
-						CloseAllWindows()
-						PlaySound(SOUNDKIT.IG_MAINMENU_OPEN);
-						ShowUIPanel(GameMenuFrame);
-					else
-						PlaySound(SOUNDKIT.IG_MAINMENU_QUIT);
-						HideUIPanel(GameMenuFrame);
-						MainMenuMicroButton_SetNormal();
-					end
-					return;
+				self.down = nil; -- I'm pretty sure none of this should ever get run.
+				if ( not GameMenuFrame:IsShown() ) then
+				CloseMenus();
+				CloseAllWindows()
+				PlaySound(SOUNDKIT.IG_MAINMENU_OPEN);
+				ShowUIPanel(GameMenuFrame);
+				else
+				PlaySound(SOUNDKIT.IG_MAINMENU_QUIT);
+				HideUIPanel(GameMenuFrame);
+				MainMenuMicroButton_SetNormal();
+				end
+				return;
 				end
 				MainMenuMicroButton_SetPushed();
 				self.down = 1;
 			</OnMouseDown>
 			<OnMouseUp>
 				if ( self.down ) then
-					self.down = nil;
-					if ( self:IsMouseOver() ) then
-						if ( not GameMenuFrame:IsShown() ) then
-							CloseMenus();
-							CloseAllWindows()
-							PlaySound(SOUNDKIT.IG_MAINMENU_OPEN);
-							ShowUIPanel(GameMenuFrame);
-						else
-							PlaySound(SOUNDKIT.IG_MAINMENU_QUIT);
-							HideUIPanel(GameMenuFrame);
-							MainMenuMicroButton_SetNormal();
-						end
-					end
-					UpdateMicroButtons();
-					return;
+				self.down = nil;
+				if ( self:IsMouseOver() ) then
+				if ( not GameMenuFrame:IsShown() ) then
+				CloseMenus();
+				CloseAllWindows()
+				PlaySound(SOUNDKIT.IG_MAINMENU_OPEN);
+				ShowUIPanel(GameMenuFrame);
+				else
+				PlaySound(SOUNDKIT.IG_MAINMENU_QUIT);
+				HideUIPanel(GameMenuFrame);
+				MainMenuMicroButton_SetNormal();
+				end
+				end
+				UpdateMicroButtons();
+				return;
 				end
 				if ( self:GetButtonState() == "NORMAL" ) then
-					MainMenuMicroButton_SetPushed();
-					self.down = 1;
+				MainMenuMicroButton_SetPushed();
+				self.down = 1;
 				else
-					MainMenuMicroButton_SetNormal();
-					self.down = 1;
+				MainMenuMicroButton_SetNormal();
+				self.down = 1;
 				end
 			</OnMouseUp>
 			<OnEnter>
@@ -544,16 +392,4 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnClick>
 		</Scripts>
 	</Button>
-
-	<Frame name="TalentMicroButtonAlert" inherits="MicroButtonAlertTemplate">
-		<Anchors>
-			<Anchor point="BOTTOM" relativeTo="TalentMicroButton" relativePoint="TOP" x="0" y="-8"/>
-		</Anchors>
-		<Scripts>
-			<OnLoad>
-				MicroButtonAlert_OnLoad(self);
-				self.Text:SetText(TALENT_MICRO_BUTTON_SPEC_TUTORIAL);
-			</OnLoad>
-		</Scripts>
-	</Frame>
 </Ui>

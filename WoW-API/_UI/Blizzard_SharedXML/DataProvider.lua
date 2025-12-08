@@ -24,6 +24,10 @@ function DataProviderMixin:Init(tbl)
 	end
 end
 
+function DataProviderMixin:IsVirtual()
+	return false;
+end
+
 function DataProviderMixin:Enumerate(indexBegin, indexEnd)
 	return CreateTableEnumerator(self.collection, indexBegin, indexEnd);
 end

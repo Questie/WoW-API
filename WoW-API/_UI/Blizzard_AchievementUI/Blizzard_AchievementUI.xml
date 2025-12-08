@@ -11,15 +11,15 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnLoad inherit="prepend" function="AchievementFrameAchievementsBackdrop_OnLoad"/>
 		</Scripts>
 	</Frame>
-
-
+	
+	
 	<StatusBar name="AchievementFrameSummaryCategoryTemplate" drawLayer="BORDER" virtual="true">
 		<Size>
 			<AbsDimension x="234" y="21"/>
 		</Size>
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="$parentLabel" inherits="GameFontNormal" text="" parentKey="label">
+				<FontString name="$parentLabel" inherits="GameFontNormal" text="">
 					<Anchors>
 						<Anchor point="LEFT">
 							<Offset>
@@ -28,7 +28,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentText" inherits="GameFontHighlight" parentKey="text">
+				<FontString name="$parentText" inherits="GameFontHighlight">
 					<Size>
 						<AbsDimension x="0" y="14"/>
 					</Size>
@@ -146,7 +146,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnEvent>
 				AchievementFrameSummaryCategory_OnEvent(self, event, ...);
 			</OnEvent>
-		</Scripts>
+		</Scripts>		
 		<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
 		<BarColor r="0" g="1" b="0"/>
 	</StatusBar>
@@ -163,7 +163,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Color r=".6" g=".6" b=".6" a="1"/>
 				</FontString>
 			</Layer>
-		</Layers>
+		</Layers>		
 		<HitRectInsets>
 			<AbsInset left="0" right="-100" top="0" bottom="0"/>
 		</HitRectInsets>
@@ -196,109 +196,109 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Scripts>
 		<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
 		<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
-		<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+	 	<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
 		<CheckedTexture file="Interface\Buttons\UI-CheckBox-Check"/>
-		<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+		<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>		
 	</CheckButton>
 
 	<Button name="AchievementFrameTabButtonTemplate" virtual="true">
-		<Size>
-			<AbsDimension x="115" y="32"/>
-		</Size>
-		<Layers>
-			<Layer level="BACKGROUND">
-				<Texture name="$parentLeftDisabled" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="21" y="59"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset>
-								<AbsDimension x="0" y="5"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
+        <Size>
+            <AbsDimension x="115" y="32"/>
+        </Size>
+        <Layers>
+        	<Layer level="BACKGROUND">
+        		<Texture name="$parentLeftDisabled" file="Interface\AchievementFrame\UI-Achievement-Header">
+        			<Size>
+        				<AbsDimension x="21" y="59"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="TOPLEFT">
+        					<Offset>
+        						<AbsDimension x="0" y="5"/>
+        					</Offset>
+        				</Anchor>
+        			</Anchors>
 					<TexCoords left="0.47265625" right="0.513671875" top="0.76953125" bottom="1.0"/>
-				</Texture>
+        		</Texture>
 				<Texture name="$parentMiddleDisabled" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="88" y="59"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentLeftDisabled" relativePoint="RIGHT"/>
-					</Anchors>
+        			<Size>
+        				<AbsDimension x="88" y="59"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="LEFT" relativeTo="$parentLeftDisabled" relativePoint="RIGHT"/>
+        			</Anchors>
 					<TexCoords left="0.513671875" right="0.685546875" top="0.76953125" bottom="1.0"/>
-				</Texture>
+        		</Texture>
 				<Texture name="$parentRightDisabled" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="18" y="59"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentMiddleDisabled" relativePoint="RIGHT"/>
-					</Anchors>
+        			<Size>
+        				<AbsDimension x="18" y="59"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="LEFT" relativeTo="$parentMiddleDisabled" relativePoint="RIGHT"/>
+        			</Anchors>
 					<TexCoords left="0.685546875" right="0.720703125" top="0.76953125" bottom="1.0"/>
-				</Texture>
+        		</Texture>
 				<Texture name="$parentLeft" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="21" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT"/>
-					</Anchors>
+        			<Size>
+        				<AbsDimension x="21" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="TOPLEFT"/>
+        			</Anchors>
 					<TexCoords left="0.47265625" right="0.513671875" top="0.76953125" bottom="1.0"/>
-				</Texture>
+        		</Texture>
 				<Texture name="$parentMiddle" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="88" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+        			<Size>
+        				<AbsDimension x="88" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
 					</Anchors>
 					<TexCoords left="0.513671875" right="0.685546875" top="0.76953125" bottom="1.0"/>
-				</Texture>
+        		</Texture>
 				<Texture name="$parentRight" file="Interface\AchievementFrame\UI-Achievement-Header">
-					<Size>
-						<AbsDimension x="18" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
-					</Anchors>
+        			<Size>
+        				<AbsDimension x="18" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="LEFT" relativeTo="$parentMiddle" relativePoint="RIGHT"/>
+        			</Anchors>
 					<TexCoords left="0.685546875" right="0.720703125" top="0.76953125" bottom="1.0"/>
-				</Texture>
-				<Texture name="$parentLeftHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD" parentKey="leftHighlight">
-					<Size>
-						<AbsDimension x="32" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT">
+        		</Texture>
+				<Texture name="$parentLeftHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD">
+        			<Size>
+        				<AbsDimension x="32" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="TOPLEFT">
 							<Offset x="-3" y="-1"/>
 						</Anchor>
-					</Anchors>
+        			</Anchors>
 					<TexCoords left="0.720703125" right="0.783203125" top="0.76953125" bottom="1.0"/>
-				</Texture>
-				<Texture name="$parentRightHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD" parentKey="rightHighlight">
-					<Size>
-						<AbsDimension x="18" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPRIGHT">
+        		</Texture>
+				<Texture name="$parentRightHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD">
+        			<Size>
+        				<AbsDimension x="18" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="TOPRIGHT">
 							<Offset x="-4" y="-1"/>
 						</Anchor>
-					</Anchors>
+        			</Anchors>
 					<TexCoords left="0.923828125" right="0.986328125" top="0.76953125" bottom="1.0"/>
-				</Texture>
-				<Texture name="$parentMiddleHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD" parentKey="middleHighlight">
-					<Size>
-						<AbsDimension x="88" y="49"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentLeftHighlight" relativePoint="RIGHT"/>
+        		</Texture>
+				<Texture name="$parentMiddleHighlight" file="Interface\AchievementFrame\UI-Achievement-Header" hidden="true" alphaMode="ADD">
+        			<Size>
+        				<AbsDimension x="88" y="49"/>
+        			</Size>
+        			<Anchors>
+        				<Anchor point="LEFT" relativeTo="$parentLeftHighlight" relativePoint="RIGHT"/>
 						<Anchor point="RIGHT" relativeTo="$parentRightHighlight" relativePoint="LEFT"/>
 					</Anchors>
 					<TexCoords left="0.783203125" right="0.923828125" top="0.76953125" bottom="1.0"/>
-				</Texture>
-			</Layer>
-		</Layers>
+        		</Texture>
+        	</Layer>
+        </Layers>
 		<Scripts>
 			<OnLoad>
 				local name = self:GetName();
@@ -325,7 +325,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				PanelTemplates_TabResize(self, 10);
 			</OnShow>
 		</Scripts>
-		<ButtonText name="$parentText" parentKey="text">
+		<ButtonText name="$parentText">
 			<Anchors>
 				<Anchor point="CENTER">
 					<Offset>
@@ -337,50 +337,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<NormalFont style="GameFontNormalSmall"/>
 		<HighlightFont style="GameFontHighlightSmall"/>
 		<DisabledFont style="GameFontHighlightSmall"/>
-	</Button>
-	<Frame name="AchievementFrameAchievementsObjectives">
-		<Layers>
-			<Layer level="ARTWORK">
-				<FontString name="$parentReputationCriteria" inherits="GameFontNormalSmall" parentKey="repCriteria">
-					<Anchors>
-						<Anchor point="TOP" x="8" y="-2"/>
-					</Anchors>
-					<Color r="1" g="1" b="1" a="1"/>
-				</FontString>
-			</Layer>
-		</Layers>
-	</Frame>
-	<Frame name="AchievementGuildTabardTemplate" hidden="true" virtual="true">
-		<Size x="72" y="128"/>
-		<Layers>
-			<Layer level="BACKGROUND">
-				<Texture name="$parentBackground" file="Interface\AchievementFrame\GuildTabard" parentKey="background">
-					<Size x="72" y="128"/>
-					<Anchors>
-						<Anchor point="TOP" x="0" y="0"/>
-					</Anchors>
-					<TexCoords left="0.00781250" right="0.57031250" top="0.48437500" bottom="0.98437500"/>
-				</Texture>
-			</Layer>
-			<Layer level="BORDER">
-				<Texture name="$parentBorder" file="Interface\AchievementFrame\GuildTabard" parentKey="border">
-					<Size x="56" y="121"/>
-					<Anchors>
-						<Anchor point="TOP" x="0" y="0"/>
-					</Anchors>
-					<TexCoords left="0.00781250" right="0.44531250" top="0.00390625" bottom="0.47656250"/>
-				</Texture>
-			</Layer>
-			<Layer level="ARTWORK">
-				<Texture name="$parentEmblem" file="Interface\GuildFrame\GuildEmblemsLG_01" parentKey="emblem">
-					<Size x="60" y="60"/>
-					<Anchors>
-						<Anchor point="BOTTOM" x="0" y="14"/>
-					</Anchors>
-				</Texture>
-			</Layer>
-		</Layers>
-	</Frame>
+    </Button>
+	<Frame name="AchievementFrameAchievementsObjectives"/>
 	<Frame name="MiniAchievementTemplate" virtual="true" parent="AchievementFrame">
 		<Size>
 			<AbsDimension x="42" y="42"/>
@@ -390,7 +348,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Anchors>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentIcon" parentKey="icon">
+				<Texture name="$parentIcon">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -406,7 +364,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="BORDER">
-				<Texture name="$parentBorder" file="Interface\AchievementFrame\UI-Achievement-Progressive-IconBorder" parentKey="border">
+				<Texture name="$parentBorder" file="Interface\AchievementFrame\UI-Achievement-Progressive-IconBorder">
 					<Anchors>
 						<Anchor point="TOPLEFT"/>
 						<Anchor point="BOTTOMRIGHT"/>
@@ -432,7 +390,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="$parentPoints" inherits="GameFontWhiteSmall" text="10" justifyV="BOTTOM" parentKey="points">
+				<FontString name="$parentPoints" inherits="GameFontWhiteSmall" text="10" justifyV="BOTTOM">	
 					<Size>
 						<AbsDimension x="18" y="18"/>
 					</Size>
@@ -447,7 +405,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</Layer>
 		</Layers>
 		<Scripts>
-			<OnLoad>
+			<OnLoad> 
 				local name = self:GetName();
 				self.points = _G[name .. "Points"];
 				self.icon = _G[name .. "Icon"];
@@ -458,17 +416,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					GameTooltip:AddDoubleLine(self.name, self.date, nil, nil, nil, .5, .5, .5);
 				end
 				if ( self.desc ) then
-					GameTooltip:AddLine(self.desc, 1, 1, 1, 1);
+					GameTooltip:AddLine(self.desc, 1, 1, 1, true);
 				end
 				if ( self.numCriteria ) then
-					if ( self.numCriteria > 30 ) then
-						for i = 1, self.numCriteria, 2 do
-							GameTooltip:AddDoubleLine(self["criteria"..i], self["criteria"..(i+1)]);
-						end
-					else
-						for i = 1, self.numCriteria do
-							GameTooltip:AddLine(self["criteria"..i]);
-						end
+					for i = 1, self.numCriteria do
+						GameTooltip:AddLine(self["criteria"..i]);
 					end
 				end
 				GameTooltip:Show();
@@ -478,6 +430,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnLeave>
 		</Scripts>
 	</Frame>
+
 	<Button name="MetaCriteriaTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="155" y="30"/>
@@ -487,7 +440,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Anchors>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentIcon" parentKey="icon">
+				<Texture name="$parentIcon">
 					<Size x="17" y="17"/>
 					<Anchors>
 						<Anchor point="TOPLEFT">
@@ -499,7 +452,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="BORDER">
-				<Texture name="$parentBorder" file="Interface\AchievementFrame\UI-Achievement-Progressive-IconBorder" parentKey="border">
+				<Texture name="$parentBorder" file="Interface\AchievementFrame\UI-Achievement-Progressive-IconBorder">
 					<Size x="30" y="30"/>
 					<Anchors>
 						<Anchor point="TOPLEFT"/>
@@ -508,7 +461,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="ARTWORK">
-				<Texture name="$parentCheck" file="Interface\AchievementFrame\UI-Achievement-Criteria-Check" parentKey="check">
+				<Texture name="$parentCheck" file="Interface\AchievementFrame\UI-Achievement-Criteria-Check">
 					<Size>
 						<AbsDimension x="20" y="16"/>
 					</Size>
@@ -521,7 +474,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0" right="0.65625" top="0" bottom="1"/>
 				</Texture>
-				<FontString name="$parentLabel" inherits="AchievementCriteriaFont" text="Fake criteria!" parentKey="label">
+				<FontString name="$parentLabel" inherits="AchievementCriteriaFont" text="Fake criteria!">
 					<Anchors>
 						<Anchor point="LEFT" relativePoint="LEFT">
 							<Offset>
@@ -534,12 +487,26 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</Layer>
 		</Layers>
 		<Scripts>
-			<!-- This OnEnter might also be called from AchievementFrameAchievements_OnEvent -->
-			<OnEnter function="AchievementMeta_OnEnter"/>
-			<OnLeave function="AchievementMeta_OnLeave"/>
+			<OnLoad>
+				local name = self:GetName();
+				self.icon = _G[name .. "Icon"];
+				self.label = _G[name .. "Label"];
+				self.check = _G[name .. "Check"];
+				self.border = _G[name .. "Border"];
+			</OnLoad>
+			<OnEnter>
+				if ( self.date ) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:AddLine(string.format(ACHIEVEMENT_META_COMPLETED_DATE, self.date), 1, 1, 1);
+					GameTooltip:Show();
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
 			<OnClick>
 				if ( self.id ) then
-				AchievementFrame_SelectAchievement(self.id);
+					AchievementFrame_SelectAchievement(self.id);
 				end
 			</OnClick>
 		</Scripts>
@@ -549,11 +516,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Anchor point="BOTTOMRIGHT">
 					<Offset x="0" y="2"/>
 				</Anchor>
-			</Anchors>
+			</Anchors>						
 			<Color r="1" g="1" b="1" a=".15"/>
 		</HighlightTexture>
 	</Button>
-
+	
 	<StatusBar name="AchievementProgressBarTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="212" y="14"/>
@@ -572,14 +539,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="$parentText" inherits="GameFontHighlightSmall" text="700/700" justifyV="TOP" parentKey="text">
+				<FontString name="$parentText" inherits="GameFontHighlightSmall" text="700/700" justifyV="TOP">
 					<Size x="0" y="0"/>
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset x="0" y="0"/>
 						</Anchor>
 					</Anchors>
-				</FontString>
+				</FontString>			
 			</Layer>
 			<Layer level="ARTWORK">
 				<Texture name="$parentBorderLeft" file="Interface\AchievementFrame\UI-Achievement-ProgressBar-Border">
@@ -645,7 +612,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Anchors>
 		<Layers>
 			<Layer level="OVERLAY">
-				<FontString name="$parentTitle" inherits="GameFontNormal" text="ACHIEVEMENTS_COMPLETED" parentKey="title">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="ACHIEVEMENTS_COMPLETED">
 					<Anchors>
 						<Anchor point="LEFT">
 							<Offset>
@@ -654,7 +621,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentText" inherits="GameFontHighlight" parentKey="text">
+				<FontString name="$parentText" inherits="GameFontHighlight">
 					<Size>
 						<AbsDimension x="0" y="14"/>
 					</Size>
@@ -713,14 +680,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
 		<BarColor r="0" g="1" b="0"/>
 	</StatusBar>
-
+	
 	<Button name="AchievementCategoryTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="158" y="24"/>
 		</Size>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Category-Background" parentKey="background">
+				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Category-Background">
 					<Size x="170" y="32"/>
 					<Anchors>
 						<Anchor point="TOPLEFT"/>
@@ -730,15 +697,15 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="ARTWORK">
-				<FontString name="$parentLabel" text="This is a Category" inherits="GameFontNormalLeftBottom" wordwrap="false" parentKey="label">
+				<FontString name="$parentLabel" text="This is a Category" inherits="GameFontNormalLeftBottom" wordwrap="false">
 					<Anchors>
 						<Anchor point="BOTTOMLEFT">
-							<Offset x="16" y="4"/>
+							<Offset x="16" y="4"/> 
 						</Anchor>
 						<Anchor point="TOPRIGHT">
-							<Offset x="-8" y="-4"/>
+							<Offset x="-8" y="-4"/> 
 						</Anchor>
-					</Anchors>
+					</Anchors>					
 				</FontString>
 			</Layer>
 		</Layers>
@@ -751,7 +718,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnClick>
 			<OnEnter>
 				if ( self.showTooltipFunc ) then
-				self.showTooltipFunc(self);
+					self.showTooltipFunc(self);
 				end
 			</OnEnter>
 			<OnLeave>
@@ -773,7 +740,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	</Button>
 
 	<Frame name="AchievementIconFrameTemplate" virtual="true">
-		<Layers>
+		<Layers>			
 			<Layer level="BACKGROUND">
 				<Texture name="$parentBackfill" file="Interface\AchievementFrame\UI-Achievement-IconFrame-Backfill" hidden="true">
 					<Anchors>
@@ -785,7 +752,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="BORDER">
-				<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true" parentKey="bling">
+				<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true">
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset>
@@ -799,7 +766,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="ARTWORK">
-				<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor" parentKey="texture">
+				<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor">
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset>
@@ -813,7 +780,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame" parentKey="frame">
+				<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame">
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset>
@@ -834,14 +801,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnLoad>
 		</Scripts>
 	</Frame>
-
+	
 	<Frame name="AchievementCriteriaTemplate" virtual="true">
 		<Size>
 			<AbsDimension x="350" y="15"/>
 		</Size>
 		<Layers>
 			<Layer level="ARTWORK">
-				<Texture name="$parentCheck" file="Interface\AchievementFrame\UI-Achievement-Criteria-Check" parentKey="check">
+				<Texture name="$parentCheck" file="Interface\AchievementFrame\UI-Achievement-Criteria-Check">
 					<Size>
 						<AbsDimension x="20" y="16"/>
 					</Size>
@@ -856,7 +823,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="$parentName" inherits="AchievementCriteriaFont" text="Capture the Bone Wastes" parentKey="name">
+				<FontString name="$parentName" inherits="AchievementCriteriaFont" text="Capture the Bone Wastes">
 					<Anchors>
 						<Anchor point="LEFT" relativeTo="$parentCheck" relativePoint="RIGHT">
 							<Offset>
@@ -875,11 +842,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnLoad>
 			<OnMouseUp>
 				if ( button == "LeftButton" ) then
-				self:GetParent():GetParent():Click();
+					self:GetParent():GetParent():Click();
 				end
 			</OnMouseUp>
 		</Scripts>
-	</Frame>
+	</Frame>	
 
 	<Button name="AchievementTemplate" inherits="TooltipBorderBackdropTemplate" virtual="true">
 		<Size>
@@ -887,7 +854,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Size>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
+				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -900,8 +867,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-				</Texture>
-			</Layer>
+				</Texture>						
+			</Layer>			
 			<Layer level="BORDER">
 				<Texture name="$parentBottomLeftTsunami" file="Interface\AchievementFrame\UI-Achievement-Tsunami-Corners">
 					<Size>
@@ -916,9 +883,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<Color r="1" g="1" b="1" a=".2"/>
 					<TexCoords left="0" right=".5" top="0" bottom="1"/>
-				</Texture>
+				</Texture>				
 				<Texture name="$parentBottomRightTsunami" file="Interface\AchievementFrame\UI-Achievement-Tsunami-Corners">
-					<Size>
+					<Size>	
 						<AbsDimension x="32" y="32"/>
 					</Size>
 					<Anchors>
@@ -958,8 +925,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<Color r="1" g="1" b="1" a=".1"/>
 					<TexCoords left=".5" right="0" top="1" bottom="0"/>
-				</Texture>
-				<Texture name="$parentBottomTsunami1" file="Interface\AchievementFrame\UI-Achievement-Borders">
+				</Texture>							
+				<Texture name="$parentBottomTsunami1" file="Interface\AchievementFrame\UI-Achievement-Tsunami-Horizontal">
 					<Size>
 						<AbsDimension x="370" y="16"/>
 					</Size>
@@ -968,13 +935,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Offset>
 								<AbsDimension x="0" y="3"/>
 							</Offset>
-						</Anchor>
+						</Anchor>	
 						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRightTsunami" relativePoint="BOTTOMLEFT"/>
 					</Anchors>
 					<Color r="1" g="1" b="1" a=".35"/>
-					<TexCoords left="0" right="0.72265" top="0.51953125" bottom="0.58203125"/>
+					<TexCoords left="0" right="0.72265" top="0" bottom="1"/>
 				</Texture>
-				<Texture name="$parentTopTsunami1" file="Interface\AchievementFrame\UI-Achievement-Borders">
+				<Texture name="$parentTopTsunami1" file="Interface\AchievementFrame\UI-Achievement-Tsunami-Horizontal">
 					<Size>
 						<AbsDimension x="370" y="16"/>
 					</Size>
@@ -983,15 +950,15 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Offset>
 								<AbsDimension x="0" y="-3"/>
 							</Offset>
-						</Anchor>
+						</Anchor>				
 						<Anchor point="TOPRIGHT" relativeTo="$parentTopRightTsunami" relativePoint="TOPLEFT"/>
 					</Anchors>
 					<Color r="1" g="1" b="1" a="0.3"/>
-					<TexCoords left="0.72265" right="0" top="0.58203125" bottom="0.51953125"/>
-				</Texture>
+					<TexCoords left="0.72265" right="0" top="1" bottom="0"/>
+				</Texture>	
 			</Layer>
 			<Layer level="ARTWORK">
-				<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="titleBar">
+				<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Title">
 					<Size>
 						<AbsDimension x="0" y="24"/>
 					</Size>
@@ -1007,12 +974,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="0.9765625" top="0.66015625" bottom="0.73828125"/>
+					<TexCoords left="0" right="0.9765625" top="0" bottom="0.3125"/>
 					<Color r="1" g="1" b="1" a=".8"/>
 				</Texture>
-				<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="glow">
+				<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Parchment-Highlight">
 					<Size>
-						<AbsDimension x="10" y="64"/>
+						<AbsDimension x="10" y="128"/>
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parentTitleBackground" relativePoint="BOTTOMLEFT">
@@ -1022,9 +989,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Offset x="0" y="4"/>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="1" top="0.00390625" bottom="0.25390625"/>
 				</Texture>
-				<Texture name="$parentRewardBackground" file="Interface\AchievementFrame\UI-Achievement-Reward-Background" hidden="true" parentKey="rewardBackground">
+				<Texture name="$parentRewardBackground" file="Interface\AchievementFrame\UI-Achievement-Reward-Background" hidden="true">
 					<Size>
 						<AbsDimension x="384" y="24"/>
 					</Size>
@@ -1039,26 +1005,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								<AbsDimension x="-5" y="5"/>
 							</Offset>
 						</Anchor>
+						<!--<Anchor point="BOTTOMRIGHT"/> -->
 					</Anchors>
 					<TexCoords left="0" right=".69" top="0" bottom=".75"/>
 				</Texture>
-				<Texture name="$parentGuildCornerL" file="Interface\AchievementFrame\UI-Achievement-Guild" parentKey="guildCornerL" hidden="true">
-					<Size x="54" y="53"/>
-					<Anchors>
-						<Anchor point="BOTTOMLEFT" x="-1" y="-1"/>
-					</Anchors>
-					<TexCoords left="0.89062500" right="0.99609375" top="0.08593750" bottom="0.18945313"/>
-				</Texture>
-				<Texture name="$parentGuildCornerR" file="Interface\AchievementFrame\UI-Achievement-Guild" parentKey="guildCornerR" hidden="true">
-					<Size x="54" y="53"/>
-					<Anchors>
-						<Anchor point="BOTTOMRIGHT" x="1" y="-1"/>
-					</Anchors>
-					<TexCoords left="0.75195313" right="0.85742188" top="0.36328125" bottom="0.46679688"/>
-				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<FontString name="$parentLabel" inherits="GameFontHighlightMedium" text="For the Alliance!" parentKey="label">
+				<FontString name="$parentLabel" inherits="GameFontHighlightMedium" text="For the Alliance!">
 					<Size>
 						<AbsDimension x="320" y="20"/>
 					</Size>
@@ -1070,19 +1023,40 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentReward" inherits="GameFontNormalSmall" hidden="true" parentKey="reward">
+				<FontString name="$parentDateCompleted" inherits="AchievementDateFont" text="5/16/08" hidden="true" justifyH="CENTER">
+					<Size>
+						<AbsDimension x="100" y="14"/>
+					</Size>
+					<Anchors>
+						<!-- This is a fake anchor. We don't want DateCompleted to be anchored to top. We reanchor it in AchievementButton_OnLoad so that it can be anchored to the shield, which is a frame, and not loaded at this point. -->
+			<Anchor point="TOP"/>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentReward" inherits="GameFontNormalSmall" hidden="true">
 					<Size>
 						<AbsDimension x="400" y="20"/>
-					</Size>
+					</Size>					
 					<Anchors>
 						<Anchor point="TOP" relativeTo="$parentRewardBackground" relativePoint="TOP">
 							<Offset>
 								<AbsDimension x="0" y="1"/>
 							</Offset>
 						</Anchor>
+					</Anchors>							
+				</FontString>
+				<FontString name="$parentDescription" inherits="AchievementDescriptionFont">
+					<Size>
+						<AbsDimension x="0" y="0"/>
+					</Size>				
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-30"/>
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentDescription" inherits="AchievementDescriptionFont" parentKey="description">
+				<FontString name="$parentHiddenDescription" inherits="AchievementDescriptionFont" hidden="true">
 					<Size>
 						<AbsDimension x="0" y="0"/>
 					</Size>
@@ -1094,19 +1068,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentHiddenDescription" inherits="AchievementDescriptionFont" hidden="true" parentKey="hiddenDescription">
-					<Size>
-						<AbsDimension x="0" y="0"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOP">
-							<Offset>
-								<AbsDimension x="0" y="-30"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>
-				<Texture name="$parentCheck" file="Interface\Buttons\UI-CheckBox-Check" hidden="true" parentKey="check">
+				<Texture name="$parentCheck" file="Interface\Buttons\UI-CheckBox-Check" hidden="true">
 					<Size>
 						<AbsDimension x="20" y="16"/>
 					</Size>
@@ -1117,7 +1079,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0" right="1" top="0" bottom="1"/>
 				</Texture>
-				<Texture name="$parentPlusMinus" file="Interface\AchievementFrame\UI-Achievement-PlusMinus" hidden="true" parentKey="plusMinus">
+				<Texture name="$parentPlusMinus" file="Interface\AchievementFrame\UI-Achievement-PlusMinus" hidden="true">
 					<Size>
 						<AbsDimension x="15" y="15"/>
 					</Size>
@@ -1127,7 +1089,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 					<TexCoords left="0" right=".5" top="0" bottom=".5"/>
-				</Texture>
+				</Texture>				
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -1140,12 +1102,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnEnter>
 			<OnLeave>
 				if ( not self.selected ) then
-				self.highlight:Hide();
+					self.highlight:Hide();
 				end
 			</OnLeave>
 		</Scripts>
 		<Frames>
-			<Frame name="$parentHighlight" setAllPoints="true" hidden="true" enableMouse="false" parentKey="highlight">
+			<Frame name="$parentHighlight" setAllPoints="true" hidden="true" enableMouse="false">
 				<Layers>
 					<Layer level="OVERLAY">
 						<Texture name="$parentTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
@@ -1173,7 +1135,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left="0.06640625" right="0" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>		
 						<Texture name="$parentTopRight" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Size>
 								<AbsDimension x="16" y="16"/>
@@ -1199,7 +1161,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left="0" right="0.06640625" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>			
 						<Texture name="$parentTop" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="TOPRIGHT"/>
@@ -1213,7 +1175,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRight" relativePoint="BOTTOMLEFT"/>
 							</Anchors>
 							<TexCoords left="0" right="0.015" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>			
 						<Texture name="$parentLeft" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="BOTTOMLEFT"/>
@@ -1231,7 +1193,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Layer>
 				</Layers>
 			</Frame>
-			<Frame name="$parentIcon" inherits="AchievementIconFrameTemplate" parentKey="icon">
+			<Frame name="$parentIcon" inherits="AchievementIconFrameTemplate">
 				<Size>
 					<AbsDimension x="60" y="60"/>
 				</Size>
@@ -1243,16 +1205,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchor>
 				</Anchors>
 			</Frame>
-			<Frame name="$parentTabard" inherits="AchievementGuildTabardTemplate" parentKey="tabard">
-				<Anchors>
-					<Anchor point="TOPRIGHT">
-						<Offset>
-							<AbsDimension x="-3" y="-4"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			</Frame>
-			<Button name="$parentShield" parentKey="shield">
+			<Frame name="$parentShield">
 				<Size>
 					<AbsDimension x="64" y="64"/>
 				</Size>
@@ -1281,37 +1234,22 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Layer>
 					<Layer level="OVERLAY">
 						<FontString name="$parentPoints" inherits="AchievementPointsFont" parentKey ="points">
-							<Size x="42" y="16"/>
+							<Size x="32" y="16"/>
 							<Anchors>
 								<Anchor point="TOPRIGHT">
-									<Offset x="-13" y="-26"/>
+									<Offset x="-18" y="-26"/>
 								</Anchor>
 							</Anchors>
 						</FontString>
-						<FontString name="$parentDateCompleted" inherits="AchievementDateFont" text="5/16/08" hidden="true" justifyH="CENTER" parentKey="dateCompleted">
-							<Size>
-								<AbsDimension x="100" y="14"/>
-							</Size>
-							<Anchors>
-								<Anchor point="TOP" relativePoint="BOTTOM" x="-2" y="6"/>
-							</Anchors>
-						</FontString>
 					</Layer>
-				</Layers>
+				</Layers>				
 				<Scripts>
 					<OnLoad>
 						AchievementShield_OnLoad(self);
 					</OnLoad>
-					<OnClick>
-						local parent = self:GetParent();
-						AchievementButton_OnClick(parent);
-					</OnClick>
-					<!-- This OnEnter might also be called from AchievementFrameAchievements_OnEvent -->
-					<OnEnter function="AchievementShield_OnEnter"/>
-					<OnLeave function="AchievementShield_OnLeave"/>
 				</Scripts>
-			</Button>
-			<Frame name="$parentObjectives" parentKey="objectives">
+			</Frame>
+			<Frame name="$parentObjectives">
 				<Anchors>
 					<Anchor point="TOP" relativeTo="$parentDescription" relativePoint="BOTTOM">
 						<Offset>
@@ -1335,7 +1273,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchor>
 				</Anchors>
 			</Frame>
-			<CheckButton name="$parentTracked" hidden="true" inherits="AchievementCheckButtonTemplate" parentKey="tracked">
+			<CheckButton name="$parentTracked" hidden="true" inherits="AchievementCheckButtonTemplate">
 				<Anchors>
 					<Anchor point="TOPLEFT">
 						<Offset x="12" y="-66"/>
@@ -1348,7 +1286,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<Size x="498" y="50"/>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
+				<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
@@ -1362,10 +1300,10 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 					<TexCoords left="0" right="1" top="0" bottom="0.25"/>
-				</Texture>
+				</Texture>						
 			</Layer>
 			<Layer level="ARTWORK">
-				<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="titleBar">
+				<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Title">
 					<Size>
 						<AbsDimension x="0" y="20"/>
 					</Size>
@@ -1381,12 +1319,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="0.9765625" top="0.66015625" bottom="0.73828125"/>
+					<TexCoords left="0" right="0.9765625" top="0" bottom="0.3125"/>
 					<Color r="1" g="1" b="1" a=".8"/>
 				</Texture>
-				<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="glow">
+				<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Parchment-Highlight">
 					<Size>
-						<AbsDimension x="10" y="64"/>
+						<AbsDimension x="10" y="128"/>
 					</Size>
 					<Anchors>
 						<Anchor point="TOPLEFT" relativeTo="$parentTitleBackground" relativePoint="BOTTOMLEFT">
@@ -1396,11 +1334,10 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Offset x="0" y="4"/>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="1" top="0.00390625" bottom="0.25390625"/>
-				</Texture>
-			</Layer>
+				</Texture>			
+			</Layer>	
 			<Layer level="OVERLAY">
-				<FontString name="$parentLabel" inherits="GameFontHighlightMedium" text="For the Alliance!" parentKey="label">
+				<FontString name="$parentLabel" inherits="GameFontHighlightMedium" text="For the Alliance!">
 					<Anchors>
 						<Anchor point="TOP" relativeTo="$parentTitleBackground" relativePoint="TOP">
 							<Offset>
@@ -1412,7 +1349,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						<AbsDimension x="260" y="20"/>
 					</Size>
 				</FontString>
-				<FontString name="$parentDateCompleted" inherits="AchievementDateFont" text="5/16/08" hidden="true" parentKey="dateCompleted">
+				<FontString name="$parentDateCompleted" inherits="AchievementDateFont" text="5/16/08" hidden="true">
 					<Anchors>
 						<Anchor point="TOPRIGHT">
 							<Offset>
@@ -1424,7 +1361,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						<AbsDimension x="100" y="14"/>
 					</Size>
 				</FontString>
-				<FontString name="$parentDescription" inherits="AchievementDescriptionFont" parentKey="description">
+				<FontString name="$parentDescription" inherits="AchievementDescriptionFont">
 					<Anchors>
 						<Anchor point="TOP">
 							<Offset>
@@ -1437,14 +1374,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Size>
 				</FontString>
 			</Layer>
-		</Layers>
+		</Layers>		
 		<Scripts>
 			<OnLoad inherit="prepend">
 				AchievementComparisonPlayerButton_OnLoad(self);
 			</OnLoad>
 		</Scripts>
 		<Frames>
-			<Frame name="$parentIcon" parentKey="icon">
+			<Frame name="$parentIcon">
 				<Size>
 					<AbsDimension x="48" y="48"/>
 				</Size>
@@ -1455,9 +1392,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Offset>
 					</Anchor>
 				</Anchors>
-				<Layers>
+				<Layers>			
 					<Layer level="BORDER">
-						<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true" parentKey="bling">
+						<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true">
 							<Anchors>
 								<Anchor point="CENTER">
 									<Offset>
@@ -1471,7 +1408,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Texture>
 					</Layer>
 					<Layer level="ARTWORK">
-						<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor" parentKey="texture">
+						<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor">
 							<Anchors>
 								<Anchor point="CENTER">
 									<Offset>
@@ -1485,7 +1422,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
-						<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame" parentKey="frame">
+						<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame">
 							<Anchors>
 								<Anchor point="CENTER">
 									<Offset>
@@ -1504,9 +1441,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<OnLoad>
 						AchievementIcon_OnLoad(self);
 					</OnLoad>
-				</Scripts>
+				</Scripts>				
 			</Frame>
-			<Frame name="$parentShield" parentKey="shield">
+			<Frame name="$parentShield">
 				<Size>
 					<AbsDimension x="48" y="48"/>
 				</Size>
@@ -1530,7 +1467,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</Offset>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0" right=".5" top="0" bottom="0.5"/>
+							<TexCoords left="0" right=".5" top="0" bottom="1"/>
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
@@ -1547,14 +1484,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Size>
 						</FontString>
 					</Layer>
-				</Layers>
+				</Layers>				
 				<Scripts>
 					<OnLoad>
 						AchievementShield_OnLoad(self);
 					</OnLoad>
 				</Scripts>
 			</Frame>
-		</Frames>
+		</Frames>		
 	</Frame>
 	<Frame name="SummaryAchievementTemplate" inherits="ComparisonPlayerTemplate" virtual="true">
 		<Size x="100" y="48"/>
@@ -1563,7 +1500,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<KeyValue key="backdropBorderColorAlpha" value="0.5" type="number"/>
 		</KeyValues>
 		<Frames>
-			<Frame name="$parentHighlight" setAllPoints="true" hidden="true" enableMouse="false" parentKey="highlight">
+			<Frame name="$parentHighlight" setAllPoints="true" hidden="true" enableMouse="false">
 				<Layers>
 					<Layer level="OVERLAY">
 						<Texture name="$parentTopLeft" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
@@ -1591,7 +1528,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left="0.06640625" right="0" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>		
 						<Texture name="$parentTopRight" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Size>
 								<AbsDimension x="16" y="16"/>
@@ -1617,7 +1554,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left="0" right="0.06640625" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>			
 						<Texture name="$parentTop" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="TOPRIGHT"/>
@@ -1631,7 +1568,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottomRight" relativePoint="BOTTOMLEFT"/>
 							</Anchors>
 							<TexCoords left="0" right="0.015" top="0.65625" bottom="0.4375"/>
-						</Texture>
+						</Texture>			
 						<Texture name="$parentLeft" file="Interface\PaperDollInfoFrame\UI-Character-ReputationBar-Highlight" alphaMode="ADD">
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="$parentTopLeft" relativePoint="BOTTOMLEFT"/>
@@ -1672,19 +1609,19 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<Anchor point="CENTER"/>
 		</Anchors>
 		<Frames>
-			<Frame name="$parentPlayer" inherits="ComparisonPlayerTemplate" parentKey="player">
+			<Frame name="$parentPlayer" inherits="ComparisonPlayerTemplate">
 				<Anchors>
 					<Anchor point="LEFT"/>
 				</Anchors>
 			</Frame>
-			<Frame name="$parentFriend" parentKey="friend" inherits="TooltipBorderBackdropTemplate">
+			<Frame name="$parentFriend" inherits="TooltipBorderBackdropTemplate">
 				<Size x="120" y="50"/>
 				<Anchors>
 					<Anchor point="LEFT" relativeTo="$parentPlayer" relativePoint="RIGHT"/>
 				</Anchors>
 				<Layers>
 					<Layer level="BACKGROUND">
-						<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal" parentKey="background">
+						<Texture name="$parentBackground" file="Interface\AchievementFrame\UI-Achievement-Parchment-Horizontal">
 							<Anchors>
 								<Anchor point="TOPLEFT">
 									<Offset>
@@ -1698,10 +1635,10 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left=".2" right=".75" top="0" bottom="1"/>
-						</Texture>
+						</Texture>						
 					</Layer>
 					<Layer level="ARTWORK">
-						<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="titleBar">
+						<Texture name="$parentTitleBackground" file="Interface\AchievementFrame\UI-Achievement-Title">
 							<Size>
 								<AbsDimension x="0" y="20"/>
 							</Size>
@@ -1717,12 +1654,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</Offset>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0.3" right="0.575" top="0.66015625" bottom="0.73828125"/>
+							<TexCoords left=".3" right="0.575" top="0" bottom="0.3125"/>
 							<Color r="1" g="1" b="1" a=".8"/>
 						</Texture>
-						<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Borders" parentKey="glow">
+						<Texture name="$parentGlow" file="Interface\AchievementFrame\UI-Achievement-Parchment-Highlight"> 
 							<Size>
-								<AbsDimension x="10" y="64"/>
+								<AbsDimension x="10" y="128"/>
 							</Size>
 							<Anchors>
 								<Anchor point="TOPLEFT" relativeTo="$parentTitleBackground" relativePoint="BOTTOMLEFT">
@@ -1732,11 +1669,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									<Offset x="0" y="4"/>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0.2" right="0.86" top="0.00390625" bottom="0.25390625"/>
-						</Texture>
-					</Layer>
+							<TexCoords left="0.2" right="0.86" top="0" bottom="1"/>
+						</Texture>			
+					</Layer>	
 					<Layer level="OVERLAY">
-						<FontString name="$parentStatus" inherits="AchievementDateFont" text="Incomplete" parentKey="status">
+						<FontString name="$parentStatus" inherits="AchievementDateFont" text="Incomplete">
 							<Anchors>
 								<Anchor point="BOTTOM">
 									<Offset x="20" y="5"/>
@@ -1746,7 +1683,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Layer>
 				</Layers>
 				<Frames>
-					<Frame name="$parentIcon" parentKey="icon">
+					<Frame name="$parentIcon">
 						<Size>
 							<AbsDimension x="48" y="48"/>
 						</Size>
@@ -1757,9 +1694,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Offset>
 							</Anchor>
 						</Anchors>
-						<Layers>
+						<Layers>			
 							<Layer level="BORDER">
-								<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true" parentKey="bling">
+								<Texture name="$parentBling" file="Interface\AchievementFrame\UI-Achievement-Bling" hidden="true">
 									<Anchors>
 										<Anchor point="CENTER">
 											<Offset>
@@ -1773,7 +1710,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Texture>
 							</Layer>
 							<Layer level="ARTWORK">
-								<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor" parentKey="texture">
+								<Texture name="$parentTexture" file="Interface\Icons\Spell_Misc_HellifrePVPHonorHoldFavor">
 									<Anchors>
 										<Anchor point="CENTER">
 											<Offset>
@@ -1787,7 +1724,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Texture>
 							</Layer>
 							<Layer level="OVERLAY">
-								<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame" parentKey="frame">
+								<Texture name="$parentOverlay" file="Interface\AchievementFrame\UI-Achievement-IconFrame">
 									<Anchors>
 										<Anchor point="CENTER">
 											<Offset>
@@ -1804,9 +1741,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Layers>
 						<Scripts>
 							<OnLoad function="AchievementIcon_OnLoad"/>
-						</Scripts>
+						</Scripts>				
 					</Frame>
-					<Frame name="$parentShield" parentKey="shield">
+					<Frame name="$parentShield">
 						<Size>
 							<AbsDimension x="40" y="36"/>
 						</Size>
@@ -1830,7 +1767,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 											</Offset>
 										</Anchor>
 									</Anchors>
-									<TexCoords left="0" right=".5" top="0" bottom=".45"/>
+									<TexCoords left="0" right=".5" top="0" bottom=".9"/>
 								</Texture>
 							</Layer>
 							<Layer level="OVERLAY">
@@ -1847,7 +1784,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									</Size>
 								</FontString>
 							</Layer>
-						</Layers>
+						</Layers>				
 						<Scripts>
 							<OnLoad function="AchievementShield_OnLoad"/>
 						</Scripts>
@@ -1866,13 +1803,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnLoad>
 		</Scripts>
 	</Frame>
-
+	
 	<Button name="StatTemplate" virtual="true" hidden="true">
 		<Size x="511" y="24"/>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBG" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" setAllPoints="true" hidden="true" parentKey="background"/>
-				<Texture name="$parentHeaderLeft" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="left">
+				<Texture name="$parentBG" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" setAllPoints="true" hidden="true"/>
+				<Texture name="$parentHeaderLeft" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -1883,7 +1820,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0" right="0.08984375" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderRight" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="right">
+				<Texture name="$parentHeaderRight" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -1894,7 +1831,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.91015625" right="1" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderMiddle" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="middle">
+				<Texture name="$parentHeaderMiddle" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="0" y="23"/>
 					</Size>
@@ -1908,14 +1845,14 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.08984375" right="0.91015625" top="0" bottom="0.1796875"/>
 				</Texture>
-				<FontString name="$parentTitle" inherits="GameFontNormalLarge" parentKey="title">
+				<FontString name="$parentTitle" inherits="GameFontNormalLarge">
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset x="0" y="0"/>
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentValue" inherits="GameFontHighlightRight" parentKey="value">
+				<FontString name="$parentValue" inherits="GameFontHighlightRight">
 					<Anchors>
 						<Anchor point="RIGHT">
 							<Offset x="-5" y="0"/>
@@ -1931,10 +1868,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnClick>
 				AchievementStatButton_OnClick(self, button, down);
 			</OnClick>
-			<OnEnter function="AchievementStatButton_OnEnter"/>
-			<OnLeave>
-				GameTooltip:Hide();
-			</OnLeave>
 		</Scripts>
 		<ButtonText parentKey="text">
 			<Size x="400" y="13"/>
@@ -1952,12 +1885,12 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</HighlightTexture>
 	</Button>
 
-	<Frame name="ComparisonStatTemplate" virtual="true">
+	<Frame name="ComparisonStatTemplate" virtual="true">		
 		<Size x="511" y="24"/>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parentBG" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" setAllPoints="true" hidden="true" parentKey="background"/>
-				<Texture name="$parentHeaderLeft" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="left">
+				<Texture name="$parentBG" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" setAllPoints="true" hidden="true"/>
+				<Texture name="$parentHeaderLeft" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -1968,7 +1901,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0" right="0.08984375" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderRight" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="right">
+				<Texture name="$parentHeaderRight" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -1979,7 +1912,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.91015625" right="1" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderMiddle" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="middle">
+				<Texture name="$parentHeaderMiddle" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="0" y="23"/>
 					</Size>
@@ -1993,7 +1926,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.08984375" right="0.91015625" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderLeft2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="left2">
+				<Texture name="$parentHeaderLeft2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -2004,7 +1937,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0" right="0.08984375" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderRight2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="right2">
+				<Texture name="$parentHeaderRight2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="23" y="23"/>
 					</Size>
@@ -2015,7 +1948,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.91015625" right="1" top="0" bottom="0.1796875"/>
 				</Texture>
-				<Texture name="$parentHeaderMiddle2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons" parentKey="middle2">
+				<Texture name="$parentHeaderMiddle2" file="Interface\AchievementFrame\UI-Achievement-Stat-Buttons">
 					<Size>
 						<AbsDimension x="0" y="23"/>
 					</Size>
@@ -2029,21 +1962,21 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.08984375" right="0.91015625" top="0" bottom="0.1796875"/>
 				</Texture>
-				<FontString name="$parentTitle" inherits="GameFontNormalLarge" parentKey="title">
+				<FontString name="$parentTitle" inherits="GameFontNormalLarge">
 					<Anchors>
 						<Anchor point="CENTER">
 							<Offset x="-67" y="-1"/>
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentText" inherits="GameFontHighlightLeft" parentKey="text">
+				<FontString name="$parentText" inherits="GameFontHighlightLeft">
 					<Anchors>
 						<Anchor point="LEFT">
 							<Offset x="4" y="0"/>
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentValue" inherits="GameFontHighlightRight" parentKey="value">
+				<FontString name="$parentValue" inherits="GameFontHighlightRight">
 					<Size x="500" y="24"/>
 					<Anchors>
 						<Anchor point="RIGHT">
@@ -2051,7 +1984,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 				</FontString>
-				<FontString name="$parentComparisonValue" inherits="GameFontHighlightRight" parentKey="friendValue">
+				<FontString name="$parentComparisonValue" inherits="GameFontHighlightRight">
 					<Size x="120" y="24"/>
 					<Anchors>
 						<Anchor point="RIGHT">
@@ -2062,7 +1995,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</Layer>
 		</Layers>
 		<Frames>
-			<Frame name="$parentMouseover" enableMouse="true" hidden="true" parentKey="mouseover">
+			<Frame name="$parentMouseover" enableMouse="true" hidden="true"> 
 				<Anchors>
 					<Anchor point="TOPLEFT" relativeTo="$parentComparisonValue"/>
 					<Anchor point="BOTTOMRIGHT">
@@ -2073,8 +2006,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<OnEnter>
 						local tooltip = self.tooltip;
 						if ( tooltip ) then
-						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
-						GameTooltip:SetText(tooltip, nil, nil, nil, nil, true);
+							GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+							GameTooltip:SetText(tooltip, nil, nil, nil, nil, true);
 						end
 					</OnEnter>
 					<OnLeave>
@@ -2089,7 +2022,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			</OnLoad>
 		</Scripts>
 	</Frame>
-
+	
 	<Button name="SummaryStatTemplate" inherits="StatTemplate" virtual="true">
 		<Scripts>
 			<OnLoad>
@@ -2107,7 +2040,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<KeyValues>
 			<KeyValue key="backdropInfo" value="BACKDROP_ACHIEVEMENTS_0_64" type="global"/>
 		</KeyValues>
-		<Anchors>
+		<Anchors>	
 			<Anchor point="TOPLEFT">
 				<Offset>
 					<AbsDimension x="0" y="-104"/>
@@ -2210,7 +2143,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="0.5" top="0" bottom="1"/>
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
@@ -2223,24 +2155,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Offset x="0" y="0"/>
 						</Anchor>
 					</Anchors>
-				</Texture>
-				<Texture name="$parentGuildEmblemLeft" hidden="true">
-					<Size>
-						<AbsDimension x="94" y="188"/>
-					</Size>
-					<Anchors>
-						<Anchor point="BOTTOMLEFT" relativeTo="$parentCategoriesBG"/>
-					</Anchors>
-					<TexCoords left="0.7" right="0" top="0.15" bottom="0.85"/>
-				</Texture>
-				<Texture name="$parentGuildEmblemRight" hidden="true">
-					<Size>
-						<AbsDimension x="94" y="188"/>
-					</Size>
-					<Anchors>
-						<Anchor point="LEFT" relativeTo="$parentGuildEmblemLeft" relativePoint="RIGHT"/>
-					</Anchors>
-					<TexCoords left="0" right="0.7" top="0.15" bottom="0.85"/>
 				</Texture>
 				<Texture name="$parentMetalBorderTopLeft" file="Interface\AchievementFrame\UI-Achievement-MetalBorder-Joint">
 					<Size>
@@ -2279,7 +2193,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="1" right="0" top="0" bottom="1"/>
+					<TexCoords left="1" right="0" top="0" bottom="1"/>				
 				</Texture>
 				<Texture name="$parentMetalBorderBottomRight" file="Interface\AchievementFrame\UI-Achievement-MetalBorder-Joint">
 					<Size>
@@ -2292,7 +2206,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Offset>
 						</Anchor>
 					</Anchors>
-					<TexCoords left="0" right="1" top="0" bottom="1"/>
+					<TexCoords left="0" right="1" top="0" bottom="1"/>				
 				</Texture>
 				<Texture name="$parentWoodBorderTopLeft" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
@@ -2319,7 +2233,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 					<TexCoords left="1" right="0" top="0" bottom="1"/>
-				</Texture>
+				</Texture>		
 				<Texture name="$parentWoodBorderBottomLeft" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
 						<AbsDimension x="64" y="64"/>
@@ -2332,7 +2246,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 					<TexCoords left="0" right="1" top="1" bottom="0"/>
-				</Texture>
+				</Texture>		
 				<Texture name="$parentWoodBorderBottomRight" file="Interface\AchievementFrame\UI-Achievement-WoodBorder-Corner">
 					<Size>
 						<AbsDimension x="64" y="64"/>
@@ -2345,7 +2259,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Anchor>
 					</Anchors>
 					<TexCoords left="1" right="0" top="1" bottom="0"/>
-				</Texture>
+				</Texture>						
 			</Layer>
 		</Layers>
 		<Frames>
@@ -2380,7 +2294,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Anchors>
 							<TexCoords left="0" right="0.419921875" top="0.4140625" bottom="0.8046875"/>
 						</Texture>
-					</Layer>
+					</Layer>				
 					<Layer level="BORDER">
 						<Texture name="$parentPointBorder" file="Interface\AchievementFrame\UI-Achievement-Header">
 							<Size>
@@ -2429,7 +2343,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 							<TexCoords left="0" right="0.625" top="0" bottom="0.625"/>
-						</Texture>
+						</Texture> 	
 					</Layer>
 				</Layers>
 			</Frame>
@@ -2449,11 +2363,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Size>
 					<AbsDimension x="175" y="0"/>
 				</Size>
-				<Scripts>
+				<Scripts>		
 					<OnLoad inherit="prepend" function="AchievementFrameCategories_OnLoad"/>
 					<OnShow function="AchievementFrameCategories_OnShow"/>
 				</Scripts>
-
+				
 				<Frames>
 					<ScrollFrame name="$parentContainer" inherits="HybridScrollFrameTemplate">
 						<Anchors>
@@ -2510,7 +2424,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									<Offset x="-3" y="3"/>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
 						</Texture>
 					</Layer>
 					<Layer level="ARTWORK">
@@ -2546,7 +2459,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						AchievementFrameHeaderRightDDLInset:Hide();
 					</OnHide>
 					<OnShow function="AchievementFrameAchievements_OnShow"/>
-				</Scripts>
+				</Scripts>				
 				<Frames>
 					<ScrollFrame name="$parentContainer" inherits="HybridScrollFrameTemplate">
 						<Anchors>
@@ -2578,13 +2491,9 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Slider>
 						</Frames>
 					</ScrollFrame>
-					<Frame setAllPoints="true" parentKey="label" inherits="AchivementGoldBorderBackdrop">
-						<Scripts>
-						</Scripts>
-					</Frame>
-				</Frames>
+					<Frame setAllPoints="true" parentKey="label"/>
+				</Frames>				
 			</Frame>
-			
 			<Frame name="$parentStats" hidden="true">
 				<Size>
 					<AbsDimension x="506" y="440"/>
@@ -2662,7 +2571,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						</Frames>
 					</ScrollFrame>
 					<Frame setAllPoints="true" inherits="AchivementGoldBorderBackdrop"/>
-				</Frames>
+				</Frames>				
 			</Frame>
 			<Frame name="$parentSummary" hidden="true">
 				<Size>
@@ -2687,12 +2596,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									<Offset x="-3" y="3"/>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
 						</Texture>
 					</Layer>
 				</Layers>
 				<Frames>
-					<Frame setAllPoints="true"/>
+					<Frame setAllPoints="true" inherits="AchivementGoldBorderBackdrop"/>
 					<Frame name="$parentAchievements">
 						<Size>
 							<AbsDimension x="0" y="210"/>
@@ -2764,7 +2672,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Anchor point="TOPRIGHT" relativeTo="$parentAchievements" relativePoint="BOTTOMRIGHT">
 								<Offset x="0" y="-8"/>
 							</Anchor>
-						</Anchors>
+						</Anchors>								
 						<Frames>
 							<Frame name="$parentHeader">
 								<Size x="0" y="20"/>
@@ -2874,63 +2782,63 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Layers>
 								<BarTexture name="$parentBar" file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
 								<BarColor r="0" g="1" b="0"/>
-							</StatusBar>
-							<StatusBar name="$parentCategory1" inherits="AchievementFrameSummaryCategoryTemplate" id="92">
+							</StatusBar>							
+							<StatusBar name="$parentCategory1" inherits="AchievementFrameSummaryCategoryTemplate" id="92">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentStatusBar" relativePoint="BOTTOMLEFT">
 										<Offset x="0" y="-24"/>
 									</Anchor>
 								</Anchors>
 							</StatusBar>
-							<StatusBar name="$parentCategory2" inherits="AchievementFrameSummaryCategoryTemplate" id="96">
+							<StatusBar name="$parentCategory2" inherits="AchievementFrameSummaryCategoryTemplate" id="96">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory1" relativePoint="TOPRIGHT">
 										<Offset x="20" y="0"/>
 									</Anchor>
 								</Anchors>
 							</StatusBar>
-							<StatusBar name="$parentCategory3" inherits="AchievementFrameSummaryCategoryTemplate" id="97">
+							<StatusBar name="$parentCategory3" inherits="AchievementFrameSummaryCategoryTemplate" id="97">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory1" relativePoint="BOTTOMLEFT">
 										<Offset x="0" y="-14"/>
 									</Anchor>
-								</Anchors>
+								</Anchors>							
 							</StatusBar>
-							<StatusBar name="$parentCategory4" inherits="AchievementFrameSummaryCategoryTemplate" id="95">
+							<StatusBar name="$parentCategory4" inherits="AchievementFrameSummaryCategoryTemplate" id="95">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory3" relativePoint="TOPRIGHT">
 										<Offset x="20" y="0"/>
 									</Anchor>
-								</Anchors>
+								</Anchors>						
 							</StatusBar>
-							<StatusBar name="$parentCategory5" inherits="AchievementFrameSummaryCategoryTemplate" id="168">
+							<StatusBar name="$parentCategory5" inherits="AchievementFrameSummaryCategoryTemplate" id="168">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory3" relativePoint="BOTTOMLEFT">
 										<Offset x="0" y="-14"/>
 									</Anchor>
-								</Anchors>
+								</Anchors>						
 							</StatusBar>
-							<StatusBar name="$parentCategory6" inherits="AchievementFrameSummaryCategoryTemplate" id="169">
+							<StatusBar name="$parentCategory6" inherits="AchievementFrameSummaryCategoryTemplate" id="169">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory5" relativePoint="TOPRIGHT">
 										<Offset x="20" y="0"/>
 									</Anchor>
 								</Anchors>
 							</StatusBar>
-							<StatusBar name="$parentCategory7" inherits="AchievementFrameSummaryCategoryTemplate" id="201">
+							<StatusBar name="$parentCategory7" inherits="AchievementFrameSummaryCategoryTemplate" id="201">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory5" relativePoint="BOTTOMLEFT">
 										<Offset x="0" y="-14"/>
 									</Anchor>
-								</Anchors>
+								</Anchors>							
 							</StatusBar>
-							<StatusBar name="$parentCategory8" inherits="AchievementFrameSummaryCategoryTemplate" id="155">
+							<StatusBar name="$parentCategory8" inherits="AchievementFrameSummaryCategoryTemplate" id="155">	
 								<Anchors>
 									<Anchor point="TOPLEFT" relativeTo="$parentCategory7" relativePoint="TOPRIGHT">
 										<Offset x="20" y="0"/>
 									</Anchor>
-								</Anchors>
-							</StatusBar>
+								</Anchors>							
+							</StatusBar>							
 						</Frames>
 					</Frame>
 				</Frames>
@@ -2983,15 +2891,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									<TexCoords left="0.05" right=".95" top="0" bottom=".9"/>
 								</Texture>
 							</Layer>
-							<Layer level="BACKGROUND" textureSubLevel="-1">
-								<Texture name="$parentPortraitBg">
-									<Anchors>
-										<Anchor point="TOPLEFT" relativeTo="$parentPortrait"/>
-										<Anchor point="BOTTOMRIGHT" relativeTo="$parentPortrait"/>
-									</Anchors>
-									<Color r="0" g="0" b="0"/>
-								</Texture>
-							</Layer>
 							<Layer level="OVERLAY">
 								<FontString name="$parentName" text="PLAYER" inherits="GameFontNormalLeft">
 									<Size x="78" y="12"/>
@@ -3018,7 +2917,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 										</Anchor>
 									</Anchors>
 									<TexCoords left="0" right="0.625" top="0" bottom="0.625"/>
-								</Texture>
+								</Texture> 	
 							</Layer>
 						</Layers>
 						<Scripts>
@@ -3060,11 +2959,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 												</Anchor>
 											</Anchors>
 											<TexCoords left="0" right="1" top="0" bottom="0.25"/>
-										</Texture>
+										</Texture>						
 									</Layer>
-								</Layers>
+								</Layers>								
 								<Frames>
-									<StatusBar name="$parentStatusBar" inherits="AchievementHeaderStatusBarTemplate" parentKey="statusBar">
+									<StatusBar name="$parentStatusBar" inherits="AchievementHeaderStatusBarTemplate">
 										<Size x="0" y="21"/>
 										<Anchors>
 											<Anchor point="TOPLEFT">
@@ -3074,11 +2973,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 												<Offset x="-19" y="-17"/>
 											</Anchor>
 										</Anchors>
-									</StatusBar>
+									</StatusBar>								
 								</Frames>
 								<Scripts>
-									<OnLoad>
-										self:SetBackdropBorderColor(0.4, 0.2, 0, 1);
+									<OnLoad inherit="prepend">
+										self.statusBar = _G[self:GetName().."StatusBar"];
 									</OnLoad>
 								</Scripts>
 							</Frame>
@@ -3103,17 +3002,17 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 												</Anchor>
 											</Anchors>
 											<TexCoords left=".2" right=".75" top="0" bottom="1"/>
-										</Texture>
+										</Texture>						
 									</Layer>
 								</Layers>
 								<Frames>
-									<StatusBar name="$parentStatusBar" inherits="AchievementHeaderStatusBarTemplate" parentKey="statusBar">
+									<StatusBar name="$parentStatusBar" inherits="AchievementHeaderStatusBarTemplate">
 										<Size x="90" y="21"/>
 									</StatusBar>
 								</Frames>
 								<Scripts>
-									<OnLoad>
-										self:SetBackdropBorderColor(0.4, 0.2, 0, 1);
+									<OnLoad  inherit="prepend">
+										self.statusBar = _G[self:GetName().."StatusBar"];
 										self.statusBar.title:Hide();
 									</OnLoad>
 								</Scripts>
@@ -3210,7 +3109,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 									<Offset x="-3" y="3"/>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
 						</Texture>
 					</Layer>
 					<Layer level="ARTWORK">
@@ -3248,7 +3146,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<OnShow function="AchievementFrameComparison_OnShow"/>
 					<OnHide function="AchievementFrameComparison_OnHide"/>
 				</Scripts>
-			</Frame>
+			</Frame>			
 			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
 				<Anchors>
 					<Anchor point="TOPRIGHT" relativeTo="AchievementFrame" relativePoint="TOPRIGHT">
@@ -3258,7 +3156,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Scripts>
 					<OnShow>
 						if ( AchievementFrameComparisonHeader:IsShown() ) then
-						self:SetFrameLevel(AchievementFrameComparisonHeader:GetFrameLevel() + 1);
+							self:SetFrameLevel(AchievementFrameComparisonHeader:GetFrameLevel() + 1);
 						end
 					</OnShow>
 				</Scripts>
@@ -3274,11 +3172,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Scripts>
 					<OnClick>
 						AchievementFrameTab_OnClick(self:GetID());
+						self.text:SetPoint("CENTER", self, "CENTER", 0, -5);
+						AchievementFrameTab2.text:SetPoint("CENTER", AchievementFrameTab2, "CENTER", 0, -3);
 						PlaySound(SOUNDKIT.IG_CHARACTER_INFO_TAB);
 					</OnClick>
 				</Scripts>
 			</Button>
-			<Button name="$parentTab2" inherits="AchievementFrameTabButtonTemplate" id="2" text="ACHIEVEMENTS_GUILD_TAB">
+			<Button name="$parentTab2" inherits="AchievementFrameTabButtonTemplate" id="2" text="STATISTICS">
 				<Anchors>
 					<Anchor point="LEFT" relativeTo="$parentTab1" relativePoint="RIGHT">
 						<Offset>
@@ -3289,24 +3189,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<Scripts>
 					<OnClick>
 						AchievementFrameTab_OnClick(self:GetID());
+						self.text:SetPoint("CENTER", self, "CENTER", 0, -5);
+						AchievementFrameTab1.text:SetPoint("CENTER", AchievementFrameTab1, "CENTER", 0, -3);
 						PlaySound(SOUNDKIT.IG_CHARACTER_INFO_TAB);
 					</OnClick>
-				</Scripts>
-			</Button>
-			<Button name="$parentTab3" inherits="AchievementFrameTabButtonTemplate" id="3" text="STATISTICS">
-				<Anchors>
-					<Anchor point="LEFT" relativeTo="$parentTab2" relativePoint="RIGHT">
-						<Offset>
-							<AbsDimension x="-5" y="0"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						AchievementFrameTab_OnClick(self:GetID());
-						PlaySound(SOUNDKIT.IG_CHARACTER_INFO_TAB);
-					</OnClick>
-				</Scripts>
+				</Scripts>				
 			</Button>
 			<DropdownButton name="AchievementFrameFilterDropdown" inherits="WowStyle1FilterDropdownTemplate" hidden="true">
 				<Anchors>
@@ -3324,4 +3211,5 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<OnHide function="AchievementFrame_OnHide"/>
 		</Scripts>
 	</Frame>
+		
 </Ui>
