@@ -4,6 +4,7 @@ import argparse
 import shutil
 import re
 import subprocess
+import datetime
 
 
 def parse_toc_file(toc_path):
@@ -450,6 +451,36 @@ def load_xml(file_path):
     return files_to_load
 
 
+def get_git_commit_hash(repo_path):
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        print(f"Error getting commit hash for {repo_path}: {e}")
+        return "Unknown"
+
+
+def get_git_branch(repo_path):
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        print(f"Error getting branch for {repo_path}: {e}")
+        return "Unknown"
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Recreate a copy of the WoWUI folder structure containing only files "
@@ -608,6 +639,28 @@ def main():
     with open(settings_path, "w", encoding="utf-8") as f:
         f.write(settings_content)
     print(f"Created VS Code settings file: {settings_path}")
+
+    # Generate COMMIT_HASHES.md
+    print("\nGenerating COMMIT_HASHES.md")
+    vscode_wow_api_hash = get_git_commit_hash(os.path.join(".", "vscode-wow-api"))
+    vscode_wow_api_branch = get_git_branch(os.path.join(".", "vscode-wow-api"))
+    wowui_hash = get_git_commit_hash(os.path.join(".", "WoWUI"))
+    wowui_branch = get_git_branch(os.path.join(".", "WoWUI"))
+
+    commit_hashes_content = f"""# Commit Hashes
+
+This API documentation was generated using the following commit hashes:
+
+- **vscode-wow-api**: `{vscode_wow_api_branch}` @ `{vscode_wow_api_hash}`
+- **WoWUI**: `{wowui_branch}` @ `{wowui_hash}`
+
+Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+"""
+
+    commit_hashes_path = os.path.join(dest_version, "COMMIT_HASHES.md")
+    with open(commit_hashes_path, "w", encoding="utf-8") as f:
+        f.write(commit_hashes_content)
+    print(f"Created COMMIT_HASHES.md: {commit_hashes_path}")
 
 
 if __name__ == "__main__":
