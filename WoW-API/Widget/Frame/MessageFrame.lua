@@ -7,9 +7,9 @@ local MessageFrame  = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_MessageFrame_AddMessage)
 ---@param text string
----@param colorR number
----@param colorG number
----@param colorB number
+---@param colorR? number
+---@param colorG? number
+---@param colorB? number
 ---@param a? SingleColorValue
 ---@param messageID? number
 function MessageFrame:AddMessage(text, colorR, colorG, colorB, a, messageID) end
@@ -115,7 +115,7 @@ function MessageFrame:SetFading(fading) end
 function MessageFrame:SetFont(fontFile, height, flags) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_MessageFrame_SetFontObject)
----@param font FontObject
+---@param font FontObject|nil
 function MessageFrame:SetFontObject(font) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_MessageFrame_SetIndentedWordWrap)

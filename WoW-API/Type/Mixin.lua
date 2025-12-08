@@ -1,13 +1,10 @@
 ---@meta _
 
----@alias AzeriteEmpoweredItemLocation ItemLocationMixin
----@alias AzeriteItemLocation ItemLocationMixin
----@alias colorRGB ColorMixin
----@alias colorRGBA ColorMixin
----@alias EmptiableItemLocation ItemLocationMixin
----@alias ItemLocation ItemLocationType
+---@alias AzeriteEmpoweredItemLocation ItemLocation
+---@alias AzeriteItemLocation ItemLocation
+---@alias EmptiableItemLocation ItemLocation
 ---@alias ItemTransmogInfo ItemTransmogInfoMixin
----@alias PlayerLocation PlayerLocationType
+---@alias PlayerLocation PlayerLocationMixin
 ---@alias ReportInfo ReportInfoMixin
 ---@alias TransmogLocation TransmogLocationType
 ---@alias TransmogPendingInfo TransmogPendingInfoMixin
