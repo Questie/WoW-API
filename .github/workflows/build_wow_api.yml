@@ -1,0 +1,29 @@
+name: Build WoW-API
+
+on:
+  push:
+    paths:
+      - 'WoW-API/**'
+  workflow_dispatch:
+
+jobs:
+  build_and_release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create ZIP archive
+        # Zip the directory so it unpacks to a "WoW-API" folder
+        run: zip -r WoW-API.zip WoW-API/
+
+      - name: Publish Release
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "WoW-API.zip"
+          tag: "wow-api-v1.0.${{ github.run_number }}"
+          name: "WoW-API Build v1.0.${{ github.run_number }}"
+          body: "Automated build for WoW-API.\nCommit: ${{ github.sha }}"
+          token: ${{ secrets.GITHUB_TOKEN }}
