@@ -212,9 +212,11 @@ def create_mixin(file, dest_root, branch, original_path):
             line = line.replace("\ufeff", "")
             if is_xml:
                 url = f"https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/{branch}/Interface/AddOns/Blizzard_SharedXML/UI.xsd"
-                line = line.replace(r"..\Blizzard_SharedXML\UI.xsd", url)
-                line = line.replace(r"../Blizzard_SharedXML/UI.xsd", url)
-                line = line.replace("..\https", "https")
+                line = re.sub(
+                    r"(?:\.\.[\\/])+(?:.*?[\\/])?Blizzard_SharedXML[\\/]UI\.xsd",
+                    url,
+                    line,
+                )
 
             matched = False
 
