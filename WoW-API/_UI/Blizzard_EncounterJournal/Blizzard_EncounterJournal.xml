@@ -1,6 +1,6 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\Blizzard_SharedXML\UI.xsd">
+https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 	<!-- Tiled textures size=64,512-->
 	<Texture name="_FilterButtonUp-Mid" file="Interface\EncounterJournal\UI-EncounterJournalTextures_Tile" virtual="true" horizTile="true" >
 		<Size x="64" y="26"/>

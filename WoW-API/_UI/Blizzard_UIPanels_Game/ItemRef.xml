@@ -1,6 +1,6 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\Blizzard_SharedXML\UI.xsd">
+https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 	<GameTooltip name="ItemRefShoppingTooltip1" frameStrata="TOOLTIP" hidden="true" parent="UIParent" inherits="ShoppingTooltipTemplate"/>
 	<GameTooltip name="ItemRefShoppingTooltip2" frameStrata="TOOLTIP" hidden="true" parent="UIParent" inherits="ShoppingTooltipTemplate"/>
 	<GameTooltip name="ItemRefTooltip" inherits="GameTooltipTemplate" parent="UIParent" enableMouse="true" toplevel="true" movable="true" frameStrata="TOOLTIP" hidden="true">

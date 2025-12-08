@@ -1,6 +1,6 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\..\Blizzard_SharedXML\UI.xsd">
+https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 	<Texture name="MonkUI-background-shadow" file="Interface\PlayerFrame\MonkUI" virtual="true" >
 		<Size x="136" y="43"/>
 		<TexCoords left="0.00390625" right="0.53515625" top="0.00781250" bottom="0.34375000"/>

@@ -1,6 +1,6 @@
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
-..\Blizzard_SharedXML\UI.xsd">
+https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
 	<AnimationGroup name="SocialToastAnimInTemplate" parentKey="animIn" virtual="true">
 		<Alpha fromAlpha="1" toAlpha="0" duration="0" order="1"/>
 		<Alpha fromAlpha="0" toAlpha="1" duration="0.2" order="2"/>
