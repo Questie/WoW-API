@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionUI\Classic\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function LocalizeWoWToken(font)
@@ -81,7 +82,7 @@ local l10nTable = {
 			-- Auction Browse Headers
 			BrowseLevelText:SetPoint("BOTTOMLEFT", "AuctionFrameBrowse", "TOPLEFT", 230, -56);
 			BrowseMinLevel:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMLEFT", 3, -3);
-			BrowseDropdown:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMRIGHT", -5, 4);
+			BrowseDropdown:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMRIGHT", 10, 4);
 			BrowseDropdownName:SetPoint("BOTTOMLEFT", "BrowseDropdown", "TOPLEFT", 20, -3);
 
 			-- Bid Tab Headers
@@ -105,7 +106,7 @@ local l10nTable = {
 			-- Auction Headers
 			BrowseLevelText:SetPoint("BOTTOMLEFT", "AuctionFrameBrowse", "TOPLEFT", 230, -56);
 			BrowseMinLevel:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMLEFT", 3, -2);
-			BrowseDropdown:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMRIGHT", -5, 4);
+			BrowseDropdown:SetPoint("TOPLEFT", "BrowseLevelText", "BOTTOMRIGHT", 10, 4);
 			BrowseDropdownName:SetPoint("BOTTOMLEFT", "BrowseDropdown", "TOPLEFT", 20, -3);
 
 			-- Bid Tab Headers

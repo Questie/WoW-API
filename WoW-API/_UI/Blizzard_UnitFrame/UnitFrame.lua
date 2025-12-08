@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\UnitFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -79,14 +80,12 @@ function UnitFrame_Initialize (self, unit, name, portrait, healthbar, healthtext
 	self.threatNumericIndicator = threatNumericIndicator;
 	self.myHealPredictionBar = myHealPredictionBar;
 	self.otherHealPredictionBar = otherHealPredictionBar
-	if ClassicExpansionAtLeast(LE_EXPANSION_MISTS_OF_PANDARIA) then
-		self.totalAbsorbBar = totalAbsorbBar;
-		self.overAbsorbGlow = overAbsorbGlow;
-		self.overHealAbsorbGlow = overHealAbsorbGlow;
-		self.healAbsorbBar = healAbsorbBar;
-		self.healAbsorbBarLeftShadow = healAbsorbBarLeftShadow;
-		self.healAbsorbBarRightShadow = healAbsorbBarRightShadow;
-	end
+	self.totalAbsorbBar = totalAbsorbBar;
+	self.overAbsorbGlow = overAbsorbGlow;
+	self.overHealAbsorbGlow = overHealAbsorbGlow;
+	self.healAbsorbBar = healAbsorbBar;
+	self.healAbsorbBarLeftShadow = healAbsorbBarLeftShadow;
+	self.healAbsorbBarRightShadow = healAbsorbBarRightShadow;
 	self.myManaCostPredictionBar = myManaCostPredictionBar;
 
 	if ( self.myManaCostPredictionBar ) then
@@ -562,7 +561,7 @@ function UnitFrameHealthBar_Initialize (unit, statusbar, statustext, frequentUpd
 	if ( frequentUpdates ) then
 		statusbar:RegisterEvent("VARIABLES_LOADED");
 	end
-	if ( GetCVarBool("predictedHealth") and frequentUpdates ) then
+	if ( frequentUpdates ) then
 		statusbar:SetScript("OnUpdate", UnitFrameHealthBar_OnUpdate);
 	else
 		statusbar:RegisterUnitEvent("UNIT_HEALTH", unit);
@@ -585,7 +584,7 @@ function UnitFrameHealthBar_OnEvent(self, event, ...)
 		TextStatusBar_OnEvent(self, event, ...);
 	elseif ( event == "VARIABLES_LOADED" ) then
 		self:UnregisterEvent("VARIABLES_LOADED");
-		if ( GetCVarBool("predictedHealth") and self.frequentUpdates ) then
+		if ( self.frequentUpdates ) then
 			self:SetScript("OnUpdate", UnitFrameHealthBar_OnUpdate);
 			self:UnregisterEvent("UNIT_HEALTH");
 		else

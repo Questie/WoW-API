@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\TextToSpeechFrameConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class TEXT_TO_SPEECH_CHAT_TYPES

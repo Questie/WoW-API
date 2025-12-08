@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_WowTokenUI\Blizzard_WowTokenUIInsecure.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- DO NOT PUT ANY SENSITIVE CODE IN THIS FILE

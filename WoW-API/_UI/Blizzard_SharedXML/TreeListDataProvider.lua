@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\TreeListDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -231,6 +232,10 @@ function TreeDataProviderMixin:Init()
 	CallbackRegistryMixin.OnLoad(self);
 	
 	self.node = CreateTreeNode(self);
+end
+
+function TreeDataProviderMixin:IsVirtual()
+	return false;
 end
 
 function TreeDataProviderMixin:GetChildrenNodes()

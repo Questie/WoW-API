@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Vanilla\RealmList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local REALM_BUTTON_HEIGHT = 16;
@@ -8,9 +9,29 @@ function RealmList_OnLoad(self)
 	self.selectedRealm = nil;
 	self.selectedCategory = nil;
 	
+	self:RegisterEvent("QUEUE_IS_FULL");
+
 	local scrollFrame = RealmListScrollFrame;
 	scrollFrame.update = function() RealmList_Update() end;
 	HybridScrollFrame_CreateButtons(RealmListScrollFrame, "RealmListRealmButtonTemplate");
+end
+
+function RealmList_OnEvent(self, event, ...)
+	if ( event == "QUEUE_IS_FULL" ) then
+		local realmName, characterCapReached = ...;
+		if( self:IsVisible() ) then
+			if( characterCapReached ) then
+				RealmList_ShowCharacterCapReached();
+			else
+				RealmList_ShowQueueIsFull(realmName);
+			end
+		else
+			-- Queue the popup for the next time we show ourselves
+			self.showQueueIsFull = true;
+			self.queueIsFullRealmName = realmName;
+			self.characterCapReached = characterCapReached;
+		end
+	end
 end
 
 function RealmList_Update()
@@ -47,65 +68,78 @@ function RealmList_Update()
 			button.realmAddr = realmAddr;
 			local isSelectedRealm = realmAddr == RealmList.selectedRealm;
 
+			local seasonID = realmInfo.seasonID;
 			--Update RealmType
-			if ( realmInfo.isPvP and realmInfo.isRP ) then
-				button.RealmType:SetText(RPPVP_PARENTHESES);
-				button.RealmType:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
-			elseif ( realmInfo.isRP ) then
-				button.RealmType:SetText(RP_PARENTHESES);
-				button.RealmType:SetTextColor(GREEN_FONT_COLOR.r, GREEN_FONT_COLOR.g, GREEN_FONT_COLOR.b);
-			elseif ( realmInfo.isPvP ) then
-				button.RealmType:SetText(PVP_PARENTHESES);
-				button.RealmType:SetTextColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
-			else
-				button.RealmType:SetText(GAMETYPE_NORMAL);
-				button.RealmType:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+			local realmType = "";
+			if (seasonID and SEASON_NAMES[seasonID] ~= nil) then
+				realmType = SEASON_NAMES[seasonID] .. " ";
 			end
-			
+			if ( realmInfo.isPvP and realmInfo.isRP ) then
+				realmType = realmType .. RPPVP_PARENTHESES;
+				button.RealmType:SetTextColor(NORMAL_FONT_COLOR:GetRGB());
+			elseif ( realmInfo.isRP ) then
+				realmType = realmType .. RP_PARENTHESES;
+				button.RealmType:SetTextColor(GREEN_FONT_COLOR:GetRGB());
+			elseif ( realmInfo.isPvP ) then
+				realmType = realmType .. PVP_PARENTHESES;
+				button.RealmType:SetTextColor(RED_FONT_COLOR:GetRGB());
+			else
+				realmType = realmType .. GAMETYPE_NORMAL;
+				button.RealmType:SetTextColor(NORMAL_FONT_COLOR:GetRGB());
+			end
+			if (seasonID) then
+				if( realmInfo.isPvP ) then
+					button.RealmType:SetTextColor(BLUE_FONT_COLOR:GetRGB());
+			else
+					button.RealmType:SetTextColor(GREEN_FONT_COLOR:GetRGB());
+				end
+			end
+			button.RealmType:SetText(realmType);
+
 			local populationState = realmInfo.populationState;
+			local versionMismatch = realmInfo.versionMismatch;
 			--Update Load text
 			if ( populationState == "OFFLINE" ) then
 				button.Load:SetText(REALM_DOWN);
-				button.Load:SetTextColor(GRAY_FONT_COLOR.r, GRAY_FONT_COLOR.g, GRAY_FONT_COLOR.b);
+				button.Load:SetTextColor(GRAY_FONT_COLOR:GetRGB());
 			elseif ( versionMismatch ) then --not a population state
 				button.Load:SetText(ADDON_INCOMPATIBLE);
-				button.Load:SetTextColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
+				button.Load:SetTextColor(RED_FONT_COLOR:GetRGB());
 			elseif ( populationState == "LOCKED" ) then
 				button.Load:SetText(REALM_LOCKED);
-				button.Load:SetTextColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
+				button.Load:SetTextColor(RED_FONT_COLOR:GetRGB());
 			elseif ( populationState == "LOW" ) then
 				button.Load:SetText(LOAD_LOW);
-				button.Load:SetTextColor(GREEN_FONT_COLOR.r, GREEN_FONT_COLOR.g, GREEN_FONT_COLOR.b);
+				button.Load:SetTextColor(GREEN_FONT_COLOR:GetRGB());
 			elseif ( populationState == "HIGH" ) then
 				button.Load:SetText(LOAD_HIGH);
-				button.Load:SetTextColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
+				button.Load:SetTextColor(RED_FONT_COLOR:GetRGB());
 			elseif ( populationState == "NEW" ) then
 				button.Load:SetText(LOAD_NEW);
-				button.Load:SetTextColor(BLUE_FONT_COLOR.r, BLUE_FONT_COLOR.g, BLUE_FONT_COLOR.b);
+				button.Load:SetTextColor(BLUE_FONT_COLOR:GetRGB());
 			elseif ( populationState == "RECOMMENDED" ) then
 				button.Load:SetText(LOAD_RECOMMENDED);
-				button.Load:SetTextColor(BLUE_FONT_COLOR.r, BLUE_FONT_COLOR.g, BLUE_FONT_COLOR.b);
+				button.Load:SetTextColor(BLUE_FONT_COLOR:GetRGB());
 			elseif ( populationState == "FULL" ) then
 				button.Load:SetText(LOAD_FULL);
-				button.Load:SetTextColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
+				button.Load:SetTextColor(RED_FONT_COLOR:GetRGB());
 			elseif ( populationState == "MEDIUM" ) then
 				button.Load:SetText(LOAD_MEDIUM);
-				button.Load:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+				button.Load:SetTextColor(NORMAL_FONT_COLOR:GetRGB());
 			else
 				--Should never happen
 				button.Load:SetText(LOAD_MEDIUM);
-				button.Load:SetTextColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b);
+				button.Load:SetTextColor(NORMAL_FONT_COLOR:GetRGB());
 			end
-			
-			local versionMismatch = realmInfo.versionMismatch;
+
 			local numChars = realmInfo.numCharacters;
 			--Update selected state
 			if ( isSelectedRealm ) then
 				button:LockHighlight();
 				RealmListHighlight:SetPoint("TOPLEFT", button, "TOPLEFT", 0, 0);
 				RealmListHighlight:SetShown(populationState ~= "OFFLINE");
-				button.RealmType:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
-				button.Load:SetTextColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b);
+				button.RealmType:SetTextColor(HIGHLIGHT_FONT_COLOR:GetRGB());
+				button.Load:SetTextColor(HIGHLIGHT_FONT_COLOR:GetRGB());
 
 				--Update the highlight color
 				if ( versionMismatch ) then
@@ -241,13 +275,26 @@ function RealmList_OnOk()
 		local realmInfo = C_RealmList.GetRealmInfo(RealmList.selectedRealm);
 
 		if ( realmInfo.populationState == "FULL" and realmInfo.numCharacters == 0 ) then
-			GlueDialog_Show("REALM_IS_FULL");
-		elseif (realmInfo.isPvP == true and realmInfo.numCharacters == 0) then
-			RealmWarningPopUpFrame:SetRealmInfo(RealmList.selectedRealm)
-			RealmWarningPopUpFrame:ShowRealmSelectionWarning();
+			StaticPopup_Show("REALM_IS_FULL");
+		elseif ( realmInfo.populationState == "LOCKED" and realmInfo.numCharacters == 0 ) then
+			StaticPopup_Show("REALM_IS_LOCKED");
 		else
-			C_RealmList.ConnectToRealm(RealmList.selectedRealm);
+			RealmList_OnConnectToRealm();
 		end
+	end
+end
+
+function RealmList_OnConnectToRealm()
+	local realmInfo = C_RealmList.GetRealmInfo(RealmList.selectedRealm);
+
+	if (realmInfo.seasonID ~= nil and C_RealmList.IsSeasonHardcore(realmInfo.seasonID) and realmInfo.numCharacters == 0) then
+		HardcorePopUpFrame:SetRealmInfo(RealmList.selectedRealm)
+		HardcorePopUpFrame:ShowRealmSelectionWarning();
+	elseif (realmInfo.isPvP == true and realmInfo.numCharacters == 0) then
+		RealmWarningPopUpFrame:SetRealmInfo(RealmList.selectedRealm)
+		RealmWarningPopUpFrame:ShowRealmSelectionWarning();
+	else
+		C_RealmList.ConnectToRealm(RealmList.selectedRealm);
 	end
 end
 
@@ -264,7 +311,7 @@ function RealmList_ClickButton(self, doubleClick)
 	local name, isTournament, isInvalidLocale = C_RealmList.GetCategoryInfo(RealmList.selectedCategory);
 	if ( isInvalidLocale ) then
 		--Display popup explaining locale specific realms
-		GlueDialog_Show("REALM_LOCALE_WARNING");
+		StaticPopup_Show("REALM_LOCALE_WARNING");
 		return;
 	end
 
@@ -284,6 +331,17 @@ function RealmSelectButton_OnDoubleClick(self)
 end
 
 function RealmList_OnShow(self)
+	if ( self.showQueueIsFull ) then
+		if ( self.characterCapReached ) then
+			RealmList_ShowCharacterCapReached();
+		else
+			RealmList_ShowQueueIsFull(self.queueIsFullRealmName);
+		end
+		self.showQueueIsFull = false;
+		self.queueIsFullRealmName = nil;
+		self.characterCapReached = false;
+	end
+
 	local name = GetServerName();
 
 	-- If we already have a realm name, find the correct category
@@ -297,7 +355,7 @@ function RealmList_OnShow(self)
 	RealmList_Update();
 	
 	if ( not C_RealmList.IsRealmListComplete() ) then
-		GlueDialog_Show("OKAY_MUST_ACCEPT", REALM_LIST_PARTIAL_RESULTS);
+		StaticPopup_Show("OKAY_MUST_ACCEPT", REALM_LIST_PARTIAL_RESULTS);
 	end
 end
 
@@ -323,7 +381,7 @@ function RealmListTab_OnClick(tab)
 		local name, isTournament = C_RealmList.GetCategoryInfo(C_RealmList.GetAvailableCategories()[tab:GetID()]);
 		if ( isTournament ) then
 			--Display popup explaining tournament realms
-			GlueDialog_Show("REALM_TOURNAMENT_WARNING");
+			StaticPopup_Show("REALM_TOURNAMENT_WARNING");
 		end
 		return;
 	end
@@ -440,6 +498,18 @@ function RealmList_PushSortOrdering(sortBy)
 	RealmList_Update();
 end
 
+function RealmList_ShowQueueIsFull(realmName)
+	local dialogString = QUEUE_IS_FULL;
+	if( realmName ) then
+		dialogString = string.format(_G["QUEUE_IS_FULL_REALM_NAME"], realmName);
+	end
+	StaticPopup_Show("OKAY_MUST_ACCEPT", dialogString);
+end
+
+function RealmList_ShowCharacterCapReached()
+	StaticPopup_Show("OKAY_MUST_ACCEPT", NAME_RESERVATION_CHARACTER_CAP_REACHED);
+end
+
 function RealmListUtility_SortRealmsCB(realm1, realm2)
 	for i=1, #REALM_LIST_SORT_ORDERING do
 		local ordering = REALM_LIST_SORT_DEFINITIONS[REALM_LIST_SORT_ORDERING[i].sortBy].func(realm1, realm2);
@@ -458,4 +528,39 @@ end
 
 function RealmListUtility_SortRealms(realms)
 	table.sort(realms, RealmListUtility_SortRealmsCB);
+end
+
+function RealmListUtility_GetTypeTooltip(realmAddr)
+	local seasonID = C_RealmList.GetRealmInfo(realmAddr).seasonID;
+	return seasonID == 0 and nil or SEASON_TOOLTIPS[seasonID];
+end
+
+function RealmTypeTooltipHitbox_OnEnter(self)
+	local tooltipText = RealmListUtility_GetTypeTooltip(self:GetParent().realmAddr);
+	if(tooltipText) then
+		GlueTooltip:SetOwner(self, "ANCHOR_RIGHT", -50, 0);
+		GlueTooltip:SetText(tooltipText);
+	end
+end
+
+function RealmButton_RemoveTooltip(self)
+	if (GlueTooltip_GetOwner(GlueTooltip) == self) then
+		GlueTooltip:Hide();
+	end
+end
+
+function RealmListUtility_ResizeRealmTypeColumn(offsetX, offsetY)
+	local scrollFrame = RealmListScrollFrame;
+	for i=1, #scrollFrame.buttons do
+		local button = scrollFrame.buttons[i];
+		button:SetWidth(button:GetWidth() + offsetX);
+		button.RealmType:SetWidth(button.RealmType:GetWidth() + offsetX);
+	end
+
+	RealmListBackground:SetWidth(RealmListBackground:GetWidth() + offsetX);
+	RealmTypeSort:SetWidth(RealmTypeSort:GetWidth() + offsetX);
+	RealmListHighlight:SetWidth(RealmListHighlight:GetWidth() + offsetX);
+	RealmListTopTexture:SetWidth(RealmListTopTexture:GetWidth() + offsetX);
+	RealmListBottomTexture:SetWidth(RealmListBottomTexture:GetWidth() + offsetX);
+	RealmListScrollFrame:SetPoint("BOTTOMRIGHT", RealmListBackground, "TOPLEFT", RealmListScrollFrame:GetWidth() + offsetX, -RealmListScrollFrame:GetHeight());
 end

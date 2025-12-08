@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GuildControlUI\Blizzard_GuildControlUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -413,7 +414,6 @@ function GuildControlUI_CheckClicked(self)
 	end
 	GuildControlUI.numSkipUpdates = GuildControlUI.numSkipUpdates + 1;
 	GuildControlSetRankFlag(self:GetID(), self:GetChecked());
-	--WithdrawGoldEditBox_Update();
 end
 
 

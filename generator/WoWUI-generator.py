@@ -4,6 +4,7 @@ import argparse
 import shutil
 import re
 import subprocess
+import datetime
 
 
 def parse_toc_file(toc_path):
@@ -63,7 +64,7 @@ def adjust_file_entry(entry, version, addon_name):
     return entry
 
 
-def create_mixin(file, dest_root, branch):
+def create_mixin(file, dest_root, branch, original_path):
     # Extra manual inheritance mapping
     # Will be appended last on the line
     extra_class_inheritence = {
@@ -127,16 +128,37 @@ def create_mixin(file, dest_root, branch):
             "group_index": [1, 2, 3],  # LHS, RHS
         },
         {
-            "regex": r"^(\w+) *= *CreateFromMixins\(([^)]+)\);",
+            # Empty mixins
+            "regex": r"^(\w+) *= *CreateFromMixins\(\);?",
+            "action": "template",
+            "output_string": "---@class {0}",
+            "group_index": [1],
+        },
+        {
+            "regex": r"^(\w+) *= *CreateFromMixins\(([^)]+)\);?",
             "action": "template",
             "output_string": "---@class {0} : {1}",
             "group_index": [1, 2],  # LHS, RHS
+        },
+        {
+            # Mixed mixins with table (Added Mixin to the end to be safe)
+            "regex": r"^(\w+) *= *CreateFromMixins\((.+Mixin), *\{",
+            "action": "template",
+            "output_string": "---@class {0} : {1}",
+            "group_index": [1, 2],
         },
         {
             "regex": r"^(\w+) = (\w+):CreateSubPin\(",
             "action": "template",
             "output_string": "---@class {0} : {1}",
             "group_index": [1, 2],  # [child_class, parent_class]
+        },
+        {
+            # Adds support for CameraRegistry and DoublyLinkedListMixin
+            "regex": r"^(\w+Mixin|\w+Registry) *= *{.*?};?$",
+            "action": "template",
+            "output_string": "---@class {0}",
+            "group_index": [1],
         },
         {
             "regex": r"^local (\w+) = {\s*}",
@@ -179,8 +201,10 @@ def create_mixin(file, dest_root, branch):
         # Determine comment style based on file extension
         is_xml = file.lower().endswith(".xml")
         if is_xml:
+            f.write(f"<!-- Original Path: {original_path} -->\n")
             f.write("<!-- Auto-moved, do not edit manually -->\n")
         else:
+            f.write(f"-- Original Path: {original_path}\n")
             f.write("-- Auto-generated LuaLS Annotations, do not edit manually\n")
             f.write("---@meta _\n")
 
@@ -189,8 +213,11 @@ def create_mixin(file, dest_root, branch):
             line = line.replace("\ufeff", "")
             if is_xml:
                 url = f"https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/{branch}/Interface/AddOns/Blizzard_SharedXML/UI.xsd"
-                line = line.replace(r"..\Blizzard_SharedXML\UI.xsd", url)
-                line = line.replace(r"../Blizzard_SharedXML/UI.xsd", url)
+                line = re.sub(
+                    r"(?:\.\.[\\/])+(?:.*?[\\/])?Blizzard_SharedXML[\\/]UI\.xsd",
+                    url,
+                    line,
+                )
 
             matched = False
 
@@ -239,111 +266,76 @@ def process_addon_directory(
     addon_dir, version, source_addons_root, dest_addons_root, branch
 ):
     """
-    For a given addon folder, select the appropriate base and version-specific TOC files,
-    then:
-      - Parse the base TOC to obtain allowed file entries.
-      - Read the version-specific TOC, filtering out any file entry not in the allowed set.
-      - Recreate the addon's folder under dest_addons_root.
-      - Copy all files referenced (with relative paths preserved), except any .toc files.
-
-    The function looks for a TOC file ending with _{version}.toc.
-    It also attempts to pick a genuine base TOC (one that does not look version-specific)
-    to use for allowed entries. If no such base exists but the version TOC exists, the
-    version TOC is used for both roles.
+    For a given addon folder, select the appropriate TOC file based on version priority,
+    then copy the referenced files.
     """
-    # List all .toc files in the addon folder.
-    toc_files: list[str] = [
-        f for f in os.listdir(addon_dir) if f.lower().endswith(".toc")
-    ]
+    addon_name = os.path.basename(addon_dir)
+    toc_files = [f for f in os.listdir(addon_dir) if f.lower().endswith(".toc")]
     if not toc_files:
         return
 
-    base_toc = None
-    version_toc = None
-    # Define known version tags (if a TOC file ends with _<tag>.toc, it is considered version-specific).
-    known_tags = {"Cata", "TBC", "Vanilla", "Wrath", "Classic", "Mists"}
+    selected_toc = None
 
-    for toc in toc_files:
-        # If the file name ends with _{version}.toc, mark it as the version-specific TOC.
-        if toc.endswith(f"_{version}.toc"):
-            version_toc = toc
-            continue
+    # Map version to specific suffix
+    # version is expected to be capitalized e.g. "Vanilla", "Classic", "Mainline"
 
-        # Otherwise, if the file appears version-specific (its name contains an underscore with a known tag)
-        if "_" in toc:
-            parts = toc.rsplit("_", 1)
-            if len(parts) == 2:
-                tag = parts[1].rsplit(".", 1)[0]
-                if tag in known_tags:
-                    # This TOC file is marked for some version; skip it as a base.
-                    continue
-                else:
-                    base_toc = toc
-            else:
-                base_toc = toc
-        else:
-            # If there is no underscore, use it as a base.
-            base_toc = toc
+    # We need to handle case insensitivity for file lookups
+    toc_map = {t.lower(): t for t in toc_files}
 
-    # If no genuine base TOC was found but a version-specific TOC exists,
-    # use the version-specific TOC as the base.
-    if base_toc is None and version_toc is not None:
-        base_toc = version_toc
+    # 1. Try specific version match (e.g. Addon_Vanilla.toc)
+    target_specific = f"{addon_name}_{version}.toc".lower()
+    if target_specific in toc_map:
+        selected_toc = toc_map[target_specific]
+        print(f"  Selected TOC (Specific): {selected_toc}")
 
-    # No TOC files found; skip this addon.
-    if version_toc is None and base_toc is None:
+    # 2. If not found, and version is a classic version, try _Classic.toc
+    if not selected_toc and version in ["Vanilla", "TBC", "Wrath", "Cata", "Mists"]:
+        target_classic = f"{addon_name}_Classic.toc".lower()
+        if target_classic in toc_map:
+            selected_toc = toc_map[target_classic]
+            print(f"  Selected TOC (Classic): {selected_toc}")
+
+    # 3. If not found, try base Addon.toc
+    if not selected_toc:
+        target_base = f"{addon_name}.toc".lower()
+        if target_base in toc_map:
+            selected_toc = toc_map[target_base]
+            print(f"  Selected TOC (Base): {selected_toc}")
+
+    if not selected_toc:
         print(
-            f"Version TOC file for version '{version}' not found in {addon_dir}. Skipping this addon."
+            f"  No suitable TOC file found for version '{version}' in {addon_dir}. Skipping."
         )
         return
 
-    # If only the base toc exists, we use it for all versions.
-    if version_toc is None:
-        version_toc = base_toc
-
-    base_toc_path = os.path.join(addon_dir, base_toc)  # type: ignore
-    version_toc_path = os.path.join(addon_dir, version_toc)  # type: ignore
-
+    toc_path = os.path.join(addon_dir, selected_toc)
     print(f"\nProcessing addon in folder: {addon_dir}")
-    print(f"  Base TOC: {base_toc}")
-    print(f"  Version TOC: {version_toc}")
+    print(f"  Using TOC: {selected_toc}")
 
-    allowed_entries = parse_toc_file(base_toc_path)
-    if not allowed_entries:
-        print(
-            f"  No allowed file entries found in base TOC {base_toc_path}. Skipping this addon."
-        )
-        return
-
-    # Process the version-specific TOC file: filter out file entries not in the allowed set.
-    # (We still use its contents to determine what files to copy.)
-    filtered_lines = []
-    file_entries = []  # normalized file paths that will be copied
+    # Parse the TOC file
+    file_entries = []
     try:
-        with open(version_toc_path, "r", encoding="utf-8") as f:
+        with open(toc_path, "r", encoding="utf-8") as f:
             lines = f.readlines()
+
         for line in lines:
             stripped = line.strip()
             if not stripped or stripped.startswith("##"):
-                filtered_lines.append(line)
-            else:
-                normalized = os.path.normpath(stripped.replace("\\", os.sep))
-                if normalized in allowed_entries:
-                    filtered_lines.append(line)
-                    file_entries.append(normalized)
-                    if normalized.lower().endswith(".xml"):
-                        # If the file is an XML file, load its contents and add the referenced files.
-                        xml_files = load_xml(os.path.join(addon_dir, normalized))
-                        for xml_file in xml_files:
-                            if xml_file not in allowed_entries:
-                                print(f"    Adding XML file: {xml_file}")
-                                file_entries.append(xml_file)
-                else:
-                    print(
-                        f"  Skipping file entry '{stripped}' in {version_toc_path} (not found in base TOC)."
-                    )
+                continue
+
+            # Handle file entry
+            normalized = os.path.normpath(stripped.replace("\\", os.sep))
+            file_entries.append(normalized)
+
+            if normalized.lower().endswith(".xml"):
+                # Load XML includes
+                xml_files = load_xml(os.path.join(addon_dir, normalized))
+                for xml_file in xml_files:
+                    print(f"    Adding XML file: {xml_file}")
+                    file_entries.append(xml_file)
+
     except Exception as e:
-        print(f"Error processing {version_toc_path}: {e}")
+        print(f"Error processing {toc_path}: {e}")
         return
 
     # Determine the addon folder's relative path (relative to the source addons root)
@@ -351,23 +343,21 @@ def process_addon_directory(
     dest_addon_dir = os.path.join(dest_addons_root, rel_addon_dir)
     os.makedirs(dest_addon_dir, exist_ok=True)
 
-    # Do not write out the .toc file; we only copy non-.toc files referenced in the filtered TOC.
-    # When copying, adjust the destination path if an extra version folder is detected.
-    addon_name = os.path.basename(addon_dir)
     for entry in file_entries:
         if entry.lower().endswith(".toc"):
             print(f"    Skipping .toc file: {entry}")
             continue
-        # Adjust the entry if it contains an extra version folder.
+
         adjusted_entry = adjust_file_entry(entry, version, addon_name)
         src_file = os.path.join(addon_dir, entry)
         dest_file = os.path.join(dest_addon_dir, adjusted_entry)
+
         if os.path.exists(src_file):
             os.makedirs(os.path.dirname(dest_file), exist_ok=True)
             try:
                 shutil.copy2(src_file, dest_file)
                 print(f"    Copied: {src_file} -> {dest_file}")
-                create_mixin(dest_file, dest_addons_root, branch)
+                create_mixin(dest_file, dest_addons_root, branch, src_file)
             except Exception as e:
                 print(f"    Error copying {src_file} to {dest_file}: {e}")
         else:
@@ -461,6 +451,36 @@ def load_xml(file_path):
     return files_to_load
 
 
+def get_git_commit_hash(repo_path):
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "HEAD"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        print(f"Error getting commit hash for {repo_path}: {e}")
+        return "Unknown"
+
+
+def get_git_branch(repo_path):
+    try:
+        result = subprocess.run(
+            ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+            cwd=repo_path,
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        return result.stdout.strip()
+    except Exception as e:
+        print(f"Error getting branch for {repo_path}: {e}")
+        return "Unknown"
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Recreate a copy of the WoWUI folder structure containing only files "
@@ -545,6 +565,12 @@ def main():
             f"\n=== Processing destination for version '{version}' at {dest_addons_root} ==="
         )
         for addon in os.listdir(source_addons_root):
+            if addon in [
+                "Blizzard_APIDocumentation",
+                "Blizzard_APIDocumentationGenerated",
+            ]:
+                continue
+
             addon_dir = os.path.join(source_addons_root, addon)
             if os.path.isdir(addon_dir):
                 process_addon_directory(
@@ -579,6 +605,16 @@ def main():
         dest = os.path.join(dest_version, "Functions-AI")
         shutil.copytree(dest_functions, dest, dirs_exist_ok=True)
 
+    # Copy ManualTypes folder
+    print("\nCopying ManualTypes folder into API folder")
+    src_manual_types = os.path.join(".", "ManualTypes")
+    dest_manual_types = os.path.join(dest_version, "ManualTypes")
+    if os.path.isdir(src_manual_types):
+        shutil.copytree(src_manual_types, dest_manual_types, dirs_exist_ok=True)
+        print(f"Copied ManualTypes folder: {src_manual_types} -> {dest_manual_types}")
+    else:
+        print(f"ManualTypes source folder {src_manual_types} not found.")
+
     # Create .vscode/settings.json in the output directory
     print("\nCreating .vscode/settings.json in output directory")
     vscode_dir = os.path.join(dest_version, ".vscode")
@@ -603,6 +639,28 @@ def main():
     with open(settings_path, "w", encoding="utf-8") as f:
         f.write(settings_content)
     print(f"Created VS Code settings file: {settings_path}")
+
+    # Generate COMMIT_HASHES.md
+    print("\nGenerating COMMIT_HASHES.md")
+    vscode_wow_api_hash = get_git_commit_hash(os.path.join(".", "vscode-wow-api"))
+    vscode_wow_api_branch = get_git_branch(os.path.join(".", "vscode-wow-api"))
+    wowui_hash = get_git_commit_hash(os.path.join(".", "WoWUI"))
+    wowui_branch = get_git_branch(os.path.join(".", "WoWUI"))
+
+    commit_hashes_content = f"""# Commit Hashes
+
+This API documentation was generated using the following commit hashes:
+
+- **vscode-wow-api**: `{vscode_wow_api_branch}` @ `{vscode_wow_api_hash}`
+- **WoWUI**: `{wowui_branch}` @ `{wowui_hash}`
+
+Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+"""
+
+    commit_hashes_path = os.path.join(dest_version, "COMMIT_HASHES.md")
+    with open(commit_hashes_path, "w", encoding="utf-8") as f:
+        f.write(commit_hashes_content)
+    print(f"Created COMMIT_HASHES.md: {commit_hashes_path}")
 
 
 if __name__ == "__main__":

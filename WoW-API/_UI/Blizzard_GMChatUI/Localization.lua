@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GMChatUI\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- This is currently empty, but these changes are going in as a hotfix.

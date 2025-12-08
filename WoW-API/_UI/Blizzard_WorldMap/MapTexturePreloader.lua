@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_WorldMap\MapTexturePreloader.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local PreloaderDriver = CreateFrame("Frame");

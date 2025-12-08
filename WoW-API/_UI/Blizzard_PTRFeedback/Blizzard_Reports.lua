@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PTRFeedback\Blizzard_Reports.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local classicReportOffset = 1000

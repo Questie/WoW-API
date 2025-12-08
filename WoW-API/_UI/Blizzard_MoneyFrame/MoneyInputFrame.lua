@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MoneyFrame\Classic\MoneyInputFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local popupOwner;
@@ -235,4 +236,11 @@ function MoneyInputFrame_PickupPlayerMoney(moneyFrame)
 	else
 		PickupPlayerMoney(copper);
 	end
+end
+
+---@class MoneyInputFrameMixin : Frame
+MoneyInputFrameMixin = {};
+
+function MoneyInputFrameMixin:SetIsUserScaled()
+	-- Classic does not support user scaled money frames, see WOW12-16834
 end

@@ -1,6 +1,8 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\ModelSceneCameras\CameraRegistry.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
+---@class CameraRegistry
 CameraRegistry = { cameraTypeToFactoryFunction = {}, };
 
 function CameraRegistry:AddCameraFactory(cameraTypeName, factoryFunction)

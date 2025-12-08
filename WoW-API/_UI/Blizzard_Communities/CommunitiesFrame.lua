@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\CommunitiesFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -1279,8 +1280,6 @@ function CommunitiesFrameMixin:OnClubSelected(clubId)
 	self.PostingExpirationText:Hide();
 	if clubSelected then
 		SetCVar("lastSelectedClubId", clubId)
-
-		C_Club.SetClubPresenceSubscription(clubId);
 
 		local clubInfo = C_Club.GetClubInfo(clubId);
 		if clubInfo then

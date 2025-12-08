@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\FrameUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -444,6 +445,10 @@ function UIFrameFlash(frame, fadeInTime, fadeOutTime, flashDuration, showWhenDon
 	end
 end
 
+local function UIFrameFlashUpdateTimers(syncId, timer, elapsed)
+	UIFrameFlashTimers[syncId] = timer + elapsed;
+end
+
 -- Called every frame to update flashing frames
 function UIFrameFlash_OnUpdate(self, elapsed)
 	local frame;
@@ -451,9 +456,6 @@ function UIFrameFlash_OnUpdate(self, elapsed)
 
 	-- Update timers for all synced frames
 	-- secure so we don't spread taint to other frames
-	local function UIFrameFlashUpdateTimers(syncId, timer, elapsed)
-		UIFrameFlashTimers[syncId] = timer + elapsed;
-	end
 	secureexecuterange(UIFrameFlashTimers, UIFrameFlashUpdateTimers, elapsed);
 
 	while FLASHFRAMES[index] do

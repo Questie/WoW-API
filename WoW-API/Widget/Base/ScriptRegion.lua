@@ -12,6 +12,19 @@ function ScriptRegion:GetParent() end
 ---@return boolean canChange
 function ScriptRegion:CanChangeProtectedState() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_CanPropagateMouseClicks)
+---@return boolean canPropagate
+function ScriptRegion:CanPropagateMouseClicks() end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_CanPropagateMouseMotion)
+---@return boolean canPropagate
+function ScriptRegion:CanPropagateMouseMotion() end
+
+---Remove all script handlers set through Scripts in XML or SetScript in Lua
+---
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_ClearScripts)
+function ScriptRegion:ClearScripts() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_CollapsesLayout)
 ---@return boolean collapsesLayout
 function ScriptRegion:CollapsesLayout() end
@@ -103,6 +116,11 @@ function ScriptRegion:Hide() end
 ---@param bindingType? LE_SCRIPT_BINDING_TYPE
 function ScriptRegion:HookScript(scriptTypeName, script, bindingType) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_Intersects)
+---@param region ScriptRegion
+---@return boolean intersects
+function ScriptRegion:Intersects(region) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_IsAnchoringRestricted)
 ---@return boolean isRestricted
 function ScriptRegion:IsAnchoringRestricted() end
@@ -177,8 +195,16 @@ function ScriptRegion:SetMouseMotionEnabled(enabled) end
 function ScriptRegion:SetParent(parent) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_SetPassThroughButtons)
----@param ... mouseButton
+---@param ... MouseButton buttons
 function ScriptRegion:SetPassThroughButtons(...) end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_SetPropagateMouseClicks)
+---@param propagate boolean
+function ScriptRegion:SetPropagateMouseClicks(propagate) end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_SetPropagateMouseMotion)
+---@param propagate boolean
+function ScriptRegion:SetPropagateMouseMotion(propagate) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_SetScript)
 ---@param scriptTypeName ScriptType
@@ -189,10 +215,10 @@ function ScriptRegion:SetScript(scriptTypeName, script) end
 ---@param show? boolean Default = false
 function ScriptRegion:SetShown(show) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_ShouldButtonPassThrough)
+---@param button MouseButton
+---@return boolean shouldPassThrough
+function ScriptRegion:ShouldButtonPassThrough(button) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegion_Show)
 function ScriptRegion:Show() end
-
----[Documentation](https://warcraft.wiki.gg/wiki/API_ScriptRegionResizing_AdjustPointsOffset)
----@param x uiUnit
----@param y uiUnit
-function ScriptRegion:AdjustPointsOffset(x, y) end

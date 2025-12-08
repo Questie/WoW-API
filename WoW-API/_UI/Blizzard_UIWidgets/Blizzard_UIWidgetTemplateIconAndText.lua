@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateIconAndText.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function GetIconAndTextVisInfoData(widgetID)

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\TalentFrameBase_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class TALENT_BRANCH_TEXTURECOORDS
@@ -104,7 +105,7 @@ function TalentFrame_DrawLines(buttonTier, buttonColumn, tier, column, requireme
 			for i=tier + 1, buttonTier - 1 do
 				if ( TalentFrame.TALENT_BRANCH_ARRAY[i][buttonColumn].id ) then
 					-- If there's an id, there's a blocker
-					message("Error this layout is blocked vertically "..TalentFrame.TALENT_BRANCH_ARRAY[buttonTier][i].id);
+					SetBasicMessageDialogText("Error this layout is blocked vertically "..TalentFrame.TALENT_BRANCH_ARRAY[buttonTier][i].id);
 					return;
 				end
 			end
@@ -133,7 +134,7 @@ function TalentFrame_DrawLines(buttonTier, buttonColumn, tier, column, requireme
 			for i=left + 1, right - 1 do
 				if ( TalentFrame.TALENT_BRANCH_ARRAY[tier][i].id ) then
 					-- If there's an id, there's a blocker
-					message("there's a blocker "..tier.." "..i);
+					SetBasicMessageDialogText("there's a blocker "..tier.." "..i);
 					return;
 				end
 			end
@@ -197,7 +198,7 @@ function TalentFrame_DrawLines(buttonTier, buttonColumn, tier, column, requireme
 	for i=left, right do
 		if ( TalentFrame.TALENT_BRANCH_ARRAY[buttonTier][i].id ) then
 			-- If there's an id, then throw an error
-			message("Error, this layout is undrawable "..TalentFrame.TALENT_BRANCH_ARRAY[buttonTier][i].id);
+			SetBasicMessageDialogText("Error, this layout is undrawable "..TalentFrame.TALENT_BRANCH_ARRAY[buttonTier][i].id);
 			return;
 		end
 	end

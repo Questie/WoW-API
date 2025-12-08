@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrameUtil\Classic\PartyMemberFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_PARTY_MEMBERS = 4;
@@ -250,7 +251,7 @@ function PartyMemberFrame_UpdateLeader (self)
 		leaderIcon:Hide();
 	end
 
-	local lootMethod, lootMaster = GetLootMethod();
+	local lootMethod, lootMaster = C_PartyInfo.GetLootMethod();
 	if ( lootMaster == id ) then
 		masterIcon:Show();
 	else

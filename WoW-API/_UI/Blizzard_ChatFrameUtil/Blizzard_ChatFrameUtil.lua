@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameUtil\Blizzard_ChatFrameUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- ChatFrameUtil: Shared functions to be used for formatting/display of text in chat frame(s).

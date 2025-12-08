@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\PropertyFontString.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- NOTE: This is a read-only property, it reflects the state of a property with text output.

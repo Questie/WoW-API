@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\PartyUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class PartyUtil
@@ -76,6 +77,8 @@ function PartyUtil.GetPhasedReasonString(phaseReason, unitToken)
 		end
 	elseif phaseReason == Enum.PhaseReason.ChromieTime then
 		return GetChromieTimeString(unitToken);
+	elseif phaseReason == Enum.PhaseReason.TimerunningHwt then
+		return PARTY_PLAYER_DIFFERENT_WORLD_TIER;
 	elseif phaseReason == Enum.PhaseReason.Phasing then
 		return PARTY_PHASED_MESSAGE;
 	elseif phaseReason == Enum.PhaseReason.Sharding then

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\IndexRangeDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- IndexRangeDataProviderMixin originally written for parity with ScrollBox API to 
@@ -16,6 +17,10 @@ function IndexRangeDataProviderMixin:Init(size)
 	CallbackRegistryMixin.OnLoad(self);
 
 	self:SetSize(size);
+end
+
+function IndexRangeDataProviderMixin:IsVirtual()
+	return true;
 end
 
 function IndexRangeDataProviderMixin:Enumerate(indexBegin, indexEnd)

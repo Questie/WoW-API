@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\AlertFrames.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ALERT_FRAME_COALESCE_CONTINUE = 1; -- Return to continue trying to find an alert to coalesce on to, coalescing failed
@@ -733,6 +734,10 @@ function AlertFrame_PlayAnimations(frame)
 	if frame:ManagesOwnOutroAnimation() then
 		AlertFrame_PlayOutroAnimation(frame);
 	end
+end
+
+function AlertFrame_SetDuration(frame, duration)
+	frame.duration = duration;
 end
 
 function AlertFrame_ShowNewAlert(frame)

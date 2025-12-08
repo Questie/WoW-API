@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MacroUI\Blizzard_MacroUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -7,7 +8,7 @@ StaticPopupDialogs["CONFIRM_DELETE_SELECTED_MACRO"] = {
 	text = CONFIRM_DELETE_MACRO,
 	button1 = OKAY,
 	button2 = CANCEL,
-	OnAccept = function(self)
+	OnAccept = function(dialog, data)
 		MacroFrame:DeleteMacro();
 	end,
 	timeout = 0,

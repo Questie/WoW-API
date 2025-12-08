@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BNet\Classic\BNet.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local BN_TOAST_TYPE_ONLINE = 1;
@@ -138,7 +139,7 @@ function BNToastMixin:OnCustomMessageChanged(toastData)
 end
 
 function BNToastMixin:OnVariablesLoaded()
-	self:SetToastDuration(GetCVar("toastDuration"));
+	AlertFrame_SetDuration(self, GetCVar("toastDuration"));
 	self:SetToastsEnabled(GetCVarBool("showToastWindow"));
 end
 
@@ -184,10 +185,6 @@ function BNToastMixin:SetToastsEnabled(enabled)
 	else
 		self:DisableToasts();
 	end
-end
-
-function BNToastMixin:SetToastDuration(duration)
-	self.duration = duration;
 end
 
 function BNToastMixin:ShowToast()

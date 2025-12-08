@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Timer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 TIMER_MINUTES_DISPLAY = "%d:%02d"

@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CastingBar\Vanilla\CastingBarFrame.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -6,7 +7,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<Layer level="BACKGROUND">
 				<Texture setAllPoints="true">
 					<Color r="0" g="0" b="0" a="0.5"/>
-				</Texture>		
+				</Texture>
 			</Layer>
 			<Layer level="ARTWORK">
 				<Texture parentKey="Border" file="Interface\CastingBar\UI-CastingBar-Border">
@@ -53,7 +54,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						<Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT">
 							<Offset>
 								<AbsDimension x="-5" y="0"/>
-												</Offset>
+							</Offset>
 						</Anchor>
 					</Anchors>
 				</Texture>
@@ -95,7 +96,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	<StatusBar name="SmallCastingBarFrameTemplate" drawLayer="BORDER" virtual="true">
 		<Size>
 			<AbsDimension x="150" y="10"/>
-		</Size>	
+		</Size>
 		<Layers>
 			<Layer level="BACKGROUND">
 				<Texture setAllPoints="true">
@@ -105,39 +106,48 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 			<Layer level="ARTWORK">
 				<Texture parentKey="Border" file="Interface\CastingBar\UI-CastingBar-Border-Small">
 					<Size>
-						<AbsDimension x="0" y="56"/>
+						<AbsDimension x="0" y="49"/>
 					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" x="-23" y="23"/>
-						<Anchor point="TOPRIGHT" x="23" y="23"/>
+						<Anchor point="TOPLEFT" x="-23" y="20"/>
+						<Anchor point="TOPRIGHT" x="23" y="20"/>
 					</Anchors>
 				</Texture>
-			</Layer>
-			<Layer level="OVERLAY">
 				<Texture parentKey="BorderShield" file="Interface\CastingBar\UI-CastingBar-Small-Shield" hidden="true">
 					<Size>
-						<AbsDimension x="0" y="56"/>
+						<AbsDimension x="0" y="49"/>
 					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" x="-28" y="23"/>
-						<Anchor point="TOPRIGHT" x="18" y="23"/>
+						<Anchor point="TOPLEFT" x="-28" y="20"/>
+						<Anchor point="TOPRIGHT" x="18" y="20"/>
 					</Anchors>
 				</Texture>
+				<FontString parentKey="Text" inherits="SystemFont_Shadow_Small">
+					<Size>
+						<AbsDimension x="0" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="0" y="4"/>
+						<Anchor point="TOPRIGHT" x="0" y="4"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
 				<Texture parentKey="Icon">
 					<Size>
-						<AbsDimension x="16" y="17"/>
+						<AbsDimension x="16" y="16"/>
 					</Size>
 					<Anchors>
 						<Anchor point="RIGHT" relativeTo="$parent" relativePoint="LEFT">
 							<Offset>
-								<AbsDimension x="-5" y="1"/>
+								<AbsDimension x="-5" y="0"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
 				</Texture>
 				<Texture parentKey="Spark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
 					<Size>
-						<AbsDimension x="36" y="36"/>
+						<AbsDimension x="32" y="32"/>
 					</Size>
 					<Anchors>
 						<Anchor point="CENTER" x="0" y="0"/>
@@ -145,22 +155,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				</Texture>
 				<Texture parentKey="Flash" file="Interface\CastingBar\UI-CastingBar-Flash-Small" alphaMode="ADD">
 					<Size>
-						<AbsDimension x="0" y="56"/>
+						<AbsDimension x="0" y="49"/>
 					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" x="-23" y="23"/>
-						<Anchor point="TOPRIGHT" x="23" y="23"/>
+						<Anchor point="TOPLEFT" x="-23" y="20"/>
+						<Anchor point="TOPRIGHT" x="23" y="20"/>
 					</Anchors>
 				</Texture>
-				<FontString parentKey="Text" inherits="SystemFont_Shadow_Small">
-					<Size>
-						<AbsDimension x="0" y="18"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" x="0" y="4"/>
-						<Anchor point="TOPRIGHT" x="0" y="4"/>
-					</Anchors>
-				</FontString>
 			</Layer>
 		</Layers>
 		<Scripts>
@@ -174,7 +175,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
 		<BarColor r="1.0" g="0.7" b="0.0"/>
 	</StatusBar>
-	
+
 	<StatusBar name="CastingBarFrame" toplevel="true" parent="UIParent" hidden="true" inherits="CastingBarFrameTemplate" frameStrata="HIGH">
 		<Size x="195" y="13" />
 		<Anchors>

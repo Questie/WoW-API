@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_HelpFrame\HelpFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -6,14 +7,13 @@ StaticPopupDialogs["EXTERNAL_LINK"] = {
 	button1 = OKAY,
 	button3 = BROWSER_COPY_LINK,
 	button2 = CANCEL,
-	OnAccept = function(self, data)
+	OnAccept = function(dialog, data)
 		data.browser:OpenExternalLink();
 	end,
-	OnAlt = function(self, data)
+	OnAlt = function(dialog, data)
 		data.browser:CopyExternalLink();
 	end,
-	OnShow = function(self)
-
+	OnShow = function(dialog, data)
 	end,
 	showAlert = 1,
 	timeout = 0,

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Keybindings.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local securecallfunction = securecallfunction;
@@ -9,10 +10,10 @@ do
 			text = CONFIRM_DELETING_CHARACTER_SPECIFIC_BINDINGS,
 			button1 = OKAY,
 			button2 = CANCEL,
-			OnAccept = function()
+			OnAccept = function(dialog, data)
 				Settings.SetValue("PROXY_CHARACTER_SPECIFIC_BINDINGS", false);
 			end,
-			OnCancel = function() end,
+			OnCancel = function(dialog, data) end,
 			timeout = 0,
 			whileDead = 1,
 			showAlert = 1,

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIParent\Shared\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class NUMBER_ABBREVIATION_DATA_ASIAN

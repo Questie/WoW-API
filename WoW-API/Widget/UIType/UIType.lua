@@ -22,6 +22,13 @@
 ---|"TRILINEAR"
 ---|"NEAREST"
 
+---@alias FontAlphabet
+---|"roman"
+---|"korean"
+---|"simplifiedchinese"
+---|"traditionalchinese"
+---|"russian"
+
 ---@alias FramePoint
 ---|"TOPLEFT"
 ---|"TOPRIGHT"
@@ -71,6 +78,22 @@
 ---|"Button4"
 ---|"Button5"
 
+---@alias MouseButton mouseButton
+
+---@alias ClickButton
+---|"AnyUp"
+---|"AnyDown"
+---|"LeftButtonUp"
+---|"LeftButtonDown"
+---|"RightButtonUp"
+---|"RightButtonDown"
+---|"MiddleButtonUp"
+---|"MiddleButtonDown"
+---|"Button4Up"
+---|"Button4Down"
+---|"Button5Up"
+---|"Button5Down"
+
 ---@alias Orientation
 ---|"HORIZONTAL"
 ---|"VERTICAL"
@@ -105,20 +128,6 @@
 ---------------
 -- custom types
 ---------------
-
----@alias MouseAction
----|"AnyUp"
----|"AnyDown"
----|"LeftButtonUp"
----|"LeftButtonDown"
----|"RightButtonUp"
----|"RightButtonDown"
----|"MiddleButtonUp"
----|"MiddleButtonDown"
----|"Button4Up"
----|"Button4Down"
----|"Button5Up"
----|"Button5Down"
 
 ---@alias TooltipAnchor
 ---|"ANCHOR_TOP"

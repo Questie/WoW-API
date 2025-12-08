@@ -1,6 +1,6 @@
 ---@meta _
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_Font)
----@class Font
+---@class Font : FrameScriptObject
 local Font = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_CopyFontObject)
@@ -17,9 +17,20 @@ function Font:GetAlpha() end
 ---@return TBFFlags flags
 function Font:GetFont() end
 
+---Return is either in uiUnits or internal height due to fixedHeight.
+---
+---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_GetFontHeight)
+---@return number height
+function Font:GetFontHeight() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_GetFontObject)
 ---@return SimpleFont font
 function Font:GetFontObject() end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_GetFontObjectForAlphabet)
+---@param alphabet FontAlphabet
+---@return SimpleFont font
+function Font:GetFontObjectForAlphabet(alphabet) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_GetIndentedWordWrap)
 ---@return boolean wordWrap
@@ -66,8 +77,14 @@ function Font:SetAlpha(alpha) end
 ---@param flags TBFFlags
 function Font:SetFont(fontFile, height, flags) end
 
+---Preserves all flags, does correct height conversion due to fixedHeight.
+---
+---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_SetFontHeight)
+---@param height number
+function Font:SetFontHeight(height) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_SetFontObject)
----@param font? FontObject
+---@param font FontObject|nil
 function Font:SetFontObject(font) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_Font_SetIndentedWordWrap)

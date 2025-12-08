@@ -8,6 +8,9 @@ local TextureBase = {}
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_TextureBase_ClearTextureSlice)
 function TextureBase:ClearTextureSlice() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_TextureBase_ClearVertexOffsets)
+function TextureBase:ClearVertexOffsets() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_TextureBase_GetAtlas)
 ---@return textureAtlas atlas
 function TextureBase:GetAtlas() end
@@ -30,8 +33,14 @@ function TextureBase:GetHorizTile() end
 function TextureBase:GetRotation() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_TextureBase_GetTexCoord)
----@return number x
----@return number y
+---@return number ULx
+---@return number ULy
+---@return number LLx
+---@return number LLy
+---@return number URx
+---@return number URy
+---@return number LRx
+---@return number LRy 
 function TextureBase:GetTexCoord() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_TextureBase_GetTexelSnappingBias)
@@ -153,6 +162,7 @@ function TextureBase:SetTexelSnappingBias(bias) end
 ---@param wrapModeHorizontal? WrapMode
 ---@param wrapModeVertical? WrapMode
 ---@param filterMode? FilterMode
+---@return boolean success
 function TextureBase:SetTexture(textureAsset, wrapModeHorizontal, wrapModeVertical, filterMode) end
 
 ---Enables nineslice texture rendering using the specified pixel margins. Preferred over legacy nineslice approach that uses 9 separate textures.

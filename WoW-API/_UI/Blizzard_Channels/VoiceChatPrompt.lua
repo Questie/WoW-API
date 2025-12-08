@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Channels\VoiceChatPrompt.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local partyChannelTypeToActivatePrompt =

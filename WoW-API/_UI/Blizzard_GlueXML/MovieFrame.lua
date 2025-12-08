@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\MovieFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function MovieFrame_OnLoad(self)
@@ -21,7 +22,7 @@ function MovieFrame_PlayMovie(self, index)
 		CinematicStarted(Enum.CinematicType.GlueMovie, movieID);
 	else
 		if ( self.showError ) then
-			GlueDialog_Show("ERROR_CINEMATIC");
+			StaticPopup_Show("ERROR_CINEMATIC");
 		end
 		GlueParent_CloseSecondaryScreen();
 	end

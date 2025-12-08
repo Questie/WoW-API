@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionUI\Classic\Blizzard_AuctionUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- keep last item sent to auction & it's price
@@ -170,13 +171,13 @@ StaticPopupDialogs["BUYOUT_AUCTION"] = {
 	text = BUYOUT_AUCTION_CONFIRMATION,
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function(self)
+	OnAccept = function(dialog, data)
 		PlaceAuctionBid(AuctionFrame.type, GetSelectedAuctionItem(AuctionFrame.type), AuctionFrame.buyoutPrice);
 	end,
-	OnShow = function(self)
-		MoneyFrame_Update(self.moneyFrame, AuctionFrame.buyoutPrice);
+	OnShow = function(dialog, data)
+		MoneyFrame_Update(dialog.MoneyFrame, AuctionFrame.buyoutPrice);
 	end,
-	OnCancel = function(self)
+	OnCancel = function(dialog, data)
 		BrowseBuyoutButton:Enable();
 	end,
 	hasMoneyFrame = 1,
@@ -189,13 +190,13 @@ StaticPopupDialogs["BID_AUCTION"] = {
 	text = BID_AUCTION_CONFIRMATION,
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function(self)
+	OnAccept = function(dialog, data)
 		PlaceAuctionBid(AuctionFrame.type, GetSelectedAuctionItem(AuctionFrame.type), MoneyInputFrame_GetCopper(BrowseBidPrice));
 	end,
-	OnShow = function(self)
-		MoneyFrame_Update(self.moneyFrame, MoneyInputFrame_GetCopper(BrowseBidPrice));
+	OnShow = function(dialog, data)
+		MoneyFrame_Update(dialog.MoneyFrame, MoneyInputFrame_GetCopper(BrowseBidPrice));
 	end,
-	OnCancel = function(self)
+	OnCancel = function(dialog, data)
 		BrowseBidButton:Enable();
 	end,
 	hasMoneyFrame = 1,
@@ -208,15 +209,15 @@ StaticPopupDialogs["CANCEL_AUCTION"] = {
 	text = CANCEL_AUCTION_CONFIRMATION,
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function()
+	OnAccept = function(dialog, data)
 		CancelAuction(GetSelectedAuctionItem("owner"));
 	end,
-	OnShow = function(self)
-		MoneyFrame_Update(self.moneyFrame, AuctionFrameAuctions.cancelPrice);
+	OnShow = function(dialog, data)
+		MoneyFrame_Update(dialog.MoneyFrame, AuctionFrameAuctions.cancelPrice);
 		if ( AuctionFrameAuctions.cancelPrice > 0 ) then
-			self.text:SetText(CANCEL_AUCTION_CONFIRMATION_MONEY);
+			dialog:SetText(CANCEL_AUCTION_CONFIRMATION_MONEY);
 		else
-			self.text:SetText(CANCEL_AUCTION_CONFIRMATION);
+			dialog:SetText(CANCEL_AUCTION_CONFIRMATION);
 		end
 		
 	end,
@@ -245,10 +246,10 @@ StaticPopupDialogs["AUCTION_HOUSE_POST_WARNING"] = {
 	text = NORMAL_FONT_COLOR:WrapTextInColorCode(CONFIRM_AUCTION_POSTING_TEXT),
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function ()
+	OnAccept = function(dialog, data)
 		AuctionsCreateAuctionButton:ConfirmPost()
 	end,
-	OnHide = function()
+	OnHide = function(dialog, data)
 		AuctionFrame_SetDialogOverlayShown(false);
 	end,
 
@@ -261,7 +262,7 @@ StaticPopupDialogs["AUCTION_HOUSE_POST_WARNING"] = {
 StaticPopupDialogs["AUCTION_HOUSE_POST_ERROR"] = {
 	text = NORMAL_FONT_COLOR:WrapTextInColorCode(AUCTION_POSTING_ERROR_TEXT),
 	button1 = OKAY,
-	OnHide = function()
+	OnHide = function(dialog, data)
 		AuctionFrame_SetDialogOverlayShown(false);
 	end,
 	showAlert = true,

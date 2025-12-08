@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Dispatcher\Blizzard_Dispatcher.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- /////////////////////////////////////////////////////////////

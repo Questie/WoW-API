@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Shared\PlayerInteractionFrameManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --[[
@@ -82,10 +83,6 @@ local InteractionManagerFrameInfo = {
 	{ 
 		frame = "WardrobeFrame",
 		loadFunc = CollectionsJournal_LoadUI 
-	},
-	[Enum.PlayerInteractionType.VoidStorageBanker] = {
-		frame = "VoidStorageFrame",
-		loadFunc = VoidStorage_LoadUI
 	},
 	[Enum.PlayerInteractionType.BlackMarketAuctioneer] = {
 		frame = "BlackMarketFrame",

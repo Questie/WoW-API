@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ScriptErrors\Blizzard_ScriptErrors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 if not IsInGlobalEnvironment() then
@@ -44,7 +45,9 @@ local function HandleLuaError(errorMessage)
 	end
 
 	if ProcessExceptionClient then
-		ProcessExceptionClient(string.format("%sLocals: %s", errorMessage or "", locals or ""), errorMessage);
+		-- Skip HandleLuaError and the C++ error handler
+		local framesToSkip = 2;
+		ProcessExceptionClient(string.format("%s\nLocals: %s", errorMessage or "", locals or ""), errorMessage, framesToSkip);
 	end
 end
 

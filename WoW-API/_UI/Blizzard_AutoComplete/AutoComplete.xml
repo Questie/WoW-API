@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AutoComplete\AutoComplete.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -15,9 +16,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Scripts>
 	</EditBox>
 	<Button name="AutoCompleteButtonTemplate" virtual="true">
-		<Size>
-			<AbsDimension x="120" y="14"/>
-		</Size>
+		<Size x="120" y="14"/>
 		<Scripts>
 			<OnClick function="AutoCompleteButton_OnClick"/>
 			<OnLoad>
@@ -30,10 +29,8 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<DisabledFont style="GameFontDisable"/>
 		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
 	</Button>
-	<Frame name="AutoCompleteBox" inherits="TooltipBackdropTemplate" parent="UIParent" hidden="true">
-		<Size>
-			<AbsDimension x="5" y="5"/>
-		</Size>
+	<Frame name="AutoCompleteBox" enableMouse="true" hidden="true" inherits="TooltipBackdropTemplate">
+		<Size x="5" y="5"/>
 		<Anchors>
 			<Anchor point="CENTER"/>
 		</Anchors>
@@ -82,6 +79,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Frames>
 		<Scripts>
 			<OnLoad inherit="prepend" function="AutoComplete_OnLoad"/>
+			<OnShow inherit="prepend" function="AutoComplete_OnShow"/>
 		</Scripts>
 	</Frame>
 </Ui>

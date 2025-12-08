@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BlackMarketUI\Blizzard_BlackMarketUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -8,8 +9,8 @@ StaticPopupDialogs["BID_BLACKMARKET"] = {
 	text = BLACK_MARKET_AUCTION_CONFIRMATION,
 	button1 = ACCEPT,
 	button2 = CANCEL,
-	OnAccept = function(self)
-		C_BlackMarket.ItemPlaceBid(self.data.auctionID, self.data.bid);
+	OnAccept = function(dialog, data)
+		C_BlackMarket.ItemPlaceBid(data.auctionID, data.bid);
 	end,
 	timeout = 0,
 	exclusive = 1,

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\PlayerFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 REQUIRED_REST_HOURS = 5;
@@ -132,7 +133,7 @@ function PlayerFrame_UpdatePartyLeader()
 		PlayerGuideIcon:Hide();
 	end
 
-	local lootMethod, lootMaster = GetLootMethod();
+	local lootMethod, lootMaster = C_PartyInfo.GetLootMethod();
 	if ( lootMaster == 0 and IsInGroup() ) then
 		PlayerMasterIcon:Show();
 	else

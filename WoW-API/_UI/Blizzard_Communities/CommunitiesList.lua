@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\CommunitiesList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local COMMUNITIES_LIST_EVENTS = {

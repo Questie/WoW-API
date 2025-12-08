@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\NewFeatureLabel.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class NewFeatureLabelMixin
@@ -19,6 +20,8 @@ function NewFeatureLabelMixin:NewFeatureLabel_OnShow()
 	if self.animateGlow then
 		self.Fade:Play();
 	end
+
+	self:MarkDirty();
 end
 
 function NewFeatureLabelMixin:OnHide()

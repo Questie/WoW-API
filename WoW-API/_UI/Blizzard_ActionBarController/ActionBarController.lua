@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBarController\Classic\ActionBarController.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 SHOW_MULTI_ACTIONBAR_1 = SHOW_MULTI_ACTIONBAR_1 or nil;

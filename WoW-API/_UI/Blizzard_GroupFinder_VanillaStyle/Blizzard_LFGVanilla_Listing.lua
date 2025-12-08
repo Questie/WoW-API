@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GroupFinder_VanillaStyle\Blizzard_LFGVanilla_Listing.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -------------------------------------------------------

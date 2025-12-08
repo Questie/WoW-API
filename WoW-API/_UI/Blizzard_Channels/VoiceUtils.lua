@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Channels\VoiceUtils.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class Voice_PartyChannelTypeToChatInfoType

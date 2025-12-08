@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Interface.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class RaidFramePreviewMixin
@@ -189,13 +190,6 @@ local function Register()
 
 	----Display
 	layout:AddInitializer(CreateSettingsListSectionHeaderInitializer(DISPLAY_LABEL));
-
-	InterfaceOverrides.RunSettingsCallback(function()
-		if C_CVar.GetCVar("hideAdventureJournalAlerts") then
-			-- Hide Adventure Guide Alerts
-			Settings.SetupCVarCheckbox(category, "hideAdventureJournalAlerts", HIDE_ADVENTURE_JOURNAL_ALERTS, OPTION_TOOLTIP_HIDE_ADVENTURE_JOURNAL_ALERTS);
-		end
-	end);
 
 	InterfaceOverrides.RunSettingsCallback(function()
 		if C_CVar.GetCVar("showInGameNavigation") then

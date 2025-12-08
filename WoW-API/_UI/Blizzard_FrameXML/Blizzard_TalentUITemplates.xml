@@ -1,48 +1,78 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\Blizzard_TalentUITemplates.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
+	<Button name="TalentTabTemplate" inherits="CharacterFrameTabButtonTemplate" virtual="true">
+		<Scripts>
+			<OnLoad>
+				self.selectedTextY = 4;
+				self:RegisterEvent("PLAYER_LEVEL_UP");
+			</OnLoad>
+			<OnEvent>
+				if (UnitLevel("player") == 9 and PanelTemplates_GetSelectedTab(PlayerTalentFrame) ~= self:GetID()) then
+					SetButtonPulse(self, 60, 0.75);
+				end
+			</OnEvent>
+			<OnClick>
+				TalentFrameTab_OnClick(self);
+			</OnClick>
+			<OnEnter>
+
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
 	<Texture name="TalentBranchTemplate" file="Interface\TalentFrame\UI-TalentBranches" virtual="true">
-		<Size x="30" y="30"/>
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
 		<Anchors>
 			<Anchor point="TOPLEFT"/>
 		</Anchors>
 	</Texture>
 	<Texture name="TalentArrowTemplate" file="Interface\TalentFrame\UI-TalentArrows" virtual="true">
-		<Size x="30" y="30"/>
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
 		<Anchors>
 			<Anchor point="TOPLEFT"/>
 		</Anchors>
 	</Texture>
 	<Button name="TalentButtonTemplate" inherits="ItemButtonTemplate" virtual="true">
-		<Size x="30" y="30"/>
 		<Anchors>
 			<Anchor point="TOPLEFT"/>
 		</Anchors>
 		<Layers>
-			<Layer level="ARTWORK">
-				<Texture name="$parentSlot" inherits="Talent-SingleBorder" parentKey="Slot">
+			<Layer level="BACKGROUND">
+				<Texture name="$parentSlot" file="Interface\Buttons\UI-EmptySlot-White">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
 					<Anchors>
-						<Anchor point="TOPLEFT" x="-1" y="0"/>
-					</Anchors>
-				</Texture>
-				<Texture name="$parentSlotShadow" inherits="Talent-SingleBorder-Shadow" parentKey="SlotShadow">
-					<Anchors>
-						<Anchor point="TOPLEFT" x="-4" y="3"/>
-					</Anchors>
-				</Texture>
-				<Texture name="$parentGoldBorder" inherits="Talent-GoldMedal-Border" parentKey="GoldBorder" hidden="true">
-					<Anchors>
-						<Anchor point="TOPLEFT" x="-7" y="7"/>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</Texture>
 			</Layer>
 			<Layer level="OVERLAY">
-				<Texture name="$parentRankBorder" inherits="Talent-PointBg" parentKey="RankBorder">
+				<Texture name="$parentRankBorder" file="Interface\TalentFrame\TalentFrame-RankBorder">
+					<Size>
+						<AbsDimension x="32" y="32"/>
+					</Size>
 					<Anchors>
-						<Anchor point="CENTER" relativePoint="BOTTOMRIGHT" x="-3" y="3" />
+						<Anchor point="CENTER" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
 					</Anchors>
 				</Texture>
-				<FontString name="$parentRank" inherits="GameFontNormalSmall" parentKey="Rank">
+				<FontString name="$parentRank" inherits="GameFontNormalSmall">
 					<Anchors>
 						<Anchor point="CENTER" relativeTo="$parentRankBorder">
 							<Offset>
@@ -55,11 +85,26 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		</Layers>
 		<Scripts>
 			<OnLoad>
-				_G[self:GetName().."NormalTexture"]:ClearAllPoints();
+				self:RegisterEvent("CHARACTER_POINTS_CHANGED");
 			</OnLoad>
+			<OnEvent>
+				if (self.talentButton_OnEvent) then
+					self.talentButton_OnEvent(self);
+				end
+			</OnEvent>
+			<OnEnter>
+				if (self.talentButton_OnEnter) then
+					self.talentButton_OnEnter(self);
+				end
+			</OnEnter>
 			<OnLeave>
 				GameTooltip:Hide();
 			</OnLeave>
+			<OnClick>
+				if (self.talentButton_OnClick) then
+					self.talentButton_OnClick(self, button);
+				end
+			</OnClick>
 		</Scripts>
 	</Button>
 </Ui>

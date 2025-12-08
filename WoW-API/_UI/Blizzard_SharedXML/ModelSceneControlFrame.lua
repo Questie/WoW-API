@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\ModelSceneControlFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -69,6 +70,7 @@ end
 
 function ModelSceneControlFrameMixin:SetModelScene(modelScene)
 	self.modelScene = modelScene;
+
 	self.zoomInButton:SetModelScene(modelScene);
 	self.zoomOutButton:SetModelScene(modelScene);
 	self.rotateLeftButton:SetModelScene(modelScene);
@@ -96,8 +98,18 @@ function ModelSceneControlFrameMixin:UpdateLayout()
 	end
 
 	if self.enableZoom then
-		LayoutButton(self.zoomInButton);
-		LayoutButton(self.zoomOutButton);
+		-- Make sure that zoom is supported on the model scene.
+		if self.modelScene then
+			local camera = self.modelScene:GetActiveCamera();
+			self.canZoom = camera ~= nil and camera:GetZoomAvailable();
+			self.zoomInButton:SetShown(self.canZoom);
+			self.zoomOutButton:SetShown(self.canZoom);
+		end
+
+		if self.canZoom then
+			LayoutButton(self.zoomInButton);
+			LayoutButton(self.zoomOutButton);
+		end
 	end
 
 	if self.enableRotate then

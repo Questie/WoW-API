@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\PredictedSetting.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class PredictedSettingBaseMixin
@@ -39,6 +40,7 @@ function CreatePredictedSetting(wrapTable)
 	return predictedSetting;
 end
 
+---@class PredictedToggleMixin : PredictedSettingBaseMixin
 PredictedToggleMixin = CreateFromMixins(PredictedSettingBaseMixin)
 
 function PredictedToggleMixin:SetUp(wrapTable)

@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanelTemplates\Classic\UIPanelTemplates.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -17,13 +18,13 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 		<HighlightFont style="GameFontHighlight"/>
 		<DisabledFont style="GameFontDisable"/>
 	</Button>
-	<Frame name="AnimatedShineTemplate" virtual="true">
+	<Frame name="AnimatedShineTemplate" mixin="AnimatedShineMixin" virtual="true">
 		<Size>
 			<AbsDimension x="37" y="37"/>
 		</Size>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<Texture name="$parent1" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
+				<Texture parentKey="Shine1" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
 					<Size>
 						<AbsDimension x="13" y="13"/>
 					</Size>
@@ -36,7 +37,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.3984375" right="0.4453125" top="0.40234375" bottom="0.44921875"/>
 				</Texture>
-				<Texture name="$parent2" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
+				<Texture parentKey="Shine2" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
 					<Size>
 						<AbsDimension x="13" y="13"/>
 					</Size>
@@ -49,7 +50,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.3984375" right="0.4453125" top="0.40234375" bottom="0.44921875"/>
 				</Texture>
-				<Texture name="$parent3" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
+				<Texture parentKey="Shine3" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
 					<Size>
 						<AbsDimension x="13" y="13"/>
 					</Size>
@@ -62,7 +63,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Anchors>
 					<TexCoords left="0.3984375" right="0.4453125" top="0.40234375" bottom="0.44921875"/>
 				</Texture>
-				<Texture name="$parent4" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
+				<Texture parentKey="Shine4" file="Interface\ItemSocketingFrame\UI-ItemSockets" alphaMode="ADD" hidden="true">
 					<Size>
 						<AbsDimension x="13" y="13"/>
 					</Size>

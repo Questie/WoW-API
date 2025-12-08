@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\MailFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 INBOXITEMS_TO_DISPLAY = 7;

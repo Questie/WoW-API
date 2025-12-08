@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Shared\Blizzard_AuctionHouseTableBuilder.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local PRICE_DISPLAY_PADDING = 0;

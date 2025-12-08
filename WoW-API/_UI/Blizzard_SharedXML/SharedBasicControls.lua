@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\SharedBasicControls.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -101,8 +102,6 @@ local textureKitRegionInfo = {
 }
 
 function BaseNineSliceDialogMixin:OnLoad()
-	self.Underlay:SetFrameLevel(self:GetFrameLevel() - 1);
-	self.Underlay:SetShown(self.showUnderlay);
 	NineSliceUtil.ApplyUniqueCornersLayout(self.Border, self.nineSliceTextureKit);
 	SetupTextureKitsFromRegionInfo(self.parchmentTextureKit, self.Contents, textureKitRegionInfo)
 
@@ -119,6 +118,14 @@ function BaseNineSliceDialogMixin:OnLoad()
 	else
 		self.CenterBackground:Hide();
 	end
+end
+
+function BaseNineSliceDialogMixin:OnShow()
+	local parent = GetAppropriateTopLevelParent();
+	self.Underlay:SetPoint("TOPLEFT", parent, "TOPLEFT");
+	self.Underlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT");
+	self.Underlay:SetFrameLevel(self:GetFrameLevel() - 1);
+	self.Underlay:SetShown(self.showUnderlay);
 end
 
 function BaseNineSliceDialogMixin:Display(title, description, onCloseCvar)

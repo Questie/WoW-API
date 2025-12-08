@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\QuestUtils.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class QUEST_TAG_DUNGEON_TYPES
@@ -54,12 +55,6 @@ end
 
 ---@class QuestUtil
 QuestUtil = {};
-
-function QuestUtil.QuestTextContrastUseLightText()
-	--Use light text when the background is dark
-	local chosenAccessibilityBackground = tonumber(GetCVar("QuestTextContrast"));
-	return  chosenAccessibilityBackground == 4;
-end
 
 function QuestUtils_GetQuestTagTextureCoords(tagID, worldQuestType)
 	if IsQuestWorldQuest_Internal(worldQuestType) then

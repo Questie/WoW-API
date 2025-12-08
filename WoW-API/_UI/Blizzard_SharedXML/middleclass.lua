@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\middleclass.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- middleclass.lua - v2.0 (2011-09)

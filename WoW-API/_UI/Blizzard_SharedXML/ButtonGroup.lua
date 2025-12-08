@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\ButtonGroup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --[[
@@ -229,6 +230,10 @@ function DeselectableRadioButtonGroupMixin:CanChangeSelection(button, newSelecte
 	return true;
 end
 
+--[[
+	Required Elements - all buttons in the group need to inherit from SelectableButtonTemplate
+	and you CAN override the OnLoad, and OnClick handler if needed
+]]--
 function CreateRadioButtonGroup()
 	return CreateAndInitFromMixin(RadioButtonGroupMixin);
 end

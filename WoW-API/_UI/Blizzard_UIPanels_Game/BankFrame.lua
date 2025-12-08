@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\BankFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class BANK_PANELS
@@ -145,7 +146,7 @@ function BankFrame_UpdateCooldown(container, button)
 		start, duration, enable = C_Container.GetContainerItemCooldown(container, button:GetID());
 	end
 	CooldownFrame_Set(cooldown, start, duration, enable);
-	if ( duration and duration > 0 and enable == 0 ) then
+	if ( duration > 0 and enable == 0 ) then
 		SetItemButtonTextureVertexColor(button, 0.4, 0.4, 0.4);
 	end
 end

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetBelowMinimapFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class UIWidgetBelowMinimapContainerMixin

@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_InspectUI\Classic\InspectPaperDollFrame.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -42,7 +43,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	<Button name="InspectPaperDollItemSlotButtonLeftTemplate" inherits="InspectPaperDollItemSlotButtonTemplate" virtual="true">
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="-1">
-				<Texture name="$parentFrame" inherits="Char-LeftSlot">	
+				<Texture name="$parentFrame" inherits="Char-LeftSlot">
 					<Anchors>
 						<Anchor point="TOPLEFT" x="-4"/>
 					</Anchors>
@@ -53,7 +54,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	<Button name="InspectPaperDollItemSlotButtonRightTemplate" inherits="InspectPaperDollItemSlotButtonTemplate" virtual="true">
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="-1">
-				<Texture name="$parentFrame" inherits="Char-RightSlot">	
+				<Texture name="$parentFrame" inherits="Char-RightSlot">
 					<Anchors>
 						<Anchor point="TOPRIGHT" x="4"/>
 					</Anchors>
@@ -64,7 +65,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	<Button name="InspectPaperDollItemSlotButtonBottomTemplate" inherits="InspectPaperDollItemSlotButtonTemplate" virtual="true">
 		<Layers>
 			<Layer level="BACKGROUND" textureSubLevel="-1">
-				<Texture name="$parentFrame" inherits="Char-BottomSlot">	
+				<Texture name="$parentFrame" inherits="Char-BottomSlot">
 					<Anchors>
 						<Anchor point="TOPLEFT" x="-4" y="8"/>
 					</Anchors>
@@ -427,7 +428,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							</Anchor>
 						</Anchors>
 						<Layers>
-							<Layer level="BACKGROUND" name="SecondaryHandSlotRightTexture">
+							<Layer level="BACKGROUND">
 								<Texture inherits="Char-Slot-Bottom-Right">
 									<Anchors>
 										<Anchor point="TOPLEFT" relativeTo="$parentFrame" relativePoint="TOPRIGHT"/>

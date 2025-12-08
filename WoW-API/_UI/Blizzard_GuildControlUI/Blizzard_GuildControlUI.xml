@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GuildControlUI\Blizzard_GuildControlUI.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -604,12 +605,11 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 						<Scripts>
 							<OnClick>
 								if ( not self:GetChecked() and GetNumMembersInRank(GuildControlUI.currentRank) > 0 ) then
-									self:SetChecked(true);
-									local dialog = StaticPopup_Show("CONFIRM_RANK_AUTHENTICATOR_REMOVE",
-										string.format(REMOVE_AUTHENTICATOR_FROM_RANK, GuildControlGetRankName(GuildControlUI.currentRank)));
-									dialog.data = self;
+								self:SetChecked(true);
+								local text = string.format(REMOVE_AUTHENTICATOR_FROM_RANK, GuildControlGetRankName(GuildControlUI.currentRank));
+								local dialog = StaticPopup_Show("CONFIRM_RANK_AUTHENTICATOR_REMOVE", text, nil, self);
 								else
-									GuildControlUI_CheckClicked(self);
+								GuildControlUI_CheckClicked(self);
 								end
 							</OnClick>
 						</Scripts>

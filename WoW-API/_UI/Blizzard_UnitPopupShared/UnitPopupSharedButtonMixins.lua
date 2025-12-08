@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopupShared\UnitPopupSharedButtonMixins.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Project overwritable.
@@ -15,11 +16,11 @@ function DisplayUnitPopupTooltip(button, tooltipParams)
 
 	if tooltipParams.tooltipInstruction then
 		GameTooltip_AddInstructionLine(tooltip, tooltipParams.tooltipInstruction);
-end
+	end
 
 	if tooltipParams.tooltipWarning then
 		GameTooltip_AddColoredLine(tooltip, tooltipParams.tooltipWarning, RED_FONT_COLOR, true);
-end
+	end
 
 	tooltip:Show();
 end
@@ -53,8 +54,12 @@ local function ConfigureButtonDescription(description, entry, contextData)
 		ConfigureButton(button, entry, contextData);
 	end);
 
-	description:SetOnEnter(function(button)
+	local function onEnter(button)
 		if not CanShowTooltip(entry, contextData) then
+			if button.showingTooltip then
+				button.showingTooltip = nil;
+				description:HandleOnLeave(button);
+			end
 			return false;
 		end
 
@@ -73,10 +78,20 @@ local function ConfigureButtonDescription(description, entry, contextData)
 				tooltipInstruction = tooltipInstruction,
 				tooltipWarning = tooltipWarning,
 			}
-	
+
+			if entry:ShouldPollTooltip() then
+				button.UpdateTooltip = onEnter;
+			else
+				button.UpdateTooltip = nil;
+			end
+
 			DisplayUnitPopupTooltip(button, tooltipParams);
+
+			button.showingTooltip = true;
 		end
-	end);
+	end
+
+	description:SetOnEnter(onEnter);
 end
 
 ---@class UnitPopupButtonBaseMixin
@@ -158,6 +173,10 @@ function UnitPopupButtonBaseMixin:TooltipWhileDisabled()
 end
 
 function UnitPopupButtonBaseMixin:NoTooltipWhileEnabled()
+	return nil;
+end
+
+function UnitPopupButtonBaseMixin:ShouldPollTooltip()
 	return nil;
 end
 
@@ -290,9 +309,13 @@ end
 function UnitPopupTargetButtonMixin:CanShow(contextData)
 	if not issecure() then
 		return false;
-end
+	end
 
 	if contextData.isMobile then
+		return false;
+	end
+
+	if not contextData.unit then
 		return false;
 	end
 
@@ -517,9 +540,17 @@ function UnitPopupUninviteButtonMixin:CanShow(contextData)
 	local instanceType = select(2, IsInInstance());
 	if (instanceType == "pvp") or (instanceType == "arena") then
 		return false;
-end
+	end
 
 	return not UnitPopupSharedUtil.HasLFGRestrictions();
+end
+
+function UnitPopupUninviteButtonMixin:IsEnabled(contextData)
+	if (C_PartyInfo.ChallengeModeRestrictionsActive()) then 
+		return false;
+	end
+
+	return true;
 end
 
 function UnitPopupUninviteButtonMixin:OnClick(contextData)
@@ -543,10 +574,7 @@ function UnitPopupRemoveFriendButtonMixin:GetText(contextData)
 end
 
 function UnitPopupRemoveFriendButtonMixin:OnClick(contextData)
-	local fullName = UnitPopupSharedUtil.GetFullPlayerName(contextData);
-	if not C_FriendList.RemoveFriend(fullName) then
-		UIErrorsFrame:AddExternalErrorMessage(ERR_FRIEND_NOT_FOUND);
-	end
+	StaticPopup_Show("CONFIRM_REMOVE_WOW_FRIEND", nil, nil, contextData);
 end
 
 ---@class UnitPopupSetNoteButtonMixin : Button, UnitPopupFriendsButtonMixin
@@ -575,11 +603,12 @@ function UnitPopupRemoveBnetFriendButtonMixin:OnClick(contextData)
 			else
 				promptText = string.format(REMOVE_FRIEND_CONFIRMATION, accountInfo.accountName);
 			end
-			StaticPopup_Show("CONFIRM_REMOVE_FRIEND", promptText, nil, accountInfo.bnetAccountID);
+			StaticPopup_Show("CONFIRM_REMOVE_BN_FRIEND", promptText, nil, accountInfo.bnetAccountID);
 		end
 	else
 		promptText = string.format(BATTLETAG_REMOVE_FRIEND_CONFIRMATION, contextData.battleTag);
-		GlueDialog_Show("CONFIRM_REMOVE_FRIEND", promptText, contextData.bnetIDAccount);
+		local text2 = nil;
+		StaticPopup_Show("CONFIRM_REMOVE_BN_FRIEND", promptText, text2, contextData.bnetIDAccount);
 	end
 
 
@@ -869,8 +898,7 @@ end
 
 function UnitPopupGuildPromoteButtonMixin:OnClick(contextData)
 	local fullName = UnitPopupSharedUtil.GetFullPlayerName(contextData);
-	local dialog = StaticPopup_Show("CONFIRM_GUILD_PROMOTE", fullName);
-	dialog.data = fullName;
+	StaticPopup_Show("CONFIRM_GUILD_PROMOTE", fullName, nil, fullName);
 end
 
 --Shown through Communities Guild Roster right click
@@ -953,6 +981,52 @@ function UnitPopupPartyInstanceLeaveButtonMixin:OnClick(contextData)
 	ConfirmOrLeaveParty();
 end
 
+---@class UnitPopupPartyInstanceAbandonButtonMixin : Button, UnitPopupButtonBaseMixin
+UnitPopupPartyInstanceAbandonButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
+
+function UnitPopupPartyInstanceAbandonButtonMixin:GetText(contextData)
+	return VOTE_TO_ABANDON;
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:CanShow(contextData)
+	return C_PartyInfo.ChallengeModeRestrictionsActive();
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:IsEnabled(contextData)
+	return C_PartyInfo.CanStartInstanceAbandonVote();
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:OnClick(contextData)
+	C_PartyInfo.StartInstanceAbandonVote();
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:TooltipWhileDisabled()
+	return true;
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:NoTooltipWhileEnabled()
+	return true;
+end
+
+function UnitPopupPartyInstanceAbandonButtonMixin:ShouldPollTooltip()
+	return true;
+end
+
+local PartyInstanceAbandonFormatter = CreateFromMixins(SecondsFormatterMixin);
+PartyInstanceAbandonFormatter:Init(0, SecondsFormatter.Abbreviation.None, false, true);
+
+function UnitPopupPartyInstanceAbandonButtonMixin:GetTooltipText()
+	local _duration, timeLeft = C_PartyInfo.GetInstanceAbandonVoteCooldownTime();
+	if timeLeft then
+		local cooldownTimeLeftText = PartyInstanceAbandonFormatter:Format(timeLeft);
+		return VOTE_TO_ABANDON_ON_COOLDOWN:format(cooldownTimeLeftText);
+	elseif IsEncounterInProgress() then
+		return ERR_VOTE_TO_ABANDON_ENCOUNTER;
+	else
+		return nil;
+	end
+end
+
 ---@class UnitPopupFollowButtonMixin : Button, UnitPopupButtonBaseMixin
 UnitPopupFollowButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
 
@@ -989,7 +1063,7 @@ function UnitPopupPetDismissButtonMixin:GetText(contextData)
 end
 
 function UnitPopupPetDismissButtonMixin:CanShow(contextData)
-	if PetCanBeAbandoned() and not IsSpellKnown(HUNTER_DISMISS_PET) then
+	if PetCanBeAbandoned() and not C_SpellBook.IsSpellKnown(Constants.SpellBookSpellIDs.SPELL_ID_DISMISS_PET) then
 		return false;
 	end
 
@@ -998,7 +1072,7 @@ end
 
 function UnitPopupPetDismissButtonMixin:OnClick(contextData)
 	if PetCanBeAbandoned() then
-		CastSpellByID(HUNTER_DISMISS_PET);
+		CastSpellByID(Constants.SpellBookSpellIDs.SPELL_ID_DISMISS_PET);
 	else
 		PetDismiss();
 	end
@@ -2178,7 +2252,7 @@ end
 function UnitPopupLargeFocusButtonMixin:OnClick(contextData)
 	local fullSize = GetCVarBool("fullSizeFocusFrame");
 	SetCVar("fullSizeFocusFrame", not fullSize);
-	FocusFrame:SetSmallSize(not fullSize, true);
+	FocusFrame:SetSmallSize(fullSize);
 end
 
 function UnitPopupLargeFocusButtonMixin:IsChecked(contextData)
@@ -3634,6 +3708,7 @@ function UnitPopupRafGrantLevelButtonMixin:OnClick(contextData)
 end
 
 --Override in UnitPopupButtons
+---@class UnitPopupLootPromoteButtonMixin : UnitPopupButtonBaseMixin
 UnitPopupLootPromoteButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin)
 
 function UnitPopupLootPromoteButtonMixin:CanShow(contextData)
@@ -3835,4 +3910,85 @@ end
 
 function UnitPopupResetChallengeButtonMixin:CanShow(contextData)
 	return C_ChallengeMode.IsChallengeModeActive();
+end
+
+---@class UnitPopupRecentAllyNoteButtonMixin : Button, UnitPopupButtonBaseMixin
+UnitPopupRecentAllyNoteButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
+
+function UnitPopupRecentAllyNoteButtonMixin:GetText(contextData)
+	return RECENT_ALLIES_MENU_BUTTON_LABEL_SET_NOTE;
+end
+
+function UnitPopupRecentAllyNoteButtonMixin:CanShow(contextData)
+	return contextData.recentAllyData and C_RecentAllies.CanSetRecentAllyNote(contextData.recentAllyData.characterData.guid);
+end
+
+function UnitPopupRecentAllyNoteButtonMixin:OnClick(contextData)
+	local recentAllyData = contextData.recentAllyData;
+	local textArg1, textArg2 = recentAllyData.characterData.name, nil;
+	StaticPopup_Show("SET_RECENT_ALLY_NOTE", textArg1, textArg2, recentAllyData);
+end
+
+---@class UnitPopupRecentAllyPinButtonMixin : Button, UnitPopupButtonBaseMixin
+UnitPopupRecentAllyPinButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
+
+function UnitPopupRecentAllyPinButtonMixin:GetText(contextData)
+	return C_RecentAllies.IsRecentAllyPinned(contextData.recentAllyData.characterData.guid) and RECENT_ALLIES_MENU_BUTTON_LABEL_UNPIN or RECENT_ALLIES_MENU_BUTTON_LABEL_PIN;
+end
+
+function UnitPopupRecentAllyPinButtonMixin:CanShow(contextData)
+	return contextData.recentAllyData ~= nil;
+end
+
+function UnitPopupRecentAllyPinButtonMixin:OnClick(contextData)
+	local recentAllyGUID = contextData.recentAllyData.characterData.guid;
+	C_RecentAllies.SetRecentAllyPinned(recentAllyGUID, not C_RecentAllies.IsRecentAllyPinned(recentAllyGUID));
+end
+
+---@class UnitPopupAddRecentAllyBattleTagFriendButtonMixin : Button, UnitPopupButtonBaseMixin
+UnitPopupAddRecentAllyBattleTagFriendButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
+
+function UnitPopupAddRecentAllyBattleTagFriendButtonMixin:GetText(contextData)
+	return SEND_BATTLETAG_REQUEST;
+end
+
+function UnitPopupAddRecentAllyBattleTagFriendButtonMixin:CanShow(contextData)
+	return contextData.recentAllyData ~= nil;
+end
+
+function UnitPopupAddRecentAllyBattleTagFriendButtonMixin:IsDisabledInKioskMode()
+	return true;
+end
+
+function UnitPopupAddRecentAllyBattleTagFriendButtonMixin:OnClick(contextData)
+	C_BattleNet.BNCheckBattleTagInviteToRecentAlly(contextData.recentAllyData.characterData.guid);
+end
+
+function UnitPopupAddRecentAllyBattleTagFriendButtonMixin:IsEnabled(contextData)
+	return BNFeaturesEnabledAndConnected();
+end
+
+---@class UnitPopupReportRecentAllyButtonMixin : Button, UnitPopupReportButtonMixin
+UnitPopupReportRecentAllyButtonMixin = CreateFromMixins(UnitPopupReportButtonMixin);
+
+function UnitPopupReportRecentAllyButtonMixin:GetText(contextData)
+	return REPORT_IN_WORLD_PLAYER;
+end
+
+function UnitPopupReportRecentAllyButtonMixin:GetReportType()
+	return Enum.ReportType.RecentAlly;
+end
+
+
+function UnitPopupReportRecentAllyButtonMixin:CanShow(contextData)
+	if not UnitPopupReportButtonMixin.CanShow(self, contextData) then
+		return false;
+	end
+
+	local playerLocation = UnitPopupSharedUtil.TryCreatePlayerLocation(contextData);
+	if not playerLocation then
+		return false;
+	end
+
+	return not (playerLocation:IsChatLineID() or playerLocation:IsCommunityData());
 end

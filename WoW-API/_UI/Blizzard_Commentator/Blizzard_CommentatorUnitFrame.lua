@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Commentator\Blizzard_CommentatorUnitFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 LOSS_OF_CONTROL_ACTIVE_INDEX = 1;

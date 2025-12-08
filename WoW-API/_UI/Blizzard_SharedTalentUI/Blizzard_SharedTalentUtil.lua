@@ -1,14 +1,21 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedTalentUI\Blizzard_SharedTalentUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
 local TemplatesByTalentType = {
 	[Enum.TraitNodeEntryType.SpendSquare] = "TalentButtonSquareTemplate",
 	[Enum.TraitNodeEntryType.SpendCircle] = "TalentButtonCircleTemplate",
+	[Enum.TraitNodeEntryType.SpendSmallCircle] = "TalentButtonSmallCircleTemplate",
 };
 
 local LargeTemplatesByTalentType = {
 	[Enum.TraitNodeEntryType.SpendSquare] = "TalentButtonLargeSquareTemplate",
 	[Enum.TraitNodeEntryType.SpendCircle] = "TalentButtonLargeCircleTemplate",
+};
+
+local EntryTypeUsesArtMixin = {
+	[Enum.TraitNodeEntryType.SpendSquare] = true,
+	[Enum.TraitNodeEntryType.SpendCircle] = true,
 };
 
 local TemplatesByEdgeVisualStyle = {
@@ -46,7 +53,7 @@ function TalentUtil.GetTalentNameFromInfo(definitionInfo)
 end
 
 function TalentUtil.GetTalentName(overrideName, spellID)
-	if overrideName then
+	if overrideName and (overrideName ~= "") then
 		return overrideName;
 	end
 
@@ -229,6 +236,72 @@ TalentButtonUtil.BaseVisualState = {
 	DisplayError = 9,
 };
 
+TalentButtonUtil.SizingAdjustment = {
+	Circle = {
+		{ region = "Icon", adjust = 0, },
+		{ region = "DisabledOverlay", adjust = 0, },
+		{ region = "BorderShadow", adjust = -2, },
+		{ region = "StateBorder", adjust = -4, },
+		{ region = "Border2", adjust = -4, },
+		{ region = "Border", adjust = -7, },
+		{ region = "IconMask", adjust = -8, },
+		{ region = "BorderMask", adjust = -7, },
+		{ region = "Border2Mask", adjust = -4, },
+		{ region = "BorderShadowMask", adjust = -2, },
+		{ region = "DisabledOverlayMask", adjust = -3, },
+	},
+
+	ProfessionPerk = {
+		{ region = "Icon", adjust = 0, },
+		{ region = "DisabledOverlay", adjust = 0, },
+		{ region = "BorderShadow", adjust = 2, },
+		{ region = "StateBorder", adjust = 0, },
+		{ region = "Border2", adjust = 0, },
+		{ region = "Border", adjust = -3, },
+	},
+
+	Large = {
+		{ region = "Icon", adjust = 0, },
+		{ region = "IconMask", adjust = 0, },
+		{ region = "DisabledOverlay", adjust = 0, },
+		{ region = "DisabledOverlayMask", adjust = 0, },
+		{ region = "StateBorder", adjust = 0, },
+		{ region = "Ghost", adjust = 0, },
+		{ region = "Glow", adjust = 0, },
+		{ region = "SelectableGlow", adjust = 0, },
+		{ region = "SpendText", anchorX = 20 },
+	},
+
+	Small = {
+		{ region = "Icon", adjust = 0, },
+		{ region = "IconMask", adjust = -2, },
+		{ region = "DisabledOverlay", adjust = 0, },
+		{ region = "DisabledOverlayMask", adjust = 0, },
+		{ region = "StateBorder", adjust = 0, },
+		{ region = "Ghost", adjust = 0, },
+		{ region = "Glow", adjust = 0, },
+		{ region = "SelectableGlow", adjust = 0, },
+		{ region = "SpendText", anchorX = 6, anchorY = -6, },
+		{ region = "Shadow", adjust = 0, },
+	},
+
+	LegionInfinite = {
+		{ region = "Icon", adjust = -8, },
+		{ region = "IconMask", adjust = -8, },
+		{ region = "DisabledOverlay", adjust = 0, },
+		{ region = "BorderShadow", adjust = 0, },
+		{ region = "StateBorder", adjust = 0, anchorX = 4, anchorY = -4 },
+		{ region = "StateBorderHover", adjust = 0, anchorX = 4, anchorY = -4},
+		{ region = "Border2", adjust = 0, },
+		{ region = "Border", adjust = 0, },
+		{ region = "BorderMask", adjust = 0, },
+		{ region = "Border2Mask", adjust = 0, },
+		{ region = "BorderShadowMask", adjust = 0, },
+		{ region = "DisabledOverlayMask", adjust = 0, },
+		{ region = "SpendText", anchorX = 14, anchorY = 6, },
+	},
+};
+
 local HoverAlphaByVisualState = {
 	[TalentButtonUtil.BaseVisualState.Normal] = 1,
 	[TalentButtonUtil.BaseVisualState.Gated] = 0.4,
@@ -244,7 +317,9 @@ local HoverAlphaByVisualState = {
 function TalentButtonUtil.GetTemplateForTalentType(nodeInfo, talentType, useLarge)
 	-- By default, any use of SubTreeSelection nodes without a bespoke override will treat them like regular Selection nodes
 	if nodeInfo and (nodeInfo.type == Enum.TraitNodeType.Selection or nodeInfo.type == Enum.TraitNodeType.SubTreeSelection) then
-		if FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowMultipleIcons) then
+		if FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowExpandedSelection) then
+			return "TalentButtonSelectExpandedTemplate";
+		elseif FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowMultipleIcons) then
 			return "TalentButtonChoiceTemplate";
 		end
 	end
@@ -260,7 +335,9 @@ end
 function TalentButtonUtil.GetSpecializedMixin(nodeInfo, talentType)
 	-- By default, any use of SubTreeSelection nodes without a bespoke override will treat them like regular Selection nodes
 	if nodeInfo and (nodeInfo.type == Enum.TraitNodeType.Selection or nodeInfo.type == Enum.TraitNodeType.SubTreeSelection) then
-		if FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowMultipleIcons) then
+		if FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowExpandedSelection) then
+			return TalentButtonSelectExpandedButtonMixin;
+		elseif FlagsUtil.IsSet(nodeInfo.flags, Enum.TraitNodeFlag.ShowMultipleIcons) then
 			return TalentButtonSplitSelectMixin;
 		else
 			return TalentButtonSelectMixin;
@@ -268,6 +345,14 @@ function TalentButtonUtil.GetSpecializedMixin(nodeInfo, talentType)
 	end
 
 	return TalentButtonSpendMixin;
+end
+
+function TalentButtonUtil.GetSpecializedChoiceMixin(_entryInfo, talentType)
+	if EntryTypeUsesArtMixin[talentType] then
+		return TalentSelectionChoiceArtMixin;
+	end
+
+	return TalentSelecTalentSelectionChoiceMixintionChoiceArtMixin;
 end
 
 function TalentButtonUtil.GetTemplateForEdgeVisualStyle(visualStyle)

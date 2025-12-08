@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Classic\ColorblindOverrides.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class ColorblindOverrides
@@ -37,4 +38,8 @@ function ColorblindSelectorMixin:OnLoad()
 
 	self.ColorblindExamples.ExampleIcon4:SetTexture("Interface\\Icons\\INV_Misc_Gem_Variety_02");
 	self.ColorblindExamples.ExampleIcon6:SetTexture("Interface\\Icons\\Spell_Holy_SealOfRighteousness");
+end
+
+function Settings.GetColorblindSettingsLabel()
+	return COLORBLIND_LABEL;
 end

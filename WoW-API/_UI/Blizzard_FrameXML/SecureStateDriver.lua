@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\SecureStateDriver.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --
@@ -59,7 +60,7 @@ local secureAttributeDrivers = {};
 local unitExistsWatchers = {};
 local unitExistsCache = setmetatable({},
                                      { __index = function(t,k)
-                                                     local v = UnitExists(k) or false;
+                                                     local v = UnitExists(k) or UnitIsVisible(k);
                                                      t[k] = v;
                                                      return v;
                                                  end

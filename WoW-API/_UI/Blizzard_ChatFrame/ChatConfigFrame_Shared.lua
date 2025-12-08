@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\ChatConfigFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 COMBATLOG_FILTERS_TO_DISPLAY = 4;
@@ -1566,7 +1567,7 @@ CHAT_CONFIG_CATEGORIES = {
 	[3] = "ChatConfigChannelSettings",
 	[4] = "ChatConfigOtherSettings",
 	[5] = "ChatConfigTextToSpeechSettings",
-	[6] = "ChatConfigTextToSpeechMessageSettings",
+	[6] = "ChatConfigTextToSpeechMessageSettingsScroll",
 	[7] = "ChatConfigTextToSpeechChannelSettings",
 };
 

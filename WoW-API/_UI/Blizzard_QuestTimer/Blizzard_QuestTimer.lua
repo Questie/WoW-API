@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_QuestTimer\Blizzard_QuestTimer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class QuestTimerMixin

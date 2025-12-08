@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\Classic\FrameLocks.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ----------------------------------------------------------------------------------------
@@ -26,7 +27,6 @@ local HIDE_MOST = {
 	FocusFrame			= "hidden",
 	TemporaryEnchantFrame = "hidden",
 	ZoneAbilityFrame	= "hidden",
-	OrderHallCommandBar	= "hidden",
 	WorldStateScoreFrame = "hidden",
 	UIWidgetTopCenterContainerFrame = "hidden",
 }

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesFlowMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ----
@@ -270,25 +271,25 @@ StaticPopupDialogs["CHARACTER_SERVICES_CHECK_APPLY"] = {
 	text = "",
 	button1 = "",
 	button2 = "",
-	OnAccept = function()
-		local flow = GlueDialog.data;
+	OnAccept = function(dialog, data)
+		local flow = data;
 		flow:SetWarningAccepted(true);
 	end,
 
-	OnCancel = function()
+	OnCancel = function(dialog, data)
 		PlaySound(SOUNDKIT.IG_MAINMENU_OPTION_CHECKBOX_ON);
-		local flow = GlueDialog.data;
+		local flow = data;
 		flow:SetWarningAccepted(false);
 	end,
 
-	OnShow = function()
+	OnShow = function(dialog, data)
 		PlaySound(SOUNDKIT.IG_CHARACTER_INFO_OPEN);
 		CharacterSelect_UpdateButtonState();
 		CharSelectServicesCover:Show();
 		CharacterServicesMaster_UpdateServiceButton();
 	end,
 
-	OnHide = function()
+	OnHide = function(dialog, data)
 		PlaySound(SOUNDKIT.IG_CHARACTER_INFO_CLOSE);
 		CharacterSelect_UpdateButtonState();
 		CharSelectServicesCover:Hide();
@@ -301,5 +302,6 @@ function CharacterServicesFlow_ShowFinishConfirmation(data, bodyText, acceptText
 	warningDialog.button1 = acceptText;
 	warningDialog.button2 = cancelText;
 
-	GlueDialog_Show("CHARACTER_SERVICES_CHECK_APPLY", bodyText, data);
+	local text2 = nil;
+	StaticPopup_Show("CHARACTER_SERVICES_CHECK_APPLY", bodyText, text2, data);
 end

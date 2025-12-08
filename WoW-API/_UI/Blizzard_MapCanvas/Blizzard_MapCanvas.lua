@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MapCanvas\Blizzard_MapCanvas.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class MapCanvasMixin : CallbackRegistryMixin, Frame

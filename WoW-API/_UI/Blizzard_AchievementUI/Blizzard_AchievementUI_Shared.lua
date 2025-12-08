@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AchievementUI\Classic\Blizzard_AchievementUI_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 UIPanelWindows["AchievementFrame"] = { area = "doublewide", pushable = 0, width = 840, xoffset = 80, whileDead = 1 };
@@ -607,7 +608,7 @@ function AchievementFrameStats_SetStat(button, category, index, colorIndex, isSu
 	
 	if ( not colorIndex ) then
 		if ( not index ) then
-			message("Error, need a color index or index");
+			SetBasicMessageDialogText("Error, need a color index or index");
 		end
 		colorIndex = index;
 	end
@@ -1006,7 +1007,7 @@ function AchievementFrameComparisonStats_SetStat (button, category, index, color
 	
 	if ( not colorIndex ) then
 		if ( not index ) then
-			message("Error, need a color index or index");
+			SetBasicMessageDialogText("Error, need a color index or index");
 		end
 		colorIndex = index;
 	end

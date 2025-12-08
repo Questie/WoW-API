@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\PromotionFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local DELAYED_PROMO_INFO;
@@ -93,8 +94,8 @@ function StarterEditionPopUp_OnShow(self)
 	if featureTable then
 		self.Logo:SetTexture(featureTable.logo);
 	end
-	
-	local features = AccountUpgradePanel_GetBrownBoxFeatures();
+
+	local features = featureTable.features;
 	for i, feature in ipairs(features) do
 		local frame = _G["StarterEditionPopUpFeature"..i];
 		if ( not frame ) then

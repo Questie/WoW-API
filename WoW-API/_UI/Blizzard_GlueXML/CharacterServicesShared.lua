@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesShared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function CheckAddVASErrorString(errorTable, errorString, requirementPassed)

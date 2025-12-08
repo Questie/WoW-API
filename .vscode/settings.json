@@ -13,6 +13,6 @@
   ],
   "Lua.workspace.ignoreDir": [
     ".vscode",
-    "WoW-API",
+    "generator",
   ]
 }

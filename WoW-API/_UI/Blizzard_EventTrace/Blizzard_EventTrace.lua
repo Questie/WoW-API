@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_EventTrace\Blizzard_EventTrace.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local MinPanelWidth = 715;

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\DataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -22,6 +23,10 @@ function DataProviderMixin:Init(tbl)
 	if tbl then
 		self:InsertTable(tbl);
 	end
+end
+
+function DataProviderMixin:IsVirtual()
+	return false;
 end
 
 function DataProviderMixin:Enumerate(indexBegin, indexEnd)

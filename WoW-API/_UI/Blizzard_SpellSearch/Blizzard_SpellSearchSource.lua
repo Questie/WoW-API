@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchSource.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class SpellSearchSourceMixin

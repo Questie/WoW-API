@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\PortraitFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -74,6 +75,21 @@ function PortraitFrameMixin:SetPortraitToClassIcon(classFilename)
 	self:SetPortraitTextureRaw("Interface/TargetingFrame/UI-Classes-Circles");
 	local left, right, bottom, top = unpack(CLASS_ICON_TCOORDS[string.upper(classFilename)]);
 	self:SetPortraitTexCoord(left, right, bottom, top);
+end
+
+function PortraitFrameMixin:SetPortraitToSpecIcon()
+	local specialization = C_SpecializationInfo.GetSpecialization();
+	if specialization ~= nil then
+		local icon = select(4, C_SpecializationInfo.GetSpecializationInfo(specialization));
+		if icon then
+			self:SetPortraitTexCoord(0, 1, 0, 1);
+			self:SetPortraitToAsset(icon);
+			return;
+		end
+	end
+
+	local fileName = select(2, UnitClass("player"));
+	self:SetPortraitToClassIcon(fileName);
 end
 
 function PortraitFrameMixin:SetPortraitTexCoord(...)

@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\RaidWarning.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 RAID_NOTICE_DEFAULT_HOLD_TIME = 10.0;

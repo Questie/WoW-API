@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ClassMenu\Blizzard_ClassMenu.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 UNSPECIFIED_CLASS_FILTER = 0;

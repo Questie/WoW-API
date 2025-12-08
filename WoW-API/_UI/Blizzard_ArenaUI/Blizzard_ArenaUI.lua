@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ArenaUI\Blizzard_ArenaUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MAX_ARENA_ENEMIES = 5;
@@ -228,7 +229,7 @@ function ArenaEnemyFrame_OnEvent(self, event, unit, ...)
 				ArenaEnemyFrame_Unlock(self);
 				ArenaEnemyFrame_UpdatePlayer(self);
 				
-				if ( self.healthbar.frequentUpdates and GetCVarBool("predictedHealth") ) then
+				if ( self.healthbar.frequentUpdates ) then
 					self.healthbar:SetScript("OnUpdate", UnitFrameHealthBar_OnUpdate);
 					self.healthbar:UnregisterEvent("UNIT_HEALTH");
 				end
@@ -487,7 +488,7 @@ function ArenaEnemyPetFrame_OnEvent(self, event, ...)
 				ArenaEnemyFrame_SetMysteryPlayer(ownerFrame);
 				ownerFrame:Show();
 			end
-			if ( self.healthbar.frequentUpdates and GetCVarBool("predictedHealth") ) then
+			if ( self.healthbar.frequentUpdates ) then
 				self.healthbar:SetScript("OnUpdate", UnitFrameHealthBar_OnUpdate);
 				self.healthbar:UnregisterEvent("UNIT_HEALTH");
 			end

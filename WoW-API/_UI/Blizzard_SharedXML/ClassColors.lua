@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Vanilla\ClassColors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class RAID_CLASS_COLORS
@@ -9,7 +10,7 @@ RAID_CLASS_COLORS = {
 	["MAGE"] = CreateColor(0.25, 0.78, 0.92),
 	["ROGUE"] = CreateColor(1.0, 0.96, 0.41),
 	["DRUID"] = CreateColor(1.0, 0.49, 0.04),
-	["SHAMAN"] = CreateColor(0.0, 0.44, 0.87),
+	["SHAMAN"] = CreateColor(0.96, 0.55, 0.73),
 	["WARRIOR"] = CreateColor(0.78, 0.61, 0.43),
 	["DEATHKNIGHT"] = CreateColor(0.77, 0.12 , 0.23),
 	["MONK"] = CreateColor(0.0, 1.00 , 0.59),

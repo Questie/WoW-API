@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_Keybindings.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 KeybindListener = CreateFrame("Button");
@@ -211,7 +212,7 @@ function DisplayUniversalAccessDialogIfRequiredForVoiceChatKeybind(keys)
 		end
 		if hasNonMetaKey then
 			if not C_MacOptions.IsInputMonitoringEnabled() then
-				ShowAppropriateDialog("MAC_OPEN_INPUT_MONITORING");
+				StaticPopup_Show("MAC_OPEN_INPUT_MONITORING");
 			end
 		end
 	end

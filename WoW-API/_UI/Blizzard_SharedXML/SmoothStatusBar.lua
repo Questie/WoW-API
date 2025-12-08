@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\SmoothStatusBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class g_updatingBars

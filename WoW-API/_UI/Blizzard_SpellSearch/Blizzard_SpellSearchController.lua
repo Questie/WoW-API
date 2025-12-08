@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchController.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class SpellSearchControllerMixin
@@ -18,9 +19,11 @@ function SpellSearchControllerMixin:Init(searchSourceInstances)
 	local textFilterEnabled = true;
 	local actionBarFilterEnabled = false; -- Default to opt-in by so that search contexts acknowledge they're focusing known player spells
 	local nameFilterEnabled = true;
+	local assistedCombatFilterEnabled = false;
 	self.searchFilters[SpellSearchUtil.FilterType.Text] = CreateAndInitFromMixin(SpellSearchTextFilterMixin, self, textFilterEnabled);
 	self.searchFilters[SpellSearchUtil.FilterType.ActionBar] = CreateAndInitFromMixin(SpellSearchActionBarFilterMixin, self, actionBarFilterEnabled);
 	self.searchFilters[SpellSearchUtil.FilterType.Name] = CreateAndInitFromMixin(SpellSearchNameFilterMixin, self, nameFilterEnabled);
+	self.searchFilters[SpellSearchUtil.FilterType.AssistedCombat] = CreateAndInitFromMixin(SpellSearchAssistedCombatFilterMixin, self, assistedCombatFilterEnabled);
 
 	self.disabledFilters = {};
 

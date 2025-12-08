@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CompactRaidFrames\Blizzard_CompactRaidFrameManager_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 NUM_WORLD_RAID_MARKERS = 8;

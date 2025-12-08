@@ -1,3 +1,4 @@
+<!-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\RaidFrame.xml -->
 <!-- Auto-moved, do not edit manually -->
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface/AddOns/Blizzard_SharedXML/UI.xsd">
@@ -39,7 +40,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 	</Frame>
 	<Button name="RaidInfoInstanceTemplate" virtual="true" mixin="RaidInstanceFrameMixin">
 		<Size>
-			<AbsDimension x="300" y="30"/>
+			<AbsDimension x="217" y="40"/>
 		</Size>
 		<Scripts>
 			<OnEnter method="OnHover"/>
@@ -51,25 +52,7 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Anchors>
 						<Anchor point="TOPLEFT">
 							<Offset>
-								<AbsDimension x="5" y="-5"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>
-				<FontString name="$parentDifficulty" inherits="GameFontHighlightSmall" parentKey="Difficulty">
-					<Anchors>
-						<Anchor point="TOPLEFT">
-							<Offset>
-								<AbsDimension x="5" y="-18"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>
-				<FontString name="$parentReset" inherits="GameFontHighlightSmall" parentKey="Reset">
-					<Anchors>
-						<Anchor point="TOPRIGHT" >
-							<Offset>
-								<AbsDimension x="-10" y="-6"/>
+								<AbsDimension x="5" y="-10"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
@@ -78,19 +61,31 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					<Anchors>
 						<Anchor point="TOPRIGHT">
 							<Offset>
-								<AbsDimension x="-10" y="-18"/>
+								<AbsDimension x="-17" y="-12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentReset" inherits="GameFontHighlightSmall" parentKey="Reset" >
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="5" y="-25"/>
 							</Offset>
 						</Anchor>
 					</Anchors>
 				</FontString>
 			</Layer>
 		</Layers>
+		<!-- If we ever want this to have a tooltip, uncomment this part for a nice highlight -->
+		<!-- 
 		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD">
 			<Anchors>
 				<Anchor point="TOPLEFT" x="-10" y="-2"/>
 				<Anchor point="BOTTOMRIGHT" x="10" y="-4"/>
 			</Anchors>
 		</HighlightTexture>
+		-->
 	</Button>
 	<Frame name="RaidParentFrame"  toplevel="true" parent="UIParent" movable="true" enableMouse="true" hidden="true" inherits="ButtonFrameTemplate" mixin="RaidParentFrameMixin">
 		<Frames>
@@ -223,37 +218,23 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 				<KeyValues>
 					<KeyValue key="backdropInfo" value="BACKDROP_DARK_DIALOG_32_32" type="global"/>
 				</KeyValues>
-				<Size x="345" y="250"/>
+				<Size x="270" y="250"/>
 				<Anchors>
-					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="1" y="-17"/>
+					<Anchor point="TOPLEFT" relativePoint="TOPRIGHT" x="1" y="-16"/>
 				</Anchors>
 				<Layers>
 					<Layer level="ARTWORK">
 						<Texture name="RaidInfoDetailHeader" file="Interface\RaidFrame\UI-RaidInfo-Header">
 							<Size>
-								<AbsDimension x="325" y="47"/>
+								<AbsDimension x="250" y="64"/>
 							</Size>
 							<Anchors>
 								<Anchor point="TOPLEFT">
 									<Offset>
-										<AbsDimension x="10" y="-9"/>
+										<AbsDimension x="11" y="-10"/>
 									</Offset>
 								</Anchor>
 							</Anchors>
-							<TexCoords left="0.18164" right="0.81640" top="0.578125" bottom="0.94531"/>
-						</Texture>
-						<Texture name="RaidInfoDetailFooter" file="Interface\RaidFrame\UI-RaidInfo-Header">
-							<Size>
-								<AbsDimension x="326" y="29"/>
-							</Size>
-							<Anchors>
-								<Anchor point="BOTTOMLEFT">
-									<Offset>
-										<AbsDimension x="9" y="9"/>
-									</Offset>
-								</Anchor>
-							</Anchors>
-							<TexCoords left="0.18164" right="0.81640" top="0.08593" bottom="0.3125"/>
 						</Texture>
 					</Layer>
 					<Layer level="OVERLAY">
@@ -269,19 +250,38 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 								</Anchor>
 							</Anchors>
 						</Texture>
-						<Texture name="$parentHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
-							<Size x="256" y="64"/>
-							<Anchors>
-								<Anchor point="TOP">
-									<Offset x="0" y="12"/>
-								</Anchor>
-							</Anchors>
-						</Texture>
 						<FontString name="RaidInfoHeader" inherits="GameFontNormal" text="RAID_INFORMATION">
 							<Anchors>
-								<Anchor point="TOP" relativeTo="$parentHeader">
+								<Anchor point="TOPLEFT">
 									<Offset>
-										<AbsDimension x="0" y="-14"/>
+										<AbsDimension x="20" y="-15"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="RaidInfoSubheader" inherits="GameFontHighlightSmall" text="RAID_INFO_DESC">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidInfoHeader" relativePoint="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="RaidInfoInstanceLabel" inherits="GameFontDisableSmall" text="INSTANCE">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativeTo="RaidInfoSubheader" relativePoint="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-13"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="RaidInfoIDLabel" inherits="GameFontDisableSmall" text="ID">
+							<Anchors>
+								<Anchor point="LEFT" relativeTo="RaidInfoInstanceLabel" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="110" y="0"/>
 									</Offset>
 								</Anchor>
 							</Anchors>
@@ -289,56 +289,22 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 					</Layer>
 				</Layers>
 				<Frames>
-					<Frame name="RaidInfoInstanceLabel" inherits="RaidInfoHeaderTemplate">
-						<Size>
-							<AbsDimension x="150" y="22"/>
-						</Size>
-						<Anchors>
-							<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
-								<Offset>
-									<AbsDimension x="13" y="-31"/>
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self.text:SetText(INSTANCE);
-							</OnLoad>
-						</Scripts>
-					</Frame>
-					<Frame name="RaidInfoIDLabel" inherits="RaidInfoHeaderTemplate">
-						<Size>
-							<AbsDimension x="150" y="22"/>
-						</Size>
-						<Anchors>
-							<Anchor point="LEFT" relativeTo="RaidInfoInstanceLabel" relativePoint="RIGHT">
-								<Offset>
-									<AbsDimension x="-2" y="0"/>
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnLoad>
-								self.text:SetText(LOCK_EXPIRE);
-							</OnLoad>
-						</Scripts>
-					</Frame>
 					<Button name="RaidInfoCloseButton" inherits="UIPanelCloseButton">
 						<Anchors>
-							<Anchor point="TOPRIGHT" x="-2" y="-2"/>
+							<Anchor point="TOPRIGHT" x="-3" y="-3"/>
 						</Anchors>
 					</Button>
 					<Frame parentKey="ScrollBox" inherits="WowScrollBoxList">
 						<Size>
-							<AbsDimension x="295" y="160"/>
+							<AbsDimension x="217" y="173"/>
 						</Size>
 						<KeyValues>
 							<KeyValue key="wheelPanScalar" value="0.35" type="number"/>
 						</KeyValues>
 						<Anchors>
-							<Anchor point="TOPLEFT">
+							<Anchor point="BOTTOMRIGHT">
 								<Offset>
-									<AbsDimension x="15" y="-55"/>
+									<AbsDimension x="-40" y="12"/>
 								</Offset>
 							</Anchor>
 						</Anchors>
@@ -352,26 +318,6 @@ https://raw.githubusercontent.com/BigWigsMods/WoWUI/refs/heads/vanilla/Interface
 							<Anchor point="BOTTOMLEFT" relativeKey="$parent.ScrollBox" relativePoint="BOTTOMRIGHT" x="0" y="0"/>
 						</Anchors>
 					</EventFrame>
-					<Button name="RaidInfoCancelButton" inherits="UIPanelButtonTemplate" text="CLOSE">
-						<Size>
-							<AbsDimension x="90" y="20"/>
-						</Size>
-						<Anchors>
-							<Anchor point="BOTTOMRIGHT">
-								<Offset>
-									<AbsDimension x="-14" y="13"/>
-								</Offset>
-							</Anchor>
-						</Anchors>
-						<Scripts>
-							<OnClick>
-								RaidInfoFrame:Hide();
-							</OnClick>
-						</Scripts>
-						<NormalFont style="GameFontNormalSmall"/>
-						<HighlightFont style="GameFontHighlightSmall"/>
-						<DisabledFont style="GameFontDisableSmall"/>
-					</Button>
 				</Frames>
 				<Scripts>
 					<OnShow>

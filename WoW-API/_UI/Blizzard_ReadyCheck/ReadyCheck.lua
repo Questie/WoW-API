@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ReadyCheck\Classic\ReadyCheck.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 READY_CHECK_WAITING_TEXTURE = "Interface\\RaidFrame\\ReadyCheck-Waiting";

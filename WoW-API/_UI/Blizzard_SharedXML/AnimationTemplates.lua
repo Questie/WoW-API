@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\AnimationTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Anim group whose parent is hidden or shown based on script calls defined in the template xml being used

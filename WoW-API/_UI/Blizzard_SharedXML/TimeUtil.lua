@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\TimeUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Set to false in some locale specific files.

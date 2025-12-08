@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesCharacterSelector.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local function restoreButtonScripts(button)
@@ -127,7 +128,7 @@ function CharacterServicesCharacterSelectorMixin:ProcessCharacterFromBlock(chara
 		end
 
 		if serviceInfo.requiresLogin then
-			GlueDialog_Show("MUST_LOG_IN_FIRST");
+			StaticPopup_Show("MUST_LOG_IN_FIRST");
 			CharSelectServicesFlowFrame:Hide();
 			return;
 		end

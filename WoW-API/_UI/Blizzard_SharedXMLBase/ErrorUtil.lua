@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\ErrorUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 function CallErrorHandler(...)
@@ -20,7 +21,9 @@ function assertsafe(cond, msgStringOrFunction, ...)
 		if geterrorhandler() then
 			geterrorhandler()(error);
 		elseif ProcessExceptionClient then
-			ProcessExceptionClient(error);
+			local framesToSkip = 1;
+			ProcessExceptionClient(error, error, framesToSkip);
+
 		end
 		SetErrorCallstackHeight(nil);
 	end

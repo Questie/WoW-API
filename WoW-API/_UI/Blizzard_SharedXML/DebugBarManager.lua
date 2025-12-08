@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\DebugBarManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 -- Prevent the DebugBarManager from loading into the secure environment and responding

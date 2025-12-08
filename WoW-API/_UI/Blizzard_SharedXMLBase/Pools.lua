@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\Pools.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local SpecializeFrameWithMixins = FrameUtil.SpecializeFrameWithMixins;
@@ -9,7 +10,7 @@ local CreateProxyDirectory = ProxyUtil.CreateProxyDirectory;
 local CreateProxyMixin = ProxyUtil.CreateProxyMixin;
 local SetPrivateReference = ProxyUtil.SetPrivateReference;
 local ReleasePrivateReference = ProxyUtil.ReleasePrivateReference;
-local ProxyConvertablePrivateMixin = Mixin(ProxyConvertableMixin);
+local ProxyConvertablePrivateMixin = CreateFromMixins(ProxyConvertableMixin);
 local CreateFromMixinsPrivate = CreateFromMixins;
 
 local enableProxyReporting = false; -- For debugging purposes only.

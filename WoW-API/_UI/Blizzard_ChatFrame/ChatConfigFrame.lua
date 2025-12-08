@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Vanilla\ChatConfigFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 ---@class COMBAT_CONFIG_MESSAGETYPES_MISC
@@ -26,5 +27,12 @@ COMBAT_CONFIG_MESSAGETYPES_MISC = {
 		checked = function () return HasMessageType("UNIT_DIED", "UNIT_DESTROYED", "UNIT_DISSIPATES"); end;
 		func = function (self, checked) ToggleMessageType(checked, "UNIT_DIED", "UNIT_DESTROYED", "UNIT_DISSIPATES"); end;
 		tooltip = DEATHS_COMBATLOG_TOOLTIP,
+	},
+	[5] = {
+		text = PET_LOYALTY,
+		type = {"UNIT_LOYALTY"};
+		checked = function () return HasMessageType("UNIT_LOYALTY"); end;
+		func = function (self, checked) ToggleMessageType(checked, "UNIT_LOYALTY"); end;
+		tooltip = UNIT_LOYALTY_COMBATLOG_TOOLTIP,
 	},
 };

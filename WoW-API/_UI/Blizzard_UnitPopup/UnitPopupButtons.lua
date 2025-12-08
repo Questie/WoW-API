@@ -1,202 +1,40 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopup\Vanilla\UnitPopupButtons.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
----@class UnitPopupTeamPromoteButtonMixin : Button, UnitPopupButtonBaseMixin
-UnitPopupTeamPromoteButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
-
-function UnitPopupTeamPromoteButtonMixin:GetText(contextData)
-	return TEAM_PROMOTE; 
-end
-
-function UnitPopupTeamPromoteButtonMixin:GetInteractDistance()
-	return 0; 
-end
-
-function UnitPopupTeamPromoteButtonMixin:CanShow(contextData)
-	if not PVPTeamDetails:IsShown() then
-		return false;
-	end
-
-	if contextData.name == UnitName("player") then
-		return false;
-	end
-
-	return IsArenaTeamCaptain(PVPTeamDetails.team);
-end
-
-function UnitPopupTeamPromoteButtonMixin:OnClick(contextData)
-	local name = contextData.name;
-	local team = PVPTeamDetails.team;
-	local arenaName, teamIndex = GetArenaTeam(team);
-	local dialog = StaticPopup_Show("CONFIRM_TEAM_PROMOTE", name, arenaName, teamIndex);
-	if dialog then
-		dialog.data = team;
-		dialog.data2 = name;
-	end
-end
-
----@class UnitPopupTeamKickButtonMixin : Button, UnitPopupButtonBaseMixin
-UnitPopupTeamKickButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
-
-function UnitPopupTeamKickButtonMixin:GetText(contextData)
-	return TEAM_KICK; 
-end
-
-function UnitPopupTeamKickButtonMixin:GetInteractDistance()
-	return 0; 
-end
-
-function UnitPopupTeamKickButtonMixin:CanShow(contextData)
-	if not PVPTeamDetails:IsShown() then
-		return false;
-	end
-
-	if contextData.name == UnitName("player") then
-		return false; 
-	end
-
-	return IsArenaTeamCaptain(PVPTeamDetails.team);
-end
-
-function UnitPopupTeamKickButtonMixin:OnClick(contextData)
-	local name = contextData.name;
-	local team = PVPTeamDetails.team;
-	local arenaName, teamIndex = GetArenaTeam(team);
-	local dialog = StaticPopup_Show("CONFIRM_TEAM_KICK", name, arenaName, teamIndex );
-	if dialog then
-		dialog.data = team;
-		dialog.data2 = name;
-	end
-end
-
----@class UnitPopupTeamLeaveButtonMixin : Button, UnitPopupButtonBaseMixin
-UnitPopupTeamLeaveButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
-
-function UnitPopupTeamLeaveButtonMixin:GetText(contextData)
-	return TEAM_LEAVE; 
-end
-
-function UnitPopupTeamLeaveButtonMixin:GetInteractDistance()
-	return 0; 
-end
-
-function UnitPopupTeamLeaveButtonMixin:CanShow(contextData)
-	if not PVPTeamDetails:IsShown() then
-		return;
-	end
-
-	return contextData.name == UnitName("player");
-end
-
-function UnitPopupTeamLeaveButtonMixin:OnClick(contextData)
-	local team = PVPTeamDetails.team;
-	local arenaName = GetArenaTeam(team);
-	local dialog = StaticPopup_Show("CONFIRM_TEAM_LEAVE", arenaName);
-	if dialog then
-		dialog.data = team;
-	end
-end
-
----@class UnitPopupTeamDisbandButtonMixin : Button, UnitPopupButtonBaseMixin
-UnitPopupTeamDisbandButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
-
-function UnitPopupTeamDisbandButtonMixin:GetText(contextData)
-	return TEAM_DISBAND; 
-end
-
-function UnitPopupTeamDisbandButtonMixin:GetInteractDistance()
-	return 0; 
-end
-
-function UnitPopupTeamDisbandButtonMixin:CanShow(contextData)
-	if PVPTeamDetails:IsShown() then
-		if not IsArenaTeamCaptain(PVPTeamDetails.team) then
-			return false;
-		end
-
-		if contextData.name ~= UnitName("player") then
-			return false;
-		end
-	end
-
-	return true;
-end
-
-function UnitPopupTeamDisbandButtonMixin:OnClick(contextData)
-	local team = PVPTeamDetails.team;
-	local arenaName = GetArenaTeam(team);
-	local dialog = StaticPopup_Show("CONFIRM_TEAM_DISBAND", arenaName);
-	if dialog then
-		dialog.data = team;
-	end
-end
-
 function UnitPopupLootThresholdButtonMixin:GetColor()
-	local color = ITEM_QUALITY_COLORS[GetLootThreshold()].color;
+	local color = ITEM_QUALITY_COLORS[GetLootThreshold()];
 	return color.r, color.g, color.b;
 end
 
 -- Overrides
-function UnitPopupRaidDifficultyButtonMixin:GetEntries()
-	return { 
-		UnitPopupRaidDifficulty1ButtonMixin,
-		UnitPopupRaidDifficulty2ButtonMixin, 
-		UnitPopupRaidDifficulty3ButtonMixin, 
-		UnitPopupRaidDifficulty4ButtonMixin,
-	}
-end 
-
-function UnitPopupRaidDifficulty1ButtonMixin:GetText(contextData)
-	return RAID_DIFFICULTY1; 
-end
-
-function UnitPopupRaidDifficulty1ButtonMixin:IsChecked()
-	return self:GetDifficultyID() == GetRaidDifficultyID();
+function UnitPopupRaidDifficulty1ButtonMixin:IsChecked(contextData)
+	local instanceDifficultyID, _, _, _, isDynamicInstance = select(3, GetInstanceInfo());
+	if isDynamicInstance then
+		local difficulty = self:GetDifficultyID();
+		if IsLegacyDifficulty(instanceDifficultyID) then
+			local validNormalSize = instanceDifficultyID == DIFFICULTY_RAID10_NORMAL or instanceDifficultyID == DIFFICULTY_RAID25_NORMAL;
+			if validNormalSize and difficulty == DIFFICULTY_PRIMARYRAID_NORMAL then
+				return true;
+			end
+			
+			local validHeroicSize = difficultyID == DIFFICULTY_RAID10_HEROIC or difficultyID == DIFFICULTY_RAID25_HEROIC;
+			if validHeroicSize and difficulty == DIFFICULTY_PRIMARYRAID_HEROIC then
+				return true;
+			end
+		elseif instanceDifficultyID == difficulty then
+			return true;
+		end
+		
+		if difficulty == self:GetDifficultyID() then
+			return true;
+		end	
+	end
+	
+	return false; 
 end
 
 function UnitPopupRaidDifficultyButtonMixin:CanShow(contextData)
-	return not (UnitLevel("player") < 65 and GetDungeonDifficultyID() == 1);
-end
-
-function UnitPopupRaidDifficulty1ButtonMixin:GetDifficultyID()
-	return DIFFICULTY_RAID10_NORMAL;
-end 
-
-function UnitPopupRaidDifficulty1ButtonMixin:OnClick(contextData)
-	local raidDifficultyID = self:GetDifficultyID();
-	SetRaidDifficultyID(raidDifficultyID);
-end
-
----@class UnitPopupRaidDifficulty2ButtonMixin : Button, UnitPopupRaidDifficulty1ButtonMixin
-UnitPopupRaidDifficulty2ButtonMixin = CreateFromMixins(UnitPopupRaidDifficulty1ButtonMixin);
-
-function UnitPopupRaidDifficulty2ButtonMixin:GetText(contextData)
-	return RAID_DIFFICULTY2; 
-end 
-
-function UnitPopupRaidDifficulty2ButtonMixin:GetDifficultyID()
-	return DIFFICULTY_RAID25_NORMAL;
-end
-
----@class UnitPopupRaidDifficulty3ButtonMixin : Button, UnitPopupRaidDifficulty1ButtonMixin
-UnitPopupRaidDifficulty3ButtonMixin = CreateFromMixins(UnitPopupRaidDifficulty1ButtonMixin);
-
-function UnitPopupRaidDifficulty3ButtonMixin:GetText(contextData)
-	return RAID_DIFFICULTY3; 
-end 
-
-function UnitPopupRaidDifficulty3ButtonMixin:GetDifficultyID()
-	return DIFFICULTY_RAID10_HEROIC;
-end
-
----@class UnitPopupRaidDifficulty4ButtonMixin : Button, UnitPopupRaidDifficulty1ButtonMixin
-UnitPopupRaidDifficulty4ButtonMixin = CreateFromMixins(UnitPopupRaidDifficulty1ButtonMixin);
-
-function UnitPopupRaidDifficulty4ButtonMixin:GetText(contextData)
-	return RAID_DIFFICULTY4; 
-end 
-
-function UnitPopupRaidDifficulty4ButtonMixin:GetDifficultyID()
-	return DIFFICULTY_RAID25_HEROIC;
+	return false;
 end
 
 function UnitPopupInviteButtonMixin:CanShow(contextData)
@@ -204,7 +42,7 @@ function UnitPopupInviteButtonMixin:CanShow(contextData)
 		return false;
 	end
 	
-	if UnitPopupSharedUtil.IsPlayerOffline(contextData) then
+	if UnitPopupSharedUtil.IsPlayerOffline(contextData)then
 		return false;
 	end
 
@@ -234,33 +72,40 @@ function UnitPopupInviteButtonMixin:CanShow(contextData)
 		end
 	end
 
-	local displayedInvite;
-	if unit and (not IsInGroup()) and UnitInAnyGroup(unit, LE_PARTY_CATEGORY_HOME) then
-		--Handle the case where we don't have SocialQueue data about this unit (e.g. because it's a random person)
-		--in the world. In this case, we want to display REQUEST_INVITE if they're in a group.
-		displayedInvite = "REQUEST_INVITE";
-	else
-		displayedInvite = GetDisplayedInviteType(UnitPopupSharedUtil.GetGUID(contextData));
-	end
-
+	local displayedInvite = GetDisplayedInviteType(UnitPopupSharedUtil.GetGUID(contextData));
 	return self:GetInviteName() == displayedInvite;
+
 end
 
 function UnitPopupDungeonDifficultyButtonMixin:CanShow(contextData)
-	return not (UnitLevel("player") < 70 and GetDungeonDifficultyID() == 1);
-end
-
-function UnitPopupAchievementButtonMixin:GetText(contextData)
-	return COMPARE_ACHIEVEMENTS; 
-end 
-
-function UnitPopupAchievementButtonMixin:GetInteractDistance()
-	return 1; 
+	return false;
 end
 
 function UnitPopupAchievementButtonMixin:CanShow(contextData)
-	local unit = contextData.unit;
-	if not unit or UnitCanAttack("player", unit) then
+	return false; 
+end
+
+function UnitPopupSetFocusButtonMixin:CanShow(contextData)
+	return false; 
+end 
+
+---@class UnitPopupDuelToTheDeathButtonMixin : Button, UnitPopupButtonBaseMixin
+UnitPopupDuelToTheDeathButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin);
+
+function UnitPopupDuelToTheDeathButtonMixin:GetText(contextData)
+	return DUEL_TO_DEATH;
+end
+
+function UnitPopupDuelToTheDeathButtonMixin:GetInteractDistance()
+	return 3;
+end
+
+function UnitPopupDuelToTheDeathButtonMixin:IsDisabledInKioskMode()
+	return false;
+end
+
+function UnitPopupDuelToTheDeathButtonMixin:CanShow(contextData)
+	if UnitCanAttack("player", contextData.unit) then
 		return false;
 	end
 
@@ -268,17 +113,23 @@ function UnitPopupAchievementButtonMixin:CanShow(contextData)
 		return false;
 	end
 
-	return true;
-end		
-
-function UnitPopupAchievementButtonMixin:OnClick(contextData)
-	InspectAchievements(contextData.unit);
+	return C_GameRules.IsHardcoreActive();
 end
 
-function UnitPopupSelectRoleButtonMixin:CanShow(contextData)
-	if not IsInGroup() then
+function UnitPopupDuelToTheDeathButtonMixin:OnClick(contextData)
+	local fullName = UnitPopupSharedUtil.GetFullPlayerName(contextData);
+	local text2 = nil;
+	StaticPopup_Show("DUEL_TO_THE_DEATH_CHALLENGE_CONFIRM", fullName, text2, contextData);
+end
+
+function UnitPopupDuelToTheDeathButtonMixin:IsEnabled(contextData)
+	if UnitIsDeadOrGhost("player") then
 		return false;
 	end
 
-	return UnitIsGroupLeader("player") or UnitIsGroupAssistant("player") or UnitIsUnit(contextData.unit, "player"); 
+	if not HasFullControl() then
+		return false;
+	end
+
+	return not UnitIsDeadOrGhost(contextData.unit);
 end

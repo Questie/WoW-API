@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\BulletPoint.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
@@ -38,6 +39,7 @@ function BulletPointMixin:OnUpdate()
 	end
 end
 
+---@class BulletPointWithTextureMixin : BulletPointMixin
 BulletPointWithTextureMixin = CreateFromMixins(BulletPointMixin)
 
 function BulletPointWithTextureMixin:OnLoad()

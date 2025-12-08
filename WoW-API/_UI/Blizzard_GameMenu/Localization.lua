@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GameMenu\Classic\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local l10nTable = {
@@ -10,7 +11,7 @@ local l10nTable = {
 	itIT = {},
 	koKR = {
 		localizeFrames = function()
-			GameMenuFrame:SetRatingsButtonShown(true);
+			GameMenuButtonRatings:Show();
 		end,
 	},
 	ptBR = {},

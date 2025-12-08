@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\ClassicCvarUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 --Overrides the shared CvarUtil.lua SetCvar function. 10.0 refactor removed 'eventName' and other associated code on Mainline. Until Classic

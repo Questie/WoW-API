@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\MerchantFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 MERCHANT_ITEMS_PER_PAGE = 10;
@@ -8,8 +9,6 @@ local MAX_MONEY_DISPLAY_WIDTH = 120;
 
 function MerchantFrame_OnLoad(self)
 	self:RegisterEvent("MERCHANT_UPDATE");
-	self:RegisterEvent("CURRENCY_DISPLAY_UPDATE");
-	self:RegisterEvent("GUILDBANK_UPDATE_MONEY");
 	self:RegisterEvent("MERCHANT_CONFIRM_TRADE_TIMER_REMOVAL");
 	self:RegisterForDrag("LeftButton");
 	self.page = 1;
@@ -22,11 +21,10 @@ function MerchantFrame_OnLoad(self)
 end
 
 function MerchantFrame_OnEvent(self, event, ...)
-	if ( event == "MERCHANT_UPDATE" or event == "CURRENCY_DISPLAY_UPDATE") then
-		self.update = true;	
-	elseif ( event == "PLAYER_MONEY" or event == "GUILDBANK_UPDATE_MONEY" or event == "GUILDBANK_UPDATE_WITHDRAWMONEY" ) then
+	if ( event == "MERCHANT_UPDATE" ) then
+		self.update = true;
+	elseif ( event == "PLAYER_MONEY" ) then
 		MerchantFrame_UpdateCanRepairAll();
-		MerchantFrame_UpdateGuildBankRepair();
 		MerchantFrame_UpdateRepairButtons();
 	elseif ( event == "CURRENCY_DISPLAY_UPDATE" ) then
 		MerchantFrame_UpdateCurrencyAmounts();
@@ -264,15 +262,8 @@ function MerchantFrame_UpdateMerchantInfo()
 			MerchantFrameItem_UpdateQuality(merchantButton, itemLink);
 
 			local merchantItemID = GetMerchantItemID(index);
-
-			local isHeirloom, isKnownHeirloom;
-			if(ClassicExpansionAtLeast(LE_EXPANSION_WRATH_OF_THE_LICH_KING)) then
-				isHeirloom = merchantItemID and C_Heirloom.IsItemHeirloom(merchantItemID);
-				isKnownHeirloom = isHeirloom and C_Heirloom.PlayerHasHeirloom(merchantItemID);
-			else
-				isHeirloom = false;
-				isKnownHeirloom = false;
-			end
+			local isHeirloom = false;--merchantItemID and C_Heirloom.IsItemHeirloom(merchantItemID);
+			local isKnownHeirloom = false;--isHeirloom and C_Heirloom.PlayerHasHeirloom(merchantItemID);
 
 			itemButton.showNonrefundablePrompt = isHeirloom;
 
@@ -489,7 +480,6 @@ function MerchantFrame_UpdateBuybackInfo()
 	MerchantFrameBottomRightBorder:Hide();
 	MerchantRepairText:Hide();
 	MerchantPageText:Hide();
-	MerchantGuildBankRepairButton:Hide();
 end
 
 function MerchantPrevPageButton_OnClick()
@@ -670,17 +660,10 @@ function MerchantFrame_ConfirmExtendedItemCost(itemButton, numToPurchase)
 		costItemCount = costItemCount * (numToPurchase / stackCount); -- cost per stack times number of stacks
 		if ( currencyName ) then
 			usingCurrency = true;
-
-			local extraArgs = "";
-			if ( itemTexture == HONOR_POINT_TEXTURES[1] or itemTexture == HONOR_POINT_TEXTURES[2] ) then
-				-- Honor Point textures have some funky coordinates, so we'll fix them up here.
-				extraArgs = ":64:64:0:40:0:40";
-			end
-
 			if ( itemsString ) then
-				itemsString = itemsString .. ", |T"..itemTexture..":0:0:0:-1"..extraArgs.."|t ".. format(CURRENCY_QUANTITY_TEMPLATE, costItemCount, currencyName);
+				itemsString = itemsString .. ", |T"..itemTexture..":0:0:0:-1|t ".. format(CURRENCY_QUANTITY_TEMPLATE, costItemCount, currencyName);
 			else
-				itemsString = " |T"..itemTexture..":0:0:0:-1"..extraArgs.."|t "..format(CURRENCY_QUANTITY_TEMPLATE, costItemCount, currencyName);
+				itemsString = " |T"..itemTexture..":0:0:0:-1|t "..format(CURRENCY_QUANTITY_TEMPLATE, costItemCount, currencyName);
 			end
 		elseif ( itemLink ) then
 			local _, _, itemQuality = C_Item.GetItemInfo(itemLink);
@@ -704,46 +687,27 @@ function MerchantFrame_ConfirmExtendedItemCost(itemButton, numToPurchase)
 		BuyMerchantItem( itemButton:GetID(), numToPurchase );
 		return;
 	end
-
-	local popupData, specs = MerchantFrame_GetProductInfo(itemButton);
-	popupData.count = numToPurchase;
+	
+	
+	local itemName = "";
+	local itemQuality = 1;
+	local _;
+	local specs = {};
+	if(itemButton.link) then
+		itemName, _, itemQuality = C_Item.GetItemInfo(itemButton.link);
+	end
+	local r, g, b = C_Item.GetItemQualityColor(itemQuality);
 	local specText = "";
 	
 	if (itemButton.showNonrefundablePrompt) then
-		StaticPopup_Show("CONFIRM_PURCHASE_NONREFUNDABLE_ITEM", itemsString, specText, popupData);
+		StaticPopup_Show("CONFIRM_PURCHASE_NONREFUNDABLE_ITEM", itemsString, specText, 
+							{["texture"] = itemButton.texture, ["name"] = itemName, ["color"] = {r, g, b, 1}, 
+							["link"] = itemButton.link, ["index"] = index, ["count"] = numToPurchase});
 	else
-		StaticPopup_Show("CONFIRM_PURCHASE_TOKEN_ITEM", itemsString, specText, popupData);
+		StaticPopup_Show("CONFIRM_PURCHASE_TOKEN_ITEM", itemsString, specText, 
+							{["texture"] = itemButton.texture, ["name"] = itemName, ["color"] = {r, g, b, 1}, 
+							["link"] = itemButton.link, ["index"] = index, ["count"] = numToPurchase});
 	end
-end
-
-function MerchantFrame_GetProductInfo(itemButton)
-	local itemName, itemHyperlink;
-	local itemQuality = 1;
-	local r, g, b = 1, 1, 1;
-	if(itemButton.link) then
-		itemName, itemHyperlink, itemQuality = C_Item.GetItemInfo(itemButton.link);
-	end
-
-	local specs = {};
-	if ( itemName ) then
-		--It's an item
-		r, g, b = C_Item.GetItemQualityColor(itemQuality);
-		--specs = C_Item.GetItemSpecInfo(itemButton.link);
-	else
-		--Not an item. Could be currency or something. Just use what's on the button.
-		itemName = itemButton.name;
-		r, g, b = C_Item.GetItemQualityColor(1);
-	end
-
-	local productInfo = {
-		texture = itemButton.texture,
-		name = itemName,
-		color = {r, g, b, 1},
-		link = itemButton.link,
-		index = itemButton:GetID(),
-	};
-
-	return productInfo, specs;
 end
 
 function MerchantFrame_ResetRefundItem()
@@ -779,44 +743,18 @@ function MerchantFrame_UpdateCanRepairAll()
 	end
 end
 
-function MerchantFrame_UpdateGuildBankRepair()
-	local repairAllCost, canRepair = GetRepairAllCost();
-	if ( canRepair ) then
-		SetDesaturation(MerchantGuildBankRepairButtonIcon, false);
-		MerchantGuildBankRepairButton:Enable();
-	else
-		SetDesaturation(MerchantGuildBankRepairButtonIcon, true);
-		MerchantGuildBankRepairButton:Disable();
-	end	
-end
-
 function MerchantFrame_UpdateRepairButtons()
 	if ( MerchantFrame.selectedTab == 1 and CanMerchantRepair() ) then
-		--See if can guildbank repair
-		if ( CanGuildBankRepair() ) then
-			MerchantRepairAllButton:SetWidth(32);
-			MerchantRepairAllButton:SetHeight(32);
-			MerchantRepairItemButton:SetWidth(32);
-			MerchantRepairItemButton:SetHeight(32);
-			MerchantRepairItemButton:SetPoint("RIGHT", MerchantRepairAllButton, "LEFT", -4, 0);
 
-			MerchantRepairAllButton:SetPoint("BOTTOMRIGHT", MerchantFrame, "BOTTOMLEFT", 100, 30);
-			MerchantRepairText:ClearAllPoints();
-			MerchantRepairText:SetPoint("CENTER", MerchantFrame, "BOTTOMLEFT", 80, 68);
-			MerchantGuildBankRepairButton:Show();
-			MerchantFrame_UpdateGuildBankRepair();
-		else
-			MerchantRepairAllButton:SetWidth(36);
-			MerchantRepairAllButton:SetHeight(36);
-			MerchantRepairItemButton:SetWidth(36);
-			MerchantRepairItemButton:SetHeight(36);
-			MerchantRepairItemButton:SetPoint("RIGHT", MerchantRepairAllButton, "LEFT", -2, 0);
+		MerchantRepairAllButton:SetWidth(36);
+		MerchantRepairAllButton:SetHeight(36);
+		MerchantRepairItemButton:SetWidth(36);
+		MerchantRepairItemButton:SetHeight(36);
+		MerchantRepairItemButton:SetPoint("RIGHT", MerchantRepairAllButton, "LEFT", -2, 0);
 
-			MerchantRepairAllButton:SetPoint("BOTTOMRIGHT", MerchantFrame, "BOTTOMLEFT", 160, 32);
-			MerchantRepairText:ClearAllPoints();
-			MerchantRepairText:SetPoint("BOTTOMLEFT", MerchantFrame, "BOTTOMLEFT", 14, 45);
-			MerchantGuildBankRepairButton:Hide();
-		end
+		MerchantRepairAllButton:SetPoint("BOTTOMRIGHT", MerchantFrame, "BOTTOMLEFT", 160, 32);
+		MerchantRepairText:ClearAllPoints();
+		MerchantRepairText:SetPoint("BOTTOMLEFT", MerchantFrame, "BOTTOMLEFT", 14, 45);
 
 		MerchantRepairText:Show();
 		MerchantRepairAllButton:Show();
@@ -826,7 +764,6 @@ function MerchantFrame_UpdateRepairButtons()
 		MerchantRepairText:Hide();
 		MerchantRepairAllButton:Hide();
 		MerchantRepairItemButton:Hide();
-		MerchantGuildBankRepairButton:Hide();
 	end
 end
 

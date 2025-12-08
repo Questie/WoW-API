@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Menu\Menu.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local CreateSecureMap = SecureTypes.CreateSecureMap;
@@ -9,7 +10,7 @@ local CreateProxyDirectory = ProxyUtil.CreateProxyDirectory;
 local CreateProxyMixin = ProxyUtil.CreateProxyMixin;
 local SetPrivateReference = ProxyUtil.SetPrivateReference;
 local ReleasePrivateReference = ProxyUtil.ReleasePrivateReference;
-local ProxyConvertablePrivateMixin = Mixin(ProxyConvertableMixin);
+local ProxyConvertablePrivateMixin = CreateFromMixins(ProxyConvertableMixin);
 local CreateFromMixinsPrivate = CreateFromMixins;
 local assert = assert;
 local type = type;

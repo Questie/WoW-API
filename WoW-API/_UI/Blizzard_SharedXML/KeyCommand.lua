@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\KeyCommand.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 local generalMetaKeys =
@@ -98,7 +99,7 @@ end
 
 function GetBindingFromInput(input)
 	local fullInput = GetBindingFullInput(input);
-	return GetBindingByKey(fullInput);
+	return C_KeyBindings.GetBindingByKey(fullInput);
 end
 
 -- May deprecate GetBindingFromClick.

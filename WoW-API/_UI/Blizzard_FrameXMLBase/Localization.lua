@@ -1,50 +1,48 @@
--- luacheck: ignore 111 (setting non-standard global variable)
-
--- TODO: This is mostly wrong, need to redo the entire file because the originals have already been
--- nuked...rebuild this from whatever is in the repo, don't even try to piece it together
-
-local function LocalizeFrames_PVPHonorKills()
-	if(PVPHonorKillsLabel) then
-		PVPHonorKillsLabel:SetPoint("TOPLEFT", "PVPHonor", 15, -33);
-		PVPHonorKillsLabel:SetSize(50, 12);
-	end
-end
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\Vanilla\Localization.lua
+-- Auto-generated LuaLS Annotations, do not edit manually
+---@meta _
+local l10n_Spanish = {
+	localizeFrames = function()
+	end,
+};
 
 local l10nTable = {
 	deDE = {
-		localize = function()
+		localizeFrames = function()
+			LootFramePrev:SetFontObject(SystemFont_Small);
+			LootFrameNext:SetFontObject(SystemFont_Small);
+			StackSplitOkayButton:SetNormalFontObject(SystemFont_Small);
+			StackSplitOkayButton:SetDisabledFontObject(SystemFont_Small);
+			StackSplitOkayButton:SetHighlightFontObject(SystemFont_Small);
+			StackSplitCancelButton:SetNormalFontObject(SystemFont_Small);
+			StackSplitCancelButton:SetDisabledFontObject(SystemFont_Small);
+			StackSplitCancelButton:SetHighlightFontObject(SystemFont_Small);
 
-		end
-	},
-	enGB = {
-		localize = function()
+			FriendsFriendsFrameDropdown:SetWidth(146);
+
+			SideDressUpModelResetButton:SetWidth(105);
 		end,
 	},
 
-	enUS = {
+	enGB = {},
 
-	},
-
-	esES = {
-		localizeFrames = LocalizeFrames_PVPHonorKills,
-	},
-	esMX = {
-		localizeFrames = LocalizeFrames_PVPHonorKills,
-	},
+	esES = l10n_Spanish,
+	esMX = l10n_Spanish,
 
 	frFR = {
-		localize = function() end,
+		localizeFrames = function()
+			FriendsFriendsFrameDropdown:SetWidth(136);
+		end,
 	},
 
 	itIT = {
-		localize = function() end,
+		localizeFrames = function()
+			FriendsFriendsFrameDropdown:SetWidth(136);
+		end,
 	},
 
 	koKR = {
 		localizeFrames = function()
-			local point, relativeTo, relativePoint, xOfs, yOfs;
-
-			-- Pet Frame
 			PetFrameHealthBarText:SetPoint("CENTER", PetFrameHealthBarText:GetParent(), "TOPLEFT", 81, -26);
 			PetFrameManaBarText:SetPoint("CENTER", PetFrameManaBarText:GetParent(), "TOPLEFT", 81, -35);
 
@@ -52,30 +50,13 @@ local l10nTable = {
 		end,
 	},
 
-	ptBR = {
-		localizeFrames = function()
-			FriendsFriendsFrameDropdown:SetWidth(132);
-		end,
-	},
-
-	ptPT = {
-		localize = function()
-			-- Put this in the SharedXMLGame addon when TBC is converted.
-			SOCIAL_ITEM_ARMORY_LINK = "http://eu.battle.net/wow/pt/item";
-		end,
-
-		localizeFrames = function()
-			FriendsFriendsFrameDropdown:SetWidth(132);
-		end
-	},
-
+	ptBR = {},
+	ptPT = {},
 	ruRU = {
-		localize = function()
-
-		end,
-
 		localizeFrames = function()
-
+			-- For the CraftUI, move the subtext closer to the text.
+			CRAFT_SUBTEXT_OFFSET = 3;
+			CRAFT_COST_OFFSET = -3;
 		end,
 	},
 
@@ -86,8 +67,6 @@ local l10nTable = {
 				local tabName = "MailFrameTab"..i;
 				_G[tabName.."Text"]:SetPoint("CENTER", tabName, "CENTER", 0, 5);
 			end
-
-			local point, relativeTo, relativePoint, xOfs, yOfs;
 
 			-- Pet Frame
 			PetFrameHealthBarText:SetPoint("CENTER", PetFrameHealthBarText:GetParent(), "TOPLEFT", 82, -26);
@@ -100,9 +79,17 @@ local l10nTable = {
 
 			MIN_CHARACTER_SEARCH = 1;
 
-			-- Quest Log
-			QuestLogQuestCount:SetPoint("TOPRIGHT", QuestLogCountTopRight, "BOTTOMLEFT", 1, 6); -- +0, +3
-			QuestLogDailyQuestCount:SetPoint("TOPRIGHT", QuestLogQuestCount, "BOTTOMRIGHT", 0, 1); -- +0, +3
+			-- Honor stuff
+			HonorFrameCurrentSessionTitle:SetPoint("TOPLEFT", "HonorFrame", "TOPLEFT", 36, -111);
+			HonorFrameCurrentHK:SetPoint("TOPLEFT", "HonorFrameCurrentSessionTitle", "BOTTOMLEFT", 10, 1);
+			HonorFrameYesterdayTitle:SetPoint("TOPLEFT", "HonorFrameCurrentSessionTitle", "BOTTOMLEFT", 0, -36);
+			HonorFrameYesterdayHK:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 10, -1);
+			HonorFrameThisWeekTitle:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 0, -43);
+			HonorFrameThisWeekHK:SetPoint("TOPLEFT", "HonorFrameThisWeekTitle", "BOTTOMLEFT", 10, 2);
+			HonorFrameLastWeekTitle:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 0, -97);
+			HonorFrameLastWeekHK:SetPoint("TOPLEFT", "HonorFrameLastWeekTitle", "BOTTOMLEFT", 10, 2);
+			HonorFrameLifeTimeTitle:SetPoint("TOPLEFT", "HonorFrameLastWeekTitle", "BOTTOMLEFT", 0, -60);
+			HonorFrameLifeTimeHK:SetPoint("TOPLEFT", "HonorFrameLifeTimeTitle", "BOTTOMLEFT", 10, 2);
 		end,
 	},
 
@@ -114,8 +101,6 @@ local l10nTable = {
 				_G[tabName.."Text"]:SetPoint("CENTER", tabName, "CENTER", 0, 5);
 			end
 
-			local point, relativeTo, relativePoint, xOfs, yOfs;
-
 			-- Pet Frame
 			PetFrameHealthBarText:SetPoint("CENTER", PetFrameHealthBarText:GetParent(), "TOPLEFT", 82, -25);
 			PetFrameManaBarText:SetPoint("CENTER", PetFrameManaBarText:GetParent(), "TOPLEFT", 82, -36);
@@ -125,9 +110,17 @@ local l10nTable = {
 
 			MIN_CHARACTER_SEARCH = 1;
 
-			-- Quest Log
-			QuestLogQuestCount:SetPoint("TOPRIGHT", QuestLogCountTopRight, "BOTTOMLEFT", 1, 6); -- +0, +3
-			QuestLogDailyQuestCount:SetPoint("TOPRIGHT", QuestLogQuestCount, "BOTTOMRIGHT", 0, 1); -- +0, +3、游戏中有用户实名认证系统，认证为未成年人的用户将接受以下管理：
+			-- Honor stuff
+			HonorFrameCurrentSessionTitle:SetPoint("TOPLEFT", "HonorFrame", "TOPLEFT", 36, -111);
+			HonorFrameCurrentHK:SetPoint("TOPLEFT", "HonorFrameCurrentSessionTitle", "BOTTOMLEFT", 10, 1);
+			HonorFrameYesterdayTitle:SetPoint("TOPLEFT", "HonorFrameCurrentSessionTitle", "BOTTOMLEFT", 0, -36);
+			HonorFrameYesterdayHK:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 10, -1);
+			HonorFrameThisWeekTitle:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 0, -43);
+			HonorFrameThisWeekHK:SetPoint("TOPLEFT", "HonorFrameThisWeekTitle", "BOTTOMLEFT", 10, 2);
+			HonorFrameLastWeekTitle:SetPoint("TOPLEFT", "HonorFrameYesterdayTitle", "BOTTOMLEFT", 0, -97);
+			HonorFrameLastWeekHK:SetPoint("TOPLEFT", "HonorFrameLastWeekTitle", "BOTTOMLEFT", 10, 2);
+			HonorFrameLifeTimeTitle:SetPoint("TOPLEFT", "HonorFrameLastWeekTitle", "BOTTOMLEFT", 0, -60);
+			HonorFrameLifeTimeHK:SetPoint("TOPLEFT", "HonorFrameLifeTimeTitle", "BOTTOMLEFT", 10, 2);
 		end,
 	},
 };

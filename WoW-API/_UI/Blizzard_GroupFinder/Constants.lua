@@ -1,3 +1,4 @@
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GroupFinder\Classic\Constants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 EXPANSION_LEVEL = GetExpansionLevel(); --This can change while logged in, when an expansion releases
