@@ -1,0 +1,18 @@
+WoWUI
+WoWUI-*
+!WoWUI-*.py
+API
+API-*
+venv
+venv*
+.venv
+.venv*
+vscode-wow-api
+.env
+
+# Should i include this?
+wow-api-classic
+
+__pycache__
+
+.shit
