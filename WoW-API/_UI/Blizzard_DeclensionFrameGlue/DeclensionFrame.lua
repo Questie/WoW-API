@@ -1,0 +1,3 @@
+-- Auto-generated LuaLS Annotations, do not edit manually
+---@meta _
+-- Overriden by the locale-specific versions

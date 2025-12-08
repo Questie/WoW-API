@@ -1,0 +1,14 @@
+{
+  "Lua.diagnostics.disable": [
+    "undefined-global",
+    "redundant-parameter",
+    "unbalanced-assignments",
+    "missing-parameter",
+    "lowercase-global",
+    "ambiguity-1",
+    "deprecated",
+    "duplicate-doc-field",
+    "duplicate-doc-alias",
+    "return-type-mismatch",
+  ]
+}
