@@ -108,6 +108,6 @@ function PickupStablePet(index) end
 ---Sets the paperdoll model in the pet stable to a new player model.<br>
 ---This method does not cause the model to be shown. The model still needs its Show() method called afterward.<br>
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_SetPetStablePaperdoll)
----@param modelObject UIOBJECT_PlayerModel The model of the pet to display.
+---@param modelObject PlayerModel The model of the pet to display.
 function SetPetStablePaperdoll(modelObject) end
 
