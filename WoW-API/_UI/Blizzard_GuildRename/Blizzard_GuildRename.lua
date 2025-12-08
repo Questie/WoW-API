@@ -453,6 +453,7 @@ end
 local timeFormatter = CreateFromMixins(SecondsFormatterMixin);
 timeFormatter:Init(SECONDS_PER_MIN, SecondsFormatter.Abbreviation.OneLetter, SecondsFormatterConstants.DontRoundUpLastUnit, SecondsFormatterConstants.ConvertToLower);
 
+---@class GuildRenameTitleFlowMixin : GuildRenameManagedFlowMixin
 GuildRenameTitleFlowMixin = CreateFromMixins(GuildRenameManagedFlowMixin, {
 	timeFormatter = timeFormatter,
 });

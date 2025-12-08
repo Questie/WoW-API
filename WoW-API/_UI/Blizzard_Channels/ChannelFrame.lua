@@ -2,6 +2,7 @@
 ---@meta _
 UIPanelWindows["ChannelFrame"] = { area = "left", pushable = 1, whileDead = 1 };
 
+---@class ChannelFrameMixin
 ChannelFrameMixin = CreateFromMixins();
 
 do

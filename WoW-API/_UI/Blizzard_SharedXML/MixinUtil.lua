@@ -181,6 +181,7 @@ function SparseGridMixin:CalculateLinearIndex(x, y)
 end
 
 -- Mix this in to make an object a doublyLinkedList
+---@class DoublyLinkedListMixin
 DoublyLinkedListMixin = {nodeCount = 0};
 
 function DoublyLinkedListMixin:PushFront(nodeToInsert)

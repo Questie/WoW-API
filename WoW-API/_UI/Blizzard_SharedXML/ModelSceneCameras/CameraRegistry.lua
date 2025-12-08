@@ -1,6 +1,7 @@
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
 
+---@class CameraRegistry
 CameraRegistry = { cameraTypeToFactoryFunction = {}, };
 
 function CameraRegistry:AddCameraFactory(cameraTypeName, factoryFunction)

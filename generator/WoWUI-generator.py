@@ -127,16 +127,37 @@ def create_mixin(file, dest_root, branch, original_path):
             "group_index": [1, 2, 3],  # LHS, RHS
         },
         {
+            # Empty mixins
+            "regex": r"^(\w+) *= *CreateFromMixins\(\);?",
+            "action": "template",
+            "output_string": "---@class {0}",
+            "group_index": [1],
+        },
+        {
             "regex": r"^(\w+) *= *CreateFromMixins\(([^)]+)\);?",
             "action": "template",
             "output_string": "---@class {0} : {1}",
             "group_index": [1, 2],  # LHS, RHS
         },
         {
+            # Mixed mixins with table (Added Mixin to the end to be safe)
+            "regex": r"^(\w+) *= *CreateFromMixins\((.+Mixin), *\{",
+            "action": "template",
+            "output_string": "---@class {0} : {1}",
+            "group_index": [1, 2],
+        },
+        {
             "regex": r"^(\w+) = (\w+):CreateSubPin\(",
             "action": "template",
             "output_string": "---@class {0} : {1}",
             "group_index": [1, 2],  # [child_class, parent_class]
+        },
+        {
+            # Adds support for CameraRegistry and DoublyLinkedListMixin
+            "regex": r"^(\w+Mixin|\w+Registry) *= *{.*?};?$",
+            "action": "template",
+            "output_string": "---@class {0}",
+            "group_index": [1],
         },
         {
             "regex": r"^local (\w+) = {\s*}",
