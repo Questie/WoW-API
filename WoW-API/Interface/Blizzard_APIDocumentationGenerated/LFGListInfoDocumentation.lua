@@ -101,10 +101,22 @@ function C_LFGList.GetApplicantInfo(applicantID) end
 ---@return PvpRatingInfo pvpRatingInfo
 function C_LFGList.GetApplicantPvpRatingInfoForListing(localID, applicantIndex, activityID) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGList.GetAvailableActivityGroups)
+---@param categoryID number
+---@param filter? number Default = 0
+---@return number[] activityIDs
+function C_LFGList.GetAvailableActivityGroups(categoryID, filter) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGList.GetFilteredSearchResults)
 ---@return number? totalResultsFound Default = 0
 ---@return number[] filteredResults
 function C_LFGList.GetFilteredSearchResults() end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGList.GetGroupLeaverCountsByRole)
+---@return number tankLeavers
+---@return number healerLeavers
+---@return number damageLeavers
+function C_LFGList.GetGroupLeaverCountsByRole() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGList.GetKeystoneForActivity)
 ---@param activityID number
@@ -358,6 +370,7 @@ function C_LFGList.ValidateRequiredPvpRatingForActivity(activityID, rating) end
 ---@field assignedRole string
 ---@field lfgRoles LFGRoles
 ---@field isLeader boolean
+---@field isLeaver boolean? Default = false
 
 ---@class PvpRatingInfo
 ---@field bracket number

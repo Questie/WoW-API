@@ -9,6 +9,10 @@ function C_PlayerInfo.CanPlayerEnterChromieTime() end
 ---@return boolean canUseAreaLoot
 function C_PlayerInfo.CanPlayerUseAreaLoot() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInfo.CanPlayerUseEventScheduler)
+---@return boolean canUseEventScheduler
+function C_PlayerInfo.CanPlayerUseEventScheduler() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInfo.CanPlayerUseMountEquipment)
 ---@return boolean canUseMountEquipment
 ---@return string failureReason
@@ -78,6 +82,14 @@ function C_PlayerInfo.HasAccountInventoryLock() end
 ---@param slot number
 ---@return boolean isVisible
 function C_PlayerInfo.HasVisibleInvSlot(slot) end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInfo.IsAccountBankEnabled)
+---@return boolean isAccountBankEnabled
+function C_PlayerInfo.IsAccountBankEnabled() end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInfo.IsCharacterBankEnabled)
+---@return boolean isCharacterBankEnabled
+function C_PlayerInfo.IsCharacterBankEnabled() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInfo.IsDisplayRaceNative)
 ---@return boolean isDisplayRaceNative

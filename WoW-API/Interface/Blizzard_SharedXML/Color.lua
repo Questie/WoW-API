@@ -1,13 +1,19 @@
 ---@meta _
 
----@class ColorType
+---@class ColorRGBData
 ---@field r number
 ---@field g number
 ---@field b number
----@field a? number
+---@field colorStr? string
+
+---@class ColorRGBAData : ColorRGBData
+---@field a number
+
+---@class colorRGB : ColorRGBData, ColorMixin
+---@class colorRGBA : ColorRGBAData, colorRGB
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/ColorMixin)
----@class ColorMixin : ColorType
+---@class ColorMixin
 ColorMixin = {}
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateColor)
@@ -15,11 +21,11 @@ ColorMixin = {}
 ---@param g number
 ---@param b number
 ---@param a? number
----@return ColorMixin
+---@return colorRGBA
 function CreateColor(r, g, b, a) end
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/ColorMixin:IsEqualTo)
----@param otherColor ColorMixin
+---@param otherColor colorRGBA
 ---@return boolean
 function ColorMixin:IsEqualTo(otherColor) end
 

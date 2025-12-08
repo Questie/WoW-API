@@ -6,6 +6,10 @@ C_ChatInfo = {}
 ---@return boolean canSpeakLanguage
 function C_ChatInfo.CanPlayerSpeakLanguage(languageId) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.DropCautionaryChatMessage)
+---@param confirmNumber number
+function C_ChatInfo.DropCautionaryChatMessage(confirmNumber) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.GetChannelInfoFromIdentifier)
 ---@param channelIdentifier string
 ---@return ChatChannelInfo? info
@@ -188,6 +192,17 @@ function C_ChatInfo.SendAddonMessage(prefix, message, chatType, target) end
 ---@return Enum.SendAddonMessageResult? result
 function C_ChatInfo.SendAddonMessageLogged(prefix, message, chatType, target) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.SendCautionaryChatMessage)
+---@param confirmNumber number
+function C_ChatInfo.SendCautionaryChatMessage(confirmNumber) end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.SendChatMessage)
+---@param message string
+---@param chatType? SendChatMessageType
+---@param languageID? number
+---@param target? string
+function C_ChatInfo.SendChatMessage(message, chatType, languageID, target) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatInfo.SwapChatChannelsByChannelIndex)
 ---@param firstChannelIndex number
 ---@param secondChannelIndex number
@@ -201,4 +216,10 @@ function C_ChatInfo.UncensorChatLine(chatLine) end
 ---@field prefix string
 ---@field message string
 ---@field chatType string?
+---@field target string?
+
+---@class SendChatMessageParams
+---@field message string
+---@field chatType SendChatMessageType?
+---@field languageID number?
 ---@field target string?

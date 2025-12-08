@@ -1,12 +1,29 @@
 ---@meta _
 C_Spell = {}
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.CancelSpellByID)
+---@param spellID number
+function C_Spell.CancelSpellByID(spellID) end
+
 ---Returns true if the spell exists, regardless of whether the player has learned it
 ---
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.DoesSpellExist)
 ---@param spellIdentifier SpellIdentifier
 ---@return boolean spellExists
 function C_Spell.DoesSpellExist(spellIdentifier) end
+
+---Used in conjunction with SpellRangeCheckUpdate to inform the UI when a spell goes in or out of range with the current target.
+---
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.EnableSpellRangeCheck)
+---@param spellIdentifier SpellIdentifier
+---@param enable boolean
+function C_Spell.EnableSpellRangeCheck(spellIdentifier, enable) end
+
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.GetBaseSpell)
+---@param spellIdentifier SpellIdentifier
+---@param spec? number Default = 0
+---@return number baseSpellID
+function C_Spell.GetBaseSpell(spellIdentifier, spec) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.GetDeadlyDebuffInfo)
 ---@param spellIdentifier SpellIdentifier

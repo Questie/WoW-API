@@ -1,4 +1,5 @@
 ---@meta _
+---@diagnostic disable: duplicate-doc-alias
 C_Timer = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Timer.After)

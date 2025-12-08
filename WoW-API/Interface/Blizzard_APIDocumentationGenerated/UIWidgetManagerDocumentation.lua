@@ -15,6 +15,11 @@ function C_UIWidgetManager.GetBelowMinimapWidgetSetID() end
 ---@return BulletTextListWidgetVisualizationInfo? widgetInfo
 function C_UIWidgetManager.GetBulletTextListWidgetVisualizationInfo(widgetID) end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_C_UIWidgetManager.GetButtonHeaderWidgetVisualizationInfo)
+---@param widgetID number
+---@return ButtonHeaderWidgetVisualizationInfo? widgetInfo
+function C_UIWidgetManager.GetButtonHeaderWidgetVisualizationInfo(widgetID) end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_UIWidgetManager.GetCaptureBarWidgetVisualizationInfo)
 ---@param widgetID number
 ---@return CaptureBarWidgetVisualizationInfo? widgetInfo
@@ -199,6 +204,25 @@ function C_UIWidgetManager.UnregisterUnitForWidgetUpdates(unitToken, isGuid) end
 ---@field shownState Enum.WidgetShownState
 ---@field enabledState Enum.WidgetEnabledState
 ---@field lines string[]
+---@field widgetSizeSetting number
+---@field textureKit textureKit
+---@field frameTextureKit textureKit
+---@field hasTimer boolean
+---@field orderIndex number
+---@field widgetTag string
+---@field inAnimType Enum.WidgetAnimationType
+---@field outAnimType Enum.WidgetAnimationType
+---@field widgetScale Enum.UIWidgetScale
+---@field layoutDirection Enum.UIWidgetLayoutDirection
+---@field modelSceneLayer Enum.UIWidgetModelSceneLayer
+---@field scriptedAnimationEffectID number
+
+---@class ButtonHeaderWidgetVisualizationInfo
+---@field shownState Enum.WidgetShownState
+---@field headerText string
+---@field tooltip string
+---@field tooltipLoc Enum.UIWidgetTooltipLocation
+---@field buttons UIWidgetSpellButtonInfo[]
 ---@field widgetSizeSetting number
 ---@field textureKit textureKit
 ---@field frameTextureKit textureKit
@@ -731,6 +755,8 @@ function C_UIWidgetManager.UnregisterUnitForWidgetUpdates(unitToken, isGuid) end
 ---@field tooltip string
 ---@field tooltipLoc Enum.UIWidgetTooltipLocation
 ---@field textSizeType Enum.UIWidgetTextureAndTextSizeType
+---@field textFormatType Enum.UIWidgetTextFormatType
+---@field updateAnimType Enum.UIWidgetUpdateAnimType
 ---@field widgetSizeSetting number
 ---@field textureKit textureKit
 ---@field frameTextureKit textureKit
@@ -840,6 +866,13 @@ function C_UIWidgetManager.UnregisterUnitForWidgetUpdates(unitToken, isGuid) end
 ---@field layoutDirection Enum.UIWidgetSetLayoutDirection
 ---@field verticalPadding number
 
+---@class UIWidgetSpellButtonInfo
+---@field spellID number
+---@field tooltip string
+---@field icon Enum.UIWidgetButtonIconType
+---@field enabledState Enum.UIWidgetButtonEnabledState
+---@field cooldownType Enum.UIWidgetSpellButtonCooldownType
+
 ---@class UIWidgetSpellInfo
 ---@field spellID number
 ---@field shownState Enum.WidgetShownState
@@ -856,6 +889,7 @@ function C_UIWidgetManager.UnregisterUnitForWidgetUpdates(unitToken, isGuid) end
 ---@field hAlignType Enum.WidgetTextHorizontalAlignmentType
 ---@field tint Enum.SpellDisplayTint
 ---@field showGlowState Enum.WidgetShowGlowState
+---@field showAsEarned boolean
 
 ---@class UIWidgetStateIconInfo
 ---@field iconState Enum.IconState

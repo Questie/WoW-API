@@ -14,10 +14,6 @@ function AcceptResurrect() end
 ---@return string result
 function Ambiguate(fullName, context) end
 
----[Documentation](https://warcraft.wiki.gg/wiki/API_AreAccountAchievementsHidden)
----@return boolean result
-function AreAccountAchievementsHidden() end
-
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_AutoEquipCursorItem)
 function AutoEquipCursorItem() end
 
@@ -170,6 +166,12 @@ function GetDodgeChanceFromAttribute() end
 ---@return number rangedExpertise
 function GetExpertise() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_GetExpertisePercent)
+---@return number mainhandExpertisePercent
+---@return number offhandExpertisePercent
+---@return number rangedExpertisePercent
+function GetExpertisePercent() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetHaste)
 ---@return number result
 function GetHaste() end
@@ -247,7 +249,7 @@ function GetPVPGearStatRules() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetPVPLifetimeStats)
 ---@return number lifetimeHonorableKills
----@return number lifetimeMaxPVPRank
+---@return Enum.PvPRanks lifetimeMaxPVPRank
 function GetPVPLifetimeStats() end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetPVPSessionStats)
@@ -454,6 +456,10 @@ function IsCemeterySelectionAvailable() end
 ---@return boolean newlyBoosted
 function IsCharacterNewlyBoosted() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_IsDrivableArea)
+---@return boolean result
+function IsDrivableArea() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_IsDualWielding)
 ---@return boolean result
 function IsDualWielding() end
@@ -572,6 +578,10 @@ function PlayerEffectiveAttackPower() end
 ---@return number? timerunningSeasonID
 function PlayerGetTimerunningSeasonID() end
 
+---[Documentation](https://warcraft.wiki.gg/wiki/API_PlayerIsInCombat)
+---@return boolean playerIsInCombat
+function PlayerIsInCombat() end
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_PortGraveyard)
 function PortGraveyard() end
 
@@ -632,10 +642,6 @@ function ShouldShowIslandsWeeklyPOI() end
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ShouldShowSpecialSplashScreen)
 ---@return boolean result
 function ShouldShowSpecialSplashScreen() end
-
----[Documentation](https://warcraft.wiki.gg/wiki/API_ShowAccountAchievements)
----@param hide? boolean Default = false
-function ShowAccountAchievements(hide) end
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ShowCloak)
 ---@param show boolean

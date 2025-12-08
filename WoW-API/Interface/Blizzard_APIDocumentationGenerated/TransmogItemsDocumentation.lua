@@ -15,11 +15,6 @@ function C_TransmogCollection.AreAllCollectionTypeFiltersChecked() end
 ---@return boolean areAllSourceTypeFiltersChecked
 function C_TransmogCollection.AreAllSourceTypeFiltersChecked() end
 
----[Documentation](https://warcraft.wiki.gg/wiki/API_C_TransmogCollection.CanAppearanceBeDisplayedOnPlayer)
----@param itemAppearanceID number
----@return boolean canAppearanceBeDisplayedOnPlayer
-function C_TransmogCollection.CanAppearanceBeDisplayedOnPlayer(itemAppearanceID) end
-
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TransmogCollection.CanAppearanceHaveIllusion)
 ---@param appearanceID number
 ---@return boolean canHaveIllusion
@@ -448,7 +443,6 @@ function C_TransmogCollection.UpdateUsableAppearances() end
 ---@field canDisplayOnPlayer boolean
 ---@field uiOrder number
 ---@field exclusions number
----@field restrictedSlotID number?
 ---@field isUsable boolean
 ---@field hasRequiredHoliday boolean
 ---@field hasActiveRequiredHoliday boolean
