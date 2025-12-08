@@ -3707,6 +3707,7 @@ function UnitPopupRafGrantLevelButtonMixin:OnClick(contextData)
 end
 
 --Override in UnitPopupButtons
+---@class UnitPopupLootPromoteButtonMixin : UnitPopupButtonBaseMixin
 UnitPopupLootPromoteButtonMixin = CreateFromMixins(UnitPopupButtonBaseMixin)
 
 function UnitPopupLootPromoteButtonMixin:CanShow(contextData)

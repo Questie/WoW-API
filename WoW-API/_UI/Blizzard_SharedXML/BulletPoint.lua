@@ -38,6 +38,7 @@ function BulletPointMixin:OnUpdate()
 	end
 end
 
+---@class BulletPointWithTextureMixin : BulletPointMixin
 BulletPointWithTextureMixin = CreateFromMixins(BulletPointMixin)
 
 function BulletPointWithTextureMixin:OnLoad()

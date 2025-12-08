@@ -39,6 +39,7 @@ function CreatePredictedSetting(wrapTable)
 	return predictedSetting;
 end
 
+---@class PredictedToggleMixin : PredictedSettingBaseMixin
 PredictedToggleMixin = CreateFromMixins(PredictedSettingBaseMixin)
 
 function PredictedToggleMixin:SetUp(wrapTable)

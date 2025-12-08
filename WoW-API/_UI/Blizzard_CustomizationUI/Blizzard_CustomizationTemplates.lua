@@ -35,6 +35,7 @@ end
 
 ----------------- Base Masked Frame With Tooltip -----------------
 
+---@class CustomizationMaskedButtonMixin : RingedMaskedButtonMixin
 CustomizationMaskedButtonMixin = CreateFromMixins(RingedMaskedButtonMixin)
 function CustomizationMaskedButtonMixin:GetAppropriateTooltip()
 	return CustomizationNoHeaderTooltip;
