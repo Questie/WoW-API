@@ -16,3 +16,4 @@ wow-api-classic
 __pycache__
 
 .shit
+*.txt
