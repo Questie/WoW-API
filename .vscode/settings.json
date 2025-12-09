@@ -1,15 +1,33 @@
 {
   "Lua.diagnostics.disable": [
+    // We don't care about undefined globals because the WoW API defines a lot of them.
     "undefined-global",
+    // A lot of the code at blizzard has a ton of redundant parameters for some reason.
     "redundant-parameter",
+    // Some languages support multiple assignment counts, but Lua does not. (e.g. local a, b = 1)
     "unbalanced-assignments",
+    // Some functions say the don't support certain parameters, but they actually do. (GetAchievementCriteriaInfo vs GetAchievementCriteriaInfoByID)
+    // So we disable this check.
     "missing-parameter",
+    // Some of Blizzard's code uses lowercase globals, which is against Lua conventions.
     "lowercase-global",
-    "ambiguity-1",
+    // Deprecated functions and features are common in the WoW API, so we disable this warning.
     "deprecated",
+    // Due to the merge nature of this there are some duplication issues.
     "duplicate-doc-field",
     "duplicate-doc-alias",
+    // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
     "return-type-mismatch",
+    // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
+    "param-type-mismatch",
+    // Because we add casts after the fact to satisfy the type checker, we disable this warning.
+    "cast-local-type",
+    // Classes do not like injecting fields but that requires refactoring which we can't do.
+    "inject-field",
+    // Not checking nil values is common in WoW API code.
+    "need-check-nil",
+    // Trailing spaces are not a big deal.
+    "trailing-space",
   ],
   "Lua.workspace.ignoreDir": [
     ".vscode",
