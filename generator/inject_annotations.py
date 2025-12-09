@@ -80,7 +80,11 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
     injects the annotation lines before it.
     """
     # Regex to capture indentation and function name
+    # We use standard regex, but we will clean lines with prefixes before matching
     func_regex = re.compile(r"^(\s*)function\s+([a-zA-Z0-9_.:]+)\s*\(", re.MULTILINE)
+    
+    # Regex to identify and strip prefixes like --[[static]]
+    prefix_regex = re.compile(r"^(\s*)(--\[\[.*?\]\]\s*)(function.*)$")
 
     print(f"Scanning target directory: {target_dir}")
     if dry_run:
@@ -109,6 +113,35 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
             file_modified = False
 
             for line in lines:
+                # Pre-processing: Strip prefix if present
+                clean_line_content = line
+                pm = prefix_regex.match(line)
+                if pm:
+                    indent = pm.group(1)
+                    # prefix = pm.group(2) # e.g. "--[[static]] "
+                    rest = pm.group(3)
+                    clean_line_content = indent + rest
+                    # We will append this cleaned line to new_lines instead of the original line
+                    # But we also need to use it for matching
+                    
+                    if not file_modified:
+                        # We are modifying the file by cleaning it (even if we don't inject)
+                        # But strictly speaking, the user said "clean the lines into being parsed"
+                        # If we just clean it in memory for parsing, we don't remove it from file.
+                        # User said: "lets just remove it... clean the lines... into being parsed"
+                        # implying we should save the cleaned version.
+                        file_modified = True # We are stripping the prefix
+                        if dry_run:
+                             print(f"[Dry Run] Stripping prefix from line in {path}")
+                    
+                    # Update line to be the cleaned version for subsequent logic
+                    # Ensure we preserve newline if original had one
+                    suffix = ""
+                    if line.endswith("\n") and not clean_line_content.endswith("\n"):
+                        suffix = "\n"
+                    
+                    line = clean_line_content + suffix
+
                 m = func_regex.match(line)
                 if m:
                     indent = m.group(1)
