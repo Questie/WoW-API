@@ -88,6 +88,7 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
 
     modified_count = 0
     total_files_checked = 0
+    matched_functions_set = set()
 
     for root, _, files in os.walk(target_dir):
         for file in files:
@@ -114,6 +115,7 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                     func_name = m.group(2)
 
                     if func_name in annotations_map:
+                        matched_functions_set.add(func_name)
                         anno_data = annotations_map[func_name]
                         anno_lines = anno_data["lines"]
                         source_file = anno_data["source"]
@@ -165,6 +167,152 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
     else:
         print(f"Injected annotations into {modified_count} functions.")
 
+    # Return list of injected/found function names to facilitate source cleanup
+    # We re-scan to return all functions that were 'successfully processed' (i.e., exist in target with annotation)
+    # The modified_count only tracks *changes*.
+    # But for removal, we want to know if the function *exists* in the target, regardless of whether we just added it or it was already there.
+    # To do this accurately, we should probably track it inside the loop.
+    # Re-running the loop or accumulating in a set is better.
+    # Since we are already iterating, let's accumulate in a set in the loop above.
+    # But wait, inject_annotations didn't return anything in previous version.
+    # I will modify it to return the set.
+    return matched_functions_set
+
+
+def remove_source_annotations(annotations_map, matched_functions, dry_run=False):
+    """
+    Removes function definitions and their annotations from the source files
+    if they were successfully matched in the target directory.
+    """
+    print("Cleaning up source annotations...")
+
+    # Group matched functions by source file
+    files_to_process = {}
+    for func_name in matched_functions:
+        if func_name in annotations_map:
+            source_file = annotations_map[func_name]["source"]
+            if source_file not in files_to_process:
+                files_to_process[source_file] = set()
+            files_to_process[source_file].add(func_name)
+
+    removed_count = 0
+
+    # Regex to capture function definition for matching
+    func_regex = re.compile(r"^\s*function\s+([a-zA-Z0-9_.:]+)\s*\(", re.MULTILINE)
+
+    for source_file, func_names in files_to_process.items():
+        try:
+            with open(source_file, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+        except Exception as e:
+            print(f"Warning: Could not read source file {source_file}: {e}")
+            continue
+
+        new_lines = []
+        pending_block = []
+        file_modified = False
+
+        for line in lines:
+            stripped = line.strip()
+
+            # Accumulate comments (annotations)
+            if stripped.startswith("--"):
+                pending_block.append(line)
+                continue
+
+            # Check function definition
+            if stripped.startswith("function"):
+                m = func_regex.match(line)
+                if m:
+                    func_name = m.group(1)
+                    if func_name in func_names:
+                        # This is a function we want to remove.
+                        # Safety check: ensure it is a one-liner stub (ends with 'end')
+                        if stripped.endswith("end"):
+                            # One liner. Drop pending block and this line.
+                            pending_block = []  # Discard annotations
+                            if dry_run:
+                                print(
+                                    f"[Dry Run] Removing source definition for {func_name} in {source_file}"
+                                )
+                            else:
+                                print(
+                                    f"Removing source definition for {func_name} in {source_file}"
+                                )
+
+                            file_modified = True
+                            removed_count += 1
+                            continue  # Skip adding this line to new_lines
+                        else:
+                            # Multi-line. Replace annotations and rename function to "_"
+                            if dry_run:
+                                print(
+                                    f"[Dry Run] Renaming multi-line source definition {func_name} to '_' in {source_file}"
+                                )
+                            else:
+                                print(
+                                    f"Renaming multi-line source definition {func_name} to '_' in {source_file}"
+                                )
+
+                            # 1. Replace annotations with special comment
+                            # We match the indentation of the function line
+                            indent = line[: len(line) - len(line.lstrip())]
+                            pending_block = [
+                                indent + f"--- MultiLine , safe remove with underscore ({func_name})\n"
+                            ]
+
+                            # 2. Rename function to _
+                            # Use regex match positions to ensure we only replace the function name
+                            start, end = m.span(1)
+                            new_func_line = line[:start] + "_" + line[end:]
+
+                            # Flush annotations and new line
+                            new_lines.extend(pending_block)
+                            pending_block = []
+                            new_lines.append(new_func_line)
+
+                            file_modified = True
+                            removed_count += 1
+                            continue
+
+                # If regex didn't match or not in removal list, or unsafe: keep.
+                new_lines.extend(pending_block)
+                pending_block = []
+                new_lines.append(line)
+                continue
+
+            # Empty line or other code
+            if not stripped:
+                # Empty line.
+                # If we have pending block, it might be a header or disconnected comment.
+                # Keep it.
+                new_lines.extend(pending_block)
+                pending_block = []
+                new_lines.append(line)
+                continue
+
+            # Other line (e.g. table def)
+            new_lines.extend(pending_block)
+            pending_block = []
+            new_lines.append(line)
+
+        # End of loop, flush remaining
+        new_lines.extend(pending_block)
+
+        if file_modified and not dry_run:
+            try:
+                with open(source_file, "w", encoding="utf-8") as f:
+                    f.writelines(new_lines)
+            except Exception as e:
+                print(f"Error writing to {source_file}: {e}")
+
+    if dry_run:
+        print(
+            f"[Dry Run] Would have removed {removed_count} function definitions from source."
+        )
+    else:
+        print(f"Removed {removed_count} function definitions from source.")
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -172,8 +320,8 @@ def main():
     )
     parser.add_argument(
         "--source",
-        default="../WoW-API/FrameXML",
-        help="Path to folder containing annotated source files (default: ../WoW-API/FrameXML)",
+        default="./API-Vanilla/FrameXML",
+        help="Path to folder containing annotated source files (default: ./API-Vanilla/FrameXML)",
     )
     parser.add_argument(
         "--target",
@@ -184,6 +332,11 @@ def main():
         "--dry-run",
         action="store_true",
         help="Print what would be done without modifying files",
+    )
+    parser.add_argument(
+        "--keep-source",
+        action="store_true",
+        help="Do not remove functions and annotations from source files after successful injection",
     )
 
     args = parser.parse_args()
@@ -208,7 +361,22 @@ def main():
         return
 
     # 2. Inject
-    inject_annotations(target_path, annotations, dry_run=args.dry_run)
+    injected_funcs = inject_annotations(target_path, annotations, dry_run=args.dry_run)
+
+    # 3. Report Missing
+    all_funcs = set(annotations.keys())
+    missing_funcs = all_funcs - injected_funcs
+    if missing_funcs:
+        print("\nFunctions found in Source but NOT found in Target:")
+        for func in sorted(missing_funcs):
+            # Print function name and its source file for clarity
+            source_file = annotations[func]["source"]
+            print(f" - {func} ({source_file})")
+        print("\n")
+
+    # 4. Cleanup Source
+    if not args.keep_source:
+        remove_source_annotations(annotations, injected_funcs, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":
