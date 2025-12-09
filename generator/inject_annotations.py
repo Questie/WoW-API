@@ -135,6 +135,70 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                         if not already_present:
                             # Inject annotations
                             # We prepend the indentation found on the function line
+                            
+                            # --- Parameter Matching Logic ---
+                            # Check if parameters match between code and docs
+                            # Target: function Name(p1, p2) -> "p1, p2"
+                            # We already matched func_regex on 'line', which captured groups 1(indent) and 2(name).
+                            # We need to capture the args part now.
+                            args_match = re.search(r"\(([^)]*)\)", line)
+                            if args_match:
+                                target_args_str = args_match.group(1)
+                                target_params = [p.strip() for p in target_args_str.split(",") if p.strip()]
+                                
+                                # Parse doc params from anno_lines
+                                # anno_lines are strings like "---@param foo string\n"
+                                doc_params_indices = []
+                                doc_params_names = []
+                                
+                                for i, al in enumerate(anno_lines):
+                                    pm = re.search(r"^\s*---@param\s+(\w+)", al)
+                                    if pm:
+                                        doc_params_indices.append(i)
+                                        doc_params_names.append(pm.group(1))
+                                
+                                # Compare
+                                if len(target_params) == len(doc_params_names) and len(target_params) > 0:
+                                    # Attempt to map
+                                    replacements = {}
+                                    for i, (tp, dp) in enumerate(zip(target_params, doc_params_names)):
+                                        if tp != dp:
+                                            # Mismatch found: e.g. target='self', doc='button'
+                                            replacements[dp] = tp
+                                            if dry_run:
+                                                print(f"[Dry Run] Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing.")
+                                            else:
+                                                print(f"Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing.")
+
+                                    # Apply replacements to anno_lines (in memory copy)
+                                    if replacements:
+                                        new_anno_lines = list(anno_lines) # copy
+                                        for idx in doc_params_indices:
+                                            original_line = new_anno_lines[idx]
+                                            # We need to find which param this line is for
+                                            pm = re.search(r"^\s*---@param\s+(\w+)", original_line)
+                                            if pm:
+                                                pname = pm.group(1)
+                                                if pname in replacements:
+                                                    new_name = replacements[pname]
+                                                    # Replace the word 'pname' with 'new_name' in the line
+                                                    # Also append the old name as a comment at the end
+                                                    # Check if line ends with newline
+                                                    suffix = ""
+                                                    if original_line.endswith("\n"):
+                                                        suffix = "\n"
+                                                        original_line = original_line.rstrip("\n")
+
+                                                    # Replace name
+                                                    # Use regex to replace first occurrence of parameter name after @param
+                                                    new_line_content = re.sub(r"(@param\s+)" + re.escape(pname), r"\1" + new_name, original_line, count=1)
+                                                    
+                                                    # Append old name
+                                                    new_line = f"{new_line_content} {pname}{suffix}"
+                                                    new_anno_lines[idx] = new_line
+                                        anno_lines = new_anno_lines
+                            # -------------------------------
+
                             if dry_run:
                                 print(
                                     f"[Dry Run] Would inject annotations for: {func_name} in {path} (from {source_file})"
@@ -199,6 +263,8 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
 
     # Regex to capture function definition for matching
     func_regex = re.compile(r"^\s*function\s+([a-zA-Z0-9_.:]+)\s*\(", re.MULTILINE)
+    # Regex to check for end of function at column 0
+    end_regex = re.compile(r"^end\s*$", re.MULTILINE)
 
     for source_file, func_names in files_to_process.items():
         try:
@@ -211,8 +277,19 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
         new_lines = []
         pending_block = []
         file_modified = False
+        skip_lines_until_end = False
 
-        for line in lines:
+        for i, line in enumerate(lines):
+            # If we are inside a deleted block, check if this line ends it
+            if skip_lines_until_end:
+                # We assume function body lines are indented, so they won't match ^end
+                # But the user said "function always starts at column 0 and so does the closing end."
+                # So we just look for ^end
+                if end_regex.match(line):
+                    skip_lines_until_end = False
+                    # We consumed the 'end' line too.
+                continue
+
             stripped = line.strip()
 
             # Accumulate comments (annotations)
@@ -226,56 +303,30 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
                 if m:
                     func_name = m.group(1)
                     if func_name in func_names:
-                        # This is a function we want to remove.
-                        # Safety check: ensure it is a one-liner stub (ends with 'end')
-                        if stripped.endswith("end"):
-                            # One liner. Drop pending block and this line.
-                            pending_block = []  # Discard annotations
-                            if dry_run:
-                                print(
-                                    f"[Dry Run] Removing source definition for {func_name} in {source_file}"
-                                )
-                            else:
-                                print(
-                                    f"Removing source definition for {func_name} in {source_file}"
-                                )
-
-                            file_modified = True
-                            removed_count += 1
-                            continue  # Skip adding this line to new_lines
+                        # Found a function to remove.
+                        if dry_run:
+                            print(
+                                f"[Dry Run] Removing source definition for {func_name} in {source_file}"
+                            )
                         else:
-                            # Multi-line. Replace annotations and rename function to "_"
-                            if dry_run:
-                                print(
-                                    f"[Dry Run] Renaming multi-line source definition {func_name} to '_' in {source_file}"
-                                )
-                            else:
-                                print(
-                                    f"Renaming multi-line source definition {func_name} to '_' in {source_file}"
-                                )
+                            print(
+                                f"Removing source definition for {func_name} in {source_file}"
+                            )
 
-                            # 1. Replace annotations with special comment
-                            # We match the indentation of the function line
-                            indent = line[: len(line) - len(line.lstrip())]
-                            pending_block = [
-                                indent + f"--- MultiLine , safe remove with underscore ({func_name})\n"
-                            ]
+                        file_modified = True
+                        removed_count += 1
+                        pending_block = []  # Discard annotations
 
-                            # 2. Rename function to _
-                            # Use regex match positions to ensure we only replace the function name
-                            start, end = m.span(1)
-                            new_func_line = line[:start] + "_" + line[end:]
-
-                            # Flush annotations and new line
-                            new_lines.extend(pending_block)
-                            pending_block = []
-                            new_lines.append(new_func_line)
-
-                            file_modified = True
-                            removed_count += 1
+                        # Check if it's a one-liner
+                        if stripped.endswith("end"):
+                            # One-liner, just skip this line
+                            continue
+                        else:
+                            # Multi-line, start skipping until we find 'end' at column 0
+                            skip_lines_until_end = True
                             continue
 
-                # If regex didn't match or not in removal list, or unsafe: keep.
+                # If regex didn't match or not in removal list: keep.
                 new_lines.extend(pending_block)
                 pending_block = []
                 new_lines.append(line)
@@ -283,9 +334,6 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
 
             # Empty line or other code
             if not stripped:
-                # Empty line.
-                # If we have pending block, it might be a header or disconnected comment.
-                # Keep it.
                 new_lines.extend(pending_block)
                 pending_block = []
                 new_lines.append(line)
@@ -299,10 +347,29 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
         # End of loop, flush remaining
         new_lines.extend(pending_block)
 
+        # Post-processing: Collapse multiple blank lines
+        cleaned_lines = []
+        last_was_blank = False
+        
+        for line in new_lines:
+            is_blank = not line.strip()
+            
+            if is_blank:
+                if last_was_blank:
+                    # Skip duplicate blank line
+                    continue
+                else:
+                    # Keep first blank line
+                    cleaned_lines.append(line)
+                    last_was_blank = True
+            else:
+                cleaned_lines.append(line)
+                last_was_blank = False
+
         if file_modified and not dry_run:
             try:
                 with open(source_file, "w", encoding="utf-8") as f:
-                    f.writelines(new_lines)
+                    f.writelines(cleaned_lines)
             except Exception as e:
                 print(f"Error writing to {source_file}: {e}")
 
@@ -374,6 +441,7 @@ def main():
             print(f" - {func} ({source_file})")
         print("\n")
 
+
     # 4. Cleanup Source
     if not args.keep_source:
         remove_source_annotations(annotations, injected_funcs, dry_run=args.dry_run)
@@ -381,3 +449,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
