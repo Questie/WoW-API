@@ -12,5 +12,3 @@ ItemLocation = {}
 ---[Documentation](https://warcraft.wiki.gg/wiki/ItemLocationMixin)
 ItemLocationMixin = {}
 
-function ItemLocationMixin:Clear() end
-

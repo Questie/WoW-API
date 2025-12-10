@@ -77,6 +77,27 @@ do
 	--		aura names are localized, what works in one locale might not work in another
 	--			consider that in English two auras might have different names, but once localized they have the same name, so even using the localized aura name in a search it could result in different behavior
 	--		the unit could have multiple auras with the same name, this will only find the first
+	---[FrameXML](https://github.com/Gethe/wow-ui-source/blob/live/Interface/FrameXML/AuraUtil.lua#L32)
+	-- Finds the first aura that matches the name
+	---@param auraName string
+	---@param unit string
+	---@param filter? string
+	---@return string name
+	---@return number icon
+	---@return number count
+	---@return string? dispelType
+	---@return number duration
+	---@return number expirationTime
+	---@return string source
+	---@return boolean isStealable
+	---@return boolean nameplateShowPersonal
+	---@return number spellId
+	---@return boolean canApplyAura
+	---@return boolean isBossDebuff
+	---@return boolean castByPlayer
+	---@return boolean nameplateShowAll
+	---@return number timeMod
+	---@return ...
 	function AuraUtil.FindAuraByName(auraName, unit, filter)
 		return AuraUtil.FindAura(NamePredicate, unit, filter, auraName);
 	end

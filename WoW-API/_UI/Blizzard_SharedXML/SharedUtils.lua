@@ -17,6 +17,12 @@ function GetRaceAtlas(raceName, gender, useHiRez)
 	return formatingString:format(raceName, gender);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetTexCoordsForRole)
+---@param role string
+---@return number minX
+---@return number maxX
+---@return number minY
+---@return number maxY
 function GetTexCoordsForRole(role)
 	local textureHeight, textureWidth = 256, 256;
 	local roleHeight, roleWidth = 67, 67;

@@ -5,12 +5,6 @@ Item = {}
 ---@class ItemMixin
 ItemMixin = {}
 
-function ItemMixin:Clear() end
-
-function ItemMixin:LockItem() end
-
-function ItemMixin:UnlockItem() end
-
 ---@return number
 function ItemMixin:GetStackCount() end
 

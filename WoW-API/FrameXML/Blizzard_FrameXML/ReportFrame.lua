@@ -3,5 +3,3 @@
 ---@class ReportInfoMixin
 ReportInfoMixin = {}
 
-function ReportInfoMixin:Clear() end
-

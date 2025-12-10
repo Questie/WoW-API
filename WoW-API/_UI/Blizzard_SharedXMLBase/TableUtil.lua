@@ -61,6 +61,10 @@ function CreateTableReverseEnumerator(tbl, minIndex, maxIndex)
 	return Enumerator, tbl, maxIndex;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tDeleteItem)
+-- Removes a value from a sequential table.
+---@param tbl table
+---@param item any
 function tDeleteItem(tbl, item)
 	local size = #tbl;
 	local index = size;
@@ -73,6 +77,11 @@ function tDeleteItem(tbl, item)
 	return size - #tbl;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tIndexOf)
+-- Returns the index for a value in a table.
+---@param tbl table
+---@param item any
+---@return number? index
 function tIndexOf(tbl, item)
 	for i, v in ipairs(tbl) do
 		if item == v then
@@ -81,6 +90,11 @@ function tIndexOf(tbl, item)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tContains)
+-- Returns true if a table contains a value.
+---@param tbl table
+---@param item any
+---@return boolean
 function tContains(tbl, item)
 	for k, v in pairs(tbl) do
 		if item == v then
@@ -113,6 +127,13 @@ end
 
 -- This is a deep compare on the values of the table (based on depth) but not a deep comparison
 -- of the keys, as this would be an expensive check and won't be necessary in most cases.
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tCompare)
+-- This is a deep compare on the values of the table (based on depth) but not a deep comparison
+-- of the keys, as this would be an expensive check and won't be necessary in most cases.
+---@param lhsTable table
+---@param rhsTable table
+---@param depth? number
+---@return boolean
 function tCompare(lhsTable, rhsTable, depth)
 	depth = depth or 1;
 	for key, value in pairs(lhsTable) do
@@ -141,6 +162,10 @@ function tCompare(lhsTable, rhsTable, depth)
 	return true;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tInvert)
+-- Returns an inverted table.
+---@param tbl table
+---@return table
 function tInvert(tbl)
 	local inverted = {};
 	for k, v in pairs(tbl) do
@@ -175,6 +200,11 @@ function TableUtil.CopyUniqueByPredicate(tbl, isIndexTable, unaryPredicate)
 	return tFilter(tbl, FilterPredicate, isIndexTable);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tFilter)
+---@param tbl table
+---@param pred function
+---@param isIndexTable boolean
+---@return table
 function tFilter(tbl, pred, isIndexTable)
 	local out = {};
 
@@ -197,6 +227,10 @@ function tFilter(tbl, pred, isIndexTable)
 	return out;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tAppendAll)
+-- Appends the contents of a sequential table to another table.
+---@param table table
+---@param addedArray table
 function tAppendAll(table, addedArray)
 	for i, element in ipairs(addedArray) do
 		tinsert(table, element);
@@ -211,6 +245,9 @@ function tInsertUnique(tbl, item)
 	return nil;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/tUnorderedRemove)
+---@param tbl table
+---@param index number
 function tUnorderedRemove(tbl, index)
 	if index ~= #tbl then
 		tbl[index] = tbl[#tbl];
@@ -219,6 +256,11 @@ function tUnorderedRemove(tbl, index)
 	tRemove(tbl);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CopyTable)
+-- Returns a deep copy of a table.
+---@param settings table
+---@param shallow? boolean
+---@return table
 function CopyTable(settings, shallow)
 	local copy = {};
 	for k, v in pairs(settings) do
@@ -331,6 +373,10 @@ function TableUtil.FindMax(tbl, op)
 	return result;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/ContainsIf)
+---@param tbl table
+---@param pred function
+---@return boolean
 function ContainsIf(tbl, pred)
 	for k, v in pairs(tbl) do
 		if (pred(v)) then
@@ -351,6 +397,11 @@ function FindInTable(tbl, value)
 	return nil;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FindInTableIf)
+---@param tbl table
+---@param pred function
+---@return string|number key
+---@return any value
 function FindInTableIf(tbl, pred)
 	for k, v in pairs(tbl) do
 		if (pred(v)) then
@@ -427,6 +478,9 @@ end
 -- Addresses the problem where nil values within a varargs list are not preserved when constructing
 -- a table, resulting a table with a smaller size than expected. Should be paired with a call to
 -- SafeUnpack when unpacking the table.
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SafePack)
+---@param ... any
+---@return table
 function SafePack(...)
 	local tbl = { ... };
 	tbl.n = select("#", ...);
@@ -434,6 +488,9 @@ function SafePack(...)
 end
 
 -- Upacks a table that was constructed using SafePack.
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SafeUnpack)
+---@param tbl table
+---@return ...
 function SafeUnpack(tbl, startIndex)
 	return unpack(tbl, startIndex or 1, tbl.n);
 end

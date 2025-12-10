@@ -6,36 +6,36 @@ CustomBindingHandler = {};
 ---@class CustomBindingHandlerMixin
 CustomBindingHandlerMixin = {};
 
---[[static]] function CustomBindingHandler:CreateHandler(customBindingType)
+function CustomBindingHandler:CreateHandler(customBindingType)
 	local handler = CreateFromMixins(CustomBindingHandlerMixin);
 	handler:OnLoad(customBindingType);
 	return handler;
 end
 
---[[private]] function CustomBindingHandlerMixin:OnLoad(customBindingType)
+function CustomBindingHandlerMixin:OnLoad(customBindingType)
 	self.customBindingType = customBindingType;
 end
 
---[[private]] function CustomBindingHandlerMixin:CallOnBindingModeActivatedCallback(isActive)
+function CustomBindingHandlerMixin:CallOnBindingModeActivatedCallback(isActive)
 	if self.bindingModeActivatedCallback then
 		self.bindingModeActivatedCallback(isActive);
 	end
 end
 
---[[private]] function CustomBindingHandlerMixin:CallOnBindingCompletedCallback(completedSuccessfully, keys)
+function CustomBindingHandlerMixin:CallOnBindingCompletedCallback(completedSuccessfully, keys)
 	if self.bindingCompletedCallback then
 		self.bindingCompletedCallback(completedSuccessfully, keys);
 	end
 end
 
---[[public]] function CustomBindingHandlerMixin:SetOnBindingModeActivatedCallback(callback)
+function CustomBindingHandlerMixin:SetOnBindingModeActivatedCallback(callback)
 	self.bindingModeActivatedCallback = callback;
 end
 
---[[public]] function CustomBindingHandlerMixin:SetOnBindingCompletedCallback(callback)
+function CustomBindingHandlerMixin:SetOnBindingCompletedCallback(callback)
 	self.bindingCompletedCallback = callback;
 end
 
---[[public]] function CustomBindingHandlerMixin:GetCustomBindingType()
+function CustomBindingHandlerMixin:GetCustomBindingType()
 	return self.customBindingType;
 end

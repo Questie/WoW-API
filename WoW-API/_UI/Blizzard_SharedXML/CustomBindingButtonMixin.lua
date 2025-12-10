@@ -22,13 +22,13 @@ Other caveats are that LMB/RMB aren't bindable, both of them will activate and c
 ---@class CustomBindingButtonMixin : Button
 CustomBindingButtonMixin = {};
 
---[[private]] function CustomBindingButtonMixin:OnLoad()
+function CustomBindingButtonMixin:OnLoad()
 	local preventBindingManagerUpdate = true;
 	self:SetBindingModeActive(false, preventBindingManagerUpdate);
 	self:EnableKeyboard(false);
 end
 
---[[private]] function CustomBindingButtonMixin:OnClick(button, isDown)
+function CustomBindingButtonMixin:OnClick(button, isDown)
 	local isBindingModeButton = self:IsBindingModeButton(button);
 	local isButtonRelease = not isDown;
 
@@ -53,20 +53,20 @@ end
 	end
 end
 
---[[private]] function CustomBindingButtonMixin:OnMouseWheel(delta)
+function CustomBindingButtonMixin:OnMouseWheel(delta)
 	-- Current custom systems don't support mouse wheel events, prevent this from doing anything
 	-- event handler exists to prevent event from falling through to next frame.
 end
 
---[[private]] function CustomBindingButtonMixin:OnKeyDown(key)
+function CustomBindingButtonMixin:OnKeyDown(key)
 	self:OnInput(key, true);
 end
 
---[[private]] function CustomBindingButtonMixin:OnKeyUp(key)
+function CustomBindingButtonMixin:OnKeyUp(key)
 	self:OnInput(key, false);
 end
 
---[[private]] function CustomBindingButtonMixin:OnInput(key, isDown)
+function CustomBindingButtonMixin:OnInput(key, isDown)
 	local isButtonRelease = not isDown;
 
 	if not self:IsBindingModeActive() then
@@ -105,11 +105,11 @@ end
 	end
 end
 
---[[private]] function CustomBindingButtonMixin:IsBindingModeButton(button)
+function CustomBindingButtonMixin:IsBindingModeButton(button)
 	return IsLeftMouseButton(button) or IsRightMouseButton(button);
 end
 
---[[private]] function CustomBindingButtonMixin:SetBindingModeActive(isActive, preventBindingManagerUpdate)
+function CustomBindingButtonMixin:SetBindingModeActive(isActive, preventBindingManagerUpdate)
 	self.isBindingModeActive = isActive;
 	self.receivedNonMetaKeyInput = false;
 	self.keys = {};
@@ -128,40 +128,40 @@ end
 	end
 end
 
---[[private]] function CustomBindingButtonMixin:NotifyBindingCompleted(completedSuccessfully, keys)
+function CustomBindingButtonMixin:NotifyBindingCompleted(completedSuccessfully, keys)
 	CustomBindingManager:OnBindingCompleted(self, completedSuccessfully, keys);
 	self:SetBindingModeActive(false);
 end
 
---[[private]] function CustomBindingButtonMixin:SetCustomBindingType(customBindingType)
+function CustomBindingButtonMixin:SetCustomBindingType(customBindingType)
 	self.customBindingType = customBindingType;
 end
 
---[[public]] function CustomBindingButtonMixin:GetCustomBindingType()
+function CustomBindingButtonMixin:GetCustomBindingType()
 	return self.customBindingType;
 end
 
---[[public]] function CustomBindingButtonMixin:SetCustomBindingHandler(handler)
+function CustomBindingButtonMixin:SetCustomBindingHandler(handler)
 	self.handler = handler;
 end
 
---[[public]] function CustomBindingButtonMixin:GetCustomBindingHandler()
+function CustomBindingButtonMixin:GetCustomBindingHandler()
 	return self.handler;
 end
 
---[[public, virtual]] function CustomBindingButtonMixin:OnBindingTextChanged(bindingText)
+function CustomBindingButtonMixin:OnBindingTextChanged(bindingText)
 	self:SetText(bindingText);
 end
 
---[[public]] function CustomBindingButtonMixin:IsBindingModeActive()
+function CustomBindingButtonMixin:IsBindingModeActive()
 	return self.isBindingModeActive;
 end
 
---[[public]] function CustomBindingButtonMixin:GetKeys()
+function CustomBindingButtonMixin:GetKeys()
 	return self.keys;
 end
 
---[[public]] function CustomBindingButtonMixin:CancelBinding()
+function CustomBindingButtonMixin:CancelBinding()
 	self:NotifyBindingCompleted(false);
 	self:EnableKeyboard(false);
 end

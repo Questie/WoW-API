@@ -5,5 +5,3 @@ Spell = {}
 ---@class SpellMixin
 SpellMixin = {}
 
-function SpellMixin:Clear() end
-

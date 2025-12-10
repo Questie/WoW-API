@@ -17,7 +17,7 @@ ContinuableContainer = {};
 	end);
 ]]
 
---[[static]] function ContinuableContainer:Create()
+function ContinuableContainer:Create()
 	return CreateFromMixins(self);
 end
 

@@ -3,5 +3,3 @@
 ---@class ItemTransmogInfoMixin
 ItemTransmogInfoMixin = {}
 
-function ItemTransmogInfoMixin:Clear() end
-

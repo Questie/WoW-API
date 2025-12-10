@@ -5,14 +5,6 @@
 ---@class NamePlateBaseMixin
 local NamePlateBaseMixin = {}
 
-function NamePlateBaseMixin:OnRemoved() end
-
-function NamePlateBaseMixin:OnOptionsUpdated() end
-
-function NamePlateBaseMixin:ApplyOffsets() end
-
-function NamePlateBaseMixin:OnSizeChanged() end
-
 ---@class Nameplate : Frame, NamePlateBaseMixin
 ---@field UnitFrame Button
 ---@field driverFrame NamePlateDriverFrame

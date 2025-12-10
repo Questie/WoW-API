@@ -320,6 +320,10 @@ end
 ---@class TransmogPendingInfoMixin
 TransmogPendingInfoMixin = {};
 
+--- See [CreateAndInitFromMixin](https://www.townlong-yak.com/framexml/go/CreateAndInitFromMixin)
+---@param pendingType Enum.TransmogPendingType
+---@param transmogID number
+---@param category number
 function TransmogPendingInfoMixin:Init(pendingType, transmogID, category)
 	self.type = pendingType;
 	if pendingType ~= Enum.TransmogPendingType.Apply then
@@ -332,37 +336,47 @@ end
 ---@class TransmogLocationMixin
 TransmogLocationMixin = {};
 
+---@param slotID number
+---@param transmogType Enum.TransmogType
+---@param modification Enum.TransmogModification
 function TransmogLocationMixin:Set(slotID, transmogType, modification)
 	self.slotID = slotID;
 	self.type = transmogType;
 	self.modification = modification or Enum.TransmogModification.Main;
 end
 
+---@return boolean
 function TransmogLocationMixin:IsAppearance()
 	return self.type == Enum.TransmogType.Appearance;
 end
 
+---@return boolean
 function TransmogLocationMixin:IsIllusion()
 	return self.type == Enum.TransmogType.Illusion;
 end
 
+---@return number slotID
 function TransmogLocationMixin:GetSlotID()
 	return self.slotID;
 end
 
+---@return string slotName
 function TransmogLocationMixin:GetSlotName()
 	return TransmogUtil.GetSlotName(self.slotID);
 end
 
+---@return boolean
 function TransmogLocationMixin:IsEitherHand()
 	return self:IsMainHand() or self:IsOffHand();
 end
 
+---@return boolean
 function TransmogLocationMixin:IsMainHand()
 	local slotName = self:GetSlotName();
 	return slotName == "MAINHANDSLOT";
 end
 
+---@return boolean
 function TransmogLocationMixin:IsOffHand()
 	local slotName = self:GetSlotName();
 	return slotName == "SECONDARYHANDSLOT";
@@ -373,6 +387,8 @@ function TransmogLocationMixin:IsRanged()
 	return slotName == "RANGEDSLOT";
 end
 
+---@param transmogLocation TransmogLocationMixin
+---@return boolean
 function TransmogLocationMixin:IsEqual(transmogLocation)
 	if not transmogLocation then
 		return false;
@@ -380,15 +396,18 @@ function TransmogLocationMixin:IsEqual(transmogLocation)
 	return self.slotID == transmogLocation.slotID and self.type == transmogLocation.type and self.modification == transmogLocation.modification;
 end
 
+---@return number armorCategoryID
 function TransmogLocationMixin:GetArmorCategoryID()
 	local transmogSlot = TRANSMOG_SLOTS[self:GetLookupKey()];
 	return transmogSlot and transmogSlot.armorCategoryID;
 end
 
+---@return number lookupKey
 function TransmogLocationMixin:GetLookupKey()
 	return TransmogUtil.GetTransmogLocationLookupKey(self.slotID, self.type, self.modification);
 end
 
+---@return boolean
 function TransmogLocationMixin:IsSecondary()
 	return self.modification == Enum.TransmogModification.Secondary;
 end

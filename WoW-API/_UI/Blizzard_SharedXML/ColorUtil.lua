@@ -9,6 +9,9 @@ function ExtractColorValueFromHex(str, index)
 	return tonumber(str:sub(index, index + 1), 16) / 255;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateColorFromHexString)
+---@param hexColor string
+---@return colorRGBA
 function CreateColorFromHexString(hexColor)
 	if #hexColor == 8 then
 		local a, r, g, b = ExtractColorValueFromHex(hexColor, 1), ExtractColorValueFromHex(hexColor, 3), ExtractColorValueFromHex(hexColor, 5), ExtractColorValueFromHex(hexColor, 7);
@@ -36,10 +39,20 @@ function CreateColorFromRGBHexString(hexColor)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateColorFromBytes)
+---@param r number
+---@param g number
+---@param b number
+---@param a number
+---@return colorRGBA
 function CreateColorFromBytes(r, g, b, a)
 	return CreateColor(r / 255, g / 255, b / 255, a / 255);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/AreColorsEqual)
+---@param left colorRGBA
+---@param right colorRGBA
+---@return boolean
 function AreColorsEqual(left, right)
 	if left and right then
 		return left:IsEqualTo(right);
@@ -51,6 +64,12 @@ function IsRGBAEqualToColor(r, g, b, a, color)
 	return (color.r == r) and (color.g == g) and (color.b == b) and (color.a == a);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetClassColor)
+---@param classFilename ClassFile
+---@return number r
+---@return number g
+---@return number b
+---@return string colorStr
 function GetClassColor(classFilename)
 	local color = RAID_CLASS_COLORS[classFilename];
 	if color then
@@ -60,17 +79,27 @@ function GetClassColor(classFilename)
 	return 1, 1, 1, "ffffffff";
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetClassColorObj)
+---@param classFilename string
+---@return colorRGB
 function GetClassColorObj(classFilename)
 	-- TODO: Remove this, convert everything that's using GetClassColor to use the object instead, then begin using that again
 	return RAID_CLASS_COLORS[classFilename];
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetClassColoredTextForUnit)
+---@param unit string
+---@param text string
+---@return string
 function GetClassColoredTextForUnit(unit, text)
 	local classFilename = select(2, UnitClass(unit));
 	local color = GetClassColorObj(classFilename);
 	return color and color:WrapTextInColorCode(text) or text;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetFactionColor)
+---@param factionGroupTag string
+---@return colorRGBA
 function GetFactionColor(factionGroupTag)
 	return PLAYER_FACTION_COLORS[PLAYER_FACTION_GROUP[factionGroupTag]];
 end

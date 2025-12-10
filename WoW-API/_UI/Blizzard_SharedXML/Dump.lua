@@ -372,6 +372,10 @@ function DevTools_RunDump(value, context)
 end
 
 -- Dump the specified list of value
+---@meta _
+---[FrameXML](https://www.townlong-yak.com/framexml/go/DevTools_Dump)
+---@param value any
+---@param startKey? string
 function DevTools_Dump(value, startKey)
 	local context = {
 		depth = 0,

@@ -56,6 +56,11 @@ local function TraverseMenu(elementDescription, op, condition)
 	return false;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.TraverseMenu)
+---@param elementDescription RootMenuDescriptionProxy|ElementMenuDescriptionProxy
+---@param op fun(elementDescription: ElementMenuDescriptionProxy): boolean? # return true to stop traversal
+---@param condition nil|fun(elementDescription: ElementMenuDescriptionProxy): boolean # return true to apply `op` to the element description; if nil, all elements are processed
+---@return boolean stopped # true if the traversal was stopped by `op` returning true
 function MenuUtil.TraverseMenu(elementDescription, op, condition)
 	for index, desc in elementDescription:EnumerateElementDescriptions() do
 		local handled = TraverseMenu(desc, op, condition);
@@ -78,6 +83,10 @@ local function TraverseSelections(elementDescription, selections, condition)
 	return false;
 end
 
+---Return a list of all selected elements, optionally filtered by a condition
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.GetSelections)
+---@param elementDescription RootMenuDescriptionProxy|ElementMenuDescriptionProxy
+---@param condition nil|fun(elementDescription: ElementMenuDescriptionProxy): boolean # return true to include the element description
 function MenuUtil.GetSelections(elementDescription, condition)
 	local selections = {};
 	for index, desc in elementDescription:EnumerateElementDescriptions() do
@@ -100,6 +109,11 @@ local function MergeFunctions(elementDescription)
 	return elementDescription;
 end
 
+---Sets up a tooltip anchored to the right of the owner, applying the given function to it, and showing it
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.ShowTooltip)
+---@param owner Region
+---@param func fun(tooltip: GameTooltip, ...)
+---@param ... any?
 function MenuUtil.ShowTooltip(owner, func, ...)
 	local tooltip = GetAppropriateTooltip();
 	tooltip:SetOwner(owner, "ANCHOR_RIGHT");
@@ -111,6 +125,8 @@ function MenuUtil.ShowTooltip(owner, func, ...)
 	tooltip:Show();
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.HideTooltip)
+---@param owner Region
 function MenuUtil.HideTooltip(owner)
 	local tooltip = GetAppropriateTooltip();
 	if tooltip:GetOwner() == owner then
@@ -118,6 +134,10 @@ function MenuUtil.HideTooltip(owner)
 	end
 end
 
+---Hooks OnEnter and OnLeave for a reagion, configures a tooltip, calls the given function, and shows the tooltip
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.HookTooltipScripts)
+---@param owner Region
+---@param func fun(tooltip: GameTooltip) # called both in OnEnter and OnLeave
 function MenuUtil.HookTooltipScripts(owner, func)
 	local tooltip = GetAppropriateTooltip();
 	
@@ -137,6 +157,10 @@ function MenuUtil.HookTooltipScripts(owner, func)
 	end);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateRootMenuDescription)
+---@generic M: table
+---@param menuMixin M
+---@return RootMenuDescriptionProxy|M rootMenuDescription
 function MenuUtil.CreateRootMenuDescription(menuMixin)
 	local elementDescription = Menu.CreateRootMenuDescription(menuMixin);
 	MergeFunctions(elementDescription);
@@ -155,6 +179,11 @@ local function SecureGetMenuMixin(ownerRegion)
 	return ownerRegion.menuMixin or MenuVariants.GetDefaultContextMenuMixin();
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateContextMenu)
+---@param ownerRegion Region? # if nil, defaults to UIParent
+---@param generator fun(ownerRegion: Region, description: RootMenuDescriptionProxy, ...)
+---@param ... any? # passed to the generator
+---@return MenuProxy? menu
 function MenuUtil.CreateContextMenu(ownerRegion, generator, ...)
 	if not ownerRegion then
 		ownerRegion = GetAppropriateTopLevelParent();
@@ -176,20 +205,31 @@ end
 --[[ Accessors so the implementation can change. Avoid grabbing .text off a description unless you're
 prepared to fixup broken references when it moves or changes.
 ]]--
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.SetElementText)
+---@param elementDescription ElementMenuDescriptionProxy
+---@param text string
 function MenuUtil.SetElementText(elementDescription, text)
 	elementDescription.text = text;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.GetElementText)
+---@param elementDescription ElementMenuDescriptionProxy
+---@return string text
 function MenuUtil.GetElementText(elementDescription)
 	return elementDescription.text;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateFrame)
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateFrame()
 	local elementDescription = MenuTemplates.CreateFrame();
 	MergeFunctions(elementDescription);
 	return elementDescription;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateTemplate)
+---@param template Template
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateTemplate(template)
 	local elementDescription = MenuTemplates.CreateTemplate(template);
 	MergeFunctions(elementDescription);
@@ -202,6 +242,10 @@ local function ConfigureTextButton(text, elementDescription)
 	return elementDescription;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateTitle)
+---@param text string
+---@param color colorRGBA? # defaults to NORMAL_FONT_COLOR
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateTitle(text, color)
 	local elementDescription = MenuTemplates.CreateTitle(text);
 	ConfigureTextButton(text, elementDescription);
@@ -213,6 +257,11 @@ function MenuUtil.CreateTitle(text, color)
 	return elementDescription;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateButton)
+---@param text string
+---@param callback MenuResponder
+---@param data any? # stored as element's data
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateButton(text, callback, data)
 	--assert(type(text) == "string");
 	--assert((callback == nil) or type(callback) == "function");
@@ -220,6 +269,12 @@ function MenuUtil.CreateButton(text, callback, data)
 	return ConfigureTextButton(text, elementDescription);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateCheckbox)
+---@param text string
+---@param isSelected fun(data: any): boolean # data = data param -> element:GetData()
+---@param setSelected MenuResponder
+---@param data any? # stored as element's data
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateCheckbox(text, isSelected, setSelected, data)
 	--assert(type(text) == "string");
 	--assert(type(isSelected) == "function");
@@ -228,6 +283,12 @@ function MenuUtil.CreateCheckbox(text, isSelected, setSelected, data)
 	return ConfigureTextButton(text, elementDescription);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateRadio)
+---@param text string
+---@param isSelected fun(data: any): boolean # data = data param -> element:GetData()
+---@param setSelected MenuResponder
+---@param data any? # stored as element's data
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateRadio(text, isSelected, setSelected, data)
 	--assert(type(text) == "string");
 	--assert(type(isSelected) == "function");
@@ -236,6 +297,11 @@ function MenuUtil.CreateRadio(text, isSelected, setSelected, data)
 	return ConfigureTextButton(text, elementDescription);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateColorSwatch)
+---@param text string
+---@param callback MenuResponder
+---@param colorInfo colorRGBA # stored as element's data
+---@return ElementMenuDescriptionProxy
 function MenuUtil.CreateColorSwatch(text, callback, colorInfo)
 	--assert(type(text) == "string");
 	--assert(type(callback) == "function");
@@ -328,6 +394,9 @@ end
 ... is a variadic array of non-associative tables, whose values match the Inserter function below.
 The 'data' argument is optional.
 ]]
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateButtonMenu)
+---@param dropdown DropdownButton
+---@param ... {[1]:string, [2]: MenuResponder, [3]: any?} # list of {text, callback, data}
 function MenuUtil.CreateButtonMenu(dropdown, ...)
 	local function Inserter(text, onClick, data)
 		return MenuUtil.CreateButton(text, onClick, data);
@@ -336,6 +405,10 @@ function MenuUtil.CreateButtonMenu(dropdown, ...)
 	return CreateDropdownMenuUsingInserter(dropdown, Inserter, ...);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateButtonContextMenu)
+---@param ownerRegion Region? # if nil, defaults to UIParent
+---@param ... {[1]:string, [2]: MenuResponder, [3]: any?} # list of {text, callback, data}
+---@return MenuProxy? menu
 function MenuUtil.CreateButtonContextMenu(ownerRegion, ...)
 	local function Inserter(text, onClick, data)
 		return MenuUtil.CreateButton(text, onClick, data);
@@ -347,6 +420,11 @@ end
 ... is a variadic array of non-associative tables, whose values match the Inserter function below.
 The 'data' argument is optional.
 ]]
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateCheckboxMenu)
+---@param dropdown DropdownButton
+---@param isSelected fun(data: any): boolean # shared between all menu items
+---@param setSelected MenuResponder # shared between all menu items
+---@param ... {[1]:string, [2]: any?} # list of {text, data}
 function MenuUtil.CreateCheckboxMenu(dropdown, isSelected, setSelected, ...)
 	local function Inserter(text, data)
 		return MenuUtil.CreateCheckbox(text, isSelected, setSelected, data);
@@ -355,6 +433,12 @@ function MenuUtil.CreateCheckboxMenu(dropdown, isSelected, setSelected, ...)
 	return CreateDropdownMenuUsingInserter(dropdown, Inserter, ...);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateCheckboxContextMenu)
+---@param ownerRegion Region? # if nil, defaults to UIParent
+---@param isSelected fun(data: any): boolean # shared between all menu items
+---@param setSelected MenuResponder # shared between all menu items
+---@param ... {[1]:string, [2]: any?} # list of {text, data}
+---@return MenuProxy? menu
 function MenuUtil.CreateCheckboxContextMenu(ownerRegion, isSelected, setSelected, ...)
 	local function Inserter(text, data)
 		return MenuUtil.CreateCheckbox(text, isSelected, setSelected, data);
@@ -366,6 +450,11 @@ end
 ... is a variadic array of non-associative tables, whose values match the Inserter function below.
 The 'data' argument is optional.
 ]]
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateRadioMenu)
+---@param dropdown DropdownButton
+---@param isSelected fun(data: any): boolean # shared between all menu items
+---@param setSelected MenuResponder # shared between all menu items
+---@param ... {[1]:string, [2]: any?} # list of {text, data}
 function MenuUtil.CreateRadioMenu(dropdown, isSelected, setSelected, ...)
 	local function Inserter(text, data)
 		return MenuUtil.CreateRadio(text, isSelected, setSelected, data);
@@ -373,6 +462,12 @@ function MenuUtil.CreateRadioMenu(dropdown, isSelected, setSelected, ...)
 	return CreateDropdownMenuUsingInserter(dropdown, Inserter, ...);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateRadioContextMenu)
+---@param ownerRegion Region? # if nil, defaults to UIParent
+---@param isSelected fun(data: any): boolean # shared between all menu items
+---@param setSelected MenuResponder # shared between all menu items
+---@param ... {[1]:string, [2]: any?} # list of {text, data}
+---@return MenuProxy? menu
 function MenuUtil.CreateRadioContextMenu(ownerRegion, isSelected, setSelected, ...)
 	local function Inserter(text, data)
 		return MenuUtil.CreateRadio(text, isSelected, setSelected, data);
@@ -400,11 +495,28 @@ local function CreateEnumTables(enum, enumTranslator, orderTbl)
 	return enumTbls;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateEnumRadioMenu)
+---@generic V
+---@param dropdown DropdownButton
+---@param enum table<V> # a list of values; the value is saved as the element's data
+---@param enumTranslator fun(enumValue: V): string # translate the enum value into the text to display
+---@param isSelected fun(data: any): boolean # data = enum value
+---@param setSelected MenuResponder
+---@param orderTbl table<V, number>? # optional table to specify the order of the menu buttons, defaults to ordering by enum value
 function MenuUtil.CreateEnumRadioMenu(dropdown, enum, enumTranslator, isSelected, setSelected, orderTbl)
 	local enumTbls = CreateEnumTables(enum, enumTranslator, orderTbl);
 	return MenuUtil.CreateRadioMenu(dropdown, isSelected, setSelected, unpack(enumTbls));
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuUtil.CreateEnumRadioContextMenu)
+---@generic V
+---@param dropdown Region? # if nil, defaults to UIParent
+---@param enum table<V> # a list of values; the value is saved as the element's data
+---@param enumTranslator fun(enumValue: V): string # translate the enum value into the text to display
+---@param isSelected fun(data: any): boolean # data = enum value
+---@param setSelected MenuResponder
+---@param orderTbl table<V, number>? # optional table to specify the order of the menu buttons, defaults to ordering by enum value
+---@return MenuProxy? menu
 function MenuUtil.CreateEnumRadioContextMenu(dropdown, enum, enumTranslator, isSelected, setSelected, orderTbl)
 	local enumTbls = CreateEnumTables(enum, enumTranslator, orderTbl);
 	return MenuUtil.CreateRadioContextMenu(dropdown, isSelected, setSelected, unpack(enumTbls));
