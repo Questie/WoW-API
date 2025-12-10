@@ -55,6 +55,7 @@ function Vector2D_RotateDirection(rotationRadians, x, y)
 end
 
 ---@class Vector2DMixin
+---[FrameXML](https://www.townlong-yak.com/framexml/go/Vector2DMixin)
 Vector2DMixin = {};
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateVector2D)

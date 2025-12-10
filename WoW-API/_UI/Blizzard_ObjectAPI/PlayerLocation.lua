@@ -5,6 +5,7 @@
 ---@class PlayerLocation
 PlayerLocation = {};
 ---@class PlayerLocationMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/PlayerLocationMixin)
 PlayerLocationMixin = {};
 
 ---@param guid string

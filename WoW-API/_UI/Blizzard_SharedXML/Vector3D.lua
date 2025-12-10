@@ -93,6 +93,7 @@ function Vector3D_CreateNormalVectorFromYawPitch(yawRadians, pitchRadians)
 end
 
 ---@class Vector3DMixin
+---[FrameXML](https://www.townlong-yak.com/framexml/go/Vector3DMixin)
 Vector3DMixin = {};
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateVector3D)

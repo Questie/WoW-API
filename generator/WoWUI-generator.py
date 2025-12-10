@@ -481,6 +481,56 @@ def get_git_branch(repo_path):
         return "Unknown"
 
 
+def ensure_meta_tag(directory):
+    print(f"\nEnsuring ---@meta tags in {directory}")
+    for root, dirs, files in os.walk(directory):
+        for file in files:
+            if not file.lower().endswith(".lua"):
+                continue
+
+            path = os.path.join(root, file)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+            except Exception as e:
+                print(f"Error reading {path}: {e}")
+                continue
+
+            # Check for existing meta tag in first 5 lines
+            meta_index = -1
+            for i in range(min(5, len(lines))):
+                if lines[i].startswith("---@meta"):
+                    meta_index = i
+                    break
+
+            modified = False
+
+            if meta_index != -1:
+                # Meta tag found
+                if meta_index + 1 < len(lines):
+                    if lines[meta_index + 1].strip():
+                        lines.insert(meta_index + 1, "\n")
+                        modified = True
+                else:
+                    # It is the last line.
+                    if not lines[meta_index].endswith("\n"):
+                        lines[meta_index] += "\n"
+                    lines.append("\n")
+                    modified = True
+            else:
+                # Meta tag not found
+                lines.insert(0, "---@meta _\n")
+                lines.insert(1, "\n")
+                modified = True
+
+            if modified:
+                try:
+                    with open(path, "w", encoding="utf-8") as f:
+                        f.writelines(lines)
+                except Exception as e:
+                    print(f"Error writing {path}: {e}")
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Recreate a copy of the WoWUI folder structure containing only files "
@@ -605,15 +655,15 @@ def main():
         dest = os.path.join(dest_version, "Functions-AI")
         shutil.copytree(dest_functions, dest, dirs_exist_ok=True)
 
-    # Copy ManualTypes folder
-    print("\nCopying ManualTypes folder into API folder")
-    src_manual_types = os.path.join(".", "ManualTypes")
-    dest_manual_types = os.path.join(dest_version, "ManualTypes")
-    if os.path.isdir(src_manual_types):
-        shutil.copytree(src_manual_types, dest_manual_types, dirs_exist_ok=True)
-        print(f"Copied ManualTypes folder: {src_manual_types} -> {dest_manual_types}")
+    # Copy Manual folder
+    print("\nCopying Manual folder into API folder")
+    src_manual = os.path.join(".", "Manual")
+    dest_manual = os.path.join(dest_version, "Manual")
+    if os.path.isdir(src_manual):
+        shutil.copytree(src_manual, dest_manual, dirs_exist_ok=True)
+        print(f"Copied Manual folder: {src_manual} -> {dest_manual}")
     else:
-        print(f"ManualTypes source folder {src_manual_types} not found.")
+        print(f"Manual source folder {src_manual} not found.")
 
     # Create .vscode/settings.json in the output directory
     print("\nCreating .vscode/settings.json in output directory")
@@ -638,10 +688,14 @@ def main():
     // Due to the merge nature of this there are some duplication issues.
     "duplicate-doc-field",
     "duplicate-doc-alias",
+    // Some string concatenations are done in a way that confuses the type checker.
+    "ambiguity-1",
     // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
     "return-type-mismatch",
     // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
     "param-type-mismatch",
+    // The Lua checker sometimes gets a number assignment but somewhere else it gets assigned nil.
+    "assign-type-mismatch",
     // Because we add casts after the fact to satisfy the type checker, we disable this warning.
     "cast-local-type",
     // Classes do not like injecting fields but that requires refactoring which we can't do.
@@ -679,6 +733,8 @@ Generated on: {datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
     with open(commit_hashes_path, "w", encoding="utf-8") as f:
         f.write(commit_hashes_content)
     print(f"Created COMMIT_HASHES.md: {commit_hashes_path}")
+
+    ensure_meta_tag(dest_version)
 
 
 if __name__ == "__main__":
