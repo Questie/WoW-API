@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterSelect.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_CHARACTERS_DISPLAYED = 11;
 
 CHARACTER_LIST_OFFSET = 0;

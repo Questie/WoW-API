@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIInteractiveLabel : AceGUIWidget
 ---@field protected highlight Texture
 local AceGUIInteractiveLabel = {}

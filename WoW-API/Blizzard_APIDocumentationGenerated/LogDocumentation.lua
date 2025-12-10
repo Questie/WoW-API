@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Log = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Log.LogErrorMessage)

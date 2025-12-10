@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\HybridScrollFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[-----------------------------------------------------------------------------------------------
 	For a hybrid scroll frame with buttons of varying size, set .dynamic on the scroll frame
 	to be a function which will take the offset and return:

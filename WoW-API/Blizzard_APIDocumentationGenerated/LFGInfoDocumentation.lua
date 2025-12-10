@@ -1,4 +1,5 @@
 ---@meta _
+
 C_LFGInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGInfo.AreCrossFactionGroupQueuesAllowed)

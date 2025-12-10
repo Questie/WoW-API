@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class LibDeflate
 local lib = {}
 

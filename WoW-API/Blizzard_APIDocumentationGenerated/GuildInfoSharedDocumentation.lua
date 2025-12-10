@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class GuildTabardInfo
 ---@field backgroundColor colorRGB
 ---@field borderColor colorRGB

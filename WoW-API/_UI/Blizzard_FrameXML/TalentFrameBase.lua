@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Vanilla\TalentFrameBase.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_TALENT_GROUPS = 2;
 MAX_TALENT_TABS = 3;
 MAX_NUM_TALENT_TIERS = 15;

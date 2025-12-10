@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUISlider : AceGUIWidget
 ---@field protected label FontString
 ---@field protected slider Slider|BackdropTemplate

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Shared\Blizzard_AuctionHouseSearchBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class AuctionHouseSearchButtonMixin : Button
 AuctionHouseSearchButtonMixin = {};
 

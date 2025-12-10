@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopupShared\UnitPopupSharedUtils.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local PROJECT_IMPL_REQUIRED = "Add implementation in UnitPopupUtils.lua";
 
 ---@class UnitPopupSharedUtil

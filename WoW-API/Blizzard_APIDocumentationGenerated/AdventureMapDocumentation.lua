@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AdventureMap = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AdventureMap.GetAdventureMapTextureKit)

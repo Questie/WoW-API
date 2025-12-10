@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\KioskModeSplash.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- This table cannot override hard Kiosk Mode locks (i.e. Death Knights being disabled), this is merely to lock down character create based on which creation mode was chosen.
 local kioskModeData = {
 	["highlevel"] = {

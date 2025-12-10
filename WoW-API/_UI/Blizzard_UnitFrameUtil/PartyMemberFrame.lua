@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrameUtil\Classic\PartyMemberFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_PARTY_MEMBERS = 4;
 MAX_PARTY_BUFFS = 4;
 MAX_PARTY_DEBUFFS = 4;

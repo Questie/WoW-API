@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class CharCustomizationCategory
 ---@field id number
 ---@field orderIndex number

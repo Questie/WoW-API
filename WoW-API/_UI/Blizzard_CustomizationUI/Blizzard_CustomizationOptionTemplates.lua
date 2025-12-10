@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CustomizationUI\Blizzard_CustomizationOptionTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----------------- Option Frame Base -----------------
 
 ---@class CustomizationOptionFrameBaseMixin : CustomizationContentFrameMixin

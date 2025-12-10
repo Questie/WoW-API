@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\PlayerMovementFrameFader.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local FrameFaderDriver;
 local fadingFrames;
 local deferredFadingFrames;

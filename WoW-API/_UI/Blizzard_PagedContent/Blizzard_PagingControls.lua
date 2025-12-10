@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PagedContent\Blizzard_PagingControls.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Generic pagination controls with left/right arrows and current/max page display.
 	Can be used with a PagedContentFrame template or on its own.

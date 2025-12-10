@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Colors\Shared\MaterialColors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function GetMaterialTextColors(material)
 	local textColor = MATERIAL_TEXT_COLOR_TABLE[material];
 	local titleColor = MATERIAL_TITLETEXT_COLOR_TABLE[material];

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Backdrop.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class BACKDROP_ACHIEVEMENTS_0_64
 BACKDROP_ACHIEVEMENTS_0_64 = {
 	edgeFile = "Interface\\AchievementFrame\\UI-Achievement-WoodBorder",

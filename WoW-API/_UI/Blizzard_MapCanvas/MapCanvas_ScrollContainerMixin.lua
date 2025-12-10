@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MapCanvas\MapCanvas_ScrollContainerMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MapCanvasScrollControllerMixin : ScrollFrame
 ---@field Child Frame|unknown ScrollChild
 ---@field GetMap fun(): MapCanvasMixin

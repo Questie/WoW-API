@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\ProxyUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[ 
 	Any file using ProxyUtil needs to have local references to each function in the event
 	an addon tries to replace them eo expose the private objects.

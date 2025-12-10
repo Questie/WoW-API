@@ -1,10 +1,10 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\TextureUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class TextureUtil
 TextureUtil = {};
 
----@meta _
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/GetTextureInfo)
 ---@param obj Texture
 ---@return string assetName

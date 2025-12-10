@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AccountSaveUI\Blizzard_AccountSaveUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ACCOUNT_SAVE_KICK_ERROR_CODE = 241;
 
 StaticPopupDialogs["ACCOUNT_SAVE_IN_PROGRESS"] = {

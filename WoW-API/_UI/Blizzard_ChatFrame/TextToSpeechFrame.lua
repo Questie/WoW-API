@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Shared\TextToSpeechFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local playbackActive = false;
 ---@class queuedMessages
 local queuedMessages = {};

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PTRFeedback\Blizzard_PTRFeedback_Events.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----------------------------------------------------------------------------------------------------
 local PTR_Event_Frame = CreateFrame("Frame")
 

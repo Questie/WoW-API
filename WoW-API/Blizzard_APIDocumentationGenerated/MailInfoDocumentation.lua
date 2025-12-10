@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Mail = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Mail.CanCheckInbox)

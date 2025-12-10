@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Vanilla\CharacterCreate.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_RACES = 8;
 MAX_CLASSES_PER_RACE = 8;
 SHOW_UNAVAILABLE_CLASSES = false;

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Navigation = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Navigation.GetDistance)

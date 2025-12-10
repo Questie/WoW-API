@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\ErrorUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function CallErrorHandler(...)
 	SetErrorCallstackHeight(GetCallstackHeight() - 1); -- report error from the previous function
 	local result = geterrorhandler()(...);

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -------------------------------- Preview Result -------------------------------
 
 ---@class SpellSearchPreviewResultMixin

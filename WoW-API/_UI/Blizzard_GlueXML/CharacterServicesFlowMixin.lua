@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesFlowMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----
 -- Character Services uses a master which acts as a sort of state machine in combination with flows and blocks.
 --

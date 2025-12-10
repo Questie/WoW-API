@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\FogOfWarDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class FogOfWarDataProviderMixin : MapCanvasDataProviderMixin
 FogOfWarDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\SpellBookFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local MaxSpellBookTypes = 3;
 SpellBookFrames = {	"SpellBookSpellIconsFrame", "SpellBookSideTabsFrame", "SpellBookPageNavigationFrame" };
 

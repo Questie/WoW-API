@@ -1,4 +1,5 @@
 ---@meta _
+
 C_PerksActivities = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PerksActivities.AddTrackedPerksActivity)

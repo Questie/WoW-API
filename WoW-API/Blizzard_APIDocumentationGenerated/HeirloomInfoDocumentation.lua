@@ -1,4 +1,5 @@
 ---@meta _
+
 C_HeirloomInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_HeirloomInfo.AreAllCollectionFiltersChecked)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GameModeSelect\Classic\GameModeSelectConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Used to determine both the height of the menu and of the buttons. The button width is double the height.
 GameModeSelectFixedHeight = 100;
 

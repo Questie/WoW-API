@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\IndexRangeDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- IndexRangeDataProviderMixin originally written for parity with ScrollBox API to 
 -- simulate extremely large ranges (i.e. 20,000 macro icons). As a result, this
 -- data provider has a minimal API.

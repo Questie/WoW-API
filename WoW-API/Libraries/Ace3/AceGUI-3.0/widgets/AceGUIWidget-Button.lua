@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIButton : AceGUIWidget
 ---@field protected text FontString
 local AceGUIButton = {}

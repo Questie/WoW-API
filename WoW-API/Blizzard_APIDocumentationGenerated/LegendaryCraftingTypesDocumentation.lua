@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class CurrencyCost
 ---@field currencyID number
 ---@field amount number

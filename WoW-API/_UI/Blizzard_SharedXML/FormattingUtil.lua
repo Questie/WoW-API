@@ -1,7 +1,6 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\FormattingUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
----@meta _
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/SplitTextIntoLines)
 ---@param text string
 ---@param delimiter string

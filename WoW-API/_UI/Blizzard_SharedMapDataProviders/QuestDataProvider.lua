@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\QuestDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class QuestDataProviderMixin : MapCanvasDataProviderMixin
 QuestDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

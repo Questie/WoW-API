@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Scroll\ScrollTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ScrollingEditBoxMixin : EditBox, CallbackRegistryMixin
 ScrollingEditBoxMixin = CreateFromMixins(CallbackRegistryMixin);
 ScrollingEditBoxMixin:GenerateCallbackEvents(

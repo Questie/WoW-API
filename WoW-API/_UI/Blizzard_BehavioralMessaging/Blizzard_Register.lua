@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BehavioralMessaging\Blizzard_Register.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 do
 	local Attributes = 
 	{ 

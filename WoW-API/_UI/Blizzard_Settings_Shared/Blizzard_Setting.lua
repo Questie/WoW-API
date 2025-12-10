@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_Setting.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function EnsureVariableTypeIsValid(variableType, defaultValue)
 	if variableType == nil then
 		assert(defaultValue ~= nil);

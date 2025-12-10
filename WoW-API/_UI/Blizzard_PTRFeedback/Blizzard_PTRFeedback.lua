@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PTRFeedback\Blizzard_PTRFeedback.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 PTR_IssueReporter = CreateFrame("Frame", nil, UIParent)
 PTR_IssueReporter.Data = {
     UnitTokens = {

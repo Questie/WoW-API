@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PTRFeedback\Blizzard_PTRFeedback_Frames.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----------------------------------------------------------------------------------------------------
 function PTR_IssueReporter.AttachStandaloneQuestion(frame, question, characterLimit)
     

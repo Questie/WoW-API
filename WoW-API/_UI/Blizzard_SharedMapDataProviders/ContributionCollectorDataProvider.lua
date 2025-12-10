@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\ContributionCollectorDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ContributionCollectorDataProviderMixin : MapCanvasDataProviderMixin
 ContributionCollectorDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

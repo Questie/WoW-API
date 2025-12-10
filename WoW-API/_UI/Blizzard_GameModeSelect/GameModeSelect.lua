@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GameModeSelect\GameModeSelect.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---------------------------------------------------
 -- GLOBAL CONSTANTS
 g_newGameModeAvailableAcknowledged = g_newGameModeAvailableAcknowledged or nil;

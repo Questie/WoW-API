@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIHeading : AceGUIWidget
 ---@field protected label FontString
 ---@field protected left Texture

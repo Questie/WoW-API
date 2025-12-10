@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GMChatUI\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- This is currently empty, but these changes are going in as a hotfix.
 -- In an effort to minimize risk and other issues, leaving the file around.
 local l10nTable = {

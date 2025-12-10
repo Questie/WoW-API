@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\AreaPOIDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class AreaPOIDataProviderMixin : MapCanvasDataProviderMixin
 AreaPOIDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\ProductChoice.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local NUM_ITEMS_PER_ROW = 5;
 local NUM_ITEMS_PER_PAGE = 10;
 

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUITabGroup : AceGUIContainer
 ---@field protected num integer
 ---@field protected localstatus AceGUITabGroupStatus

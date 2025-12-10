@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\CommunitiesErrors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local errorFrame = CreateFrame("FRAME");
 errorFrame:RegisterEvent("CLUB_ERROR");
 errorFrame:RegisterEvent("CLUB_REMOVED_MESSAGE");

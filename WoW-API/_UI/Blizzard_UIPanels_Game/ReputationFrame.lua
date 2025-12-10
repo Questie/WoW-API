@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\ReputationFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 NUM_FACTIONS_DISPLAYED = 15;
 REPUTATIONFRAME_FACTIONHEIGHT = 26;
 MAX_PLAYER_LEVEL = 0;

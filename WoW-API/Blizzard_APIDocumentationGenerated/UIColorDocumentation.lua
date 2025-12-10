@@ -1,4 +1,5 @@
 ---@meta _
+
 C_UIColor = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_UIColor.GetColors)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CustomizationUI\Blizzard_CustomizationAudioInterface.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function IsSoundMuted()
 	return not GetCVarBool("Sound_EnableSFX") or not GetCVarBool("Sound_EnableAllSound");
 end

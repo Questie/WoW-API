@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\AlertFrameIntrinsic.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- [[ ContainedAlertFrameMixin ]] --
 ---@class ContainedAlertFrameMixin : Frame
 ContainedAlertFrameMixin = {};

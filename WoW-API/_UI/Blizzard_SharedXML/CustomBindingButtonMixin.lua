@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\CustomBindingButtonMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 CustomBindingButtonMixin: Utility to mimic game action-binding functionality, while allowing metakeys to be recognized on their own.
 

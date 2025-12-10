@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\GuildRegistrarFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function GuildRegistrar_OnShow()
 	GuildRegistrarGreetingFrame:Show();
 	GuildRegistrarPurchaseFrame:Hide();

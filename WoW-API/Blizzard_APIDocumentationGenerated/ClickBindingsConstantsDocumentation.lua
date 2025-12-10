@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class ClickBindingInfo
 ---@field type Enum.ClickBindingType
 ---@field actionID number

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Vanilla\ClassColors.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class RAID_CLASS_COLORS
 RAID_CLASS_COLORS = {
 	["HUNTER"] = CreateColor(0.67, 0.83, 0.45),

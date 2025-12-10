@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MatchmakingQueueDisplay\Blizzard_MatchmakingQueueDisplay.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---------------------------------------------------
 -- QUEUE TYPE BUTTON MIXIN
 ---@class QueueTypeSelectionButtonMixin : Button

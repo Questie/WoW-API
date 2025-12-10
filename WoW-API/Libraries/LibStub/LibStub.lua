@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://www.wowace.com/projects/libstub)
 LibStub = {}
 

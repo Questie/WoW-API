@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ScriptedAnimations = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ScriptedAnimations.GetAllScriptedAnimationEffects)

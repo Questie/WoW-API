@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\DebugBarManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Prevent the DebugBarManager from loading into the secure environment and responding
 -- to DISPLAY_SIZE_CHANGED events, calling UpdateUIParentPosition and giving UIParent
 -- improper anchoring via GetTotalHeight.

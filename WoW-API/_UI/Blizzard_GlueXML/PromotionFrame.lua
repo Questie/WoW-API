@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\PromotionFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local DELAYED_PROMO_INFO;
 
 function PromotionFrame_OnLoad(self)

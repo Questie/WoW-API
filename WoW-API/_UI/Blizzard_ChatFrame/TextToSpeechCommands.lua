@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Shared\TextToSpeechCommands.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 TEXTTOSPEECH_RATE_MIN = -10;
 TEXTTOSPEECH_RATE_MAX = 10;
 

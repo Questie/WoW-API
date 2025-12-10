@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_Settings.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Names native types for clarity of use as function arguments.
 	RegisterSetting(..., nil, "boolean", true);

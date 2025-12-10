@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Vanilla\SoundKitConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- SOUND KITS
 ---@class SOUNDKIT
 SOUNDKIT = {

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUICheckBox : AceGUIWidget
 ---@field protected checkbg Texture
 ---@field protected check Texture

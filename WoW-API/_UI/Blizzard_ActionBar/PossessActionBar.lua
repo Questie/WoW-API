@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic\PossessActionBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 NUM_POSSESS_SLOTS = 2;
 POSSESS_CANCEL_SLOT = 2;
 

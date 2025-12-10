@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\GlobalCallbackRegistry.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class EventRegistry : CallbackRegistryMixin
 EventRegistry = CreateFromMixins(CallbackRegistryMixin);
 

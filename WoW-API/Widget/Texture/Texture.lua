@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_Texture)
 ---@class Texture : TextureBase
 local Texture = {}

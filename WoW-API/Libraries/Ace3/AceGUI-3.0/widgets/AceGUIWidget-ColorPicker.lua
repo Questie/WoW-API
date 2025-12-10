@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIColorPicker : AceGUIWidget
 ---@field protected colorSwatch Texture
 ---@field protected text FontString

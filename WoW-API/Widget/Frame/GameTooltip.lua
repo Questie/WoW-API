@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_GameTooltip)
 ---@class GameTooltip : Frame
 GameTooltip = {}

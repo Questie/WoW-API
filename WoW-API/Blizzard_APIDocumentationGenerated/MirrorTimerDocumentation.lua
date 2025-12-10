@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetMirrorTimerInfo)
 ---@param timerIndex number
 ---@return string name

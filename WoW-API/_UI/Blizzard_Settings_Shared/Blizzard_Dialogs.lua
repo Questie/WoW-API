@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_Dialogs.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function DefineGameSettingsApplyDefaultsDialog()
 	StaticPopupDialogs["GAME_SETTINGS_APPLY_DEFAULTS"] = {
 		text = CONFIRM_RESET_INTERFACE_SETTINGS,

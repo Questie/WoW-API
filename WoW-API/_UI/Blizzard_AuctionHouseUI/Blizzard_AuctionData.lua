@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Classic\Blizzard_AuctionData.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 PRICE_DISPLAY_WIDTH = 145;
 PRICE_DISPLAY_WITH_CHECKMARK_WIDTH = 150;
 

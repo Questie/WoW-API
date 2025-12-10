@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Commentator\Blizzard_CommentatorScoreboard.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Can be overridden in external addons.
 COMMENTATOR_SCORE_LIMIT = COMMENTATOR_SCORE_LIMIT or 3;
 

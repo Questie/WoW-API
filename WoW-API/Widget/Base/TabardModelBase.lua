@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class TabardModelBase : PlayerModel
 local TabardModelBase = {}
 

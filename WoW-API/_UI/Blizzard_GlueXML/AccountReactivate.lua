@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Shared\AccountReactivate.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function AccountReactivate_ReactivateNow()
 	StoreInterfaceUtil.OpenToSubscriptionProduct();
 end

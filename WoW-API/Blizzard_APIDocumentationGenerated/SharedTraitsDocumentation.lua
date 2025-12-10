@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Traits = {}
 
 ---Returns whether the player can make changes to the specified talent config.

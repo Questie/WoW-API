@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AreaPoiInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AreaPoiInfo.GetAreaPOIForMap)

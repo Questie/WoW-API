@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PagedContent\Blizzard_PagedGridContentFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Paged Content Frame implementation for Grid-based layouts
 	Uses GridLayoutUtil to arrange elements in ViewFrames

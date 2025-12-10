@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Console\Blizzard_Console_AutoComplete.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class DeveloperConsoleAutoCompleteMixin
 DeveloperConsoleAutoCompleteMixin = {};
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MoneyFrame\Classic\MoneyInputFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local popupOwner;
 
 function MoneyInputFrame_SetEnabled(moneyFrame, enabled)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CombatLog\Classic\Blizzard_CombatLog.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 --	Blizzard Combat Log
 --	 by Alexander Yoshi

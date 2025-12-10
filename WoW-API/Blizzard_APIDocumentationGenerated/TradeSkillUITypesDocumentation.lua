@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class CraftingCurrencyResultData
 ---@field currencyID number? Default = 0
 ---@field quantity number? Default = 0

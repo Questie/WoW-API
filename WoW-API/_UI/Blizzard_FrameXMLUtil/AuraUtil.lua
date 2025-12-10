@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\AuraUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 DEFAULT_AURA_DURATION_FONT = "GameFontNormalSmall";
 BUFF_DURATION_WARNING_TIME = 60;
 

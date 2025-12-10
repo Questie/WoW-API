@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ContentTracking = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ContentTracking.GetBestMapForTrackable)

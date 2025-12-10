@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\TimeUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Set to false in some locale specific files.
 TIME_UTIL_WHITE_SPACE_STRIPPABLE = true;
 
@@ -10,7 +11,6 @@ SECONDS_PER_DAY = 24 * SECONDS_PER_HOUR;
 SECONDS_PER_MONTH = 30 * SECONDS_PER_DAY;
 SECONDS_PER_YEAR = 12 * SECONDS_PER_MONTH;
 
----@meta _
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/SecondsToMinutes)
 ---@param seconds number
 ---@return number

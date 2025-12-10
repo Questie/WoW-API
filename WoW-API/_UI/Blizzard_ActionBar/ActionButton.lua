@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic/ActionButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 CURRENT_ACTIONBAR_PAGE = 1;
 NUM_ACTIONBAR_PAGES = 6;
 NUM_ACTIONBAR_BUTTONS = 12;

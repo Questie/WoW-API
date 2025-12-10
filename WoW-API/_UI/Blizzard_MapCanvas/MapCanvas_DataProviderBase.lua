@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MapCanvas\MapCanvas_DataProviderBase.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Provides a basic interface for something that manages the adding, updating, and removing of data like icons, blobs or text to the map canvas
 ---@class MapCanvasDataProviderMixin
 ---@field owningMap MapCanvasMixin

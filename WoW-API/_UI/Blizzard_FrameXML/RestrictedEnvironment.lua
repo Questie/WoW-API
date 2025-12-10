@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\RestrictedEnvironment.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- RestrictedEnvironment.lua (Part of the new Secure Headers implementation)
 --
 -- This file defines the environment available to restricted code. The

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_LFGList = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LFGList.CanActiveEntryUseAutoAccept)

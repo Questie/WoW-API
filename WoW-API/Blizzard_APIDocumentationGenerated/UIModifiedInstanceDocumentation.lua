@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ModifiedInstance = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ModifiedInstance.GetModifiedInstanceInfoFromMapID)

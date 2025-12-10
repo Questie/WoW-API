@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Vanilla\ChatConfigFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class COMBAT_CONFIG_MESSAGETYPES_MISC
 COMBAT_CONFIG_MESSAGETYPES_MISC = {
 	[1] = {

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_UIWidgetManager = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_UIWidgetManager.GetAllWidgetsBySetID)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_SettingControls.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local indentSize = 15;
 
 ---@class DefaultTooltipMixin

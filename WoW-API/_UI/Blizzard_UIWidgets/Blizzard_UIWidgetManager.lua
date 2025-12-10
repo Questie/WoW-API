@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local TIMER_UPDATE_FREQUENCY_SECONDS = 1;
 
 local WIDGET_DEBUG_TEXTURE_SHOW = false;

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@diagnostic disable: duplicate-doc-alias
 C_Timer = {}
 

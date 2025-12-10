@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CanChangePlayerDifficulty)
 ---@return boolean canChange
 ---@return boolean notOnCooldown

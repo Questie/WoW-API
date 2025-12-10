@@ -1,4 +1,5 @@
 ---@meta bit_wow
+
 bit = {}
 
 --- Returns the one's complement of `a`

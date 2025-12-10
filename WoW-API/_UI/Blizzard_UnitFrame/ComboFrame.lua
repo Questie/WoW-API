@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\ComboFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 COMBOFRAME_FADE_IN = 0.3;
 COMBOFRAME_FADE_OUT = 0.5;
 COMBOFRAME_HIGHLIGHT_FADE_IN = 0.4;

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_RaidUI\Blizzard_RaidUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_RAID_GROUPS = 8;
 RAID_RANGE_ALPHA = 0.5;
 MOVING_RAID_MEMBER = nil;

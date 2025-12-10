@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AzeriteItem = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AzeriteItem.FindActiveAzeriteItem)

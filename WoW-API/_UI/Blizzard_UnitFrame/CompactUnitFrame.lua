@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\CompactUnitFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --Widget Handlers
 ---@class OPTION_TABLE_NONE
 local OPTION_TABLE_NONE = {};

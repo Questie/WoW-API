@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Channels\VoiceActivityNotification.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class VoiceActivityVolumeMixin
 VoiceActivityVolumeMixin = {};
 

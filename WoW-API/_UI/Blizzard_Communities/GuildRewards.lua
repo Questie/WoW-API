@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\GuildRewards.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 COMMUNITIES_GUILD_REWARDS_BUTTON_OFFSET = 0;
 COMMUNITIES_GUILD_REWARDS_BUTTON_HEIGHT = 47;
 COMMUNITIES_GUILD_REWARDS_ACHIEVEMENT_ICON = " |TInterface\\AchievementFrame\\UI-Achievement-Guild:18:16:0:1:512:512:324:344:67:85|t ";

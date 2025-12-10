@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_WowTokenUI\Blizzard_WowTokenUIInbound.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Inbound files need to load under the global environment
 SwapToGlobalEnvironment();
 

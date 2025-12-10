@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\FriendshipStatusBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class NPCFriendshipStatusBarMixin : StatusBar
 NPCFriendshipStatusBarMixin = { };
 

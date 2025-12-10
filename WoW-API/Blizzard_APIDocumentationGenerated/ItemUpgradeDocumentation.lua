@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ItemUpgrade = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ItemUpgrade.CanUpgradeItem)

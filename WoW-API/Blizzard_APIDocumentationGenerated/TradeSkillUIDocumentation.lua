@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TradeSkillUI = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TradeSkillUI.CanStoreEnchantInItem)

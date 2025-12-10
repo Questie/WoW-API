@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerSettings.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local REORDER_MARKER_BEFORE_TARGET = false;
 local REORDER_MARKER_AFTER_TARGET = true;
 

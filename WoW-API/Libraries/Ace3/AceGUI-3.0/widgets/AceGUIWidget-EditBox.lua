@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIEditBox : AceGUIWidget
 ---@field protected alignoffset number
 ---@field protected editbox EditBox

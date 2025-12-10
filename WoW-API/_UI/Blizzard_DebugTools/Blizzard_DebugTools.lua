@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DebugTools\Blizzard_DebugTools.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function DebugTooltip_OnLoad(self)
 	SharedTooltip_OnLoad(self);
 	self:SetFrameLevel(self:GetFrameLevel() + 2);

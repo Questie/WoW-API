@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TokenUI\Blizzard_TokenUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 UIPanelWindows["TokenFrame"] = { area = "left", pushable = 1, whileDead = 1 };
 TOKEN_BUTTON_OFFSET = 3;
 MAX_WATCHED_TOKENS = 3;

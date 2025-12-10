@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIFrame : AceGUIContainer
 ---@field protected localstatus AceGUIFrameStatus
 ---@field protected status? AceGUIFrameStatus

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameBase\Shared\MacroExecutionManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local _, addonTbl = ...;
 
 -- Set up a private editbox to handle macro execution. This generally isn't

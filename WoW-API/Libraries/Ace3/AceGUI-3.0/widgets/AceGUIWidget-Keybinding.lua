@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIKeybinding : AceGUIWidget
 ---@field protected button Button
 ---@field protected label FontString

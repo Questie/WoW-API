@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup\StaticPopup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local securecallfunction = securecallfunction;
 
 local atGlues = C_Glue.IsOnGlueScreen();

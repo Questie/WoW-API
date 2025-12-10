@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Colors\Shared\ColorConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MATERIAL_TEXT_COLOR_TABLE
 MATERIAL_TEXT_COLOR_TABLE = 
 {

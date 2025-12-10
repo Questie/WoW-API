@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameBase\Shared\CastRandomManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local _, addonTbl = ...;
 local SecureCmdList = addonTbl.SecureCmdList;
 

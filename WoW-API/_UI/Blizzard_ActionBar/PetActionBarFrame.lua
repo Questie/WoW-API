@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic\PetActionBarFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 PETACTIONBAR_SLIDETIME = 0.09;
 PETACTIONBAR_YOFFSET = 0;
 NUM_PET_ACTION_SLOTS = 10;

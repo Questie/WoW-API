@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MapCanvas\MapCanvas_PinFrameLevelsManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MapCanvasPinFrameLevelsManagerMixin
 MapCanvasPinFrameLevelsManagerMixin = {};
 

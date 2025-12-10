@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EventScheduler = {}
 
 ---Clears reminder on a scheduled event. Must use endTime to identify which specific instance in the case of repeating ones.

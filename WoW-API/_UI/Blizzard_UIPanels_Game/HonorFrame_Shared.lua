@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\HonorFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function HonorFrame_OnLoad(self)
 	self:RegisterEvent("PLAYER_PVP_KILLS_CHANGED");
 	self:RegisterEvent("PLAYER_ENTERING_WORLD");

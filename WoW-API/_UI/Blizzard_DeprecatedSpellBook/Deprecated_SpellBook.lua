@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DeprecatedSpellBook\Deprecated_SpellBook.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- These are functions that were deprecated and will be removed in the future.
 -- Please upgrade to the updated APIs as soon as possible.
 

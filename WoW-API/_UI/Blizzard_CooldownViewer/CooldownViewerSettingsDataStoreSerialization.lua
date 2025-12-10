@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerSettingsDataStoreSerialization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local SAVE_FIELD_ID_VERSION = 1;
 local SAVE_FIELD_ID_ACTIVE_LAYOUT_NAMES = 2;
 local SAVE_FIELD_ID_LAYOUTS = 3;

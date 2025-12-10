@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchNameFilter.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Very similar search filter to SpellSearchTextFilterMixin, but super slimmed down as it only evaluates names
 ---@class SpellSearchNameFilterMixin : BaseSpellSearchFilterMixin
 SpellSearchNameFilterMixin = CreateFromMixins(BaseSpellSearchFilterMixin);

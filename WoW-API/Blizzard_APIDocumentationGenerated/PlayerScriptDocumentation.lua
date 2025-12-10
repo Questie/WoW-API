@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_AcceptAreaSpiritHeal)
 function AcceptAreaSpiritHeal() end
 

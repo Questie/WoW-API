@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias CVar string
 ---|"AIBrain"
 ---|"AIController"

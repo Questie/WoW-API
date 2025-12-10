@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TradeSkillUI\Vanilla\Blizzard_TradeSkillUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 TRADE_SKILLS_DISPLAYED = 8;
 MAX_TRADE_SKILL_REAGENTS = 8;
 TRADE_SKILL_HEIGHT = 16;

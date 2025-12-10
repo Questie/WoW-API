@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIBlizOptionsGroup : AceGUIContainer
 ---@field protected label FontString
 local AceGUIBlizOptionsGroup = {}

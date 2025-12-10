@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateBase.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class UIWidgetTemplateTooltipFrameMixin : Frame
 UIWidgetTemplateTooltipFrameMixin = {}
 

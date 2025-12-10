@@ -1,4 +1,5 @@
 ---@meta _
+
 C_WorldSafeLocsUIInternal = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_WorldSafeLocsUIInternal.GetWorldSafeLocs)

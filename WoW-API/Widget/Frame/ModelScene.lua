@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_ModelScene)
 ---@class ModelScene : Frame
 local ModelScene = {}

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\TaggableObject.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local TAG_BANK_SIZE = 31;
 
 local function GetTagValues(tag)

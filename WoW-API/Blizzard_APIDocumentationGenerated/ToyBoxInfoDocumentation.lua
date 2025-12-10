@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ToyBoxInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ToyBoxInfo.ClearFanfare)

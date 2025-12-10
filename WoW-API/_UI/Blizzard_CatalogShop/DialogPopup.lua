@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CatalogShop\DialogPopup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local DialogPopupEvent_Hidden = "DialogPopupEvent.Hidden";
 
 ---------------------------------------------------------------------------------------------------

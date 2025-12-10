@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIDropdown : AceGUIWidget
 ---@field protected dropdown Frame
 ---@field protected count number

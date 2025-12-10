@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\LocalizationMachinery.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function CallLocalizationFunction(l10nTable, key)
 	-- It's ok if things are missing, it just means that locale doesn't require any specific localization
 	local localeTable = l10nTable[UI_LOCALE];

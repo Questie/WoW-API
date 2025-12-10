@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\Stubs.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --These are interfaces that are called in shared code and need to be defined, but don't need a real implementation in Classic.
 
 --EditModeManagerFrame

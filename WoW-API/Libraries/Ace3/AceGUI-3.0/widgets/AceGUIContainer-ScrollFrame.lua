@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIScrollFrame : AceGUIContainer
 ---@field protected localstatus AceGUIScrollFrameStatus
 ---@field protected status? AceGUIScrollFrameStatus

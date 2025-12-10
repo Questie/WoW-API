@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\BannerDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class BannerDataProvider : MapCanvasDataProviderMixin
 BannerDataProvider = CreateFromMixins(MapCanvasDataProviderMixin);
 

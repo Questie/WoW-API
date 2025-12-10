@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\ColorUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 COLOR_FORMAT_RGBA = "RRGGBBAA";
 COLOR_FORMAT_RGB = "RRGGBB";
 FONT_COLOR_CODE_CLOSE = "|r";

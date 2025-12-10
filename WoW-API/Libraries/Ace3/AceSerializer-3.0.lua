@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceSerializer-3.0
 local AceSerializer = {}
 

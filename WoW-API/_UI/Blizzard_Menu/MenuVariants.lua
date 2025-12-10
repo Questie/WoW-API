@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Menu\MenuVariants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 MenuVariants functions are suitable to be overwritten for game specific implementations. Some
 implementations are here for reference despite being shared code.

@@ -1,4 +1,5 @@
 ---@meta
+
 --- cata, vanilla
 ---@param spell number|string
 ---@return number start

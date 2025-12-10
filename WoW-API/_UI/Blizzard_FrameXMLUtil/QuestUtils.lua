@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\QuestUtils.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class QUEST_TAG_DUNGEON_TYPES
 QUEST_TAG_DUNGEON_TYPES = {
 	[Enum.QuestTag.Raid] = true,

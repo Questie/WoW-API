@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\StatusBarOverlaySegment.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- A segment of fill that displays on top of a status bar
 -- Ex: Heal prediction bar, which displays on top of a unit's health bar
 

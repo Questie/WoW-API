@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\AccountUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 BNET_CLIENT_WOW = "WoW";
 BNET_CLIENT_APP = "App";
 BNET_CLIENT_HEROES = "Hero";

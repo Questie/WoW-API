@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ChromieTime = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChromieTime.CloseUI)

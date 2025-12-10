@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\MixinUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- The following function is used with permission from Daniel Stephens
 -- texture			- Texture
 -- canvasFrame      - Canvas Frame (for anchoring)

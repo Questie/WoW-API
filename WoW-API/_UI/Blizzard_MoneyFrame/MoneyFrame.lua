@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MoneyFrame\Classic\MoneyFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local _, addonTable = ...
 
 local MoneyTypeInfo = addonTable.MoneyTypeInfo;

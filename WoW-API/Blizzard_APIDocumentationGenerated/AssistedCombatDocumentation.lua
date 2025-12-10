@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AssistedCombat = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AssistedCombat.GetActionSpell)

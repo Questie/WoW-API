@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PagedContent\Blizzard_PagedContentFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Frame for displaying paginated elements. Supports spaced groups of elements, variable layouts, and multiple views.
 

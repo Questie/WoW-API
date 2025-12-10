@@ -1,4 +1,5 @@
 ---@meta _
+
 C_NewItems = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_NewItems.ClearAll)

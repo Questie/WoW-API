@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PagedContent\Blizzard_PagedListContentFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Paged Content Frame implementation for single-file list-based layouts
 	Relies on ViewFrames inheriting the appropriate LayoutFrames to arrange elements

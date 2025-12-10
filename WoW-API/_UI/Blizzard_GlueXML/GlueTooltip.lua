@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\GlueTooltip.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 GLUETOOLTIP_NUM_LINES = 5;
 GLUETOOLTIP_HPADDING = 20;
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchActionBarFilter.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Spell search filter for finding spells not currently on an active action bar
 ---@class SpellSearchActionBarFilterMixin : BaseSpellSearchFilterMixin
 SpellSearchActionBarFilterMixin = CreateFromMixins(BaseSpellSearchFilterMixin);

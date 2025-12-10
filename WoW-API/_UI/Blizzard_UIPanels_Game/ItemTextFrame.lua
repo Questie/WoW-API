@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\ItemTextFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function ItemTextFrame_OnLoad(self)
 	self:RegisterEvent("ITEM_TEXT_BEGIN");
 	self:RegisterEvent("ITEM_TEXT_TRANSLATION");

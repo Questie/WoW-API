@@ -1,4 +1,5 @@
 ---@meta _
+
 C_GamePad = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_GamePad.AddSDLMapping)

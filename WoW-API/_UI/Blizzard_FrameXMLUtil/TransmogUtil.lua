@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\TransmogUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class TransmogSlotOrder
 TransmogSlotOrder = {
 	INVSLOT_HEAD,

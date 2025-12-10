@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TTSSettings = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TTSSettings.GetChannelEnabled)

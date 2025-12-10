@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EquipmentSet = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_EquipmentSet.AssignSpecToEquipmentSet)

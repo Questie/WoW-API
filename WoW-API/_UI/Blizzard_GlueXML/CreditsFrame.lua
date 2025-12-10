@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Vanilla\CreditsFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function CreditsFrame_OnLoad(self)
 	self.creditsType = 1;
 	self.maxCreditsType = 1;

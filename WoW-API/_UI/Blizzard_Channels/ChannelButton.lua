@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Channels\ChannelButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Base
 ---@class ChannelButtonBaseMixin
 ChannelButtonBaseMixin = {};

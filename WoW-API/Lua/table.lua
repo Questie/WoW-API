@@ -1,4 +1,5 @@
 ---@meta table_wow
+
 --- added: table.removemulti, table.wipe
 --- removed: table.move, table.pack, table.unpack
 --- obsolete-removed: table.setn

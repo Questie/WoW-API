@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Scroll\ScrollBoxGridView.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ScrollBoxListGridViewMixin : ScrollBoxListBiaxalViewMixin, ScrollBoxListStrideMixin
 ScrollBoxListGridViewMixin = CreateFromMixins(ScrollBoxListBiaxalViewMixin, ScrollBoxListStrideMixin);
 

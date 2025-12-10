@@ -1,4 +1,5 @@
 ---@meta _
+
 C_CreatureInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CreatureInfo.GetClassInfo)

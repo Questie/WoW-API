@@ -1,4 +1,5 @@
 ---@meta _
+
 C_QuestOffer = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_QuestOffer.GetHideRequiredItems)

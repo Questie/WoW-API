@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIWindow : AceGUIContainer
 ---@field protected status? table
 ---@field protected localstatus table

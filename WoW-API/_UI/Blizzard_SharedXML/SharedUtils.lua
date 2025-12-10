@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\SharedUtils.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- For these races, the names are shortened for the atlas
 local fixedRaceAtlasNames = {
     ["highmountaintauren"] = "highmountain",

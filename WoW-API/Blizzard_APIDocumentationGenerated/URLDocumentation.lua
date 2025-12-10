@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_LaunchURL)
 ---@param url string
 function LaunchURL(url) end

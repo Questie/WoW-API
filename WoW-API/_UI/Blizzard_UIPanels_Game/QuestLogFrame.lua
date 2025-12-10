@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\QuestLogFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 QUESTS_DISPLAYED = 6;
 MAX_OBJECTIVES = 10;
 QUESTLOG_QUEST_HEIGHT = 16;

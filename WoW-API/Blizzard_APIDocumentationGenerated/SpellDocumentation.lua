@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Spell = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Spell.CancelSpellByID)

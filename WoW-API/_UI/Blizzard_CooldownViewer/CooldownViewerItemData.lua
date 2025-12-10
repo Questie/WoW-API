@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerItemData.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class CooldownViewerItemDataMixin
 CooldownViewerItemDataMixin = {};
 

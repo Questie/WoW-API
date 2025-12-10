@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function Localize_zh()
 	COMMUNITIES_GUILD_DETAIL_NORM_HEIGHT = 206;
 	COMMUNITIES_GUILD_DETAIL_OFFICER_HEIGHT = 264;

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ChatBubbles = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ChatBubbles.GetAllChatBubbles)

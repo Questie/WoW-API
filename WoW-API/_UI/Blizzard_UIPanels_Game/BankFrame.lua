@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\BankFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class BANK_PANELS
 BANK_PANELS = {
 	{ name = "BankSlotsFrame", size = {x=384, y=512}, SetTitle=function() BankFrameTitleText:SetText(UnitName("npc")); end },

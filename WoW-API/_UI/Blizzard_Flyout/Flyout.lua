@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Flyout\Flyout.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local FlyoutPopupEvent_Hidden = "FlyoutPopupEvent.Hidden";
 
 ---------------------------------------------------------------------------------------------------

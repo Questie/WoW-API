@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Glue = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Glue.IsFirstLoadThisSession)

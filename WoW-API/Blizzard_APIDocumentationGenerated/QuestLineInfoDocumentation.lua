@@ -1,4 +1,5 @@
 ---@meta _
+
 C_QuestLine = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_QuestLine.GetAvailableQuestLines)

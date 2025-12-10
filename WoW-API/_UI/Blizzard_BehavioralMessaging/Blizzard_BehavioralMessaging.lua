@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BehavioralMessaging\Blizzard_BehavioralMessaging.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class DisplayData
 local DisplayData = {};
 

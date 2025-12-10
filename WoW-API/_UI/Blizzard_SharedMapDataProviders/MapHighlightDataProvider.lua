@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\MapHighlightDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MapHighlightDataProviderMixin : MapCanvasDataProviderMixin
 MapHighlightDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

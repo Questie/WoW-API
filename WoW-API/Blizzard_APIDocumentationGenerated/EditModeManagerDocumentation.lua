@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EditMode = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_EditMode.ConvertLayoutInfoToString)

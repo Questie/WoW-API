@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\ItemRefHandlers.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function HandlePlayerLink(link, text, linkData, contextData)
 	local name, lineID, chatType, chatTarget, communityClubID, communityStreamID, communityEpoch, communityPosition;
 

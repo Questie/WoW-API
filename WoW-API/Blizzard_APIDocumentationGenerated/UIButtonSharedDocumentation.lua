@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class UIButtonInfo
 ---@field normal textureAtlas
 ---@field pressed textureAtlas

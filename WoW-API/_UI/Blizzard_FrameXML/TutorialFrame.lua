@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\TutorialFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_TUTORIAL_ALERTS = 10;
 ---@class TUTORIALFRAME_QUEUE
 TUTORIALFRAME_QUEUE = { };

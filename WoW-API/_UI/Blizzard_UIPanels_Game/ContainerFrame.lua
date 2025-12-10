@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Vanilla\ContainerFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- See ContainerFrame_Shared.lua for functions shared across Classic expansions
 
 function ContainerFrame_OnLoad(self)

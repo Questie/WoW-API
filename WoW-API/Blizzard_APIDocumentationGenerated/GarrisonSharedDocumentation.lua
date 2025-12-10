@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class GarrisonAbilityEffect
 ---@field name string
 ---@field description string

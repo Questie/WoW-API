@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\CompactRaidGroup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MOVING_COMPACT_RAID_FRAME = nil;
 
 function CompactRaidGroup_OnLoad(self)

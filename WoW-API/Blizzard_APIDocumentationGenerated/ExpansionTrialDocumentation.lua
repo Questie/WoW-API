@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ExpansionTrial = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ExpansionTrial.OnTrialLevelUpDialogClicked)

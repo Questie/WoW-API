@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIParent\Vanilla\UIParent.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 TOOLTIP_UPDATE_TIME = 0.2;
 BOSS_FRAME_CASTBAR_HEIGHT = 16;
 
