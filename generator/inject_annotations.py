@@ -2,6 +2,7 @@
 import os
 import re
 import argparse
+from inject_mixin_skip import MIXIN_SKIP_PATTERNS
 
 
 def parse_annotations(source_dir):
@@ -191,11 +192,26 @@ def inject_mixins(target_dir, mixins_map, dry_run=False):
                             # Use lstrip to calculate indentation correctly
                             indent = line[: len(line) - len(line.lstrip())]
 
+                            # Get skip patterns for this mixin
+                            skip_patterns = [
+                                re.compile(p)
+                                for p in MIXIN_SKIP_PATTERNS.get(mixin_name, [])
+                            ]
+
                             for al in anno_lines:
                                 # Filter out ---@meta and ---@class tags
                                 if re.match(r"^\s*---@meta", al) or re.match(
                                     r"^\s*---@class", al
                                 ):
+                                    continue
+
+                                # Check against manual skip patterns
+                                should_skip = False
+                                for pattern in skip_patterns:
+                                    if pattern.match(al):
+                                        should_skip = True
+                                        break
+                                if should_skip:
                                     continue
 
                                 new_lines.append(indent + al)
