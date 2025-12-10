@@ -2,7 +2,6 @@
 import os
 import re
 import argparse
-import sys
 
 
 def parse_annotations(source_dir):
@@ -50,16 +49,15 @@ def parse_annotations(source_dir):
                     m = func_regex.match(line)
                     if m:
                         func_name = m.group(1)
-                        if current_block:
-                            # We found a function with preceding annotations
-                            annotations[func_name] = {
-                                "lines": current_block,
-                                "source": path,
-                            }
-                            # print(f"Found annotations for: {func_name}")
-
-                    # Reset block after function definition
-                    current_block = []
+                        # We found a function. Even if it has no preceding annotations (current_block is empty),
+                        # we record it so we can later check if it exists in the target and remove it from source if so.
+                        annotations[func_name] = {
+                            "lines": current_block,
+                            "source": path,
+                        }
+                        
+                        # Reset block after function definition
+                        current_block = []
 
                 elif not stripped:
                     # Empty line. Clear block to avoid attaching disconnected comments.
@@ -82,7 +80,7 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
     # Regex to capture indentation and function name
     # We use standard regex, but we will clean lines with prefixes before matching
     func_regex = re.compile(r"^(\s*)function\s+([a-zA-Z0-9_.:]+)\s*\(", re.MULTILINE)
-    
+
     # Regex to identify and strip prefixes like --[[static]]
     prefix_regex = re.compile(r"^(\s*)(--\[\[.*?\]\]\s*)(function.*)$")
 
@@ -123,23 +121,23 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                     clean_line_content = indent + rest
                     # We will append this cleaned line to new_lines instead of the original line
                     # But we also need to use it for matching
-                    
+
                     if not file_modified:
                         # We are modifying the file by cleaning it (even if we don't inject)
                         # But strictly speaking, the user said "clean the lines into being parsed"
                         # If we just clean it in memory for parsing, we don't remove it from file.
                         # User said: "lets just remove it... clean the lines... into being parsed"
                         # implying we should save the cleaned version.
-                        file_modified = True # We are stripping the prefix
+                        file_modified = True  # We are stripping the prefix
                         if dry_run:
-                             print(f"[Dry Run] Stripping prefix from line in {path}")
-                    
+                            print(f"[Dry Run] Stripping prefix from line in {path}")
+
                     # Update line to be the cleaned version for subsequent logic
                     # Ensure we preserve newline if original had one
                     suffix = ""
                     if line.endswith("\n") and not clean_line_content.endswith("\n"):
                         suffix = "\n"
-                    
+
                     line = clean_line_content + suffix
 
                 m = func_regex.match(line)
@@ -168,7 +166,7 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                         if not already_present:
                             # Inject annotations
                             # We prepend the indentation found on the function line
-                            
+
                             # --- Parameter Matching Logic ---
                             # Check if parameters match between code and docs
                             # Target: function Name(p1, p2) -> "p1, p2"
@@ -177,39 +175,54 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                             args_match = re.search(r"\(([^)]*)\)", line)
                             if args_match:
                                 target_args_str = args_match.group(1)
-                                target_params = [p.strip() for p in target_args_str.split(",") if p.strip()]
-                                
+                                target_params = [
+                                    p.strip()
+                                    for p in target_args_str.split(",")
+                                    if p.strip()
+                                ]
+
                                 # Parse doc params from anno_lines
                                 # anno_lines are strings like "---@param foo string\n"
                                 doc_params_indices = []
                                 doc_params_names = []
-                                
+
                                 for i, al in enumerate(anno_lines):
                                     pm = re.search(r"^\s*---@param\s+(\w+)", al)
                                     if pm:
                                         doc_params_indices.append(i)
                                         doc_params_names.append(pm.group(1))
-                                
+
                                 # Compare
-                                if len(target_params) == len(doc_params_names) and len(target_params) > 0:
+                                if (
+                                    len(target_params) == len(doc_params_names)
+                                    and len(target_params) > 0
+                                ):
                                     # Attempt to map
                                     replacements = {}
-                                    for i, (tp, dp) in enumerate(zip(target_params, doc_params_names)):
+                                    for i, (tp, dp) in enumerate(
+                                        zip(target_params, doc_params_names)
+                                    ):
                                         if tp != dp:
                                             # Mismatch found: e.g. target='self', doc='button'
                                             replacements[dp] = tp
                                             if dry_run:
-                                                print(f"[Dry Run] Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing.")
+                                                print(
+                                                    f"[Dry Run] Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing."
+                                                )
                                             else:
-                                                print(f"Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing.")
+                                                print(
+                                                    f"Param mismatch for {func_name}: doc='{dp}' vs code='{tp}'. fixing."
+                                                )
 
                                     # Apply replacements to anno_lines (in memory copy)
                                     if replacements:
-                                        new_anno_lines = list(anno_lines) # copy
+                                        new_anno_lines = list(anno_lines)  # copy
                                         for idx in doc_params_indices:
                                             original_line = new_anno_lines[idx]
                                             # We need to find which param this line is for
-                                            pm = re.search(r"^\s*---@param\s+(\w+)", original_line)
+                                            pm = re.search(
+                                                r"^\s*---@param\s+(\w+)", original_line
+                                            )
                                             if pm:
                                                 pname = pm.group(1)
                                                 if pname in replacements:
@@ -220,12 +233,20 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                                                     suffix = ""
                                                     if original_line.endswith("\n"):
                                                         suffix = "\n"
-                                                        original_line = original_line.rstrip("\n")
+                                                        original_line = (
+                                                            original_line.rstrip("\n")
+                                                        )
 
                                                     # Replace name
                                                     # Use regex to replace first occurrence of parameter name after @param
-                                                    new_line_content = re.sub(r"(@param\s+)" + re.escape(pname), r"\1" + new_name, original_line, count=1)
-                                                    
+                                                    new_line_content = re.sub(
+                                                        r"(@param\s+)"
+                                                        + re.escape(pname),
+                                                        r"\1" + new_name,
+                                                        original_line,
+                                                        count=1,
+                                                    )
+
                                                     # Append old name
                                                     new_line = f"{new_line_content} {pname}{suffix}"
                                                     new_anno_lines[idx] = new_line
@@ -383,10 +404,10 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
         # Post-processing: Collapse multiple blank lines
         cleaned_lines = []
         last_was_blank = False
-        
+
         for line in new_lines:
             is_blank = not line.strip()
-            
+
             if is_blank:
                 if last_was_blank:
                     # Skip duplicate blank line
@@ -412,6 +433,52 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
         )
     else:
         print(f"Removed {removed_count} function definitions from source.")
+
+
+def cleanup_empty_files(source_dir, dry_run=False):
+    """
+    Scans the source directory and removes files that do not contain any function definitions.
+    """
+    print("Cleaning up empty source files...")
+
+    # Regex to find function definitions (relaxed match)
+    func_regex = re.compile(r"^\s*function", re.MULTILINE)
+
+    removed_count = 0
+
+    for root, _, files in os.walk(source_dir):
+        for file in files:
+            if not file.endswith(".lua"):
+                continue
+
+            path = os.path.join(root, file)
+
+            has_function = False
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    content = f.read()
+                    if func_regex.search(content):
+                        has_function = True
+            except Exception as e:
+                print(f"Warning: Could not read {path}: {e}")
+                continue
+
+            if not has_function:
+                if dry_run:
+                    print(f"[Dry Run] Removing empty file: {path}")
+                else:
+                    print(f"Removing empty file: {path}")
+                    try:
+                        os.remove(path)
+                    except Exception as e:
+                        print(f"Error removing {path}: {e}")
+
+                removed_count += 1
+
+    if dry_run:
+        print(f"[Dry Run] Would have removed {removed_count} empty files.")
+    else:
+        print(f"Removed {removed_count} empty files.")
 
 
 def main():
@@ -474,12 +541,11 @@ def main():
             print(f" - {func} ({source_file})")
         print("\n")
 
-
     # 4. Cleanup Source
     if not args.keep_source:
         remove_source_annotations(annotations, injected_funcs, dry_run=args.dry_run)
+        # cleanup_empty_files(source_path, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":
     main()
-
