@@ -1,4 +1,5 @@
 ---@meta _
+
 --- not yet annotated, inherits NamePlateDriverMixin
 ---@class NamePlateDriverFrame
 

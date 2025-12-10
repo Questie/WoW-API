@@ -1,4 +1,5 @@
 ---@meta _
+
 PlayerLocation = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/PlayerLocationMixin)
