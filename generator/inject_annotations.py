@@ -2,7 +2,7 @@
 import os
 import re
 import argparse
-from inject_mixin_skip import MIXIN_SKIP_PATTERNS
+from inject_mixin_skip import MIXIN_SKIP_PATTERNS, FUNCTION_SKIP_PATTERNS
 
 
 def parse_annotations(source_dir):
@@ -424,8 +424,14 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                                 already_present = True
 
                         if not already_present:
-                            # Inject annotations
+                                    # Inject annotations
                             # We prepend the indentation found on the function line
+
+                            # Get skip patterns for this function
+                            skip_patterns = [
+                                re.compile(p)
+                                for p in FUNCTION_SKIP_PATTERNS.get(func_name, [])
+                            ]
 
                             # --- Parameter Matching Logic ---
                             # Check if parameters match between code and docs
@@ -523,6 +529,15 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                                 )
 
                             for anno_line in anno_lines:
+                                # Check against manual skip patterns
+                                should_skip = False
+                                for pattern in skip_patterns:
+                                    if pattern.match(anno_line):
+                                        should_skip = True
+                                        break
+                                if should_skip:
+                                    continue
+
                                 # anno_line has \n but no indent.
                                 new_lines.append(indent + anno_line)
 
