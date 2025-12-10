@@ -3,6 +3,7 @@ import os
 import re
 import argparse
 from inject_mixin_skip import MIXIN_SKIP_PATTERNS, FUNCTION_SKIP_PATTERNS
+from inject_replace import MIXIN_REPLACEMENT_PATTERNS, FUNCTION_REPLACEMENT_PATTERNS
 
 
 def parse_annotations(source_dir):
@@ -176,6 +177,31 @@ def inject_mixins(target_dir, mixins_map, dry_run=False):
                                 already_present = True
 
                         if not already_present and anno_lines:
+                            # --- Apply Regex Replacements (Mixins) ---
+                            replacement_rules = MIXIN_REPLACEMENT_PATTERNS.get(
+                                mixin_name, []
+                            )
+                            if replacement_rules:
+                                temp_lines = []
+                                for al_line in anno_lines:
+                                    replaced = False
+                                    for pattern, replacement in replacement_rules:
+                                        if re.match(pattern, al_line):
+                                            new_line = re.sub(
+                                                pattern, replacement, al_line
+                                            )
+                                            if al_line.endswith(
+                                                "\n"
+                                            ) and not new_line.endswith("\n"):
+                                                new_line += "\n"
+                                            temp_lines.append(new_line)
+                                            replaced = True
+                                            break
+                                    if not replaced:
+                                        temp_lines.append(al_line)
+                                anno_lines = temp_lines
+                            # -----------------------------------------
+
                             if dry_run:
                                 print(
                                     f"[Dry Run] Injecting mixin docs for: {mixin_name} in {path} (from {source_file})"
@@ -426,6 +452,32 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                         if not already_present:
                             # Inject annotations
                             # We prepend the indentation found on the function line
+
+                            # --- Apply Regex Replacements (Functions) ---
+                            replacement_rules = FUNCTION_REPLACEMENT_PATTERNS.get(
+                                func_name, []
+                            )
+                            if replacement_rules:
+                                temp_lines = []
+                                for al_line in anno_lines:
+                                    replaced = False
+                                    for pattern, replacement in replacement_rules:
+                                        if re.match(pattern, al_line):
+                                            new_line = re.sub(
+                                                pattern, replacement, al_line
+                                            )
+                                            # Ensure newline if lost
+                                            if al_line.endswith(
+                                                "\n"
+                                            ) and not new_line.endswith("\n"):
+                                                new_line += "\n"
+                                            temp_lines.append(new_line)
+                                            replaced = True
+                                            break
+                                    if not replaced:
+                                        temp_lines.append(al_line)
+                                anno_lines = temp_lines
+                            # --------------------------------------------
 
                             # Get skip patterns for this function
                             skip_patterns = [

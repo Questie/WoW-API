@@ -24,7 +24,7 @@ do
 	---@deprecated
 	---Deprecated by [C_SpellBook.IsSpellInSpellBook](https://warcraft.wiki.gg/wiki/API_C_SpellBook.IsSpellInSpellBook)
 	---@param spellID number
-	---@param isPet boolean
+	---@param isPet boolean?
 	---@return boolean isInSpellBook
 	function IsSpellKnown(spellID, isPet)
 		local spellBank = isPet and Enum.SpellBookSpellBank.Pet or Enum.SpellBookSpellBank.Player;
@@ -35,7 +35,7 @@ do
 	---@deprecated
 	---Deprecated by [C_SpellBook.IsSpellInSpellBook](https://warcraft.wiki.gg/wiki/API_C_SpellBook.IsSpellInSpellBook)
 	---@param spellID number
-	---@param isPet boolean
+	---@param isPet boolean?
 	---@return boolean isInSpellBook
 	function IsSpellKnownOrOverridesKnown(spellID, isPet)
 		local spellBank = isPet and Enum.SpellBookSpellBank.Pet or Enum.SpellBookSpellBank.Player;
