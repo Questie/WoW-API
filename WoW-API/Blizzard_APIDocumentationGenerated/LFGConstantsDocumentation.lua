@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class LFGRoles
 ---@field tank boolean
 ---@field healer boolean

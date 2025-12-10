@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://www.wowace.com/projects/libsharedmedia-3-0/pages/api-documentation)
 ---@class LibSharedMedia-3.0
 local LibSharedMedia = {}

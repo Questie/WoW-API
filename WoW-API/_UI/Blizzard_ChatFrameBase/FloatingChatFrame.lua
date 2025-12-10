@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameBase\Shared\FloatingChatFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function FCF_IsChatWindowIndexReserved(chatWindowIndex)
 	return chatWindowIndex <= C_ChatInfo.GetNumReservedChatWindows();
 end

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_PingSecure = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PingSecure.ClearPendingPingInfo)

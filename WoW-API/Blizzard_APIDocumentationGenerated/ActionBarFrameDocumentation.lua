@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ActionBar = {}
 
 ---Used in conjunction with ActionRangeCheckUpdate to inform the UI when an action goes in or out of range with its current target.

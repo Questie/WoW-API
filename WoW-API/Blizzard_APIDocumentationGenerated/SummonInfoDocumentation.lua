@@ -1,4 +1,5 @@
 ---@meta _
+
 C_SummonInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_SummonInfo.CancelSummon)

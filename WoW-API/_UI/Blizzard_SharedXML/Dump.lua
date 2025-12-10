@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Dump.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ------------------------------------------------------------------------------
 -- Dump.lua
 --
@@ -372,6 +373,9 @@ function DevTools_RunDump(value, context)
 end
 
 -- Dump the specified list of value
+---[FrameXML](https://www.townlong-yak.com/framexml/go/DevTools_Dump)
+---@param value any
+---@param startKey? string
 function DevTools_Dump(value, startKey)
 	local context = {
 		depth = 0,

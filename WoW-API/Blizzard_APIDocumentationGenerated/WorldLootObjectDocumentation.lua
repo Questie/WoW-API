@@ -1,4 +1,5 @@
 ---@meta _
+
 C_WorldLootObject = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_WorldLootObject.DoesSlotMatchInventoryType)

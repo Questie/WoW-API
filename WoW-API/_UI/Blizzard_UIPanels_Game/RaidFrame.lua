@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\RaidFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class RaidParentFrameMixin : Frame
 RaidParentFrameMixin = {}
 ---@class RaidFrameMixin : Frame

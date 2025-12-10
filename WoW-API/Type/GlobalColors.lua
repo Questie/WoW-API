@@ -1,4 +1,5 @@
 ---@meta _
+
 -- AUTOMATICALLY GENERATED -- Full of tales and lies.
 
 ACCOUNT_WIDE_FONT_COLOR = CreateColor(0.000, 0.800, 1.000, 1.000)

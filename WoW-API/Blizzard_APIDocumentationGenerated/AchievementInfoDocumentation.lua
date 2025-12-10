@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AchievementInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AchievementInfo.AreGuildAchievementsEnabled)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\FunctionUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function ExecuteFrameScript(frame, scriptName, ...)
 	local script = frame:GetScript(scriptName);
 	if script then

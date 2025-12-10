@@ -1,4 +1,5 @@
 ---@meta _
+
 -- these structures are not documented by Blizzard
 
 ---@class AuraData

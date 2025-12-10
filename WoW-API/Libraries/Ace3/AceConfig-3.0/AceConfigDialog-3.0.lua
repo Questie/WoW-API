@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceConfigDialog-3.0
 ---@field OpenFrames table<string, table>
 ---@field Status table<string, table>

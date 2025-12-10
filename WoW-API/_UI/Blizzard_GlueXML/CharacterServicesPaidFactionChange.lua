@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesPaidFactionChange.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function RequestAssignPFCForResults(results, isValidationOnly)
 	local currentRealmAddress = select(5, GetServerName());
 	return C_CharacterServices.AssignRaceOrFactionChangeDistribution(

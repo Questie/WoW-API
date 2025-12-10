@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PrintHandler\Blizzard_PrintHandler.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local type = type;
 local error = error;
 local geterrorhandler = geterrorhandler;

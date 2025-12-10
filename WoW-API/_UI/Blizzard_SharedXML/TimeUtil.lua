@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\TimeUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Set to false in some locale specific files.
 TIME_UTIL_WHITE_SPACE_STRIPPABLE = true;
 
@@ -10,14 +11,24 @@ SECONDS_PER_DAY = 24 * SECONDS_PER_HOUR;
 SECONDS_PER_MONTH = 30 * SECONDS_PER_DAY;
 SECONDS_PER_YEAR = 12 * SECONDS_PER_MONTH;
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SecondsToMinutes)
+---@param seconds number
+---@return number
 function SecondsToMinutes(seconds)
 	return seconds / SECONDS_PER_MIN;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MinutesToSeconds)
+---@param minutes number
+---@return number
 function MinutesToSeconds(minutes)
 	return minutes * SECONDS_PER_MIN;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/HasTimePassed)
+---@param testTime number
+---@param amountOfTime number
+---@return boolean
 function HasTimePassed(testTime, amountOfTime)
 	return ((time() - testTime) >= amountOfTime);
 end
@@ -301,6 +312,10 @@ function ConvertSecondsToUnits(timestamp)
 	}
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SecondsToClock)
+---@param seconds number
+---@param displayZeroHours? boolean
+---@return string
 function SecondsToClock(seconds, displayZeroHours)
 	local units = ConvertSecondsToUnits(seconds);
 	if units.hours > 0 or displayZeroHours then
@@ -311,6 +326,13 @@ function SecondsToClock(seconds, displayZeroHours)
 end
 
 -- Deprecated. See SecondsFormatter for intended replacement
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SecondsToTime)
+---@param seconds number
+---@param noSeconds? boolean
+---@param notAbbreviated? boolean
+---@param maxCount? number
+---@param roundUp? boolean
+---@return string
 function SecondsToTime(seconds, noSeconds, notAbbreviated, maxCount, roundUp)
 	local time = "";
 	local count = 0;
@@ -384,6 +406,10 @@ function SecondsToTime(seconds, noSeconds, notAbbreviated, maxCount, roundUp)
 end
 
 -- Deprecated. See SecondsFormatter for intended replacement
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MinutesToTime)
+---@param mins number
+---@param hideDays? boolean
+---@return string
 function MinutesToTime(mins, hideDays)
 	local time = "";
 	local count = 0;
@@ -410,6 +436,10 @@ function MinutesToTime(mins, hideDays)
 end
 
 -- Deprecated. See SecondsFormatter for intended replacement
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SecondsToTimeAbbrev)
+---@param seconds number
+---@return string format
+---@return number time
 function SecondsToTimeAbbrev(seconds, thresholdOverride)
 	local tempTime;
 	local threshold = 1.5;
@@ -432,6 +462,11 @@ function SecondsToTimeAbbrev(seconds, thresholdOverride)
 	return SECOND_ONELETTER_ABBR, seconds;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatShortDate)
+---@param day number
+---@param month number
+---@param year number
+---@return string
 function FormatShortDate(day, month, year)
 	if (year) then
 		if (LOCALE_enGB) then

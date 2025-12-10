@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Blizzard_SettingsRegistrar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local securecallfunction = securecallfunction;
 
 ---@class SettingsRegistrar

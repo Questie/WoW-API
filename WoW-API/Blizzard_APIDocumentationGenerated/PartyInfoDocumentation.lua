@@ -1,4 +1,5 @@
 ---@meta _
+
 C_PartyInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PartyInfo.AllowedToDoPartyConversion)

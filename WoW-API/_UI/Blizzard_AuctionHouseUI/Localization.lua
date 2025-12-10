@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function AdjustWoWTokenDisplayFont()
 	-- These existed but never seemed to be used because Blizzard_AuctionHouseUI.toc
 	-- never loaded a Localization file, nor did it have a stub in its directory.

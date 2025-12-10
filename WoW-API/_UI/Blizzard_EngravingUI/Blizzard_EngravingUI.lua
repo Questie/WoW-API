@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_EngravingUI\Blizzard_EngravingUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 RUNE_BUTTON_HEIGHT = 40;
 RUNE_HEADER_BUTTON_HEIGHT = 23;
 

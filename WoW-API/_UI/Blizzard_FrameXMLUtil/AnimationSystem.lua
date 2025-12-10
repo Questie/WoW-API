@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\AnimationSystem.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[	animTable = {	--Note that only consistent data should be in here. These tables are meant to be shared across "sessions" of animations. Put changing data in the frame.
 	totalTime = number,		--Time to complete the animation in seconds.
 	updateFunc = function,		--The function called to do the actual change. Takes self, elapsed fraction. Usually frame.SetPoint, frame.SetAlpha, ect.

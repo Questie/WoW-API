@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias EmoteToken string
 ---|"ABSENT"
 ---|"AGREE"

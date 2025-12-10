@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServices.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- See CharacterServicesFlowMixin for more documentation
 
 CHARACTER_UPGRADE_CREATE_CHARACTER_DATA = nil;

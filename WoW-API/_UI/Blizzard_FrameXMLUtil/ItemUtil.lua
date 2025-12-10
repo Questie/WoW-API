@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\ItemUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ItemButtonUtil
 ItemButtonUtil = {};
 
@@ -357,12 +358,18 @@ end
 ---@class ItemTransmogInfoMixin
 ItemTransmogInfoMixin = {};
 
+--- See [CreateAndInitFromMixin](https://www.townlong-yak.com/framexml/go/CreateAndInitFromMixin)
+---@param appearanceID number
+---@param secondaryAppearanceID number?
+---@param illusionID number?
 function ItemTransmogInfoMixin:Init(appearanceID, secondaryAppearanceID, illusionID)
 	self.appearanceID = appearanceID;
 	self.secondaryAppearanceID = secondaryAppearanceID or Constants.Transmog.NoTransmogID;
 	self.illusionID = illusionID or Constants.Transmog.NoTransmogID;
 end
 
+---@param itemTransmogInfo table
+---@return boolean
 function ItemTransmogInfoMixin:IsEqual(itemTransmogInfo)
 	if not itemTransmogInfo then
 		return false;
@@ -377,6 +384,7 @@ function ItemTransmogInfoMixin:Clear()
 end
 
 -- There is no slot info in ItemTransmogInfo so the following 3 MainHand functions must be used with correct itemTransmogInfo at call site
+---@param isLegionArtifact boolean
 function ItemTransmogInfoMixin:ConfigureSecondaryForMainHand(isLegionArtifact)
 	if isLegionArtifact then
 		self.secondaryAppearanceID = Constants.Transmog.MainHandTransmogIsPairedWeapon;
@@ -385,10 +393,12 @@ function ItemTransmogInfoMixin:ConfigureSecondaryForMainHand(isLegionArtifact)
 	end
 end
 
+---@return boolean
 function ItemTransmogInfoMixin:IsMainHandIndividualWeapon()
 	return self.secondaryAppearanceID == Constants.Transmog.MainHandTransmogIsIndividualWeapon;
 end
 
+---@return boolean
 function ItemTransmogInfoMixin:IsMainHandPairedWeapon()
 	-- paired weapon can be value Constants.Transmog.MainHandTransmogIsPairedWeapon or greater
 	return not self:IsMainHandIndividualWeapon();

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Settings_Shared\Classic\AudioOverrides.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class AudioOverrides
 AudioOverrides = {}
 

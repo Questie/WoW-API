@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ReportFrame\ReportFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ReportFrameMixin : Frame, SharedReportFrameMixin
 ReportFrameMixin = CreateFromMixins(SharedReportFrameMixin);
 

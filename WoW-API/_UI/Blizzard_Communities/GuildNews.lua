@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\GuildNews.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function IsLootNews(newsType)
 	return newsType == NEWS_ITEM_LOOTED or newsType == NEWS_ITEM_CRAFTED or newsType == NEWS_ITEM_PURCHASED or newsType == NEWS_LEGENDARY_LOOTED;
 end

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\CoinPickupFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local GetMoneyTypeInfoField = GetMoneyTypeInfoField;
 
 COINFRAME_BINDING_CACHE = {}

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_WorldMap\WM_InvasionDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class WorldMap_InvasionDataProviderMixin : MapCanvasDataProviderMixin
 WorldMap_InvasionDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

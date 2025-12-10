@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesPaidCharacterTransfer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function RequestAssignPCTForResults(results, isValidationOnly)
 	local currentRealmAddress = select(5, GetServerName());
 

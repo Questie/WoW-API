@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateDoubleIconAndText.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetDoubleIconAndTextVisInfoData(widgetID)
 	local widgetInfo = C_UIWidgetManager.GetDoubleIconAndTextWidgetVisualizationInfo(widgetID);
 	if widgetInfo and widgetInfo.shownState ~= Enum.WidgetShownState.Hidden then

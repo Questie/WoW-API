@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\AccountLogin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function ShouldShowRegulationOverlay()
 	return KoreanRatings:ShouldShow() or ChinaAgeAppropriatenessWarning:ShouldShow() or TaiwanFraudWarning:ShouldShow();
 end

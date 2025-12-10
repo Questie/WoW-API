@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUITreeGroup : AceGUIContainer
 ---@field protected lines AceGUITreeGroupLine[]
 ---@field protected buttons Button[]

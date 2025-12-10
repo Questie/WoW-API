@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\ButtonGroup.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	Required Elements - all buttons in the group need to inherit from SelectableButtonMixin
 	and have the OnClick handler defined in XML

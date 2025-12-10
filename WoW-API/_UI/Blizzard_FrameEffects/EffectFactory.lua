@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameEffects\EffectFactory.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 Factory for animated frames.
 

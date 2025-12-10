@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ScrappingMachineUI = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ScrappingMachineUI.CloseScrappingMachine)

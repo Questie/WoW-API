@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class MythicPlusAffixScoreInfo
 ---@field name string
 ---@field score number

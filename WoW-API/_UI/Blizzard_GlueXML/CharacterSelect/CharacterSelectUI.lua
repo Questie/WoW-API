@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterSelect\CharacterSelectUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class CharacterSelectUIMixin
 CharacterSelectUIMixin = {};
 

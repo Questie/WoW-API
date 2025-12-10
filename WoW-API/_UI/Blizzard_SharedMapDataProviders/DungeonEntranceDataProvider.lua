@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\DungeonEntranceDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class DungeonEntranceDataProviderMixin : MapCanvasDataProviderMixin
 DungeonEntranceDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

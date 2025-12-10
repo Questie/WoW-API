@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Kiosk\Blizzard_Kiosk.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local expirationWarningSoundKit = 15273;
 local errorSecondsThreshold = 60;
 

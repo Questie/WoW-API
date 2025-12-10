@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CUFProfiles\Blizzard_CompactUnitFrameProfiles.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function CompactUnitFrameProfiles_OnLoad(self)
 	self:RegisterEvent("VARIABLES_LOADED");
 	self:RegisterEvent("COMPACT_UNIT_FRAME_PROFILES_LOADED");

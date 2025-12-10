@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_CinematicFinished)
 ---@param movieType Enum.CinematicType
 ---@param userCanceled? boolean Default = false

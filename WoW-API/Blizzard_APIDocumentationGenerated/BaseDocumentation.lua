@@ -1,2 +1,3 @@
 ---@meta _
+
 ---@class ScriptObject

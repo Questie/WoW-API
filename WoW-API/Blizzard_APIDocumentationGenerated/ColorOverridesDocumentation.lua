@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ColorOverrides = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ColorOverrides.ClearColorOverrides)

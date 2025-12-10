@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_FlashClientIcon)
 ---@param briefly? boolean Default = false
 function FlashClientIcon(briefly) end

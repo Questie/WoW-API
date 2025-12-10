@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\SpectatorDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class SpectatorDataProviderMixin : MapCanvasDataProviderMixin
 SpectatorDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

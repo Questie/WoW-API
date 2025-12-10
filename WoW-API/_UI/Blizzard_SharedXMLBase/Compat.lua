@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\Compat.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	These defitinitions are for compatability with lua 4 code.
 	THIS FILE WILL BE REMOVED IN A FUTURE UPDATE!

@@ -278,6 +278,10 @@ local function UIFrameFadeContains(frame)
 end
 
 -- Generic fade function
+---[FrameXML](https://www.townlong-yak.com/framexml/go/UIFrameFade)
+--- Generic fade function
+---@param frame Frame
+---@param fadeInfo table
 function UIFrameFade(frame, fadeInfo)
 	if (not frame) then
 		return;
@@ -314,6 +318,12 @@ function UIFrameFade(frame, fadeInfo)
 end
 
 -- Convenience function to do a simple fade in
+---[FrameXML](https://www.townlong-yak.com/framexml/go/UIFrameFadeIn)
+--- Convenience function to do a simple fade in
+---@param frame Frame
+---@param timeToFade number
+---@param startAlpha number
+---@param endAlpha number
 function UIFrameFadeIn(frame, timeToFade, startAlpha, endAlpha)
 	local fadeInfo = {};
 	fadeInfo.mode = "IN";
@@ -324,6 +334,12 @@ function UIFrameFadeIn(frame, timeToFade, startAlpha, endAlpha)
 end
 
 -- Convenience function to do a simple fade out
+---[FrameXML](https://www.townlong-yak.com/framexml/go/UIFrameFadeOut)
+--- Convenience function to do a simple fade out
+---@param frame Frame
+---@param timeToFade number
+---@param startAlpha number
+---@param endAlpha number
 function UIFrameFadeOut(frame, timeToFade, startAlpha, endAlpha)
 	local fadeInfo = {};
 	fadeInfo.mode = "OUT";

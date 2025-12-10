@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameStack\FrameStack.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 do
 	local frameStackLoader = CreateFrame("FRAME");
 	frameStackLoader:RegisterEvent("TOGGLE_FRAMESTACK");

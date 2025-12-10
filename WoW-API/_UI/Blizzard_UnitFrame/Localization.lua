@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function LocalizePlayerHitIndicator(offsX, offsY)
 	-- Adjust hit/damage anchor point, which is normally centered, to fit "Dodge" and other words in various languages
 	PlayerHitIndicator:ClearAllPoints();

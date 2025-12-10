@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterCreate_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 CHARACTER_FACING_INCREMENT = 2;
 NUM_CHAR_CUSTOMIZATIONS = 5;
 MIN_CHAR_NAME_LENGTH = 2;

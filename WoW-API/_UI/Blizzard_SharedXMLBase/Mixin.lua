@@ -8,6 +8,12 @@ local pairs = pairs;
 local PrivateMixin = Mixin;
 local PrivateCreateFromMixins = CreateFromMixins;
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateAndInitFromMixin)
+--- Copies mixins into a new object and initializes it
+---@generic T
+---@param mixin T
+---@param ... any
+---@return T mixin
 function CreateAndInitFromMixin(mixin, ...)
 	local object = PrivateCreateFromMixins(mixin);
 	object:Init(...);

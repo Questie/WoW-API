@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\ClubFinderApplicantList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local APPLICANT_COLUMN_INFO = {
 	[1] = {
 		title = COMMUNITIES_ROSTER_COLUMN_TITLE_LEVEL,

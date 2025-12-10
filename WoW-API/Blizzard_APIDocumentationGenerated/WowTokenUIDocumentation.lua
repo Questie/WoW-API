@@ -1,4 +1,5 @@
 ---@meta _
+
 C_WowTokenUI = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_WowTokenUI.StartTokenSell)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ActionBar\Classic/ActionButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 CURRENT_ACTIONBAR_PAGE = 1;
 NUM_ACTIONBAR_PAGES = 6;
 NUM_ACTIONBAR_BUTTONS = 12;
@@ -667,6 +668,9 @@ function ActionButton_UpdateOverlayGlow(self)
 	end
 end
 
+---@deprecated
+---Deprecated by [ActionButtonSpellAlertManager:ShowAlert](https://www.townlong-yak.com/framexml/go/ActionButtonSpellAlertManager:ShowAlert)
+---@param self table button
 function ActionButton_ShowOverlayGlow(self)
 	if ( self.overlay ) then
 		if ( self.overlay.animOut:IsPlaying() ) then
@@ -686,6 +690,9 @@ function ActionButton_ShowOverlayGlow(self)
 	end
 end
 
+---@deprecated
+---Deprecated by [ActionButtonSpellAlertManager:HideAlert](https://www.townlong-yak.com/framexml/go/ActionButtonSpellAlertManager:HideAlert)
+---@param self table button
 function ActionButton_HideOverlayGlow(self)
 	if ( self.overlay ) then
 		if ( self.overlay.animIn:IsPlaying() ) then

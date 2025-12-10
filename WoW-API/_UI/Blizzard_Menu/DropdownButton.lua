@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Menu\DropdownButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function AssertIntrinsicMessage(frame)
 	return string.format("%s element is not a DropdownButton.", frame:GetDebugName());
 end

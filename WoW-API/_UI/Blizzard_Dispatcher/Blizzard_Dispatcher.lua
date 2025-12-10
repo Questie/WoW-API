@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Dispatcher\Blizzard_Dispatcher.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- /////////////////////////////////////////////////////////////
 -- // Dispatcher 1.0 by Josh Leyshock of Blizzard Entertainment //
 -- /////////////////////////////////////////////////////////////

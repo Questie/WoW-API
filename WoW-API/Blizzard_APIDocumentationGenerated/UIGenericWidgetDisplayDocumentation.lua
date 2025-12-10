@@ -1,4 +1,5 @@
 ---@meta _
+
 C_GenericWidgetDisplay = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_GenericWidgetDisplay.Acknowledge)

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class CraftingOrderBucketInfo
 ---@field itemID number
 ---@field spellID number

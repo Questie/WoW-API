@@ -1,4 +1,5 @@
 ---@meta _
+
 C_ArdenwealdGardening = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_ArdenwealdGardening.GetGardenData)

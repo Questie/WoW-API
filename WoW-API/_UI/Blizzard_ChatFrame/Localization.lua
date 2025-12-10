@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function LocalizeCombatConfig_zh()
 	CombatConfigColorsExampleTitle:Hide();
 	CombatConfigColorsExampleString1:SetPoint("TOPLEFT", 25, -16);

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Scroll\ScrollBoxListView.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local InvalidationReason = EnumUtil.MakeEnum("DataProviderReassigned", "DataProviderContentsChanged");
 
 ---@class ScrollBoxListViewMixin : ScrollBoxViewMixin, CallbackRegistryMixin

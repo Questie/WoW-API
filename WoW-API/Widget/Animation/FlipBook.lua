@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_FlipBook)
 ---@class FlipBook : Animation
 local FlipBook = {}

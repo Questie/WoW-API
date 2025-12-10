@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias BlendMode
 ---|"DISABLE"
 ---|"BLEND"

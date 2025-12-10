@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CombatText\Blizzard_CombatText.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 NUM_COMBAT_TEXT_LINES = 20;
 COMBAT_TEXT_SCROLLSPEED = 1.9;
 COMBAT_TEXT_FADEOUT_TIME = 1.3;

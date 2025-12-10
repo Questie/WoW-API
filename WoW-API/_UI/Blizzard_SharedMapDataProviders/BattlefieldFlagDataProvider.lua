@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\BattlefieldFlagDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class BattlefieldFlagDataProviderMixin : MapCanvasDataProviderMixin
 BattlefieldFlagDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

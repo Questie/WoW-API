@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Texture = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Texture.ClearTitleIconTexture)

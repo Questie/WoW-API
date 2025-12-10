@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AlliedRaces = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AlliedRaces.GetAllRacialAbilitiesFromID)

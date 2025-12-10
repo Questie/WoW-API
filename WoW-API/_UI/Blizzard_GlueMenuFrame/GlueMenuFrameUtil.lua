@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueMenuFrame\GlueMenuFrameUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class GlueMenuFrameUtil
 GlueMenuFrameUtil = {};
 

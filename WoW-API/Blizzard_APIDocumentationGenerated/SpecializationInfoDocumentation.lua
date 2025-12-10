@@ -1,4 +1,5 @@
 ---@meta _
+
 C_SpecializationInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_SpecializationInfo.CanPlayerUsePVPTalentUI)

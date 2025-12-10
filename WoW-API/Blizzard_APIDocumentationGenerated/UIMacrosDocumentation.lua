@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Macro = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Macro.GetMacroName)

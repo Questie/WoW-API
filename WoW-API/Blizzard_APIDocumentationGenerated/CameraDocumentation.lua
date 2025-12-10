@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetCameraFOVDefaults)
 ---@return number fieldOfViewDegreesDefault
 ---@return number fieldOfViewDegreesPlayerMin

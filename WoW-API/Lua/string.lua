@@ -1,4 +1,5 @@
 ---@meta string_wow
+
 --- added: string.join, string.rtgsub, string.split, strsplittable, string.trim
 --- added: strcmputf8i, strlenutf8, strconcat, tostringall
 --- removed: string.dump, string.pack, string.packsize, string.unpack

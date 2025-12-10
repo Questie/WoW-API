@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateStatusBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetStatusBarVisInfoData(widgetID)
 	local widgetInfo = C_UIWidgetManager.GetStatusBarWidgetVisualizationInfo(widgetID);
 	if widgetInfo and widgetInfo.shownState ~= Enum.WidgetShownState.Hidden then

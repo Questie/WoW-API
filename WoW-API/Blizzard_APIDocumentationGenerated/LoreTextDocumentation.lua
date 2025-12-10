@@ -1,4 +1,5 @@
 ---@meta _
+
 C_LoreText = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LoreText.RequestLoreTextForCampaignID)

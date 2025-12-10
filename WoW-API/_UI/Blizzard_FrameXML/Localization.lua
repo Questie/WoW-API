@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Shared\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function LocalizeGarrisonAlerts_zh()
 	if GarrisonBuildingAlertSystem then
 		GarrisonBuildingAlertSystem:AddLocalizationHook(function(frame)

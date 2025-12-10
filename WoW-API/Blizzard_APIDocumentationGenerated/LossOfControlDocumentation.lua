@@ -1,4 +1,5 @@
 ---@meta _
+
 C_LossOfControl = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LossOfControl.GetActiveLossOfControlData)

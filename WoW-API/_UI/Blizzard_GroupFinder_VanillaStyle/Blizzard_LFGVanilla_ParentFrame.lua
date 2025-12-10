@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GroupFinder_VanillaStyle\Blizzard_LFGVanilla_ParentFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---------------------------------------------------
 ----------Constants
 -------------------------------------------------------

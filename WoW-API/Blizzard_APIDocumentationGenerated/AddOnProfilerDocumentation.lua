@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AddOnProfiler = {}
 
 ---Adds a measured event to any ongoing measured calls. If no such calls are currently taking place, this function does nothing.

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\GuildInfo.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local GUILD_BUTTON_HEIGHT = 84;
 local GUILD_COMMENT_HEIGHT = 50;
 local GUILD_COMMENT_BORDER = 10;

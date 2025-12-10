@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\ZoneLabelDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ZoneLabelDataProviderMixin : MapCanvasDataProviderMixin
 ZoneLabelDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

@@ -1,6 +1,11 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\FormattingUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SplitTextIntoLines)
+---@param text string
+---@param delimiter string
+---@return string[]
 function SplitTextIntoLines(text, delimiter)
 	local lines = {};
 	local startIndex = 1;
@@ -16,6 +21,10 @@ function SplitTextIntoLines(text, delimiter)
 	return lines;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SplitTextIntoHeaderAndNonHeader)
+---@param text string
+---@return string? header
+---@return string? nonHeader
 function SplitTextIntoHeaderAndNonHeader(text)
 	local foundIndex = string.find(text, "|n");
 	if not foundIndex then
@@ -36,11 +45,17 @@ function SplitTextIntoHeaderAndNonHeader(text)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatValueWithSign)
+---@param value number
+---@return string
 function FormatValueWithSign(value)
 	local formatString = value < 0 and SYMBOLIC_NEGATIVE_NUMBER or SYMBOLIC_POSITIVE_NUMBER;
 	return formatString:format(math.abs(value));
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatLargeNumber)
+---@param amount string|number
+---@return string
 function FormatLargeNumber(amount)
 	amount = tostring(amount);
 	local newDisplay = "";
@@ -71,6 +86,10 @@ MoneyStringConstants =
 	DontCheckGoldThreshold = false,
 };
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetMoneyString)
+---@param money number
+---@param separateThousands? boolean
+---@return string
 function GetMoneyString(money, separateThousands, checkGoldThreshold)
 	local goldString, silverString, copperString;
 	local gold = floor(money / (COPPER_PER_SILVER * SILVER_PER_GOLD));
@@ -118,6 +137,10 @@ function FormatDisplayCopper(checkGoldThreshold, gold, silver, copper)
 	return (checkGoldThreshold and gold > Constants.MoneyFormattingConstants.GOLD_REWARD_THRESHOLD_TO_HIDE_COPPER ) and 0 or copper;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatPercentage)
+---@param percentage number
+---@param roundToNearestInteger? boolean
+---@return string
 function FormatPercentage(percentage, roundToNearestInteger)
 	if roundToNearestInteger then
 		percentage = Round(percentage * 100);
@@ -128,10 +151,18 @@ function FormatPercentage(percentage, roundToNearestInteger)
 	return PERCENTAGE_STRING:format(percentage);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatFraction)
+---@param numerator number
+---@param denominator number
+---@return string
 function FormatFraction(numerator, denominator)
 	return GENERIC_FRACTION_STRING:format(numerator, denominator);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetHighlightedNumberDifferenceString)
+---@param baseString string
+---@param newString string
+---@return string
 function GetHighlightedNumberDifferenceString(baseString, newString)
 	local outputString = "";
 	-- output string is being built from the new string
@@ -171,6 +202,10 @@ function GetHighlightedNumberDifferenceString(baseString, newString)
 	return outputString;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/FormatUnreadMailTooltip)
+---@param tooltip GameTooltip
+---@param headerText string
+---@param senders string[]
 function FormatUnreadMailTooltip(tooltip, headerText, senders)
 	for i, sender in ipairs(senders) do
 		headerText = headerText.."\n"..sender;
@@ -224,6 +259,12 @@ function FormattingUtil.AddLeadingZeroes(digits, numZeroes, zeroesColor)
 	return digits;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetCurrencyString)
+---@param currencyID number
+---@param overrideAmount? number
+---@param colorCode? string
+---@param abbreviate? boolean
+---@return string
 function GetCurrencyString(currencyID, overrideAmount, colorCode, abbreviate)
 	colorCode = colorCode or HIGHLIGHT_FONT_COLOR_CODE;
 
@@ -236,6 +277,9 @@ function GetCurrencyString(currencyID, overrideAmount, colorCode, abbreviate)
 	return "";
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetCurrenciesString)
+---@param currencies number[] | table[] an array of currencyIDs, or a table with e.g. `{currencyID=x, amount=y} `
+---@return string
 function GetCurrenciesString(currencies)
 	local text = nil;
 	for i, currency in ipairs(currencies) do
@@ -259,6 +303,11 @@ function GetCurrenciesString(currencies)
 	return text;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/ReplaceGenderTokens)
+--- This is a very simple parser that will only handle $G/$g tokens
+---@param string string
+---@param gender string
+---@return string
 function ReplaceGenderTokens(string, gender)
 	if not strfind(string, "%$") then
 		return string;

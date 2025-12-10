@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup_Glue\GlueDialog.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class GlueDialogMixin
 GlueDialogMixin = {};
 

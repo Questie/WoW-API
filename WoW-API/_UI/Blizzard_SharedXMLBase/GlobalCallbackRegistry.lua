@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\GlobalCallbackRegistry.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class EventRegistry : CallbackRegistryMixin
 EventRegistry = CreateFromMixins(CallbackRegistryMixin);
 
@@ -17,6 +18,8 @@ function EventRegistry:OnLoad()
 	self.frameEventFrame.registry = self;
 end
 
+---@param frameEvent FrameEvent
+---@param value number
 function EventRegistry:OnAttributeChanged(frameEvent, value)
 	self = self.registry;
 
@@ -27,10 +30,12 @@ function EventRegistry:OnAttributeChanged(frameEvent, value)
 	end
 end
 
+---@param frameEvent FrameEvent
 function EventRegistry:RegisterFrameEvent(frameEvent)
 	self.frameEventFrame:SetAttribute(frameEvent, (self.frameEventFrame:GetAttribute(frameEvent) or 0) + 1);
 end
 
+---@param frameEvent FrameEvent
 function EventRegistry:UnregisterFrameEvent(frameEvent)
 	local eventCount = self.frameEventFrame:GetAttribute(frameEvent) or 0;
 	if eventCount > 0 then
@@ -38,6 +43,8 @@ function EventRegistry:UnregisterFrameEvent(frameEvent)
 	end
 end
 
+---@param frameEvent FrameEvent
+---@return any owner
 function EventRegistry:RegisterFrameEventAndCallback(frameEvent, ...)
 	self:RegisterFrameEvent(frameEvent);
 	return self:RegisterCallback(frameEvent, ...);
@@ -55,17 +62,21 @@ local function CreateCallbackHandle(cbr, cbrHandle, frameEvent)
 end
 
 
+---@param frameEvent FrameEvent
+---@return table
 function EventRegistry:RegisterFrameEventAndCallbackWithHandle(frameEvent, ...)
 	self:RegisterFrameEvent(frameEvent);
 	local cbrHandle = self:RegisterCallbackWithHandle(frameEvent, ...);
 	return CreateCallbackHandle(self, cbrHandle, frameEvent);
 end
 
+---@param frameEvent FrameEvent
 function EventRegistry:UnregisterFrameEventAndCallback(frameEvent, ...)
 	self:UnregisterFrameEvent(frameEvent);
 	self:UnregisterCallback(frameEvent, ...);
 end
 
+---@return string
 function EventRegistry:GetEventCounts(...)
 	local counts = {};
 	for i = 1, select("#", ...) do

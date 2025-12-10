@@ -1,10 +1,11 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\CustomBindingManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class CustomBindingManager
 CustomBindingManager = {};
 
---[[public]] function CustomBindingManager:RegisterHandlerAndCreateButton(handler, template, parent)
+function CustomBindingManager:RegisterHandlerAndCreateButton(handler, template, parent)
 	local button = CreateFrame("BUTTON", nil, parent, template);
 	button:SetCustomBindingHandler(handler);
 
@@ -14,7 +15,7 @@ CustomBindingManager = {};
 	return button;
 end
 
---[[public]] function CustomBindingManager:SetHandlerRegistered(button, registered)
+function CustomBindingManager:SetHandlerRegistered(button, registered)
 	if registered then
 		self:RegisterHandler(button:GetCustomBindingType(), button:GetCustomBindingHandler(), button);
 	else
@@ -22,7 +23,7 @@ end
 	end
 end
 
---[[private]] function CustomBindingManager:RegisterHandler(customBindingType, handler, button)
+function CustomBindingManager:RegisterHandler(customBindingType, handler, button)
 	if not self.handlers then
 		self.handlers = {};
 	end
@@ -34,25 +35,25 @@ end
 	self.handlers[customBindingType][handler] = button;
 end
 
---[[private]] function CustomBindingManager:UnregisterHandler(customBindingType, handler)
+function CustomBindingManager:UnregisterHandler(customBindingType, handler)
 	if self.handlers and self.handlers[customBindingType] then
 		self.handlers[customBindingType][handler] = nil;
 	end
 end
 
---[[private]] function CustomBindingManager:OnBindingModeActive(frame, isActive)
+function CustomBindingManager:OnBindingModeActive(frame, isActive)
 	for handler in self:EnumerateHandlers(frame:GetCustomBindingType()) do
 		handler:CallOnBindingModeActivatedCallback(isActive);
 	end
 end
 
---[[private]] function CustomBindingManager:OnBindingCompleted(frame, completedSuccessfully, keys)
+function CustomBindingManager:OnBindingCompleted(frame, completedSuccessfully, keys)
 	for handler in self:EnumerateHandlers(frame:GetCustomBindingType()) do
 		handler:CallOnBindingCompletedCallback(completedSuccessfully, keys);
 	end
 end
 
---[[private]] function CustomBindingManager:SetPendingBind(customBindingType, keys)
+function CustomBindingManager:SetPendingBind(customBindingType, keys)
 	if not self.pendingBinds then
 		self.pendingBinds = {};
 	end
@@ -65,23 +66,23 @@ end
 	end
 end
 
---[[private]] function CustomBindingManager:GetPendingBind(customBindingType)
+function CustomBindingManager:GetPendingBind(customBindingType)
 	if self.pendingBinds then
 		return self.pendingBinds[customBindingType];
 	end
 end
 
---[[private]] function CustomBindingManager:ClearPendingBind(customBindingType)
+function CustomBindingManager:ClearPendingBind(customBindingType)
 	if self.pendingBinds then
 		self.pendingBinds[customBindingType] = nil;
 	end
 end
 
---[[private]] function CustomBindingManager:EnumerateHandlers(customBindingType)
+function CustomBindingManager:EnumerateHandlers(customBindingType)
 	return pairs(self.handlers[customBindingType]);
 end
 
---[[private]] function CustomBindingManager:AddSystem(customBindingType, accessor, mutator)
+function CustomBindingManager:AddSystem(customBindingType, accessor, mutator)
 	if not self.systems then
 		self.systems = {};
 	end
@@ -89,11 +90,11 @@ end
 	self.systems[customBindingType] = { accessor = accessor, mutator = mutator };
 end
 
---[[private]] function CustomBindingManager:QueryAccessor(customBindingType)
+function CustomBindingManager:QueryAccessor(customBindingType)
 	return self.systems[customBindingType].accessor();
 end
 
---[[private]] function CustomBindingManager:MutateValue(customBindingType, value)
+function CustomBindingManager:MutateValue(customBindingType, value)
 	return self.systems[customBindingType].mutator(value);
 end
 
@@ -101,7 +102,7 @@ local function GetConvertedBindingText(text)
 	return text ~= "" and text;
 end
 
---[[public]] function CustomBindingManager:GetBindingText(customBindingType)
+function CustomBindingManager:GetBindingText(customBindingType)
 	local pendingBind = self:GetPendingBind(customBindingType);
 	if pendingBind then
 		return GetConvertedBindingText(pendingBind.text);
@@ -113,7 +114,7 @@ end
 	end
 end
 
---[[public]] function CustomBindingManager:OnDismissed(customBindingType, shouldApply)
+function CustomBindingManager:OnDismissed(customBindingType, shouldApply)
 	if shouldApply then
 		local pendingBind = self:GetPendingBind(customBindingType);
 		if pendingBind then
@@ -124,7 +125,7 @@ end
 	self:ClearPendingBind(customBindingType);
 end
 
---[[public]] function CustomBindingManager:Unbind(customBindingType)
+function CustomBindingManager:Unbind(customBindingType)
 	self:SetPendingBind(customBindingType, {});
 end
 

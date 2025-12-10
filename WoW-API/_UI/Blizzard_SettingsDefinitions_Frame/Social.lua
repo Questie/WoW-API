@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Social.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function Register()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(SOCIAL_LABEL);
 	Settings.SOCIAL_CATEGORY_ID = category:GetID();

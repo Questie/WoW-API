@@ -1,4 +1,5 @@
 ---@meta _
+
 C_SeasonInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_SeasonInfo.GetCurrentDisplaySeasonExpansion)

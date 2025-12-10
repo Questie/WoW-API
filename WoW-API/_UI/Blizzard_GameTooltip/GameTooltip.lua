@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GameTooltip\Classic\GameTooltip.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local envTable = GetCurrentEnvironment();
 
 ---@class TOOLTIP_QUEST_REWARDS_STYLE_DEFAULT

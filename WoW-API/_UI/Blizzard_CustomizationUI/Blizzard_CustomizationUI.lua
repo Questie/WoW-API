@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CustomizationUI\Blizzard_CustomizationUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----------------- Parent Frame -----------------
 
 ---@class CustomizationParentFrameBaseMixin

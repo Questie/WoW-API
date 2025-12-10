@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIParentPanelManager\Vanilla\UIParentPanelManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --Center Menu Frames
 UIPanelWindows["GameMenuFrame"] =				{ area = "center",		pushable = 0,	whileDead = 1 };
 UIPanelWindows["HelpFrame"] =					{ area = "center",		pushable = 0,	whileDead = 1 };

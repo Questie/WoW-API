@@ -1,4 +1,5 @@
 ---@meta _
+
 C_MajorFactions = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_MajorFactions.GetCurrentRenownLevel)

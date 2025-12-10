@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ObjectAPI\Classic\ContinuableContainer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ContinuableContainer
 ContinuableContainer = {};
 
@@ -17,7 +18,7 @@ ContinuableContainer = {};
 	end);
 ]]
 
---[[static]] function ContinuableContainer:Create()
+function ContinuableContainer:Create()
 	return CreateFromMixins(self);
 end
 

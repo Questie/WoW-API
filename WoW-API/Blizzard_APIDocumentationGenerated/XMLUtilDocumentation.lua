@@ -1,4 +1,5 @@
 ---@meta _
+
 C_XMLUtil = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_XMLUtil.GetTemplateInfo)

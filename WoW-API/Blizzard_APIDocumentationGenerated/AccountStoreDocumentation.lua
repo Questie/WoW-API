@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AccountStore = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AccountStore.BeginPurchase)

@@ -1,4 +1,5 @@
 ---@meta _
+
 C_MapExplorationInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_MapExplorationInfo.GetExploredAreaIDsAtPosition)

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIInlineGroup : AceGUIContainer
 ---@field protected titletext FontString
 local AceGUIInlineGroup = {}

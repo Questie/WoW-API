@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class CalendarTime
 ---@field monthDay number
 ---@field month number

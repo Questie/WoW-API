@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ReportFrameShared\ReportFrameShared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class SharedReportFrameMixin : Frame
 SharedReportFrameMixin = { };
 
@@ -365,22 +366,27 @@ function ReportInfoMixin:Clear()
 	self.petGUID = nil;
 end
 
+---@param mailIndex number
 function ReportInfoMixin:SetMailIndex(mailIndex)
 	self.mailIndex = mailIndex - 1;
 end
 
+---@param clubFinderGUID string
 function ReportInfoMixin:SetClubFinderGUID(clubFinderGUID)
 	self.clubFinderGUID = clubFinderGUID;
 end
 
+---@param reportTarget string
 function ReportInfoMixin:SetReportTarget(reportTarget)
 	self.reportTarget = reportTarget;
 end
 
+---@param comment string
 function ReportInfoMixin:SetComment(comment)
 	self.comment = comment;
 end
 
+---@param groupFinderSearchResultID number
 function ReportInfoMixin:SetGroupFinderSearchResultID(groupFinderSearchResultID)
 	self.groupFinderSearchResultID = groupFinderSearchResultID
 end
@@ -389,22 +395,27 @@ function ReportInfoMixin:SetReportedChatInline()
 	self.reportedChatInline = true;
 end
 
+---@param groupFinderApplicantID number
 function ReportInfoMixin:SetGroupFinderApplicantID(groupFinderApplicantID)
 	self.groupFinderApplicantID = groupFinderApplicantID
 end
 
+---@param reportType Enum.ReportType
 function ReportInfoMixin:SetReportType(reportType)
 	self.reportType = reportType;
 end
 
+---@param majorCategory Enum.ReportMajorCategory
 function ReportInfoMixin:SetReportMajorCategory(majorCategory)
 	self.majorCategory = majorCategory;
 end
 
+---@param minorCategoryFlags Enum.ReportMinorCategory
 function ReportInfoMixin:SetMinorCategoryFlags(minorCategoryFlags)
 	self.minorCategoryFlags = minorCategoryFlags;
 end
 
+---@param petGUID string
 function ReportInfoMixin:SetPetGUID(petGUID)
 	self.petGUID = petGUID;
 end
@@ -413,6 +424,9 @@ function ReportInfoMixin:SetCraftingOrderID(craftingOrderID)
 	self.craftingOrderID = craftingOrderID;
 end
 
+---@param reportType? Enum.ReportType
+---@param majorCategory Enum.ReportMajorCategory
+---@param minorCategoryFlags Enum.ReportMinorCategory
 function ReportInfoMixin:SetBasicReportInfo(reportType, majorCategory, minorCategoryFlags)
 	self.majorCategory = majorCategory;
 	self.minorCategoryFlags = minorCategoryFlags;

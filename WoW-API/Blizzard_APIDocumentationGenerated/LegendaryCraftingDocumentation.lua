@@ -1,4 +1,5 @@
 ---@meta _
+
 C_LegendaryCrafting = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_LegendaryCrafting.CloseRuneforgeInteraction)

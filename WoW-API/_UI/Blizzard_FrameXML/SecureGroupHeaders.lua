@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\SecureGroupHeaders.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --
 -- SecurePartyHeader and SecureRaidGroupHeader contributed with permission by: Esamynn, Cide, and Iriel
 --

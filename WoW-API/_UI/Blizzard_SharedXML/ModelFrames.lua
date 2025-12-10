@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Classic\ModelFrames.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local envTable = GetCurrentEnvironment();
 
 MODELFRAME_DRAG_ROTATION_CONSTANT = 0.010;

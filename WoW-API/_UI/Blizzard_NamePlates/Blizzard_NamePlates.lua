@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_NamePlates\Vanilla\Blizzard_NamePlates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class NamePlateDriverMixin
 NamePlateDriverMixin = {};
 
@@ -330,6 +331,8 @@ end
 ---@class NamePlateBaseMixin
 NamePlateBaseMixin = {};
 
+---@param namePlateUnitToken string
+---@param driverFrame NamePlateDriverFrame
 function NamePlateBaseMixin:OnAdded(namePlateUnitToken, driverFrame)
 	self.namePlateUnitToken = namePlateUnitToken;
 	self.driverFrame = driverFrame;
@@ -371,6 +374,10 @@ end
 NAMEPLATE_MINIMUM_INSET_HEIGHT_THRESHOLD = 10;
 NAMEPLATE_ADDITIONAL_INSET_HEIGHT_PADDING = 2;
 
+---@param insetWidth number
+---@param insetHeight number
+---@return number widthPadding
+---@return number heightPadding
 function NamePlateBaseMixin:GetAdditionalInsetPadding(insetWidth, insetHeight)
 	local heightPadding = 0;
 	local widthPadding = 0; -- No change to width is necessary yet.
@@ -382,6 +389,10 @@ function NamePlateBaseMixin:GetAdditionalInsetPadding(insetWidth, insetHeight)
 	return widthPadding, heightPadding;
 end
 
+---@return number left
+---@return number right
+---@return number top
+---@return number bottom
 function NamePlateBaseMixin:GetPreferredInsets()
 	local frame = self.UnitFrame;
 	local health = frame.healthBar;

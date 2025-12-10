@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EndOfMatchUI = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_EndOfMatchUI.GetEndOfMatchDetails)

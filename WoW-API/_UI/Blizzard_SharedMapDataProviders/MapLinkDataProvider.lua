@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedMapDataProviders\MapLinkDataProvider.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MapLinkDataProviderMixin : MapCanvasDataProviderMixin
 MapLinkDataProviderMixin = CreateFromMixins(MapCanvasDataProviderMixin);
 

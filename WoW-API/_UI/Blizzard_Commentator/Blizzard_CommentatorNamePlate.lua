@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Commentator\Blizzard_CommentatorNamePlate.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local BarHeight = 18;
 
 ---@class CommentatorNamePlateMixin

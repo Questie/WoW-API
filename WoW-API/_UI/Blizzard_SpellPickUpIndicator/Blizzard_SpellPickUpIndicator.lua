@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellPickUpIndicator\Blizzard_SpellPickUpIndicator.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class SpellPickupIndicatorMixin
 SpellPickupIndicatorMixin = {};
 

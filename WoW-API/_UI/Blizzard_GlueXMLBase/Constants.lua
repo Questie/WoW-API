@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXMLBase\Vanilla\Constants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --Login Screen Ambience
 ---@class EXPANSION_GLUE_AMBIENCE
 EXPANSION_GLUE_AMBIENCE = {

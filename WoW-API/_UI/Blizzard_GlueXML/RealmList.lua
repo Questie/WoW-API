@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Vanilla\RealmList.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local REALM_BUTTON_HEIGHT = 16;
 local MAX_REALMS_DISPLAYED = 20;
 local MAX_REALM_CATEGORY_TABS = 8;

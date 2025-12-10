@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitPopup\UnitPopupCustomControls.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class UnitPopupAttachableFrameMixin : Frame
 UnitPopupAttachableFrameMixin = {};
 

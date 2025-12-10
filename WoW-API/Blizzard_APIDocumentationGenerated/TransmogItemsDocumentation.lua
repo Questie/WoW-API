@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TransmogCollection = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TransmogCollection.AccountCanCollectSource)

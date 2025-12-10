@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TalentUI\Classic\Blizzard_TalentUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 StaticPopupDialogs["CONFIRM_LEARN_PREVIEW_TALENTS"] = {
 	text = CONFIRM_LEARN_PREVIEW_TALENTS,
 	button1 = YES,

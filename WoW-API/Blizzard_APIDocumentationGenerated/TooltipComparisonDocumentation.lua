@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TooltipComparison = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TooltipComparison.GetItemComparisonDelta)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\ModelSceneCameras\OrbitCameraMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --[[
 	OrbitCameraMixin - A simple camera that can orbit a target point at a fixed distance.
 

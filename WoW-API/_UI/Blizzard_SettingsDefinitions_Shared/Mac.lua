@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Shared\Mac.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function RegisterMacSettings()
 	local category, layout = Settings.RegisterVerticalLayoutCategory(MAC_SETTINGS_LABEL);
 	Settings.MAC_CATEGORY_ID = category:GetID();

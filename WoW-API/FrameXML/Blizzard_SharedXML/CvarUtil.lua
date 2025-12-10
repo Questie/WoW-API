@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CVar.RegisterCVar)
 ---@param name CVar
 ---@param value? string

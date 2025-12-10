@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TradeInfo = {}
 
 ---Adds any cursor-held money to the current trade offer.

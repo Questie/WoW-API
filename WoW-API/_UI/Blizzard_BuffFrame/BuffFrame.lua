@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BuffFrame\Classic\BuffFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 BUFF_FLASH_TIME_ON = 0.75;
 BUFF_FLASH_TIME_OFF = 0.75;
 BUFF_MIN_ALPHA = 0.3;

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateIconTextAndCurrencies.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetIconTextAndCurrenciesVisInfoData(widgetID)
 	local widgetInfo = C_UIWidgetManager.GetIconTextAndCurrenciesWidgetVisualizationInfo(widgetID);
 	if widgetInfo and widgetInfo.shownState ~= Enum.WidgetShownState.Hidden then

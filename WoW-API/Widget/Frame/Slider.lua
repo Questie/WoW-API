@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_Slider)
 ---@class Slider : Frame
 local Slider = {}

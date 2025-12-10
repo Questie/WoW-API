@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ObjectAPI\Classic\Spell.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class Spell
 Spell = {};
 ---@class SpellMixin
@@ -8,17 +9,21 @@ SpellMixin = {};
 
 local SpellEventListener;
 
---[[static]] function Spell:CreateFromSpellID(spellID)
+---@param spellID number
+---@return SpellMixin
+function Spell:CreateFromSpellID(spellID)
 	local spell = CreateFromMixins(SpellMixin);
 	spell:SetSpellID(spellID);
 	return spell;
 end
 
+---@param spellID number
 function SpellMixin:SetSpellID(spellID)
 	self:Clear();
 	self.spellID = spellID;
 end
 
+---@return number
 function SpellMixin:GetSpellID()
 	return self.spellID;
 end
@@ -27,12 +32,14 @@ function SpellMixin:Clear()
 	self.spellID = nil;
 end
 
+---@return boolean
 function SpellMixin:IsSpellEmpty()
 	local spellID = self:GetSpellID();
 	return not spellID or not C_Spell.DoesSpellExist(spellID);
 end
 
 -- Spell API
+---@return boolean
 function SpellMixin:IsSpellDataCached()
 	if not self:IsSpellEmpty() then
 		return C_Spell.IsSpellDataCached(self:GetSpellID());
@@ -40,19 +47,24 @@ function SpellMixin:IsSpellDataCached()
 	return true; 
 end
 
+---@return string
 function SpellMixin:GetSpellName()
 	return (GetSpellInfo(self:GetSpellID()));
 end
 
+---@return string
 function SpellMixin:GetSpellSubtext()
 	return C_Spell.GetSpellSubtext(self:GetSpellID());
 end
 
+---@return string
 function SpellMixin:GetSpellDescription()
 	return GetSpellDescription(self:GetSpellID());
 end
 
 -- Add a callback to be executed when spell data is loaded, if the spell data is already loaded then execute it immediately
+-- Add a callback to be executed when spell data is loaded, if the spell data is already loaded then execute it immediately
+---@param callbackFunction function
 function SpellMixin:ContinueOnSpellLoad(callbackFunction)
 	if type(callbackFunction) ~= "function" or self:IsSpellEmpty() then
 		error("Usage: NonEmptySpell:ContinueOnLoad(callbackFunction)", 2);
@@ -62,6 +74,9 @@ function SpellMixin:ContinueOnSpellLoad(callbackFunction)
 end
 
 -- Same as ContinueOnSpellLoad, except it returns a function that when called will cancel the continue
+-- Same as ContinueOnSpellLoad, except it returns a function that when called will cancel the continue
+---@param callbackFunction function
+---@return function
 function SpellMixin:ContinueWithCancelOnSpellLoad(callbackFunction)
 	if type(callbackFunction) ~= "function" or self:IsSpellEmpty() then
 		error("Usage: NonEmptySpell:ContinueWithCancelOnSpellLoad(callbackFunction)", 2);

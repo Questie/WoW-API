@@ -1,4 +1,5 @@
 ---@meta _
+
 C_CovenantSanctumUI = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CovenantSanctumUI.CanAccessReservoir)

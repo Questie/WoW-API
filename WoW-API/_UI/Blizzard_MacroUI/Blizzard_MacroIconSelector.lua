@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_MacroUI\Blizzard_MacroIconSelector.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class MacroPopupFrameMixin : Frame
 MacroPopupFrameMixin = {};
 

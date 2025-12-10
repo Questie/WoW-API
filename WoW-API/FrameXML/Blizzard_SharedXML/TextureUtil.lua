@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/GetTextureInfo)
 ---@param obj Texture
 ---@return string assetName

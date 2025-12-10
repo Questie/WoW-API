@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DebugTools\Blizzard_TexelSnappingVisualizer.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 if not IsGMClient() then
 	return; -- This tool only functions in GM builds
 end

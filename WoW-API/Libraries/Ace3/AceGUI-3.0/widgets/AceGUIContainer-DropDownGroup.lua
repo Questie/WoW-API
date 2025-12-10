@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIDropdownGroup : AceGUIContainer
 ---@field protected localstatus table
 ---@field protected status? table

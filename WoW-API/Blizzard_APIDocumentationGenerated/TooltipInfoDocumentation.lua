@@ -1,4 +1,5 @@
 ---@meta _
+
 C_TooltipInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_TooltipInfo.GetAchievementByID)

@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias FrameEvent string
 ---|"ACCOUNT_CHARACTER_CURRENCY_DATA_RECEIVED"
 ---|"ACCOUNT_CVARS_LOADED"

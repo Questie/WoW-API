@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_QuestChoice\Blizzard_QuestChoice.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 MAX_NUM_OPTIONS = 2;
 CURRENCY_SPACING = 5;
 CURRENCY_HEIGHT = 20;

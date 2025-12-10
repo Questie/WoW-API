@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SpellSearch\Blizzard_SpellSearchAssistedCombatFilter.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Spell search filter for finding Assisted Combat spells
 ---@class SpellSearchAssistedCombatFilterMixin : BaseSpellSearchFilterMixin
 SpellSearchAssistedCombatFilterMixin = CreateFromMixins(BaseSpellSearchFilterMixin);

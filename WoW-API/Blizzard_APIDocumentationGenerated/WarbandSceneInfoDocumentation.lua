@@ -1,4 +1,5 @@
 ---@meta _
+
 C_WarbandScene = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_WarbandScene.GetRandomEntryID)

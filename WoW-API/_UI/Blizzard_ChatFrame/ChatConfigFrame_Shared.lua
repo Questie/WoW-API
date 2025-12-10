@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\ChatConfigFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 COMBATLOG_FILTERS_TO_DISPLAY = 4;
 CHATCONFIG_FILTER_HEIGHT = 16;
 GRAY_CHECKED = 1;

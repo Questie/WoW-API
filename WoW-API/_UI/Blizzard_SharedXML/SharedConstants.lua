@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\SharedConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --
 -- New shared constants should be added to this
 --

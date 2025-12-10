@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\LinkUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class LinkTypes
 LinkTypes = {
 	AADCOpenConfig = "aadcopenconfig",

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Communities\CommunitiesStreams.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetStreamName(clubId, stream)
 	local streamName = "";
 	local streamId = stream.streamId;

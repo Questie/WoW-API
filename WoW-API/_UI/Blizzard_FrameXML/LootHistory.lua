@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\LootHistory.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function ToggleLootHistoryFrame()
 	if ( LootHistoryFrame:IsShown() ) then
 		LootHistoryFrame:Hide();

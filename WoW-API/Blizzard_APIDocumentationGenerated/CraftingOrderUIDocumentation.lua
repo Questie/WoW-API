@@ -1,4 +1,5 @@
 ---@meta _
+
 C_CraftingOrders = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CraftingOrders.AreOrderNotesDisabled)

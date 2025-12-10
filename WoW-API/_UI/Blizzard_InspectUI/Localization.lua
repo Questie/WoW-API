@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_InspectUI\Classic\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function LocalizeInspectTabs_zh()
 	for i=1, (InspectFrame.numTabs or 0) do
 		local tabName = "InspectFrameTab"..i;

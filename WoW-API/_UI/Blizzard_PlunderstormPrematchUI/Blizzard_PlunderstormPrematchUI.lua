@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_PlunderstormPrematchUI\Blizzard_PlunderstormPrematchUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function IsInTrainingMode()
 	local currGameMode = C_WoWLabsMatchmaking.GetPartyPlaylistEntry();
 	return currGameMode == Enum.PartyPlaylistEntry.TrainingGameMode;

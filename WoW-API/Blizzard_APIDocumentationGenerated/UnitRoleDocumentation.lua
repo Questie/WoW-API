@@ -1,4 +1,5 @@
 ---@meta _
+
 ---If true, UnitGetAvailableRoles results should be treated as suggested role, not hard limits on what role the current player can display as.
 ---
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_AreClassRolesSoftSuggestions)

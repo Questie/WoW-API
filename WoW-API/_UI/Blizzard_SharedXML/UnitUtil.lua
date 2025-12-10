@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\UnitUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function GetPlayerGuid()
 	return UnitGUID("player");
 end

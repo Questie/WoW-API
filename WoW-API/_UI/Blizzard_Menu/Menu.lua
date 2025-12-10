@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_Menu\Menu.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local CreateSecureMap = SecureTypes.CreateSecureMap;
 local CreateSecureArray = SecureTypes.CreateSecureArray;
 local CreateSecureFunction = SecureTypes.CreateSecureFunction;
@@ -2517,6 +2518,8 @@ do
 
 	local menuManagerProxy = CreateMenuManager();
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.GetManager)
+	---@return MenuManagerProxy
 	function Menu.GetManager()
 		return menuManagerProxy;
 	end
@@ -2531,6 +2534,10 @@ do
 		return menuDescription:ToProxy();
 	end
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.CreateRootMenuDescription)
+	---@generic M: table
+	---@param menuMixin M
+	---@return RootMenuDescriptionProxy|M rootMenuDescription
 	function Menu.CreateRootMenuDescription(menuMixin)
 		return securecallfunction(SecureCreateRootMenuDescription, menuMixin);
 	end
@@ -2544,6 +2551,8 @@ do
 		return elementDescription:ToProxy();
 	end
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.CreateMenuElementDescription)
+	---@return ElementMenuDescriptionProxy
 	function Menu.CreateMenuElementDescription()
 		return securecallfunction(SecureCreateMenuElementDescription);
 	end
@@ -2567,11 +2576,20 @@ do
 		ModifyMenuRegistry:TriggerEvent(tag, ownerRegion, description);
 	end
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.PopulateDescription)
+	---@param menuGenerator fun(ownerRegion: Region, description: RootMenuDescriptionProxy, ...)
+	---@param ownerRegion Region
+	---@param description RootMenuDescriptionProxy
+	---@param ... any? # passed to the generator
 	function Menu.PopulateDescription(menuGenerator, ownerRegion, description, ...)
 		securecallfunction(menuGenerator, ownerRegion, description, ...);
 		securecallfunction(SecureModifyMenu, ownerRegion, description, ...);
 	end
 
+	---Can be used by addons to modify blizzard's menus in a taint-safe manner
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.ModifyMenu)
+	---@param tag string
+	---@param callback fun(ownerRegion: Region, description: RootMenuDescriptionProxy, contextData: any?)
 	function Menu.ModifyMenu(tag, callback)
 		assert(type(tag) == "string");
 
@@ -2595,11 +2613,14 @@ do
 		return ModifyMenuRegistry:RegisterCallbackWithHandle(tag, Callback);
 	end
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.GetOpenMenuTags)
+	---@return string[] tags
 	function Menu.GetOpenMenuTags()
 		MenuAttributeDelegate:SetAttribute("get-open-menu-tags");
 		return MenuAttributeDelegate:GetAttribute("get-open-menu-tags-result");
 	end
 
+	---[FrameXML](https://www.townlong-yak.com/framexml/go/Menu.PrintOpenMenuTags)
 	function Menu.PrintOpenMenuTags()
 		print(table.concat(Menu.GetOpenMenuTags(), LIST_DELIMITER));
 	end

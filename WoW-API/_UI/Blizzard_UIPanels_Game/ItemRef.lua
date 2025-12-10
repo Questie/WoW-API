@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\ItemRef.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function SetItemRef(link, text, button, frame)
 	local contextData = { button = button, frame = frame };
 	local response = LinkUtil.ProcessLink(link, text, contextData);

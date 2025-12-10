@@ -1,4 +1,5 @@
 ---@meta _
+
 C_CooldownViewer = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CooldownViewer.GetCooldownViewerCategorySet)

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic/PetFrame_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --PET_WARNING_TIME = 55;
 --PET_FLASH_ON_TIME = 0.5;
 --PET_FLASH_OFF_TIME = 0.5;

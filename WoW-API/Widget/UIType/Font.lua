@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias FontFile string
 ---|"fonts/arialn.ttf"
 ---|"fonts/frizqt__.ttf"

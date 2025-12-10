@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@alias Template
 ---|"ActionButtonTemplate
 ---|"AutoCompleteEditBoxTemplate

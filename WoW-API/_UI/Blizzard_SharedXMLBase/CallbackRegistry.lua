@@ -48,19 +48,23 @@ function CallbackRegistryMixin:SetUndefinedEventsAllowed(allowed)
 	self.isUndefinedEventAllowed = allowed;
 end
 
+---@return table
 function CallbackRegistryMixin:GetCallbackTables()
 	return self.callbackTables;
 end
 
+---@return table
 function CallbackRegistryMixin:GetCallbackTable(callbackType)
 	return self.callbackTables[callbackType];
 end
 
+---@return table
 function CallbackRegistryMixin:GetCallbacksByEvent(callbackType, event)
 	local callbackTable = self:GetCallbackTable(callbackType);
 	return callbackTable[event];
 end
 
+---@return boolean
 function CallbackRegistryMixin:HasRegistrantsForEvent(event)
 	for callbackType, callbackTable in pairs(self:GetCallbackTables()) do
 		local callbacks = callbackTable[event];
@@ -77,6 +81,7 @@ function CallbackRegistryMixin:SecureInsertEvent(event)
 	end
 end
 
+---@return any owner
 function CallbackRegistryMixin:RegisterCallback(event, func, owner, ...)
 	if type(event) ~= "string" then
 		error("CallbackRegistryMixin::RegisterCallback 'event' requires string type.");
@@ -121,6 +126,7 @@ local function CreateCallbackHandle(cbr, event, owner)
 	return handle;
 end
 
+---@return table
 function CallbackRegistryMixin:RegisterCallbackWithHandle(event, func, owner, ...)
 	owner = self:RegisterCallback(event, func, owner, ...);
 	return CreateCallbackHandle(self, event, owner);
@@ -196,6 +202,7 @@ function CallbackRegistryMixin:GenerateCallbackEvents(events)
 	end
 end
 
+---@return boolean
 function CallbackRegistryMixin.DoesFrameHaveEvent(frame, event)
 	return frame.Event and frame.Event[event];
 end

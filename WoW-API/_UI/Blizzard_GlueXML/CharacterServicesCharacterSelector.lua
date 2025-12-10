@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\Classic\CharacterServicesCharacterSelector.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function restoreButtonScripts(button)
 	button:SetScript("OnClick", CharacterSelectButton_OnClick);
 	button:SetScript("OnDoubleClick", CharacterSelectButton_OnDoubleClick);

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Backdrop.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class BACKDROP_ACHIEVEMENTS_0_64
 BACKDROP_ACHIEVEMENTS_0_64 = {
 	edgeFile = "Interface\\AchievementFrame\\UI-Achievement-WoodBorder",
@@ -177,6 +178,7 @@ local textureUVs = {			-- keys have to match pieceNames in nineSliceSetup table
 };
 local defaultEdgeSize = 39;		-- the old default
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:OnBackdropLoaded)
 function BackdropTemplateMixin:OnBackdropLoaded()
 	if self.backdropInfo then
 		-- check for invalid info
@@ -207,12 +209,15 @@ function BackdropTemplateMixin:OnBackdropLoaded()
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:OnBackdropSizeChanged)
 function BackdropTemplateMixin:OnBackdropSizeChanged()
 	if self.backdropInfo then
 		self:SetupTextureCoordinates();
 	end
 end
 
+---@return number
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:GetEdgeSize)
 function BackdropTemplateMixin:GetEdgeSize()
 	if self.backdropInfo.edgeSize and self.backdropInfo.edgeSize > 0 then
 		return self.backdropInfo.edgeSize;
@@ -239,6 +244,7 @@ local function SetupBackdropTextureCoordinates(region, pieceSetup, repeatX, repe
 						GetBackdropCoordValue("LRx", pieceSetup, repeatX, repeatY), GetBackdropCoordValue("LRy", pieceSetup, repeatX, repeatY));
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetupTextureCoordinates)
 function BackdropTemplateMixin:SetupTextureCoordinates()
 	local width = self:GetWidth();
 	local height = self:GetHeight();
@@ -271,6 +277,7 @@ function BackdropTemplateMixin:SetupTextureCoordinates()
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetupPieceVisuals)
 function BackdropTemplateMixin:SetupPieceVisuals(piece, setupInfo, pieceLayout)
 	local textureInfo = textureUVs[setupInfo.pieceName];
 	local tileVerts = false;
@@ -291,6 +298,7 @@ function BackdropTemplateMixin:SetupPieceVisuals(piece, setupInfo, pieceLayout)
 	piece:SetSize(cornerWidth, cornerHeight);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetBorderBlendMode)
 function BackdropTemplateMixin:SetBorderBlendMode(blendMode)
 	if not self.backdropInfo then
 		return;
@@ -303,10 +311,13 @@ function BackdropTemplateMixin:SetBorderBlendMode(blendMode)
 	end
 end
 
+---@param backdropInfo backdropInfo
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:HasBackdropInfo)
 function BackdropTemplateMixin:HasBackdropInfo(backdropInfo)
 	return self.backdropInfo == backdropInfo;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:ClearBackdrop)
 function BackdropTemplateMixin:ClearBackdrop()
 	if self.backdropInfo then
 		for pieceName in pairs(textureUVs) do
@@ -319,6 +330,7 @@ function BackdropTemplateMixin:ClearBackdrop()
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:ApplyBackdrop)
 function BackdropTemplateMixin:ApplyBackdrop()
 	local x, y, x1, y1 = 0, 0, 0, 0;
 	if self.backdropInfo.bgFile then
@@ -354,6 +366,8 @@ function BackdropTemplateMixin:ApplyBackdrop()
 end
 
 -- backwards compatibility API starts here
+---@param backdropInfo backdropInfo
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetBackdrop)
 function BackdropTemplateMixin:SetBackdrop(backdropInfo)
 	if backdropInfo then
 		if self:HasBackdropInfo(backdropInfo) then
@@ -372,6 +386,8 @@ function BackdropTemplateMixin:SetBackdrop(backdropInfo)
 	end
 end
 
+---@return backdropInfo
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:GetBackdrop)
 function BackdropTemplateMixin:GetBackdrop()
 	if self.backdropInfo then
 		-- make a copy because it will be altered to match old API output
@@ -415,6 +431,11 @@ function BackdropTemplateMixin:GetBackdrop()
 	return nil;
 end
 
+---@return number r Returns nil if `self.backdropInfo` is not defined
+---@return number g
+---@return number b
+---@return number a
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:GetBackdropColor)
 function BackdropTemplateMixin:GetBackdropColor()
 	if not self.backdropInfo then
 		return;
@@ -424,6 +445,11 @@ function BackdropTemplateMixin:GetBackdropColor()
 	end
 end
 
+---@param r number
+---@param g number
+---@param b number
+---@param a? number
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetBackdropColor)
 function BackdropTemplateMixin:SetBackdropColor(r, g, b, a)
 	if not self.backdropInfo then
 		-- Ideally this would throw an error here but the old API just failed silently
@@ -434,6 +460,11 @@ function BackdropTemplateMixin:SetBackdropColor(r, g, b, a)
 	end
 end
 
+---@return number r Returns nil if `self.backdropInfo` is not defined
+---@return number g
+---@return number b
+---@return number a
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:GetBackdropBorderColor)
 function BackdropTemplateMixin:GetBackdropBorderColor()
 	if not self.backdropInfo then
 		return
@@ -447,6 +478,11 @@ function BackdropTemplateMixin:GetBackdropBorderColor()
 	end
 end
 
+---@param r number
+---@param g number
+---@param b number
+---@param a? number
+---[FrameXML](https://www.townlong-yak.com/framexml/go/BackdropTemplateMixin:SetBackdropBorderColor)
 function BackdropTemplateMixin:SetBackdropBorderColor(r, g, b, a)
 	if not self.backdropInfo then
 		-- Ideally this would throw an error here but the old API just failed silently

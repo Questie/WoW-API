@@ -1,4 +1,5 @@
 ---@meta _
+
 C_PlayerInteractionManager = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_PlayerInteractionManager.ClearInteraction)

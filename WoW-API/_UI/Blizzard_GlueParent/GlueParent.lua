@@ -702,6 +702,9 @@ end
 -- Utils
 -- =============================================================
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/HideUIPanel)
+---@param frame Frame
+---@param skipSetPoint? boolean
 function HideUIPanel(self)
 	-- Glue specific implementation of this function, doesn't need to leverage FrameXML data.
 	self:Hide();
@@ -753,6 +756,10 @@ function SetExpansionLogo(texture, expansionLevel, releaseType)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/MinutesToTime)
+---@param mins number
+---@param hideDays? boolean
+---@return string
 function MinutesToTime(mins, hideDays)
 	local time = "";
 	local count = 0;
@@ -817,10 +824,16 @@ CreateFromSecureMixins = CreateFromMixins;
 -- =============================================================
 -- Backwards Compatibility
 -- =============================================================
+---[FrameXML](https://www.townlong-yak.com/framexml/go/getglobal)
+---@param var string varr
+---@return any
 function getglobal(var)
 	return _G[var];
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/setglobal)
+---@param var string varr
+---@param val any value
 function setglobal(var, val)
 	_G[var] = val;
 end

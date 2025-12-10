@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIWidgets\Classic\Blizzard_UIWidgetTemplateCaptureBar.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetCaptureBarVisInfoData(widgetID)
 	local widgetInfo = C_UIWidgetManager.GetCaptureBarWidgetVisualizationInfo(widgetID);
 	if widgetInfo and widgetInfo.shownState ~= Enum.WidgetShownState.Hidden then

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CommunitiesSecure\CommunitiesAddDialogOutbound.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Outbound loads under the global environment but needs to put the outbound table into the secure environment
 local secureEnv = GetCurrentEnvironment();
 SwapToGlobalEnvironment();

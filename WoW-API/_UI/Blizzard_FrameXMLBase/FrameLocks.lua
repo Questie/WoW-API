@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLBase\Classic\FrameLocks.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ----------------------------------------------------------------------------------------
 --	Notes - The way this works should be temporary. It's easy to implement in Lua using
 -- hooks, but we should probably implement this in C (or at least not hook Hide and Show

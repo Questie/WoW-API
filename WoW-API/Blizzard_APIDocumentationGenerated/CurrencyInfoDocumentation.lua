@@ -1,4 +1,5 @@
 ---@meta _
+
 C_CurrencyInfo = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_CurrencyInfo.CanTransferCurrency)

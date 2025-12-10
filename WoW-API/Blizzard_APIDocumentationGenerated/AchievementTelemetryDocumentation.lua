@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AchievementTelemetry = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AchievementTelemetry.LinkAchievementInClub)

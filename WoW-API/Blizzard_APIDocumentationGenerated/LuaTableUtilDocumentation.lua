@@ -1,4 +1,5 @@
 ---@meta _
+
 table = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_table.create)

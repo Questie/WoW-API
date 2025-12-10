@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueXML\MovieFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function MovieFrame_OnLoad(self)
 	if ( not IsMacClient() ) then
 		MovieFrameSubtitleArea:Hide();

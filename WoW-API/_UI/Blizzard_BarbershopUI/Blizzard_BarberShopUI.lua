@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_BarbershopUI\Blizzard_BarberShopUI.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 WORGEN_RACE_ID = 22;
 GILNEAN_RACE_ID = 23;
 

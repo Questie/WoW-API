@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Accessibility.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ArachnophobiaMixin
 ArachnophobiaMixin = {};
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\BattlegroundChatFilters.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local BG_CHAT_FILTERS_TIME_SINCE_LAST = -25;
 local BG_CHAT_FILTERS_TIME_SINCE_START = 0;
 local BG_CHAT_FILTERS_TIME_TO_RUN = 60;

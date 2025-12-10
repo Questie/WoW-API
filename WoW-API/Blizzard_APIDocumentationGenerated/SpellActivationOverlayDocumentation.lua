@@ -1,4 +1,5 @@
 ---@meta _
+
 C_SpellActivationOverlay = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_SpellActivationOverlay.IsSpellOverlayed)

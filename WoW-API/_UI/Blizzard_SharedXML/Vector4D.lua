@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Vector4D.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Protecting from addons since we use this in secure code.
 local cos = math.cos;
 local sin = math.sin;

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanels_Game\Classic\FriendsFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 FRIENDS_TO_DISPLAY = 10;
 FRIENDS_FRAME_FRIEND_HEIGHT = 34;
 IGNORES_TO_DISPLAY = 19;

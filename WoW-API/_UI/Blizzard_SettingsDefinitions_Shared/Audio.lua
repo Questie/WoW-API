@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Shared\Audio.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class VoiceTestMicrophoneMixin : SettingsListElementMixin
 VoiceTestMicrophoneMixin = CreateFromMixins(SettingsListElementMixin);
 

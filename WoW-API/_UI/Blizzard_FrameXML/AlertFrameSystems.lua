@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\AlertFrameSystems.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function AlertFrameSystems_Register()
 	-- luacheck: ignore 111 (setting non-standard global variable)
 	GuildChallengeAlertSystem = AlertFrame:AddSimpleAlertFrameSubSystem("GuildChallengeAlertFrameTemplate", GuildChallengeAlertFrame_SetUp);

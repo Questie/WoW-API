@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EventUtils = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_EventUtils.IsEventValid)

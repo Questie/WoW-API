@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_DebugTools\Blizzard_TextureInfoGenerator.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function AreTextureCoordinatesValid(...)
 	local coordCount = select("#", ...);
 	for i = 1, coordCount do

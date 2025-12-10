@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class QuestPOIMapInfo
 ---@field childDepth number?
 ---@field questTagType Enum.QuestTagType?

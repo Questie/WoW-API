@@ -1,4 +1,5 @@
 ---@meta _
+
 C_AnimaDiversion = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_AnimaDiversion.CloseUI)

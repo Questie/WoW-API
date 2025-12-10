@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXML\Shared\Frame\EventEditBox.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class EventEditBoxMixin : EditBox, CallbackRegistryMixin
 EventEditBoxMixin = CreateFromMixins(CallbackRegistryMixin);
 

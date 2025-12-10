@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class ContentTrackingMapInfo
 ---@field x number
 ---@field y number

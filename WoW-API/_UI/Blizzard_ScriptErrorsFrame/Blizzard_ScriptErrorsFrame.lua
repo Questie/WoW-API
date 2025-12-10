@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ScriptErrorsFrame\Blizzard_ScriptErrorsFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local ERROR_FORMAT = [[|cffffd200Message:|r|cffffffff %s|r
 |cffffd200Time:|r|cffffffff %s|r
 |cffffd200Count:|r|cffffffff %s|r

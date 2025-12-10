@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Combat.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class SELF_CAST_SETTING_VALUES
 SELF_CAST_SETTING_VALUES = {
 	NONE = 1,

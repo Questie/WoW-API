@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Tutorial = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Tutorial.AbandonTutorialArea)

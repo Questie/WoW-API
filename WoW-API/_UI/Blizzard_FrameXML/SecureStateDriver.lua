@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\SecureStateDriver.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 --
 -- SecureStateDriverManager
 -- Automatically sets states based on macro options for state driver frames

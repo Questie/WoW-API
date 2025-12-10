@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_GetCurrentTitle)
 ---@return number result
 function GetCurrentTitle() end

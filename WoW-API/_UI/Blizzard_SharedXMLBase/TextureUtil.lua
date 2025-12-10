@@ -1,9 +1,22 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SharedXMLBase\TextureUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class TextureUtil
 TextureUtil = {};
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetTextureInfo)
+---@param obj Texture
+---@return string assetName
+---@return string assetType
+---@return number ulX
+---@return number ulY
+---@return number blX
+---@return number blY
+---@return number urX
+---@return number urY
+---@return number brX
+---@return number brY
 function GetTextureInfo(obj)
 	if obj:GetObjectType() == "Texture" then
 		local assetName = obj:GetAtlas();
@@ -29,6 +42,9 @@ function GetTextureInfo(obj)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetClampedTextureRotation)
+---@param texture Texture
+---@param rotationDegrees number
 function SetClampedTextureRotation(texture, rotationDegrees)
 	if (rotationDegrees ~= 0 and rotationDegrees ~= 90 and rotationDegrees ~= 180 and rotationDegrees ~= 270) then
 		error("SetRotation: rotationDegrees must be 0, 90, 180, or 270");
@@ -78,6 +94,8 @@ function SetClampedTextureRotation(texture, rotationDegrees)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/ClearClampedTextureRotation)
+---@param texture Texture
 function ClearClampedTextureRotation(texture)
 	if (texture.rotationDegrees) then
 		SetClampedTextureRotation(texture, 0);
@@ -158,6 +176,9 @@ local MicroLFGRoleIcons = {
 	["DAMAGER"] = "UI-LFG-RoleIcon-DPS-Micro-GroupFinder",
 };
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetMicroIconForRole
+---@param role string
+---@return string icon
 function GetMicroIconForRole(role)
 	if MicroLFGRoleIcons[role] == nil then
 		error("Unknown role: " .. tostring(role));
@@ -221,12 +242,36 @@ function GetTexCoordsForOldRoleSmallCircleEnum(role)
 	return GetTexCoordsForOldRoleSmallCircle(LFGRoleEnumToString[role]);
 end;
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetTexCoordsByGrid)
+---@param xOffset number
+---@param yOffset number
+---@param textureWidth number
+---@param textureHeight number
+---@param gridWidth number
+---@param gridHeight number
+---@return number minX
+---@return number maxX
+---@return number minY
+---@return number maxY
 function GetTexCoordsByGrid(xOffset, yOffset, textureWidth, textureHeight, gridWidth, gridHeight)
 	local widthPerGrid = gridWidth/textureWidth;
 	local heightPerGrid = gridHeight/textureHeight;
 	return (xOffset-1)*widthPerGrid, (xOffset)*widthPerGrid, (yOffset-1)*heightPerGrid, (yOffset)*heightPerGrid;
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateTextureMarkup)
+---@param file number|string
+---@param fileWidth number
+---@param fileHeight number
+---@param width number
+---@param height number
+---@param left number
+---@param right number
+---@param top number
+---@param bottom number
+---@param xOffset? number
+---@param yOffset? number
+---@return string
 function CreateTextureMarkup(file, fileWidth, fileHeight, width, height, left, right, top, bottom, xOffset, yOffset)
 	return ("|T%s:%d:%d:%d:%d:%d:%d:%d:%d:%d:%d|t"):format(
 		  file
@@ -253,6 +298,16 @@ function CreateSimpleTextureMarkup(file, width, height, xOffset, yOffset)
 	);
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateAtlasMarkup)
+---@param atlasName number|string
+---@param width? number
+---@param height? number
+---@param offsetX? number
+---@param offsetY? number
+---@param rVertexColor? number
+---@param gVertexColor? number
+---@param bVertexColor? number
+---@return string
 function CreateAtlasMarkup(atlasName, width, height, offsetX, offsetY, rVertexColor, gVertexColor, bVertexColor)
 	-- Setting any vertex color will override existing colors
 	if ( rVertexColor or gVertexColor or bVertexColor ) then
@@ -277,6 +332,14 @@ function CreateAtlasMarkup(atlasName, width, height, offsetX, offsetY, rVertexCo
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateAtlasMarkupWithAtlasSize)
+---@param atlasName number|string
+---@param offsetX? number
+---@param offsetY? number
+---@param rVertexColor? number
+---@param gVertexColor? number
+---@param bVertexColor? number
+---@return string
 function CreateAtlasMarkupWithAtlasSize(atlasName, offsetX, offsetY, rVertexColor, gVertexColor, bVertexColor, scale)
 	local atlasInfo = C_Texture.GetAtlasInfo(atlasName);
 	local width = scale and Round(atlasInfo.width * scale) or atlasInfo.width;
@@ -299,6 +362,11 @@ TextureKitConstants = {
 }
 
 -- Pass in a frame and a table containing parentKeys (on frame) as keys and atlas member names as the values
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetupAtlasesOnRegions)
+--- Pass in a frame and a table containing parentKeys (on frame) as keys and atlas member names as the values
+---@param frame Frame
+---@param regionsToAtlases table
+---@param useAtlasSize? boolean
 function SetupAtlasesOnRegions(frame, regionsToAtlases, useAtlasSize)
 	for region, atlas in pairs(regionsToAtlases) do
 		if frame[region] then
@@ -311,6 +379,10 @@ function SetupAtlasesOnRegions(frame, regionsToAtlases, useAtlasSize)
 	end
 end
 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetFinalNameFromTextureKit)
+---@param fmt string
+---@param textureKits string|table
+---@return string
 function GetFinalNameFromTextureKit(fmt, textureKits)
 	if type(textureKits) == "table" then
 		return fmt:format(unpack(textureKits));
@@ -322,6 +394,15 @@ end
 -- Pass in a TextureKit name, a frame and a formatting string.
 -- The TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
 -- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetupTextureKitOnFrame)
+--- Pass in a TextureKit name, a frame and a formatting string.
+--- The TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
+--- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---@param textureKit string|table
+---@param frame Texture|StatusBar
+---@param fmt string
+---@param setVisibility boolean
+---@param useAtlasSize? boolean
 function SetupTextureKitOnFrame(textureKit, frame, fmt, setVisibility, useAtlasSize)
 	if not frame then
 		return;
@@ -345,6 +426,14 @@ end
 -- Pass in a TextureKit name and a table containing frames as keys and formatting strings as values
 -- For each frame key in frames, the TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
 -- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetupTextureKitOnFrames)
+--- Pass in a TextureKit name and a table containing frames as keys and formatting strings as values
+--- For each frame key in frames, the TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
+--- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---@param textureKit string|table
+---@param frames table
+---@param setVisibilityOfRegions boolean
+---@param useAtlasSize? boolean
 function SetupTextureKitOnFrames(textureKit, frames, setVisibilityOfRegions, useAtlasSize)
 	if not textureKit and not setVisibilityOfRegions then
 		return;
@@ -358,6 +447,15 @@ end
 -- Pass in a TextureKit name, a frame and a table containing parentKeys (on frame) as keys and formatting strings as values
 -- For each frame key in frames, the TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
 -- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetupTextureKitOnRegions)
+--- Pass in a TextureKit name, a frame and a table containing parentKeys (on frame) as keys and formatting strings as values
+--- For each frame key in frames, the TextureKit name will be inserted into fmt (at the first %s). The resulting atlas name will be set on frame
+--- Use "%s" for fmt if the TextureKit name is the entire atlas element name
+---@param textureKit string|table
+---@param frame Frame
+---@param regions table
+---@param setVisibilityOfRegions boolean
+---@param useAtlasSize? boolean
 function SetupTextureKitOnRegions(textureKit, frame, regions, setVisibilityOfRegions, useAtlasSize)
 	if not textureKit and not setVisibilityOfRegions then
 		return;
@@ -382,6 +480,14 @@ end
 -- The values table should contain formatString as a member (setVisibility and useAtlasSize can also be added if desired)
 -- For each frame key in frames, the TextureKit name will be inserted into formatString (at the first %s). The resulting atlas name will be set on frame
 -- Use "%s" for formatString if the TextureKit name is the entire atlas element name
+---[FrameXML](https://www.townlong-yak.com/framexml/go/SetupTextureKitsFromRegionInfo)
+--- Pass in a TextureKit name, a frame and a table containing parentKeys (on frame) as keys and a table as values
+--- The values table should contain formatString as a member (setVisibility and useAtlasSize can also be added if desired)
+--- For each frame key in frames, the TextureKit name will be inserted into formatString (at the first %s). The resulting atlas name will be set on frame
+--- Use "%s" for formatString if the TextureKit name is the entire atlas element name
+---@param textureKit string|table
+---@param frame Frame
+---@param regionInfoList table
 function SetupTextureKitsFromRegionInfo(textureKit, frame, regionInfoList)
 	if not frame or not regionInfoList then
 		return;
@@ -393,6 +499,11 @@ function SetupTextureKitsFromRegionInfo(textureKit, frame, regionInfoList)
 end
 
 --Pass the texture and the textureKit, if the atlas exists in data then it will return the actual atlas name otherwise, return nil. 
+---[FrameXML](https://www.townlong-yak.com/framexml/go/GetFinalAtlasFromTextureKitIfExists)
+--- Pass the texture and the textureKit, if the atlas exists in data then it will return the actual atlas name otherwise, return nil.
+---@param texture string
+---@param textureKit string|table
+---@return string?
 function GetFinalAtlasFromTextureKitIfExists(texture, textureKit)
 	if not texture or not textureKit then
 		return nil;

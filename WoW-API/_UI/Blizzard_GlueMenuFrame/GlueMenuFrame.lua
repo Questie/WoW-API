@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GlueMenuFrame\Classic\GlueMenuFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function GlueMenuFrame_OnShow(self)
 	GlueParent_AddModalFrame(self);
 end

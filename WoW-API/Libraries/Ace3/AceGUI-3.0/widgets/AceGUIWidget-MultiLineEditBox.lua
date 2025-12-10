@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceGUIMultiLineEditBox : AceGUIWidget
 ---@field protected button Button
 ---@field protected editBox EditBox

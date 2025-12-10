@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic\TalentFrameBase_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class TALENT_BRANCH_TEXTURECOORDS
 TALENT_BRANCH_TEXTURECOORDS = {
 	up = {

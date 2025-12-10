@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameBase\Shared\ChatAlertFrameMixin.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class ChatAlertFrameMixin : Frame
 ChatAlertFrameMixin = {};
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerSettingsLayoutManager.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local DATA_BLOCK_ALLOW_CREATE = true;
 local DATA_BLOCK_ACCESS_ONLY = false;
 

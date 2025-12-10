@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UnitFrame\Classic\CompactPartyFrame.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function CompactPartyFrame_OnLoad(self)
 	self.applyFunc = CompactRaidGroup_ApplyFunctionToAllFrames;
 	

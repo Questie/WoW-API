@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_StaticPopup_Glue\GlueDialogUserScaledTemplates.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class GlueDialogButtonMixin : Button
 GlueDialogButtonMixin = {};
 

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrame\Classic\VoiceChatHeadsetButton.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class VoiceChatDotsMixin
 VoiceChatDotsMixin = {};
 

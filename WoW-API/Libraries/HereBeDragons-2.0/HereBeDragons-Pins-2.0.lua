@@ -2,6 +2,7 @@
 -- HereBeDragons-Pins-2.0
 -- ----------------------------------------------------------------------------
 ---@meta _
+
 ---@class HereBeDragons-Pins-2.0
 local lib = {}
 

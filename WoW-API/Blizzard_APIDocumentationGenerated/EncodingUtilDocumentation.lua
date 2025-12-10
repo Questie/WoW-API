@@ -1,4 +1,5 @@
 ---@meta _
+
 C_EncodingUtil = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_EncodingUtil.CompressString)

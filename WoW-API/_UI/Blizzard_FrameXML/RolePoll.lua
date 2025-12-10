@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXML\Classic/RolePoll.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 function RolePollPopup_OnLoad(self)
 	self:RegisterEvent("ROLE_POLL_BEGIN");
 end

@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_AuctionHouseUI\Classic\Blizzard_AuctionHouseUtil.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 local function GetQualityFilterString(itemQuality)
 	local hex = select(4, C_Item.GetItemQualityColor(itemQuality));
 	local text = _G["ITEM_QUALITY"..itemQuality.."_DESC"];

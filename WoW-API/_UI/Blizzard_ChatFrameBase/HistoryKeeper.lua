@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_ChatFrameBase\Shared\HistoryKeeper.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class accessIDs
 local accessIDs = {};
 local nextAccessID = 1;

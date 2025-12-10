@@ -1,4 +1,5 @@
 ---@meta _
+
 C_QuestLog = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_QuestLog.AbandonQuest)

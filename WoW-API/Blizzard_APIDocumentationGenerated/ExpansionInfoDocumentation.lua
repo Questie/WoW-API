@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_ClassicExpansionAtLeast)
 ---@param expansionLevel number
 ---@return boolean isAtLeast

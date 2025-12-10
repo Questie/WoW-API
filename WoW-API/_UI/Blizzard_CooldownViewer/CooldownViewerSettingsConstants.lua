@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_CooldownViewer\CooldownViewerSettingsConstants.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- These values aren't actually part of the enum
 -- They exist so that disabled states can be managed using the same category enums
 -- There are checks to ensure that they don't match any of the pre-existing enum values

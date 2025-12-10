@@ -1,4 +1,5 @@
 ---@meta _
+
 C_Minimap = {}
 
 ---[Documentation](https://warcraft.wiki.gg/wiki/API_C_Minimap.CanTrackBattlePets)

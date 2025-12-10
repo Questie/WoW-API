@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_TalentUI\Classic\Blizzard_TalentUI_Shared.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ------------------------------------
 -- Global Constants
 

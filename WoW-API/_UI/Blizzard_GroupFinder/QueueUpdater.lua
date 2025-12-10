@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_GroupFinder\Classic\QueueUpdater.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 ---@class QueueUpdaterMixin
 local QueueUpdaterMixin = {};
 

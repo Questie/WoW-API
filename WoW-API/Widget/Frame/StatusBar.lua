@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_StatusBar)
 ---@class StatusBar : Frame
 local StatusBar = {}

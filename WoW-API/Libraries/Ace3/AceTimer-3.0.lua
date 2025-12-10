@@ -1,4 +1,5 @@
 ---@meta _
+
 ---@class AceTimerObj
 ---@field object table The object that the timer is registered on (self)
 ---@field func function Callback function

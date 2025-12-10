@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_UIPanelTemplates\Classic\AutoCastShine.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Autocast shine stuff --
 
 AUTOCAST_SHINE_R = .95;

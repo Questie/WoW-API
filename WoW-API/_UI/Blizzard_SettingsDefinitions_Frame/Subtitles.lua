@@ -1,6 +1,7 @@
 -- Original Path: .\WoWUI\Interface\AddOns\Blizzard_SettingsDefinitions_Frame\Subtitles.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
 -- Constants
 local SUBTITLES_ENABLED_CVAR = "movieSubtitle";
 local SUBTITLES_BACKGROUND_CVAR = "movieSubtitleBackground";

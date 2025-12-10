@@ -1,4 +1,5 @@
 ---@meta _
+
 ---[Documentation](https://warcraft.wiki.gg/wiki/UIOBJECT_Region)
 ---@class Region : ScriptRegion, ScriptRegionResizing, AnimatableObject
 local Region = {}
