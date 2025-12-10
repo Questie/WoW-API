@@ -5,6 +5,7 @@
 ---@class ItemLocation
 ItemLocation = {};
 ---@class ItemLocationMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/ItemLocationMixin)
 ItemLocationMixin = {};
 
 ---@return ItemLocation

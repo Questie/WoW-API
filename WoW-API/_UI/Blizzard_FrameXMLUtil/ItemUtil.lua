@@ -356,6 +356,7 @@ function ItemUtil.TransformItemLocationItemsToGUIDItems(itemLocations)
 end
 
 ---@class ItemTransmogInfoMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/ItemTransmogInfoMixin)
 ItemTransmogInfoMixin = {};
 
 --- See [CreateAndInitFromMixin](https://www.townlong-yak.com/framexml/go/CreateAndInitFromMixin)

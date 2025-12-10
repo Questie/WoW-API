@@ -5,6 +5,7 @@
 ---@class Spell
 Spell = {};
 ---@class SpellMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/SpellMixin)
 SpellMixin = {};
 
 local SpellEventListener;

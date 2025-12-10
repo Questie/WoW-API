@@ -71,6 +71,250 @@ def parse_annotations(source_dir):
     return annotations
 
 
+def parse_mixins(source_dir):
+    """
+    Parses all .lua files in source_dir for mixin definitions.
+    Returns a dict: { "MixinName": { "lines": ["line1\n", "line2\n"], "source": "/path/to/file.lua" } }
+    """
+    mixins = {}
+    # Matches: MixinName = {} or MixinName = {};
+    # Capture group 1: MixinName
+    mixin_regex = re.compile(r"^([a-zA-Z0-9_]+)\s*=\s*\{\}\s*;?$", re.MULTILINE)
+
+    print(f"Scanning source directory for mixins: {source_dir}")
+
+    for root, _, files in os.walk(source_dir):
+        for file in files:
+            if not file.endswith(".lua"):
+                continue
+
+            path = os.path.join(root, file)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+            except Exception as e:
+                print(f"Warning: Could not read {path}: {e}")
+                continue
+
+            current_block = []
+
+            for line in lines:
+                stripped = line.strip()
+
+                if stripped.startswith("--"):
+                    current_block.append(stripped + "\n")
+
+                elif "=" in stripped:  # Optimization check
+                    m = mixin_regex.match(stripped)
+                    if m:
+                        mixin_name = m.group(1)
+                        # We capture it even if no annotations, same logic as functions
+                        mixins[mixin_name] = {
+                            "lines": current_block,
+                            "source": path,
+                        }
+                        current_block = []
+                    else:
+                        current_block = []
+                elif not stripped:
+                    current_block = []
+                else:
+                    current_block = []
+
+    print(f"Found definitions for {len(mixins)} mixins/tables.")
+    return mixins
+
+
+def inject_mixins(target_dir, mixins_map, dry_run=False):
+    """
+    Scans target_dir for mixin definitions and injects annotations.
+    """
+    # Same regex for target matching
+    mixin_regex = re.compile(r"^([a-zA-Z0-9_]+)\s*=\s*\{\}\s*;?$", re.MULTILINE)
+
+    print(f"Scanning target directory for mixins: {target_dir}")
+
+    modified_count = 0
+    matched_mixins_set = set()
+
+    for root, _, files in os.walk(target_dir):
+        for file in files:
+            if not file.endswith(".lua"):
+                continue
+
+            path = os.path.join(root, file)
+            try:
+                with open(path, "r", encoding="utf-8") as f:
+                    lines = f.readlines()
+            except Exception as e:
+                print(f"Warning: Could not read {path}: {e}")
+                continue
+
+            new_lines = []
+            file_modified = False
+
+            for line in lines:
+                stripped = line.strip()
+                m = mixin_regex.match(stripped)
+
+                if m:
+                    mixin_name = m.group(1)
+                    if mixin_name in mixins_map:
+                        matched_mixins_set.add(mixin_name)
+                        anno_data = mixins_map[mixin_name]
+                        anno_lines = anno_data["lines"]
+                        source_file = anno_data["source"]
+
+                        # Duplicate check (heuristic)
+                        already_present = False
+                        if len(new_lines) >= len(anno_lines):
+                            last_n = new_lines[-len(anno_lines) :]
+                            clean_last_n = [l.strip() for l in last_n]
+                            clean_anno = [l.strip() for l in anno_lines]
+                            if clean_last_n == clean_anno:
+                                already_present = True
+
+                        if not already_present and anno_lines:
+                            if dry_run:
+                                print(
+                                    f"[Dry Run] Injecting mixin docs for: {mixin_name} in {path} (from {source_file})"
+                                )
+                            else:
+                                print(
+                                    f"Injecting mixin docs for: {mixin_name} in {path} (from {source_file})"
+                                )
+
+                            # Mixins are usually global, assume 0 indentation for docs
+                            # Or matches line indentation?
+                            # stripped matched, so we need indentation from original line
+                            # Fix for potential bug where indent includes part of the line content if trailing whitespace exists
+                            # Use lstrip to calculate indentation correctly
+                            indent = line[: len(line) - len(line.lstrip())]
+
+                            for al in anno_lines:
+                                # Filter out ---@meta and ---@class tags
+                                if re.match(r"^\s*---@meta", al) or re.match(
+                                    r"^\s*---@class", al
+                                ):
+                                    continue
+
+                                new_lines.append(indent + al)
+
+                            file_modified = True
+                            modified_count += 1
+
+                new_lines.append(line)
+
+            if file_modified and not dry_run:
+                try:
+                    with open(path, "w", encoding="utf-8") as f:
+                        f.writelines(new_lines)
+                except Exception as e:
+                    print(f"Error writing to {path}: {e}")
+
+    if dry_run:
+        print(f"[Dry Run] Would have injected docs into {modified_count} mixins.")
+    else:
+        print(f"Injected docs into {modified_count} mixins.")
+
+    return matched_mixins_set
+
+
+def remove_source_mixins(mixins_map, matched_mixins, dry_run=False):
+    """
+    Removes mixin definitions and their annotations from source files.
+    """
+    print("Cleaning up source mixins...")
+
+    files_to_process = {}
+    for name in matched_mixins:
+        if name in mixins_map:
+            source_file = mixins_map[name]["source"]
+            if source_file not in files_to_process:
+                files_to_process[source_file] = set()
+            files_to_process[source_file].add(name)
+
+    removed_count = 0
+    mixin_regex = re.compile(r"^([a-zA-Z0-9_]+)\s*=\s*\{\}\s*;?$", re.MULTILINE)
+
+    for source_file, mixin_names in files_to_process.items():
+        try:
+            with open(source_file, "r", encoding="utf-8") as f:
+                lines = f.readlines()
+        except Exception as e:
+            print(f"Warning: Could not read {source_file}: {e}")
+            continue
+
+        new_lines = []
+        pending_block = []
+        file_modified = False
+
+        for line in lines:
+            stripped = line.strip()
+
+            if stripped.startswith("--"):
+                pending_block.append(line)
+                continue
+
+            m = mixin_regex.match(stripped)
+            if m:
+                name = m.group(1)
+                if name in mixin_names:
+                    # Found mixin to remove
+                    if dry_run:
+                        print(
+                            f"[Dry Run] Removing source mixin definition {name} in {source_file}"
+                        )
+                    else:
+                        print(
+                            f"Removing source mixin definition {name} in {source_file}"
+                        )
+
+                    file_modified = True
+                    removed_count += 1
+                    pending_block = []  # Discard annotations
+                    continue  # Skip line
+
+            # Not matched or not to remove
+            if not stripped:
+                new_lines.extend(pending_block)
+                pending_block = []
+                new_lines.append(line)
+                continue
+
+            new_lines.extend(pending_block)
+            pending_block = []
+            new_lines.append(line)
+
+        new_lines.extend(pending_block)
+
+        # Cleanup blank lines
+        cleaned_lines = []
+        last_was_blank = False
+        for line in new_lines:
+            is_blank = not line.strip()
+            if is_blank:
+                if last_was_blank:
+                    continue
+                cleaned_lines.append(line)
+                last_was_blank = True
+            else:
+                cleaned_lines.append(line)
+                last_was_blank = False
+
+        if file_modified and not dry_run:
+            try:
+                with open(source_file, "w", encoding="utf-8") as f:
+                    f.writelines(cleaned_lines)
+            except Exception as e:
+                print(f"Error writing {source_file}: {e}")
+
+    if dry_run:
+        print(f"[Dry Run] Would have removed {removed_count} mixins.")
+    else:
+        print(f"Removed {removed_count} mixins.")
+
+
 def inject_annotations(target_dir, annotations_map, dry_run=False):
     """
     Scans target_dir for .lua files.
@@ -529,12 +773,16 @@ def main():
     # 1. Load Annotations
     annotations = parse_annotations(source_path)
 
-    if not annotations:
-        print("No annotations found. Exiting.")
+    # 1b. Load Mixins
+    mixins = parse_mixins(source_path)
+
+    if not annotations and not mixins:
+        print("No annotations or mixins found. Exiting.")
         return
 
     # 2. Inject
     injected_funcs = inject_annotations(target_path, annotations, dry_run=args.dry_run)
+    injected_mixins = inject_mixins(target_path, mixins, dry_run=args.dry_run)
 
     # 3. Report Missing
     all_funcs = set(annotations.keys())
@@ -547,9 +795,19 @@ def main():
             print(f" - {func} ({source_file})")
         print("\n")
 
+    all_mixins = set(mixins.keys())
+    missing_mixins = all_mixins - injected_mixins
+    if missing_mixins:
+        print("\nMixins found in Source but NOT found in Target:")
+        for mixin in sorted(missing_mixins):
+            source_file = mixins[mixin]["source"]
+            print(f" - {mixin} ({source_file})")
+        print("\n")
+
     # 4. Cleanup Source
     if not args.keep_source:
         remove_source_annotations(annotations, injected_funcs, dry_run=args.dry_run)
+        remove_source_mixins(mixins, injected_mixins, dry_run=args.dry_run)
         # cleanup_empty_files(source_path, dry_run=args.dry_run)
 
 

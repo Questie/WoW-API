@@ -3,6 +3,7 @@
 ---@meta _
 
 ---@class ColorMixin
+---[FrameXML](https://www.townlong-yak.com/framexml/go/ColorMixin)
 ColorMixin = {};
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/CreateColor)

@@ -319,6 +319,7 @@ function TransmogUtil.ParseOutfitSlashCommand(msg)
 end
 
 ---@class TransmogPendingInfoMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/TransmogLocationMixin)
 TransmogPendingInfoMixin = {};
 
 --- See [CreateAndInitFromMixin](https://www.townlong-yak.com/framexml/go/CreateAndInitFromMixin)
@@ -335,6 +336,7 @@ function TransmogPendingInfoMixin:Init(pendingType, transmogID, category)
 end
 
 ---@class TransmogLocationMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/TransmogLocationMixin)
 TransmogLocationMixin = {};
 
 ---@param slotID number

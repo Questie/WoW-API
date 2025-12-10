@@ -1,7 +1,5 @@
 ---@meta _
 
-MenuUtil = {}
-
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/MenuTemplates.CreateDivider)
 ---@return ElementMenuDescriptionProxy # some inserters and utility functions are missing
 function MenuUtil.CreateDivider() end

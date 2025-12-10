@@ -1,7 +1,5 @@
 ---@meta _
 
-AuraUtil = {}
-
 ---[FrameXML](https://github.com/Gethe/wow-ui-source/blob/live/Interface/FrameXML/AuraUtil.lua#L51)
 --- Iterates over a filtered list of auras
 ---@param unit string

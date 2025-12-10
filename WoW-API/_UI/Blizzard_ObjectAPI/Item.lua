@@ -5,6 +5,7 @@
 ---@class Item
 Item = {};
 ---@class ItemMixin
+---[Documentation](https://warcraft.wiki.gg/wiki/ItemMixin)
 ItemMixin = {};
 
 local ItemEventListener;
