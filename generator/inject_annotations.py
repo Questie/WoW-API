@@ -424,7 +424,7 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                                 already_present = True
 
                         if not already_present:
-                                    # Inject annotations
+                            # Inject annotations
                             # We prepend the indentation found on the function line
 
                             # Get skip patterns for this function
@@ -839,7 +839,7 @@ def main():
     if not args.keep_source:
         remove_source_annotations(annotations, injected_funcs, dry_run=args.dry_run)
         remove_source_mixins(mixins, injected_mixins, dry_run=args.dry_run)
-        # cleanup_empty_files(source_path, dry_run=args.dry_run)
+        cleanup_empty_files(source_path, dry_run=args.dry_run)
 
 
 if __name__ == "__main__":
