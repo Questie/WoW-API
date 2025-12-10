@@ -655,15 +655,15 @@ def main():
         dest = os.path.join(dest_version, "Functions-AI")
         shutil.copytree(dest_functions, dest, dirs_exist_ok=True)
 
-    # Copy ManualTypes folder
-    print("\nCopying ManualTypes folder into API folder")
-    src_manual_types = os.path.join(".", "ManualTypes")
-    dest_manual_types = os.path.join(dest_version, "ManualTypes")
-    if os.path.isdir(src_manual_types):
-        shutil.copytree(src_manual_types, dest_manual_types, dirs_exist_ok=True)
-        print(f"Copied ManualTypes folder: {src_manual_types} -> {dest_manual_types}")
+    # Copy Manual folder
+    print("\nCopying Manual folder into API folder")
+    src_manual = os.path.join(".", "Manual")
+    dest_manual = os.path.join(dest_version, "Manual")
+    if os.path.isdir(src_manual):
+        shutil.copytree(src_manual, dest_manual, dirs_exist_ok=True)
+        print(f"Copied Manual folder: {src_manual} -> {dest_manual}")
     else:
-        print(f"ManualTypes source folder {src_manual_types} not found.")
+        print(f"Manual source folder {src_manual} not found.")
 
     # Create .vscode/settings.json in the output directory
     print("\nCreating .vscode/settings.json in output directory")
