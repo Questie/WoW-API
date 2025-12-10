@@ -55,7 +55,7 @@ def parse_annotations(source_dir):
                             "lines": current_block,
                             "source": path,
                         }
-                        
+
                         # Reset block after function definition
                         current_block = []
 
@@ -437,12 +437,14 @@ def remove_source_annotations(annotations_map, matched_functions, dry_run=False)
 
 def cleanup_empty_files(source_dir, dry_run=False):
     """
-    Scans the source directory and removes files that do not contain any function definitions.
+    Scans the source directory and removes files that contain only whitespace or meta tags.
     """
     print("Cleaning up empty source files...")
 
-    # Regex to find function definitions (relaxed match)
-    func_regex = re.compile(r"^\s*function", re.MULTILINE)
+    # Regex for lines that are allowed (whitespace or meta tags)
+    # If a line matches this, it counts as "skippable" for deletion purposes.
+    # If a line does NOT match this, the file is kept.
+    allowed_line_regex = re.compile(r"^\s*(?:---@meta.*)?$")
 
     removed_count = 0
 
@@ -453,17 +455,21 @@ def cleanup_empty_files(source_dir, dry_run=False):
 
             path = os.path.join(root, file)
 
-            has_function = False
+            should_remove = True
             try:
                 with open(path, "r", encoding="utf-8") as f:
-                    content = f.read()
-                    if func_regex.search(content):
-                        has_function = True
+                    lines = f.readlines()
+                    for line in lines:
+                        # If we find any line that is NOT whitespace and NOT ---@meta
+                        # then the file contains "real" content and should be kept.
+                        if not allowed_line_regex.match(line):
+                            should_remove = False
+                            break
             except Exception as e:
                 print(f"Warning: Could not read {path}: {e}")
                 continue
 
-            if not has_function:
+            if should_remove:
                 if dry_run:
                     print(f"[Dry Run] Removing empty file: {path}")
                 else:
