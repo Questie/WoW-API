@@ -1,6 +1,8 @@
--- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Classic\Localization.lua
+-- Original Path: .\WoWUI\Interface\AddOns\Blizzard_FrameXMLUtil\Localization.lua
 -- Auto-generated LuaLS Annotations, do not edit manually
 ---@meta _
+
+-- luacheck: ignore 111 (setting non-standard global variable)
 
 local l10nTable = {
 	deDE = {},
@@ -9,17 +11,20 @@ local l10nTable = {
 	esES = {},
 	esMX = {},
 	frFR = {},
-	itIT = {
-		localize = function()
-			BUFF_HORIZ_SPACING = -10;
-		end
-	},
+	itIT = {},
 	koKR = {},
 	ptBR = {},
 	ptPT = {},
 	ruRU = {},
 	zhCN = {},
-	zhTW = {},
+	zhTW = {
+        localize = function()
+			SMALLER_AURA_DURATION_FONT_MIN_THRESHOLD = 60 * 60; -- greater than 1 hour
+			SMALLER_AURA_DURATION_FONT_MAX_THRESHOLD = 24 * 60 * 60; -- less than 24 hours
+			SMALLER_AURA_DURATION_FONT = "GameFontHighlightSmall2";
+			SMALLER_AURA_DURATION_OFFSET_Y = -2;
+        end,
+    },
 };
 
 SetupLocalization(l10nTable);

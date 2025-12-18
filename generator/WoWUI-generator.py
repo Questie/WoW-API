@@ -58,7 +58,8 @@ def adjust_file_entry(entry, version, addon_name):
     # parts[0] == version, parts[1] == addon_name, and parts[2] == version.
     if len(parts) >= 2:
         if parts[0].lower() in unfold_folders:
-            new_entry = os.sep.join(parts[1:])
+            # new_entry = os.sep.join(parts[1:])
+            new_entry = "_".join(parts)
             print(f"    Adjusted file entry: {entry} -> {new_entry}")
             return new_entry
     return entry
