@@ -325,6 +325,22 @@ def process_addon_directory(
                 continue
 
             # Handle file entry
+            stripped = stripped.replace("[Family]", "Classic")
+            stripped = stripped.replace("[Game]", version)
+
+            # Check for AllowLoadGameType condition
+            match = re.search(r"\[AllowLoadGameType\s+(.*?)\]", stripped, re.IGNORECASE)
+            if match:
+                allowed_types_str = match.group(1)
+
+                # Check if current version is allowed
+                if version.lower() not in allowed_types_str.lower():
+                    # Skip this file
+                    continue
+
+                # Remove the directive from the line
+                stripped = stripped.replace(match.group(0), "").strip()
+
             normalized = os.path.normpath(stripped.replace("\\", os.sep))
             file_entries.append(normalized)
 
