@@ -36,6 +36,8 @@
   "Lua.workspace.ignoreDir": [
     ".vscode",
     "generator",
+    "generator/vscode-wow-api",
+    "generator/WoWUI",
   ],
   "Lua.workspace.maxPreload": 5000,
   "Lua.workspace.preloadFileSize": 3000,

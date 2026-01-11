@@ -677,10 +677,42 @@ def main():
     src_manual = os.path.join(".", "Manual")
     dest_manual = os.path.join(dest_version, "Manual")
     if os.path.isdir(src_manual):
-        shutil.copytree(src_manual, dest_manual, dirs_exist_ok=True)
-        print(f"Copied Manual folder: {src_manual} -> {dest_manual}")
+        for item in os.listdir(src_manual):
+            # We skip the help file.
+            if item.startswith("FILES-WILL-BE-COPIED") or item.startswith("README.md"):
+                print(f"Skipping {item}")
+                continue
+            src_item = os.path.join(src_manual, item)
+            dest_item = os.path.join(dest_manual, item)
+            if os.path.isdir(src_item):
+                shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
+                print(f"Copied Manual folder: {src_item} -> {dest_item}")
+            elif os.path.isfile(src_item):
+                shutil.copy2(src_item, dest_item)
+                print(f"Copied Manual file: {src_item} -> {dest_item}")
     else:
         print(f"Manual source folder {src_manual} not found.")
+
+    # Copy Replace folder contents to root
+    print("\nCopying Replace folder contents into root of WoW-API folder")
+    src_replace = os.path.join(".", "Replace")
+    if os.path.isdir(src_replace):
+        for item in os.listdir(src_replace):
+            # We skip the help file.
+            if item.startswith("FILES-WILL-BE-COPIED") or item.startswith("README.md"):
+                print(f"Skipping {item}")
+                continue
+            src_item = os.path.join(src_replace, item)
+            dest_item = os.path.join("..", item)
+            if os.path.isdir(src_item):
+                shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
+                print(f"Copied Replace folder item: {src_item} -> {dest_item}")
+            elif os.path.isfile(src_item):
+                os.makedirs(os.path.dirname(dest_item), exist_ok=True)
+                shutil.copy2(src_item, dest_item)
+                print(f"Copied Replace file: {src_item} -> {dest_item}")
+    else:
+        print(f"Replace source folder {src_replace} not found.")
 
     # Create .vscode/settings.json in the output directory
     print("\nCreating .vscode/settings.json in output directory")
