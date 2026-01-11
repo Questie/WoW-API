@@ -383,10 +383,10 @@ def process_addon_directory(
 
 def copy_annotations():
     """
-    Copies all folders from './vscode-wow-api/Annotations/Core/*' to './API/*'.
+    Copies all folders from './vscode-wow-api/Annotations/Core/*' to './API-tmp/*'.
     """
     src_annotations = os.path.join(".", "vscode-wow-api", "Annotations", "Core")
-    dest_api = os.path.join(".", "API")
+    dest_api = os.path.join(".", "API-tmp")
     if not os.path.isdir(src_annotations):
         print(f"Annotations source folder {src_annotations} not found.")
         return
@@ -625,9 +625,9 @@ def main():
         print(f"Source AddOns folder not found at {source_addons_root}")
         return
 
-    # For each version, create a destination folder under API/<Version> and process each addon.
+    # For each version, create a destination folder under API-tmp/<Version> and process each addon.
     for version in versions:
-        dest_addons_root = os.path.join(".", "API", "_UI")
+        dest_addons_root = os.path.join(".", "API-tmp", "_UI")
         print(
             f"\n=== Processing destination for version '{version}' at {dest_addons_root} ==="
         )
@@ -652,9 +652,9 @@ def main():
     print("\n--- Post-processing API folders ---")
     copy_annotations()
 
-    # Rename the API folder to the version from args.version
-    print(f"\nRenaming API folder to API-{args.version}")
-    dest_api = os.path.join(".", "API")
+    # Rename the API-tmp folder to the version from args.version
+    print(f"\nRenaming API-tmp folder to API-{args.version}")
+    dest_api = os.path.join(".", "API-tmp")
     dest_version = os.path.join(".", f"API-{args.version}")
 
     if os.path.isdir(dest_version):
@@ -694,7 +694,7 @@ def main():
         print(f"Manual source folder {src_manual} not found.")
 
     # Copy Replace folder contents to root
-    print("\nCopying Replace folder contents into root of WoW-API folder")
+    print("\nCopying Replace folder contents into root of API folder")
     src_replace = os.path.join(".", "Replace")
     if os.path.isdir(src_replace):
         for item in os.listdir(src_replace):
@@ -703,7 +703,7 @@ def main():
                 print(f"Skipping {item}")
                 continue
             src_item = os.path.join(src_replace, item)
-            dest_item = os.path.join("..", item)
+            dest_item = os.path.join(dest_version, item)
             if os.path.isdir(src_item):
                 shutil.copytree(src_item, dest_item, dirs_exist_ok=True)
                 print(f"Copied Replace folder item: {src_item} -> {dest_item}")

@@ -443,8 +443,8 @@ def inject_annotations(target_dir, annotations_map, dry_run=False):
                         if len(new_lines) >= len(anno_lines):
                             last_n = new_lines[-len(anno_lines) :]
                             # Normalize for comparison
-                            clean_last_n = [l.strip() for l in last_n]
-                            clean_anno = [l.strip() for l in anno_lines]
+                            clean_last_n = [line_Item.strip() for line_Item in last_n]
+                            clean_anno = [line_Item.strip() for line_Item in anno_lines]
 
                             if clean_last_n == clean_anno:
                                 already_present = True
