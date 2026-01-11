@@ -16,10 +16,14 @@
     // Due to the merge nature of this there are some duplication issues.
     "duplicate-doc-field",
     "duplicate-doc-alias",
+    // Some string concatenations are done in a way that confuses the type checker.
+    "ambiguity-1",
     // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
     "return-type-mismatch",
     // Not all type annotations are accurate in the WoW API, so we disable these type mismatch warnings.
     "param-type-mismatch",
+    // The Lua checker sometimes gets a number assignment but somewhere else it gets assigned nil.
+    "assign-type-mismatch",
     // Because we add casts after the fact to satisfy the type checker, we disable this warning.
     "cast-local-type",
     // Classes do not like injecting fields but that requires refactoring which we can't do.
