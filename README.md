@@ -27,14 +27,5 @@ Looks at the list
 Vanilla & MoP to find the missing functions such as "AbandonQuest" which is not under C_QuestLog
 I just copied the list through HTML and created the list in 
 
-2. Clone external Libraries
-
-```bash
-  bash generator/clone.sh
-```
-
-3. Generate data from the cloned repositories
-
-```bash
-  python WoWUI-generator.py --version Classic
-```
+# Generating
+Run the `./generator/generate_clean.sh` script and everything should create happen automatically, or look in the file to do it manually.
