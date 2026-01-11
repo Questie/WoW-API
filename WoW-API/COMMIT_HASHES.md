@@ -2,7 +2,7 @@
 
 This API documentation was generated using the following commit hashes:
 
-- **vscode-wow-api**: `master` @ `a2e82582ac3f38c096ecc192fe701c3ba901d95d`
-- **WoWUI**: `vanilla` @ `b6262ddd722e41b0757e7c6ae2e2a83563044152`
+- **vscode-wow-api**: `ace-fixes` @ `05342d12aeb25ddd6e0aa2ce226cc57893d99203`
+- **WoWUI**: `vanilla` @ `b6c8bf010d423d02a4075f8b0f941464412017e6`
 
-Generated on: 2025-12-18 14:28:48
+Generated on: 2026-01-11 07:47:20

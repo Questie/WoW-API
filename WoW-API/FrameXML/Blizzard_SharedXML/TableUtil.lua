@@ -12,12 +12,12 @@ end
 -- ```
 -- for i, v in ripairs(tbl) do body end
 -- ```
----@param table table
+---@param tbl table
 ---@return function iter
 ---@return table invariant
 ---@return number init
-function ripairs(table)
-	return ripairsiter, table, #table + 1;
+function ripairs(tbl)
+	return ripairsiter, tbl, #tbl + 1;
 end
 
 ---[FrameXML](https://www.townlong-yak.com/framexml/go/AccumulateIf)

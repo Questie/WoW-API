@@ -24,7 +24,7 @@ function AceLocale:NewLocale(application, locale, isDefault, silent) end
 ---|"enUS": English (America)
 ---|"esES": Spanish (Spain)
 ---|"esMX": Spanish (Mexico)
----|"frFR" French (France)
+---|"frFR": French (France)
 ---|"itIT": Italian (Italy)
 ---|"koKR": Korean (Korea)
 ---|"ptBR": Portuguese (Brazil)

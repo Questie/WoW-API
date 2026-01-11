@@ -19,11 +19,11 @@ LibSharedMedia.MediaType = {
 }
 
 ---@alias LibSharedMediaTypes
----| '"background"' # Backgrounds
----| '"border"' # Borders
----| '"font"' # Fonts
----| '"sound"' # Sounds
----| '"statusbar"' # Statusbars
+---| "background" # Backgrounds
+---| "border" # Borders
+---| "font" # Fonts
+---| "sound" # Sounds
+---| "statusbar" # Statusbars
 
 ---@param mediatype LibSharedMediaTypes
 ---@param key string

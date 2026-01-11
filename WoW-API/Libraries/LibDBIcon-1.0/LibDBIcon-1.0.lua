@@ -11,7 +11,7 @@
 ---@field callbacks CallbackHandlerRegistry
 local lib = {}
 
----@alias LibDBIcon.CallbackKey "'icon'"|"'iconCoords'"|"'iconR'"|"'iconG'"|"'iconB'"
+---@alias LibDBIcon.CallbackKey "icon"|"iconCoords"|"iconR"|"iconG"|"iconB"
 
 ---@param event any
 ---@param name string
